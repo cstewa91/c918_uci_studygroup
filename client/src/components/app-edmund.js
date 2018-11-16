@@ -9,7 +9,7 @@ import Profile from './profile';
 const App = () => (
     <div>
         <div className="app">
-            {/* <h1>Welcome to Book Worms</h1> */}
+            <h1>Welcome to Book Worms</h1>
             <Route path='/hamburger' component={Hamburger}/>
             <Route path='/edit-created' component={EditCreated}/>
             <Route path='/profile' component={Profile}/>
