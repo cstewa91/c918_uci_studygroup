@@ -13,6 +13,7 @@ module.exports = function(app) {
   // search study groups route
   app.get('/groups', (req, res) => {
     const query = 'SELECT * FROM study_groups';
+
     connection.query(query, (err, results) => {
       if (err) throw err;
 
@@ -24,6 +25,7 @@ module.exports = function(app) {
   app.get('/group/:group_id', (req, res) => {
     const query = `SELECT * FROM study_groups
                   WHERE id = ${req.params.group_id}`;
+
     connection.query(query, (err, results) => {
       if (err) throw err;
 
@@ -34,12 +36,13 @@ module.exports = function(app) {
   // joined groups route 
   app.get('/joined_groups/:user_id', (req, res) => {
     const query = `SELECT * 
-                  FROM study_groups AS s
-                  JOIN
-                  (SELECT m.study_group_id 
-                  FROM study_group_members AS m
-                  WHERE m.user_id = ${req.params.user_id}) AS m
-                  ON s.id = m.study_group_id`;
+                    FROM study_groups AS s
+                    JOIN
+                    (SELECT m.study_group_id 
+                    FROM study_group_members AS m
+                    WHERE m.user_id = ${req.params.user_id}) AS m
+                    ON s.id = m.study_group_id`;
+
     connection.query(query, (err, results) => {
       if (err) throw err;
 
@@ -47,10 +50,11 @@ module.exports = function(app) {
     })
   });
 
-  // created groups route - ***
-  app.get('/created_groups/:userId', (req, res) => {
+  // created groups route 
+  app.get('/created_groups/:author_id', (req, res) => {
     const query = `SELECT * FROM study_groups
-                  WHERE id = ${req.params.group_id}`;
+                    WHERE id = ${req.params.author_id}`;
+
     connection.query(query, (err, results) => {
       if (err) throw err;
 
@@ -61,12 +65,13 @@ module.exports = function(app) {
   // group members route
   app.get('/study_group_members/:group_id', (req, res) => {
     const query = `SELECT * 
-                  FROM users AS u
-                  JOIN
-                  (SELECT user_id
-                  FROM study_group_members
-                  WHERE study_group_id = ${req.params.group_id}) AS m
-                  ON u.id = m.user_id`;
+                    FROM users AS u
+                    JOIN
+                    (SELECT user_id
+                    FROM study_group_members
+                    WHERE study_group_id = ${req.params.group_id}) AS m
+                    ON u.id = m.user_id`;
+
     connection.query(query, (err, results) => {
       if (err) throw err;
 
@@ -77,7 +82,8 @@ module.exports = function(app) {
   // profile route
   app.get('/profile/:user_id', (req, res) => {
     const query = `SELECT * FROM users
-                  WHERE id = ${req.params.user_id}`;
+                    WHERE id = ${req.params.user_id}`;
+
     connection.query(query, (err, results) => {
       if (err) throw err;
 
@@ -86,8 +92,48 @@ module.exports = function(app) {
   });
 
 // create user route
+  app.post('/create_user', function (req, res) {
+    const googleId = req.body.googleId;
+    const username = req.body.username;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+
+    const query = `INSERT INTO users
+                    (googleId, username, firstName, lastName, email)
+                    VALUES(${googleId}, ${username}, ${firstName}, ${lastName}, ${email})`;
+
+    connection.query(query, (err, results) => {
+      if (err) throw err;
+
+      res.send({ success: true });
+    })
+  });
+
+
+// join group route
+  app.post('/join_group', (req, res) => {
+    const study_group_id = req.body.study_group_id;
+    const user_id = req.body.user_id;
+
+    const query = `INSERT INTO study_group_members
+                    (study_group_id, user_id)
+                    VALUES(${study_group_id}, ${user_id})`;
+
+    connection.query(query, (err, results) => {
+      if (err) throw err;
+
+      res.send({ success: true });
+    })
+  });
 
 // create study group route
+
+
+// delete study group route
+
+// delete user route
+
 
 // edit user route
 
@@ -95,12 +141,6 @@ module.exports = function(app) {
 
 
 
-
-// blue sky routes:
-
-// delete study group route
-
-// delete user route
 
 // TODO:
 // move routes to separate file
@@ -111,7 +151,7 @@ module.exports = function(app) {
   // 2. Obtain an access token from the Google Authorization Server.
   // 3. Send the access token to an API.
   // 4. Refresh the access token, if necessary.
-// add session field to users table
+// add session field to users table or separate authentication table?
 
 // CLEANUP:
 // remove cors  
