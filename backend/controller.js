@@ -128,7 +128,20 @@ module.exports = function(app) {
   });
 
 // create study group route
+  app.post('/create_group', (req, res) => {
+    const study_group_id = req.body.study_group_id;
+    const user_id = req.body.user_id;
 
+    const query = `INSERT INTO study_group_members
+                    (study_group_id, user_id)
+                    VALUES(${study_group_id}, ${user_id})`;
+
+    connection.query(query, (err, results) => {
+      if (err) throw err;
+
+      res.send({ success: true });
+    })
+  });
 
 // delete study group route
 
