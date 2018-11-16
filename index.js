@@ -1,5 +1,6 @@
 const express = require('express');
 const mysql = require('mysql');
+const mysqlLogin = require('./mysql-backend-login.js') || require('./mysql-frontend-login.js');
 const cors = require('cors');
 const { resolve } = require('path');
 const PORT = process.env.PORT || 9000;
@@ -10,12 +11,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(resolve(__dirname, 'client', 'dist')));
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'root',
-  database: 'studygroupfinder'
-});
+var connection = mysql.createConnection(mysqlLogin.mysqlLogin);
 
 connection.connect((err) => {
   if (err) throw err;
@@ -59,19 +55,34 @@ app.get('/joined_groups/:user_id', (req, res) => {
 
     res.send(results);
   })
-
 });
 
-// group members route
-
-
-// created groups route
+// created groups route - ***
 app.get('/created_groups/:userId', (req, res) => {
-  const userId = req.params.userId;
-  const groups = data.studyGroups.filter(group => group.userId === userId);
+  const query = `SELECT * FROM study_groups
+                  WHERE id = ${req.params.group_id}`;
+  connection.query(query, (err, results) => {
+    if (err) throw err;
 
-  res.send(groups);
+    res.send(results);
+  })
 })
+
+// group members route
+app.get('/study_group_members/:group_id', (req, res) => {
+  const query = `SELECT * 
+                  FROM users AS u
+                  JOIN
+                  (SELECT user_id
+                  FROM study_group_members
+                  WHERE study_group_id = ${req.params.group_id}) AS m
+                  ON u.id = m.user_id`;
+  connection.query(query, (err, results) => {
+    if (err) throw err;
+
+    res.send(results);
+  })
+});
 
 // profile route
 app.get('/profile/:userId', (req, res) => {
