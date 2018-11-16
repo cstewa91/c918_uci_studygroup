@@ -14,11 +14,7 @@ module.exports = function(app) {
   app.get('/groups', (req, res) => {
     const query = 'SELECT * FROM study_groups';
 
-    connection.query(query, (err, results) => {
-      if (err) throw err;
-
-      res.send(results);
-    });
+    sendQuery('get', query, res);
   });
 
   // group details route
@@ -26,11 +22,7 @@ module.exports = function(app) {
     const query = `SELECT * FROM study_groups
                   WHERE id = ${req.params.group_id}`;
 
-    connection.query(query, (err, results) => {
-      if (err) throw err;
-
-      res.send(results);
-    })
+    sendQuery('get', query, res);
   });
 
   // joined groups route 
@@ -43,11 +35,7 @@ module.exports = function(app) {
                     WHERE m.user_id = ${req.params.user_id}) AS m
                     ON s.id = m.study_group_id`;
 
-    connection.query(query, (err, results) => {
-      if (err) throw err;
-
-      res.send(results);
-    })
+    sendQuery('get', query, res);
   });
 
   // created groups route 
@@ -55,11 +43,7 @@ module.exports = function(app) {
     const query = `SELECT * FROM study_groups
                     WHERE id = ${req.params.author_id}`;
 
-    connection.query(query, (err, results) => {
-      if (err) throw err;
-
-      res.send(results);
-    })
+    sendQuery('get', query, res);
   })
 
   // group members route
@@ -72,11 +56,7 @@ module.exports = function(app) {
                     WHERE study_group_id = ${req.params.group_id}) AS m
                     ON u.id = m.user_id`;
 
-    connection.query(query, (err, results) => {
-      if (err) throw err;
-
-      res.send(results);
-    })
+    sendQuery('get', query, res);
   });
 
   // profile route
@@ -84,80 +64,67 @@ module.exports = function(app) {
     const query = `SELECT * FROM users
                     WHERE id = ${req.params.user_id}`;
 
-    connection.query(query, (err, results) => {
-      if (err) throw err;
-
-      res.send(results);
-    })
+    sendQuery('get', query, res);
   });
 
-// create user route
+  // create user route
   app.post('/create_user', function (req, res) {
-    const googleId = req.body.googleId;
-    const username = req.body.username;
-    const firstName = req.body.firstName;
-    const lastName = req.body.lastName;
-    const email = req.body.email;
+    const { columns, values } = getColumnsAndValues(req.body);
 
-    const query = `INSERT INTO users
-                    (googleId, username, firstName, lastName, email)
-                    VALUES(${googleId}, ${username}, ${firstName}, ${lastName}, ${email})`;
+    const query = `INSERT INTO users (${columns})
+                    VALUES(${values})`;
 
-    connection.query(query, (err, results) => {
-      if (err) throw err;
-
-      res.send({ success: true });
-    })
+    sendQuery('post', query, res);
   });
 
-
-// join group route
+  // join group route
   app.post('/join_group', (req, res) => {
-    const study_group_id = req.body.study_group_id;
-    const user_id = req.body.user_id;
+    const { columns, values } = getColumnsAndValues(req.body);
 
-    const query = `INSERT INTO study_group_members
-                    (study_group_id, user_id)
-                    VALUES(${study_group_id}, ${user_id})`;
+    const query = `INSERT INTO study_group_members (${columns})
+                    VALUES(${values})`;
 
-    connection.query(query, (err, results) => {
-      if (err) throw err;
-
-      res.send({ success: true });
-    })
+    sendQuery('post', query, res);
   });
 
-// create study group route
+  // create study group route
   app.post('/create_group', (req, res) => {
-    const study_group_id = req.body.study_group_id;
-    const user_id = req.body.user_id;
+    const { columns, values } = getColumnsAndValues(req.body);
 
-    const query = `INSERT INTO study_group_members
-                    (study_group_id, user_id)
-                    VALUES(${study_group_id}, ${user_id})`;
+    const query = `INSERT INTO study_groups (${columns})
+                    VALUES(${values})`;
 
-    connection.query(query, (err, results) => {
-      if (err) throw err;
-
-      res.send({ success: true });
-    })
+    sendQuery('post', query, res);
   });
 
-// delete study group route
+  // delete study group route
 
-// delete user route
-
-
-// edit user route
-
-// edit study group route
+  // delete user route
 
 
+  // edit user route
 
+  // edit study group route
+}
+
+function getColumnsAndValues(json) {
+  const columns = Object.keys(json).join(', ');
+  const values = Object.values(json).map(value => `'${value}'`).join(', ');
+
+  return { columns, values };
+}
+
+function sendQuery(method, query, res) {
+  connection.query(query, (err, results) => {
+    if (err) throw err;
+
+    const response = method === 'get' ? results : { success: true };
+    res.send(response);
+  });
+}
 
 // TODO:
-// move routes to separate file
-// run both servers with one command?
+// set foreign key
 // sanitization
 // Gogole OAuth2.0 - https://developers.google.com/identity/protocols/OAuth2
   // 1. Obtain OAuth 2.0 credentials from the Google API Console.
@@ -168,5 +135,3 @@ module.exports = function(app) {
 
 // CLEANUP:
 // remove cors  
-
-}

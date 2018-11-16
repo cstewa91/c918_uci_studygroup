@@ -16,7 +16,7 @@ app.use(express.static(resolve(__dirname, 'client', 'dist')));
 controller(app);
 
 app.get('*', (req, res) => {
-   res.sendFile(resolve(__dirname, 'client', 'dist,', 'index.html'));
+   res.sendFile(resolve(__dirname, 'client', 'dist', 'index.html'));
 });
 
 app.listen(PORT, () => {
