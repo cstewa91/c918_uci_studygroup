@@ -1,7 +1,7 @@
 const mysqlLogin = {
   host: 'localhost',
-  user: '',
-  password: '',
+  user: 'root',
+  password: 'root',
   database: 'studygroupfinder'
 };
 

@@ -10,14 +10,14 @@ connection.connect((err) => {
 });
 
 module.exports = function(app) {
-  // search study groups route
+  // search study groups 
   app.get('/api/groups', (req, res) => {
     const query = 'SELECT * FROM groups';
 
     sendQuery('get', query, res);
   });
 
-  // group details route
+  // group details 
   app.get('/api/group/:group_id', (req, res) => {
     const query = `SELECT * FROM groups
                   WHERE id = ${req.params.group_id}`;
@@ -25,7 +25,7 @@ module.exports = function(app) {
     sendQuery('get', query, res);
   });
 
-  // joined groups route 
+  // joined groups  
   app.get('/api/joined_groups/:user_id', (req, res) => {
     const query = `SELECT * 
                     FROM groups AS s
@@ -38,7 +38,7 @@ module.exports = function(app) {
     sendQuery('get', query, res);
   });
 
-  // created groups route 
+  // created groups  
   app.get('/api/groups/:author_id', (req, res) => {
     const query = `SELECT * FROM groups
                     WHERE id = ${req.params.author_id}`;
@@ -46,7 +46,7 @@ module.exports = function(app) {
     sendQuery('get', query, res);
   })
 
-  // group members route
+  // group members 
   app.get('/api/groups/:group_id', (req, res) => {
     const query = `SELECT * 
                     FROM users AS u
@@ -59,7 +59,7 @@ module.exports = function(app) {
     sendQuery('get', query, res);
   });
 
-  // profile route
+  // profile 
   app.get('/api/users/:user_id', (req, res) => {
     const query = `SELECT * FROM users
                     WHERE id = ${req.params.user_id}`;
@@ -67,7 +67,7 @@ module.exports = function(app) {
     sendQuery('get', query, res);
   });
 
-  // create user route
+  // create user 
   app.post('/api/users', function (req, res) {
     const { columns, values } = postColumnsAndValues(req.body);
     const query = `INSERT INTO users (${columns})
@@ -76,7 +76,7 @@ module.exports = function(app) {
     sendQuery('post', query, res);
   });
 
-  // join group route
+  // join group 
   app.post('/api/join', (req, res) => {
     const { columns, values } = postColumnsAndValues(req.body);
     const query = `INSERT INTO group_members (${columns})
@@ -85,7 +85,7 @@ module.exports = function(app) {
     sendQuery('post', query, res);
   });
 
-  // create study group route
+  // create group 
   app.post('/api/groups', (req, res) => {
     const { columns, values } = postColumnsAndValues(req.body);
     const query = `INSERT INTO groups (${columns})
@@ -94,7 +94,7 @@ module.exports = function(app) {
     sendQuery('post', query, res);
   });
 
-  // delete study group route 
+  // delete group  
   app.delete('/api/groups/:group_id', (req, res) => {
     const query = `DELETE FROM groups
                     WHERE id = ${req.params.group_id}`;
@@ -102,7 +102,7 @@ module.exports = function(app) {
     sendQuery('delete', query, res);
   });
 
-  // delete user route  
+  // delete user   
   app.delete('/api/users/:user_id', (req, res) => {
     const query = `DELETE FROM users
                     WHERE id = ${req.params.user_id}`;
@@ -110,7 +110,7 @@ module.exports = function(app) {
     sendQuery('delete', query, res);
   });
 
-  // leave group route 
+  // leave group  
   app.delete('/api/leave/:user_id/:group_id', (req, res) => {
     const query = `DELETE FROM group_members
                     WHERE user_id = ${req.params.user_id}
@@ -119,7 +119,7 @@ module.exports = function(app) {
     sendQuery('delete', query, res);
   });
 
-  // edit user route 
+  // edit user  
   app.put('/api/users/:user_id', (req, res) => {
     const updates = putColumnsAndValues(req.body);
     const query = `UPDATE users SET ${updates}
@@ -128,13 +128,18 @@ module.exports = function(app) {
     sendQuery('put', query, res);
   });
 
-  // edit study group route - UNTESTED
+  // edit group
   app.put('/api/groups/:group_id', (req, res) => {
     const updates = putColumnsAndValues(req.body);
     const query = `UPDATE groups SET ${updates}
                     WHERE id = ${req.params.group_id}`;
 
     sendQuery('put', query, res);
+  });
+
+  // send html
+  app.get('*', (req, res) => {
+    res.sendFile(resolve(__dirname, 'client', 'dist', 'index.html'));
   });
 }
 
@@ -168,12 +173,11 @@ function sendQuery(method, query, res) {
 }
 
 // TODO:
-// upload new sql file
 // just one mysql config file
 // POSTMAN test suite
 // refactor into MVC
-// check other routes needed
-// consolidate routes based on request method?
+// check other s needed
+// consolidate s based on request method?
 // ask for req and res data format 
 // update queries based on format
 // set db foreign key
