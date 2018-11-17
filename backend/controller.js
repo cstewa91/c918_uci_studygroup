@@ -39,7 +39,7 @@ module.exports = function(app) {
   });
 
   // created groups route 
-  app.get('/api/created_groups/:author_id', (req, res) => {
+  app.get('/api/groups/:author_id', (req, res) => {
     const query = `SELECT * FROM study_groups
                     WHERE id = ${req.params.author_id}`;
 
@@ -47,7 +47,7 @@ module.exports = function(app) {
   })
 
   // group members route
-  app.get('/api/study_group_members/:group_id', (req, res) => {
+  app.get('/api/groups/:group_id', (req, res) => {
     const query = `SELECT * 
                     FROM users AS u
                     JOIN
@@ -60,7 +60,7 @@ module.exports = function(app) {
   });
 
   // profile route
-  app.get('/api/profile/:user_id', (req, res) => {
+  app.get('/api/users/:user_id', (req, res) => {
     const query = `SELECT * FROM users
                     WHERE id = ${req.params.user_id}`;
 
@@ -68,9 +68,8 @@ module.exports = function(app) {
   });
 
   // create user route
-  app.post('/api/create_user', function (req, res) {
+  app.post('/api/users', function (req, res) {
     const { columns, values } = postColumnsAndValues(req.body);
-
     const query = `INSERT INTO users (${columns})
                     VALUES(${values})`;
 
@@ -78,9 +77,8 @@ module.exports = function(app) {
   });
 
   // join group route
-  app.post('/api/join_group', (req, res) => {
+  app.post('/api/join', (req, res) => {
     const { columns, values } = postColumnsAndValues(req.body);
-
     const query = `INSERT INTO study_group_members (${columns})
                     VALUES(${values})`;
 
@@ -88,9 +86,8 @@ module.exports = function(app) {
   });
 
   // create study group route
-  app.post('/api/create_group', (req, res) => {
+  app.post('/api/groups', (req, res) => {
     const { columns, values } = postColumnsAndValues(req.body);
-
     const query = `INSERT INTO study_groups (${columns})
                     VALUES(${values})`;
 
@@ -98,7 +95,7 @@ module.exports = function(app) {
   });
 
   // delete study group route - UNTESTED
-  app.delete('/api/delete_group/:group_id', (req, res) => {
+  app.delete('/api/groups/:group_id', (req, res) => {
     const query = `DELETE FROM study_groups
                     WHERE id = ${req.params.group_id}`;
 
@@ -106,7 +103,7 @@ module.exports = function(app) {
   });
 
   // delete user route - UNTESTED
-  app.delete('/api/delete_user/:user_id', (req, res) => {
+  app.delete('/api/users/:user_id', (req, res) => {
     const query = `DELETE FROM users
                     WHERE id = ${req.params.user_id}`;
 
@@ -114,7 +111,7 @@ module.exports = function(app) {
   });
 
   // leave group route - UNTESTED
-  app.delete('/api/leave_group/:user_id/:group_id', (req, res) => {
+  app.delete('/api/leave/:user_id/:group_id', (req, res) => {
     const query = `DELETE FROM study_group_members
                     WHERE user_id = ${req.params.user_id}
                     AND group_id = ${req.params.group_id}`;
@@ -123,33 +120,38 @@ module.exports = function(app) {
   });
 
   // edit user route - UNTESTED
-  app.put('/api/edit_user/:user_id', (req, res) => {
-    const query = `UPDATE users SET field1 = new-value1, field2 = new-value2
+  app.put('/api/users/:user_id', (req, res) => {
+    const updates = putColumnsAndValues(req.body);
+    const query = `UPDATE users SET ${updates}
                     WHERE id = ${req.params.user_id}`;
 
-    sendQuery('delete', query, res);
+    sendQuery('put', query, res);
   });
 
   // edit study group route - UNTESTED
+  app.put('/api/groups/:group_id', (req, res) => {
+    const updates = putColumnsAndValues(req.body);
+    const query = `UPDATE study_groups SET ${updates}
+                    WHERE id = ${req.params.group_id}`;
+
+    sendQuery('put', query, res);
+  });
 }
 
-// helper function for building SQL POST queries 
-function postColumnsAndValues(json) {
-  const columns = Object.keys(json).join(', ');
-  const values = Object.values(json).map(value => `'${value}'`).join(', ');
+// builds SQL POST queries 
+function postColumnsAndValues(body) {
+  const columns = Object.keys(body).join(', ');
+  const values = Object.values(body).map(value => `'${value}'`).join(', ');
 
   return { columns, values };
 }
 
-// helper function for building SQL PUT queries
-function putColumnsAndValues(json) {
-  // UPDATE users SET field1 = new- value1, field2 = new- value2
-  const columns = Object.keys(json).join(', ');
-  const values = Object.values(json).map(value => `'${value}'`).join(', ');
+// builds SQL PUT queries 
+function putColumnsAndValues(body) {
+  const updates = Object.keys(body).map(key => `${key} = '${body[key]}'`).join(', ');
 
-  return;
+  return updates;
 }
-
 
 // helper function for SQL queries and returning results
 function sendQuery(method, query, res) {
@@ -165,8 +167,10 @@ function sendQuery(method, query, res) {
 }
 
 // TODO:
+// TEST GET routes with same end points, different parameters
 // TEST edit, delete
 // just one mysql config file
+// refactor into MVC
 // check other routes needed
 // consolidate routes based on request method?
 // ask for req and res data format 
