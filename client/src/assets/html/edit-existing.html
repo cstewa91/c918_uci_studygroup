@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Existing</title>
+
+    <link rel="stylesheet" href='style.css'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+</head>
+<body>
+    <header class='header'>
+        <div class='header-bar'>
+            <div class='hamburger-menu'>           
+            </div>
+            <div class='logo'>
+                <img class='' src='bookworm'>
+            </div>
+            <div class='header-title'>
+                <span>Book Worms</span>
+            </div>
+        </div>
+    </header>   
+    <main class='main-content'>
+        <div class='container'>
+            <div class='main-title'>
+                <p class='edit-group'>Edit Group:</p>
+            </div>
+            <div class="group-details">
+                <form class='group-info'>
+                    <div class='group-name'>
+                        <input type='text' placeholder={The Amazing Group}>
+                    </div>
+                    <div class='subject'>
+                        <input type='text' placeholder={Bio}>
+                    </div>
+                    <div class='course'>
+                            <input type='number' placeholder={101}>
+                    </div>
+                    <div class='date'>
+                            <input type='date' placeholder={11/18/18}>
+                    </div>
+                    <div class='users'>
+                            <input type='number' placeholder={4}>
+                    </div>
+                    <div class='time'>
+                            <input type='time' placeholder={7:00pm-9:00pm}>
+                    </div>
+                    <div class='location'>
+                            <input type='text' placeholder={Wheeler Hall}>
+                    </div>
+                    <div class='location'>
+                            <textarea rows='5' cols='75'></textarea>
+                    </div>
+                </form>    
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class='update'>
+            <button type="button" class="btn">Update</button>
+        </div>
+    </footer>
+</body>
+</html>

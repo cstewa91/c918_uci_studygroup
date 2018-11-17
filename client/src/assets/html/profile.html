@@ -1,0 +1,48 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href='style.css'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+    <title>Profile</title>
+</head>
+<body>
+    <header class='header'>
+        <div class='header-bar'>
+            <div class='hamburger-menu'>           
+            </div>
+            <div class='logo'>
+                <img class='' src='bookworm'>
+            </div>
+            <div class='header-title'>
+                <span>Book Worms</span>
+            </div>
+        </div>
+    </header>   
+    <main class='main-content'>
+        <div class='container'>
+            <div class='main-section'>
+                <div class='profile'>Profile</div>
+                <div class='user-info'>
+                    <div class='username'>
+                        <div class='username-title'></div>
+                    </div>
+                    <div class='user-input'>
+                        <input class='username-field' type='text' placeholder={username}>
+                    </div>
+                </div>
+                <div class="error-list">
+                    <p id="username-match" class="text-danger">
+                        <span class="glyphicon glyphicon-check">Username must be ----</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class='confirm'>
+            <button type="button" class="btn">Confirm</button>
+        </div>
+    </footer>
+</body>
