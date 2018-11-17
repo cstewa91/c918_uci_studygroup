@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-const dbconfig = require('./config/dbconfig');
+const dbconfig = require('./config/dbfonig-admin') || require('./config/dbconfig');
 
 var connection = mysql.createConnection(dbconfig);
 
