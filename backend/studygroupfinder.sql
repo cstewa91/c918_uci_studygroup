@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
--- https://www.phpmyadmin.net/
+-- version 4.4.15.5
+-- http://www.phpmyadmin.net
 --
--- Host: localhost:3306
--- Generation Time: Nov 16, 2018 at 07:12 AM
+-- Host: 127.0.0.1:3306
+-- Generation Time: Nov 17, 2018 at 06:45 AM
 -- Server version: 5.6.34-log
--- PHP Version: 7.2.1
+-- PHP Version: 7.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -22,8 +20,33 @@ SET time_zone = "+00:00";
 -- Database: `studygroupfinder`
 --
 
-CREATE DATABASE studygroupfinder;
-USE studygroupfinder;
+CREATE DATABASE IF NOT EXISTS a;
+USE a;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `group_members`
+--
+
+CREATE TABLE IF NOT EXISTS `group_members` (
+  `id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `group_members`
+--
+
+INSERT INTO `group_members` (`id`, `group_id`, `user_id`) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 1, 3),
+(4, 1, 19),
+(5, 2, 19),
+(6, 2, 3),
+(7, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -31,20 +54,20 @@ USE studygroupfinder;
 -- Table structure for table `study_groups`
 --
 
-CREATE TABLE `study_groups` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `author_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `study_groups` (
+  `id` int(10) unsigned NOT NULL,
+  `author_id` int(10) unsigned NOT NULL,
   `name` varchar(40) NOT NULL,
   `location` varchar(40) NOT NULL,
   `subject` varchar(30) NOT NULL,
   `course` varchar(30) NOT NULL,
   `start_time` datetime NOT NULL,
   `end_time` datetime NOT NULL,
-  `max_group_size` int(10) UNSIGNED NOT NULL,
-  `current_group_size` int(10) UNSIGNED NOT NULL,
+  `max_group_size` int(10) unsigned NOT NULL,
+  `current_group_size` int(10) unsigned NOT NULL,
   `description` varchar(150) NOT NULL,
   `date_created` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `study_groups`
@@ -58,67 +81,43 @@ INSERT INTO `study_groups` (`id`, `author_id`, `name`, `location`, `subject`, `c
 -- --------------------------------------------------------
 
 --
--- Table structure for table `study_group_members`
---
-
-CREATE TABLE `study_group_members` (
-  `id` int(11) NOT NULL,
-  `study_group_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `study_group_members`
---
-
-INSERT INTO `study_group_members` (`id`, `study_group_id`, `user_id`) VALUES
-(1, 1, 1),
-(2, 2, 1),
-(3, 1, 3),
-(4, 1, 19),
-(5, 2, 19),
-(6, 2, 3),
-(7, 3, 1);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `googleId` varchar(30) NOT NULL,
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(10) unsigned NOT NULL,
+  `google_id` varchar(30) NOT NULL,
   `username` varchar(100) NOT NULL,
-  `firstName` varchar(30) NOT NULL,
-  `lastName` varchar(30) NOT NULL,
+  `firstname` varchar(30) NOT NULL,
+  `lastname` varchar(30) NOT NULL,
   `email` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `googleId`, `username`, `firstName`, `lastName`, `email`) VALUES
+INSERT INTO `users` (`id`, `google_id`, `username`, `firstname`, `lastname`, `email`) VALUES
 (1, 'a1b2', 'johndoe2000', 'john', 'doe', 'johndoe@gmail.com'),
 (3, 'd5a5adkj', 'janedoe', 'jane', 'doe', 'janedoe@gmail.com'),
 (19, 'ji3jaksd', 'ilovejs', 'james', 'king', 'kingjames@gmail.com'),
-(20, 'abcd', 'Hapachino', 'Erick', 'Brownfield', 'lfz@gmail.com');
+(20, 'abcd', 'Hapachino', 'Hapa', 'Chino', 'lfz@gmail.com'),
+(26, '', 'Hapachino', 'Hapa', 'Chino', '');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `study_groups`
+-- Indexes for table `group_members`
 --
-ALTER TABLE `study_groups`
+ALTER TABLE `group_members`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `study_group_members`
+-- Indexes for table `study_groups`
 --
-ALTER TABLE `study_group_members`
+ALTER TABLE `study_groups`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -132,21 +131,20 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `group_members`
+--
+ALTER TABLE `group_members`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
 -- AUTO_INCREMENT for table `study_groups`
 --
 ALTER TABLE `study_groups`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `study_group_members`
---
-ALTER TABLE `study_group_members`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;COMMIT;
-
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

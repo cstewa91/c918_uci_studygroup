@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-const mysqlLogin = require('./config/mysql-backend-login') || require('./config/mysql-frontend-login');
+const mysqlLogin = require('./config/dbconfig');
 
 var connection = mysql.createConnection(mysqlLogin.mysqlLogin);
 
@@ -12,14 +12,14 @@ connection.connect((err) => {
 module.exports = function(app) {
   // search study groups route
   app.get('/api/groups', (req, res) => {
-    const query = 'SELECT * FROM study_groups';
+    const query = 'SELECT * FROM groups';
 
     sendQuery('get', query, res);
   });
 
   // group details route
   app.get('/api/group/:group_id', (req, res) => {
-    const query = `SELECT * FROM study_groups
+    const query = `SELECT * FROM groups
                   WHERE id = ${req.params.group_id}`;
 
     sendQuery('get', query, res);
@@ -28,19 +28,19 @@ module.exports = function(app) {
   // joined groups route 
   app.get('/api/joined_groups/:user_id', (req, res) => {
     const query = `SELECT * 
-                    FROM study_groups AS s
+                    FROM groups AS s
                     JOIN
-                    (SELECT m.study_group_id 
-                    FROM study_group_members AS m
+                    (SELECT m.group_id 
+                    FROM group_members AS m
                     WHERE m.user_id = ${req.params.user_id}) AS m
-                    ON s.id = m.study_group_id`;
+                    ON s.id = m.group_id`;
 
     sendQuery('get', query, res);
   });
 
   // created groups route 
   app.get('/api/groups/:author_id', (req, res) => {
-    const query = `SELECT * FROM study_groups
+    const query = `SELECT * FROM groups
                     WHERE id = ${req.params.author_id}`;
 
     sendQuery('get', query, res);
@@ -52,8 +52,8 @@ module.exports = function(app) {
                     FROM users AS u
                     JOIN
                     (SELECT user_id
-                    FROM study_group_members
-                    WHERE study_group_id = ${req.params.group_id}) AS m
+                    FROM group_members
+                    WHERE group_id = ${req.params.group_id}) AS m
                     ON u.id = m.user_id`;
 
     sendQuery('get', query, res);
@@ -79,7 +79,7 @@ module.exports = function(app) {
   // join group route
   app.post('/api/join', (req, res) => {
     const { columns, values } = postColumnsAndValues(req.body);
-    const query = `INSERT INTO study_group_members (${columns})
+    const query = `INSERT INTO group_members (${columns})
                     VALUES(${values})`;
 
     sendQuery('post', query, res);
@@ -88,21 +88,21 @@ module.exports = function(app) {
   // create study group route
   app.post('/api/groups', (req, res) => {
     const { columns, values } = postColumnsAndValues(req.body);
-    const query = `INSERT INTO study_groups (${columns})
+    const query = `INSERT INTO groups (${columns})
                     VALUES(${values})`;
 
     sendQuery('post', query, res);
   });
 
-  // delete study group route - UNTESTED
+  // delete study group route 
   app.delete('/api/groups/:group_id', (req, res) => {
-    const query = `DELETE FROM study_groups
+    const query = `DELETE FROM groups
                     WHERE id = ${req.params.group_id}`;
 
     sendQuery('delete', query, res);
   });
 
-  // delete user route - UNTESTED
+  // delete user route  
   app.delete('/api/users/:user_id', (req, res) => {
     const query = `DELETE FROM users
                     WHERE id = ${req.params.user_id}`;
@@ -110,16 +110,16 @@ module.exports = function(app) {
     sendQuery('delete', query, res);
   });
 
-  // leave group route - UNTESTED
+  // leave group route 
   app.delete('/api/leave/:user_id/:group_id', (req, res) => {
-    const query = `DELETE FROM study_group_members
+    const query = `DELETE FROM group_members
                     WHERE user_id = ${req.params.user_id}
                     AND group_id = ${req.params.group_id}`;
 
     sendQuery('delete', query, res);
   });
 
-  // edit user route - UNTESTED
+  // edit user route 
   app.put('/api/users/:user_id', (req, res) => {
     const updates = putColumnsAndValues(req.body);
     const query = `UPDATE users SET ${updates}
@@ -131,7 +131,7 @@ module.exports = function(app) {
   // edit study group route - UNTESTED
   app.put('/api/groups/:group_id', (req, res) => {
     const updates = putColumnsAndValues(req.body);
-    const query = `UPDATE study_groups SET ${updates}
+    const query = `UPDATE groups SET ${updates}
                     WHERE id = ${req.params.group_id}`;
 
     sendQuery('put', query, res);
@@ -162,14 +162,15 @@ function sendQuery(method, query, res) {
     }
 
     const response = method === 'get' ? results : { success: true };
+    console.log(results);
     res.send(response);
   });
 }
 
 // TODO:
-// TEST GET routes with same end points, different parameters
-// TEST edit, delete
+// upload new sql file
 // just one mysql config file
+// POSTMAN test suite
 // refactor into MVC
 // check other routes needed
 // consolidate routes based on request method?
@@ -177,7 +178,7 @@ function sendQuery(method, query, res) {
 // update queries based on format
 // set db foreign key
 // sanitization
-// Gogole OAuth2.0 - https://developers.google.com/identity/protocols/OAuth2
+// Google OAuth2.0 - https://developers.google.com/identity/protocols/OAuth2
   // 1. Obtain OAuth 2.0 credentials from the Google API Console.
   // 2. Obtain an access token from the Google Authorization Server.
   // 3. Send the access token to an API.
@@ -186,3 +187,4 @@ function sendQuery(method, query, res) {
 
 // CLEANUP:
 // remove cors  
+// remove console.logs
