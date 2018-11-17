@@ -11,14 +11,14 @@ connection.connect((err) => {
 
 module.exports = function(app) {
   // search study groups route
-  app.get('/groups', (req, res) => {
+  app.get('/api/groups', (req, res) => {
     const query = 'SELECT * FROM study_groups';
 
     sendQuery('get', query, res);
   });
 
   // group details route
-  app.get('/group/:group_id', (req, res) => {
+  app.get('/api/group/:group_id', (req, res) => {
     const query = `SELECT * FROM study_groups
                   WHERE id = ${req.params.group_id}`;
 
@@ -26,7 +26,7 @@ module.exports = function(app) {
   });
 
   // joined groups route 
-  app.get('/joined_groups/:user_id', (req, res) => {
+  app.get('/api/joined_groups/:user_id', (req, res) => {
     const query = `SELECT * 
                     FROM study_groups AS s
                     JOIN
@@ -39,7 +39,7 @@ module.exports = function(app) {
   });
 
   // created groups route 
-  app.get('/created_groups/:author_id', (req, res) => {
+  app.get('/api/created_groups/:author_id', (req, res) => {
     const query = `SELECT * FROM study_groups
                     WHERE id = ${req.params.author_id}`;
 
@@ -47,7 +47,7 @@ module.exports = function(app) {
   })
 
   // group members route
-  app.get('/study_group_members/:group_id', (req, res) => {
+  app.get('/api/study_group_members/:group_id', (req, res) => {
     const query = `SELECT * 
                     FROM users AS u
                     JOIN
@@ -60,7 +60,7 @@ module.exports = function(app) {
   });
 
   // profile route
-  app.get('/profile/:user_id', (req, res) => {
+  app.get('/api/profile/:user_id', (req, res) => {
     const query = `SELECT * FROM users
                     WHERE id = ${req.params.user_id}`;
 
@@ -68,8 +68,8 @@ module.exports = function(app) {
   });
 
   // create user route
-  app.post('/create_user', function (req, res) {
-    const { columns, values } = getColumnsAndValues(req.body);
+  app.post('/api/create_user', function (req, res) {
+    const { columns, values } = postColumnsAndValues(req.body);
 
     const query = `INSERT INTO users (${columns})
                     VALUES(${values})`;
@@ -78,8 +78,8 @@ module.exports = function(app) {
   });
 
   // join group route
-  app.post('/join_group', (req, res) => {
-    const { columns, values } = getColumnsAndValues(req.body);
+  app.post('/api/join_group', (req, res) => {
+    const { columns, values } = postColumnsAndValues(req.body);
 
     const query = `INSERT INTO study_group_members (${columns})
                     VALUES(${values})`;
@@ -88,8 +88,8 @@ module.exports = function(app) {
   });
 
   // create study group route
-  app.post('/create_group', (req, res) => {
-    const { columns, values } = getColumnsAndValues(req.body);
+  app.post('/api/create_group', (req, res) => {
+    const { columns, values } = postColumnsAndValues(req.body);
 
     const query = `INSERT INTO study_groups (${columns})
                     VALUES(${values})`;
@@ -97,26 +97,67 @@ module.exports = function(app) {
     sendQuery('post', query, res);
   });
 
-  // delete study group route
+  // delete study group route - UNTESTED
+  app.delete('/api/delete_group/:group_id', (req, res) => {
+    const query = `DELETE FROM study_groups
+                    WHERE id = ${req.params.group_id}`;
 
-  // delete user route
+    sendQuery('delete', query, res);
+  });
 
+  // delete user route - UNTESTED
+  app.delete('/api/delete_user/:user_id', (req, res) => {
+    const query = `DELETE FROM users
+                    WHERE id = ${req.params.user_id}`;
 
-  // edit user route
+    sendQuery('delete', query, res);
+  });
 
-  // edit study group route
+  // leave group route - UNTESTED
+  app.delete('/api/leave_group/:user_id/:group_id', (req, res) => {
+    const query = `DELETE FROM study_group_members
+                    WHERE user_id = ${req.params.user_id}
+                    AND group_id = ${req.params.group_id}`;
+
+    sendQuery('delete', query, res);
+  });
+
+  // edit user route - UNTESTED
+  app.put('/api/edit_user/:user_id', (req, res) => {
+    const query = `UPDATE users SET field1 = new-value1, field2 = new-value2
+                    WHERE id = ${req.params.user_id}`;
+
+    sendQuery('delete', query, res);
+  });
+
+  // edit study group route - UNTESTED
 }
 
-function getColumnsAndValues(json) {
+// helper function for building SQL POST queries 
+function postColumnsAndValues(json) {
   const columns = Object.keys(json).join(', ');
   const values = Object.values(json).map(value => `'${value}'`).join(', ');
 
   return { columns, values };
 }
 
+// helper function for building SQL PUT queries
+function putColumnsAndValues(json) {
+  // UPDATE users SET field1 = new- value1, field2 = new- value2
+  const columns = Object.keys(json).join(', ');
+  const values = Object.values(json).map(value => `'${value}'`).join(', ');
+
+  return;
+}
+
+
+// helper function for SQL queries and returning results
 function sendQuery(method, query, res) {
   connection.query(query, (err, results) => {
-    if (err) throw err;
+    if (err) {
+      console.log(err);
+      return res.send(err);
+    }
 
     const response = method === 'get' ? results : { success: true };
     res.send(response);
@@ -124,7 +165,13 @@ function sendQuery(method, query, res) {
 }
 
 // TODO:
-// set foreign key
+// TEST edit, delete
+// just one mysql config file
+// check other routes needed
+// consolidate routes based on request method?
+// ask for req and res data format 
+// update queries based on format
+// set db foreign key
 // sanitization
 // Gogole OAuth2.0 - https://developers.google.com/identity/protocols/OAuth2
   // 1. Obtain OAuth 2.0 credentials from the Google API Console.
