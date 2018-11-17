@@ -174,9 +174,10 @@ function sendQuery(method, query, res) {
 
 // TODO:
 // just one mysql config file
-// POSTMAN test suite
+// check other routes needed
+// API documentation
 // refactor into MVC
-// check other s needed
+// POSTMAN test suite
 // consolidate s based on request method?
 // ask for req and res data format 
 // update queries based on format
