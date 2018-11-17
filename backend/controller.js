@@ -1,7 +1,7 @@
 const mysql = require('mysql');
-const mysqlLogin = require('./config/dbconfig');
+const dbconfig = require('./config/dbconfig');
 
-var connection = mysql.createConnection(mysqlLogin.mysqlLogin);
+var connection = mysql.createConnection(dbconfig);
 
 connection.connect((err) => {
   if (err) throw err;
@@ -17,8 +17,18 @@ module.exports = function(app) {
     sendQuery('get', query, res);
   });
 
+  // filter study groups
+  app.get('/api/filter/:phrase', (req, res) => {
+    const phrase = req.params.phrase;
+    const query = `SELECT * FROM groups
+                    WHERE subject = '${phrase}'
+                    OR name LIKE "%${phrase}%"`;
+
+    sendQuery('get', query, res);
+  });
+
   // group details 
-  app.get('/api/group/:group_id', (req, res) => {
+  app.get('/api/groups/:group_id', (req, res) => {
     const query = `SELECT * FROM groups
                   WHERE id = ${req.params.group_id}`;
 
@@ -173,12 +183,9 @@ function sendQuery(method, query, res) {
 }
 
 // TODO:
-// just one mysql config file
-// check other routes needed
 // API documentation
+// remove body-parser
 // refactor into MVC
-// POSTMAN test suite
-// consolidate s based on request method?
 // ask for req and res data format 
 // update queries based on format
 // set db foreign key
@@ -189,6 +196,7 @@ function sendQuery(method, query, res) {
   // 3. Send the access token to an API.
   // 4. Refresh the access token, if necessary.
 // add session field to users table or separate authentication table?
+// POSTMAN test suite
 
 // CLEANUP:
 // remove cors  

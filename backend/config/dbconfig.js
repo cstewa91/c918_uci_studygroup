@@ -1,8 +1,6 @@
-const mysqlLogin = {
+module.exports = {
   host: 'localhost',
   user: 'root',
   password: 'root',
   database: 'studygroupfinder'
 };
-
-module.exports = { mysqlLogin };

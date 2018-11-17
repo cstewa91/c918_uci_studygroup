@@ -51,10 +51,10 @@ INSERT INTO `group_members` (`id`, `group_id`, `user_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `study_groups`
+-- Table structure for table `groups`
 --
 
-CREATE TABLE IF NOT EXISTS `study_groups` (
+CREATE TABLE IF NOT EXISTS `groups` (
   `id` int(10) unsigned NOT NULL,
   `author_id` int(10) unsigned NOT NULL,
   `name` varchar(40) NOT NULL,
@@ -70,10 +70,10 @@ CREATE TABLE IF NOT EXISTS `study_groups` (
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `study_groups`
+-- Dumping data for table `groups`
 --
 
-INSERT INTO `study_groups` (`id`, `author_id`, `name`, `location`, `subject`, `course`, `start_time`, `end_time`, `max_group_size`, `current_group_size`, `description`, `date_created`) VALUES
+INSERT INTO `groups` (`id`, `author_id`, `name`, `location`, `subject`, `course`, `start_time`, `end_time`, `max_group_size`, `current_group_size`, `description`, `date_created`) VALUES
 (1, 1, 'the awesome group', 'conference room 202', 'ENG', '202', '2018-11-16 06:00:00', '2018-11-16 07:00:00', 4, 3, 'Preparing for upcoming exam.', '2018-11-15 14:00:00'),
 (2, 1, 'the best group', 'conference room 201', 'BIO', '101', '2018-11-17 06:00:00', '2018-11-17 07:00:00', 10, 4, 'Preparing to become a doctor.', '2018-11-15 12:00:00'),
 (3, 3, 'the second best group', 'Random Hall 104', 'ECON', '101', '2018-11-18 06:00:00', '2018-11-18 08:00:00', 15, 0, 'Preparing for economic depression.', '2018-11-12 11:00:00');
@@ -115,9 +115,9 @@ ALTER TABLE `group_members`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `study_groups`
+-- Indexes for table `groups`
 --
-ALTER TABLE `study_groups`
+ALTER TABLE `groups`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -136,9 +136,9 @@ ALTER TABLE `users`
 ALTER TABLE `group_members`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT for table `study_groups`
+-- AUTO_INCREMENT for table `groups`
 --
-ALTER TABLE `study_groups`
+ALTER TABLE `groups`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `users`
