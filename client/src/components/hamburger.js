@@ -6,7 +6,7 @@ export default ()=>{
         <div>
             <h1>This is the hamburger menu</h1>
             <div className='hamburger-home'>
-                <Link to='/home-joined' className='btn blue confirm'>Home</Link>
+                <Link to='/home' className='btn blue confirm'>Home</Link>
             </div>
             <div className='hamburger-profile'>
                 <Link to='/profile' className='btn blue confirm'>Profile</Link>
@@ -18,10 +18,10 @@ export default ()=>{
                 <Link to='/create' className='btn blue confirm'>Create</Link>
             </div>
             <div className='hamburger-created'>
-                <Link to='/created_groups' className='btn blue confirm'>Created Groups</Link>
+                <Link to='/created-group' className='btn blue confirm'>Created Groups</Link>
             </div>
             <div className='hamburger-landing'>
-                <Link to='/landing' className='btn blue confirm'><button className='btn blue logout'>Log Out</button></Link>
+                <Link to='/' className='btn blue confirm'><button className='btn blue logout'>Log Out</button></Link>
             </div>  
         </div>
     )
