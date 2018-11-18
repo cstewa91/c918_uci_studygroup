@@ -4,4 +4,4 @@ node_modules
 .vscode
 .DS_Store
 
-dbconfig.js
+dbconfig-admin.js
