@@ -1,5 +1,8 @@
 const mysql = require('mysql');
-const dbconfig = require('./config/dbfonig-admin') || require('./config/dbconfig');
+const sha1 = require('sha1');
+const { resolve } = require('path');
+const dbconfig = require('./config/dbconfig-admin') || require('./config/dbconfig');
+const autoValidate = true;
 
 var connection = mysql.createConnection(dbconfig);
 
@@ -10,14 +13,14 @@ connection.connect((err) => {
 });
 
 module.exports = function(app) {
-  // search study groups 
+  // search groups 
   app.get('/api/groups', (req, res) => {
     const query = 'SELECT * FROM groups';
 
     sendQuery('get', query, res);
   });
 
-  // filter study groups
+  // filter groups
   app.get('/api/filter/:phrase', (req, res) => {
     const phrase = req.params.phrase;
     const query = `SELECT * FROM groups
@@ -37,6 +40,8 @@ module.exports = function(app) {
 
   // joined groups  
   app.get('/api/joined_groups/:user_id', (req, res) => {
+    if (!validateToken(req)) return res.send('Login required');
+
     const query = `SELECT * 
                     FROM groups AS s
                     JOIN
@@ -49,7 +54,9 @@ module.exports = function(app) {
   });
 
   // created groups  
-  app.get('/api/groups/:author_id', (req, res) => {
+  app.get('/api/created_groups/:author_id', (req, res) => {
+    if (!validateToken(req)) return res.send('Login required');
+
     const query = `SELECT * FROM groups
                     WHERE id = ${req.params.author_id}`;
 
@@ -71,11 +78,41 @@ module.exports = function(app) {
 
   // profile 
   app.get('/api/users/:user_id', (req, res) => {
+    if (!validateToken(req)) return res.send('Login required');
+
     const query = `SELECT * FROM users
                     WHERE id = ${req.params.user_id}`;
 
     sendQuery('get', query, res);
   });
+
+  // login
+  app.post('/api/login', (req, res) => {
+    const email = req.body.email.replace(/["']/g, "\\'");
+    const password = sha1(req.body.password);
+    const query = `SELECT id FROM users 
+                    WHERE email = '${email}' AND password = '${password}'`;
+
+    connection.query(query, (err, results) => {
+      if (err) {
+        return res.send(err);
+      } else if (results.length) {
+        const token = createToken();
+        const loginQuery = `INSERT INTO sessions 
+                              SET token = '${token}', user_id ='${results[0].id}'
+                              ON DUPLICATE KEY UPDATE token = '${token}'`;
+
+        connection.query(loginQuery, (err) => {
+          if (err) return res.send(err);
+
+          res.cookie('token', token, { maxAge: 900000, httpOnly: true })
+          res.send({ success: true });
+        })
+      } else {
+        res.send({ success: false });
+      }
+    })
+  })
 
   // create user 
   app.post('/api/users', function (req, res) {
@@ -88,6 +125,8 @@ module.exports = function(app) {
 
   // join group 
   app.post('/api/join', (req, res) => {
+    if (!validateToken(req)) return res.send('Login required');
+
     const { columns, values } = postColumnsAndValues(req.body);
     const query = `INSERT INTO group_members (${columns})
                     VALUES(${values})`;
@@ -97,6 +136,8 @@ module.exports = function(app) {
 
   // create group 
   app.post('/api/groups', (req, res) => {
+    if (!validateToken(req)) return res.send('Login required');
+
     const { columns, values } = postColumnsAndValues(req.body);
     const query = `INSERT INTO groups (${columns})
                     VALUES(${values})`;
@@ -106,6 +147,8 @@ module.exports = function(app) {
 
   // delete group  
   app.delete('/api/groups/:group_id', (req, res) => {
+    if (!validateToken(req)) return res.send('Login required');
+
     const query = `DELETE FROM groups
                     WHERE id = ${req.params.group_id}`;
 
@@ -114,6 +157,8 @@ module.exports = function(app) {
 
   // delete user   
   app.delete('/api/users/:user_id', (req, res) => {
+    if (!validateToken(req)) return res.send('Login required');
+
     const query = `DELETE FROM users
                     WHERE id = ${req.params.user_id}`;
 
@@ -122,6 +167,8 @@ module.exports = function(app) {
 
   // leave group  
   app.delete('/api/leave/:user_id/:group_id', (req, res) => {
+    if (!validateToken(req)) return res.send('Login required');
+
     const query = `DELETE FROM group_members
                     WHERE user_id = ${req.params.user_id}
                     AND group_id = ${req.params.group_id}`;
@@ -131,6 +178,8 @@ module.exports = function(app) {
 
   // edit user  
   app.put('/api/users/:user_id', (req, res) => {
+    if (!validateToken(req)) return res.send('Login required');
+
     const updates = putColumnsAndValues(req.body);
     const query = `UPDATE users SET ${updates}
                     WHERE id = ${req.params.user_id}`;
@@ -140,6 +189,8 @@ module.exports = function(app) {
 
   // edit group
   app.put('/api/groups/:group_id', (req, res) => {
+    if (!validateToken(req)) return res.send('Login required');
+
     const updates = putColumnsAndValues(req.body);
     const query = `UPDATE groups SET ${updates}
                     WHERE id = ${req.params.group_id}`;
@@ -155,6 +206,7 @@ module.exports = function(app) {
 
 // builds SQL POST queries 
 function postColumnsAndValues(body) {
+  if (body.password) body.password = sha1(body.password);
   const columns = Object.keys(body).join(', ');
   const values = Object.values(body).map(value => `'${value}'`).join(', ');
 
@@ -172,23 +224,46 @@ function putColumnsAndValues(body) {
 function sendQuery(method, query, res) {
   connection.query(query, (err, results) => {
     if (err) {
-      console.log(err);
+      console.log('err:', err);
       return res.send(err);
     }
 
     const response = method === 'get' ? results : { success: true };
-    console.log(results);
+    console.log(response);
     res.send(response);
   });
 }
 
+// creates token with length 11 [0-9a-z]
+function createToken() {
+  return Math.random().toString(36).slice(2);
+}
+
+function validateToken(req) {
+  if (autoValidate) return true;
+
+  const token = req.cookies.token;
+  const query = `SELECT user_id FROM authentication WHERE token = '${token}'`;
+  
+  if (token) {
+    connection.query(query, (err, results) => !err && results.length);
+  }
+  
+  return false;
+} 
+
 // TODO:
+// dbconfig
+// group members require author_id?
+// check query id = sessions id?
+// logout
+// add validate before every query
 // API documentation
-// remove body-parser
 // refactor into MVC
 // ask for req and res data format 
 // update queries based on format
-// set db foreign key
+// set db foreign key and required key
+// remove foreign key from group_members when user or group deleted
 // sanitization
 // Google OAuth2.0 - https://developers.google.com/identity/protocols/OAuth2
   // 1. Obtain OAuth 2.0 credentials from the Google API Console.
@@ -201,3 +276,4 @@ function sendQuery(method, query, res) {
 // CLEANUP:
 // remove cors  
 // remove console.logs
+// remove autoValidate
