@@ -256,7 +256,8 @@ function validateToken(req) {
 // TODO:
 // dbconfig
 // remove query string and check user_id via token?
-// add validate before every query
+// add validate before every query? - axios.defaults.withCredentials = true; 
+// email - unique key? 
 // API documentation
 // refactor into MVC
 // ask for req and res data format 
