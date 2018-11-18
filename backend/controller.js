@@ -111,7 +111,12 @@ module.exports = function(app) {
       } else {
         res.send({ success: false });
       }
-    })
+    });
+  });
+
+  app.get('/api/logout', (req, res) => {
+    res.cookie('token', '', { maxAge: -1, httpOnly: true });
+    res.send('You are now logged out');
   })
 
   // create user 
@@ -220,16 +225,12 @@ function putColumnsAndValues(body) {
   return updates;
 }
 
-// helper function for SQL queries and returning results
+// Sends SQL queries and returns results
 function sendQuery(method, query, res) {
   connection.query(query, (err, results) => {
-    if (err) {
-      console.log('err:', err);
-      return res.send(err);
-    }
+    if (err) return res.send(err);
 
     const response = method === 'get' ? results : { success: true };
-    console.log(response);
     res.send(response);
   });
 }
@@ -254,9 +255,7 @@ function validateToken(req) {
 
 // TODO:
 // dbconfig
-// group members require author_id?
-// check query id = sessions id?
-// logout
+// remove query string and check user_id via token?
 // add validate before every query
 // API documentation
 // refactor into MVC
@@ -270,7 +269,7 @@ function validateToken(req) {
   // 2. Obtain an access token from the Google Authorization Server.
   // 3. Send the access token to an API.
   // 4. Refresh the access token, if necessary.
-// add session field to users table or separate authentication table?
+// add google_id to sessions table?
 // POSTMAN test suite
 
 // CLEANUP:
