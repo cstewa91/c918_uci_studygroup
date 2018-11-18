@@ -4,5 +4,4 @@ node_modules
 .vscode
 .DS_Store
 
-mysql-backend-login.js
-mysql-frontend-login.js
+dbconfig-admin.js

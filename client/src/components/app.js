@@ -8,6 +8,8 @@ import EditCreated from './edit-created';
 import Hamburger from './hamburger';
 import Search from './search-page';
 
+
+
 class App extends Component {
     render() {
         return (
@@ -19,6 +21,7 @@ class App extends Component {
                 <Route path='/edit-created' component={EditCreated}/>
                 <Route path='/hamburger' component={Hamburger}/>
                 <Route path='/search-group' component={Search}/>
+                <Route path='/selected-group' component={GroupModal}/>
             </div>
         )
     }
