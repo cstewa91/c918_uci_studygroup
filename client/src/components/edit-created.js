@@ -7,6 +7,7 @@ export default () => {
             <h1>Edit Group</h1>
             <Link to='/home_created' className='btn blue'>Update</Link>
             <Link to='/hamburger' className='btn blue'>Hamburger</Link>
+            <Link to='/home'>X</Link>
         </div>
     )
 }
