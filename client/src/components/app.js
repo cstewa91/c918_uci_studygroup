@@ -7,6 +7,8 @@ import Profile from './profile';
 import EditCreated from './edit-created';
 import Hamburger from './hamburger';
 import Search from './search-page';
+import GroupModal from './group-modal';
+import GroupInfo from './group-info';
 
 
 
@@ -22,6 +24,7 @@ class App extends Component {
                 <Route path='/hamburger' component={Hamburger}/>
                 <Route path='/search-group' component={Search}/>
                 <Route path='/selected-group' component={GroupModal}/>
+                <Route path='/awesome-group' component={GroupInfo}/>
             </div>
         )
     }
