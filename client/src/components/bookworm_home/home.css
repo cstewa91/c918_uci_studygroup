@@ -1,0 +1,26 @@
+.someCss {
+    text-align: center;
+    margin-bottom: 140px;
+}
+.moreCss {
+text-align: center;
+margin: 25px;
+}
+.loginCss {
+margin-top: 150px;
+text-align: center;
+}
+.home{
+text-align: center;
+}
+.joined{
+display: inline-block;
+margin: 20px;
+text-align: center;
+}
+.float{
+float: right;
+}
+.float-center{
+margin-left: 625px;
+}

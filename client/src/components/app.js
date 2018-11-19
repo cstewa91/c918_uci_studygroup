@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import Login from './login';
-import Home from './home';
-import Create from './create-group';
-import Profile from './profile';
-import EditCreated from './edit-created';
-import Hamburger from './hamburger';
-import Search from './search-page';
-import GroupModal from './group-modal';
-import GroupInfo from './group-info';
+import Login from './bookworm_login/login';
+import Home from './bookworm_home/home';
+import Create from './bookworm_create/create-group';
+import Profile from './bookworm_profile/profile';
+import EditCreated from './bookworm_edit/edit-created';
+import Hamburger from './bookworm-general/hamburger';
+import Search from './bookworm_search/search-page';
+import GroupModal from './bookworm-general/group-modal';
+import GroupInfo from './bookworm_info/group-info';
 
 
 

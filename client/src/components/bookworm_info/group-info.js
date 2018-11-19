@@ -1,14 +1,17 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import './group-info.css';
 
 export default () => {
     return (
         <div>
-            <div id="group-modal" className="modal">
-                <div className="group-modal-content">
+            <Link to="/hamburger">Menu</Link>
+            <div className="group-information-container">
+                <div className="group-information">
                     <h1 className="group-name">The Awesome Group</h1>
-                    <Link to="/search-group"><span className="close-modal">&times;</span></Link>
-                    <div className="group-modal-details">
+                    <div className="group-owner">Edit Group Details</div>
+                    <div className="group-member">Leave Group</div>
+                    <div className="group-details">
                         <span className="group-subject">ENG</span> <span className="group-course">101</span>
                         <span className="group-capacity">2/3</span>
                         <span className="group-timeslot">8:00 AM - 9:00 AM</span>
@@ -26,7 +29,6 @@ export default () => {
                                 molestie velit. Duis interdum mauris vitae metus aliquam, non auctor lacus consectetur.
                             </p>
                         </div>
-                        <Link to="/home"><button className="join-group">Join</button></Link>
                     </div>
                 </div>
             </div>
