@@ -2,7 +2,9 @@ const mysql = require('mysql');
 const sha1 = require('sha1');
 const { resolve } = require('path');
 const dbconfig = require('./config/dbconfig-admin') || require('./config/dbconfig');
-const autoValidate = true;
+
+// for development use - true requires cookies to access most routes
+const autoValidate = false;
 
 var connection = mysql.createConnection(dbconfig);
 
@@ -13,19 +15,11 @@ connection.connect((err) => {
 });
 
 module.exports = function(app) {
+  app.use(validateToken);
+
   // search groups 
   app.get('/api/groups', (req, res) => {
     const query = 'SELECT * FROM groups';
-
-    sendQuery('get', query, res);
-  });
-
-  // filter groups
-  app.get('/api/filter/:phrase', (req, res) => {
-    const phrase = req.params.phrase;
-    const query = `SELECT * FROM groups
-                    WHERE subject = '${phrase}'
-                    OR name LIKE "%${phrase}%"`;
 
     sendQuery('get', query, res);
   });
@@ -38,10 +32,18 @@ module.exports = function(app) {
     sendQuery('get', query, res);
   });
 
-  // joined groups  
-  app.get('/api/joined_groups/:user_id', (req, res) => {
-    if (!validateToken(req)) return res.send('Login required');
+  // filter groups
+  app.get('/api/groups/filter/:phrase', (req, res) => {
+    const phrase = req.params.phrase;
+    const query = `SELECT * FROM groups
+                    WHERE subject = '${phrase}'
+                    OR name LIKE "%${phrase}%"`;
 
+    sendQuery('get', query, res);
+  });
+
+  // joined groups  
+  app.get('/api/groups/joined/:user_id', (req, res) => {
     const query = `SELECT * 
                     FROM groups AS s
                     JOIN
@@ -54,9 +56,7 @@ module.exports = function(app) {
   });
 
   // created groups  
-  app.get('/api/created_groups/:author_id', (req, res) => {
-    if (!validateToken(req)) return res.send('Login required');
-
+  app.get('/api/groups/created/:author_id', (req, res) => {
     const query = `SELECT * FROM groups
                     WHERE id = ${req.params.author_id}`;
 
@@ -64,7 +64,7 @@ module.exports = function(app) {
   })
 
   // group members 
-  app.get('/api/groups/:group_id', (req, res) => {
+  app.get('/api/groups/members/:group_id', (req, res) => {
     const query = `SELECT * 
                     FROM users AS u
                     JOIN
@@ -78,8 +78,6 @@ module.exports = function(app) {
 
   // profile 
   app.get('/api/users/:user_id', (req, res) => {
-    if (!validateToken(req)) return res.send('Login required');
-
     const query = `SELECT * FROM users
                     WHERE id = ${req.params.user_id}`;
 
@@ -122,6 +120,7 @@ module.exports = function(app) {
   // create user 
   app.post('/api/users', function (req, res) {
     const { columns, values } = postColumnsAndValues(req.body);
+
     const query = `INSERT INTO users (${columns})
                     VALUES(${values})`;
 
@@ -129,10 +128,9 @@ module.exports = function(app) {
   });
 
   // join group 
-  app.post('/api/join', (req, res) => {
-    if (!validateToken(req)) return res.send('Login required');
-
+  app.post('/api/members/join', (req, res) => {
     const { columns, values } = postColumnsAndValues(req.body);
+
     const query = `INSERT INTO group_members (${columns})
                     VALUES(${values})`;
 
@@ -141,9 +139,8 @@ module.exports = function(app) {
 
   // create group 
   app.post('/api/groups', (req, res) => {
-    if (!validateToken(req)) return res.send('Login required');
-
     const { columns, values } = postColumnsAndValues(req.body);
+
     const query = `INSERT INTO groups (${columns})
                     VALUES(${values})`;
 
@@ -152,8 +149,6 @@ module.exports = function(app) {
 
   // delete group  
   app.delete('/api/groups/:group_id', (req, res) => {
-    if (!validateToken(req)) return res.send('Login required');
-
     const query = `DELETE FROM groups
                     WHERE id = ${req.params.group_id}`;
 
@@ -162,8 +157,6 @@ module.exports = function(app) {
 
   // delete user   
   app.delete('/api/users/:user_id', (req, res) => {
-    if (!validateToken(req)) return res.send('Login required');
-
     const query = `DELETE FROM users
                     WHERE id = ${req.params.user_id}`;
 
@@ -171,9 +164,7 @@ module.exports = function(app) {
   });
 
   // leave group  
-  app.delete('/api/leave/:user_id/:group_id', (req, res) => {
-    if (!validateToken(req)) return res.send('Login required');
-
+  app.delete('/api/members/leave/:user_id/:group_id', (req, res) => {
     const query = `DELETE FROM group_members
                     WHERE user_id = ${req.params.user_id}
                     AND group_id = ${req.params.group_id}`;
@@ -183,8 +174,6 @@ module.exports = function(app) {
 
   // edit user  
   app.put('/api/users/:user_id', (req, res) => {
-    if (!validateToken(req)) return res.send('Login required');
-
     const updates = putColumnsAndValues(req.body);
     const query = `UPDATE users SET ${updates}
                     WHERE id = ${req.params.user_id}`;
@@ -194,8 +183,6 @@ module.exports = function(app) {
 
   // edit group
   app.put('/api/groups/:group_id', (req, res) => {
-    if (!validateToken(req)) return res.send('Login required');
-
     const updates = putColumnsAndValues(req.body);
     const query = `UPDATE groups SET ${updates}
                     WHERE id = ${req.params.group_id}`;
@@ -240,26 +227,53 @@ function createToken() {
   return Math.random().toString(36).slice(2);
 }
 
-function validateToken(req) {
-  if (autoValidate) return true;
+function validateToken(req, res, next) {
+  if (autoValidate) return next();
 
+  const route = req.url;
+  const excludedRoutes = [
+    /\/api\/login/,              // api/login
+    /\/api\/users$/,             // api/users
+    /\/api\/groups$/,            // api/groups
+    /\/api\/groups\/\d+/,        // api/groups/:group_id
+    /\/api\/groups\/\filter/,    // api/groups/filter/:phrase
+  ]
   const token = req.cookies.token;
-  const query = `SELECT user_id FROM authentication WHERE token = '${token}'`;
-  
+  const query = `SELECT user_id FROM sessions WHERE token = '${token}'`;
+  const isExcludedRoute = excludedRoutes.some(excludedRoute => {
+    return excludedRoute.test(route);
+  });
+
+  if (isExcludedRoute) return next();
+
   if (token) {
-    connection.query(query, (err, results) => !err && results.length);
+    connection.query(query, (err, results) => {
+      console.log(results);
+      if (!err && results[0].user_id) {
+        return next();
+      } else {
+        res.send('Login required.');
+      }
+    });
+  } else {
+    res.send('Login required.')
   }
-  
-  return false;
 } 
 
+
 // TODO:
-// dbconfig
+// dbconfig 
+// date created for group creation
+// order groups by date created
+// add remove from group to leave group
+  // - if user id === user_id, can leave
+  // - if user_id === author_id of group with group_id, can remove
 // remove query string and check user_id via token?
 // add validate before every query? - axios.defaults.withCredentials = true; 
 // email - unique key? 
+// group_members unique entry
 // API documentation
-// refactor into MVC
+// refactor with routers
 // ask for req and res data format 
 // update queries based on format
 // set db foreign key and required key
