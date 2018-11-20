@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './home.css';
+import Header from '../bookworm-general/header'
 
 export default () => {
    return (
       <div>
+         <Header/>
          <h1 className="home">Home Page</h1>
          <Link to="/hamburger">Hamburger</Link>
          <Link to="/search-group"><button className="float">Search</button></Link>
