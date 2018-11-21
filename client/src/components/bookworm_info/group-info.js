@@ -1,10 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import './group-info.css';
+import Header from '../bookworm-general/header'
 
 export default () => {
     return (
         <div>
+            <Header/>
             <Link to="/hamburger">Menu</Link>
             <div className="group-information-container">
                 <div className="group-information">
