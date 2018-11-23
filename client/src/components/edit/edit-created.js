@@ -1,12 +1,12 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './edit-created.css';
-import Header from '../bookworm-general/header'
+import Header from '../general/header'
 
 export default () => {
-    return(
+    return (
         <div className="edit-created">
-            <Header/>   
+            <Header />
             <h1>Edit Group</h1>
             <Link to='/home_created' className='btn blue'>Update</Link>
             <Link to='/hamburger' className='btn blue'>Hamburger</Link>

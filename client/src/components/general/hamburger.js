@@ -1,9 +1,9 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './hamburger.css';
 
-export default ()=>{
-    return(
+export default () => {
+    return (
         <div>
             <h1>This is the hamburger menu</h1>
             <div className='hamburger-home'>
@@ -20,7 +20,7 @@ export default ()=>{
             </div>
             <div className='hamburger-created'>
                 <Link to='/created-group' className='btn blue confirm'>Created Groups</Link>
-            </div> 
+            </div>
         </div>
     )
 }

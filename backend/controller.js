@@ -1,7 +1,7 @@
 const mysql = require('mysql');
 const sha1 = require('sha1');
 const { resolve } = require('path');
-const dbconfig = require('./config/dbconfig-admin') || require('./config/dbconfig');
+const dbconfig = require('./config/dbconfig');
 
 // for development use - true requires cookies to access most routes
 const autoValidate = false;
