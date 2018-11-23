@@ -1,6 +1,6 @@
 module.exports = {
   host: 'localhost',
-  user: '',
-  password: '',
-  database: 'studygroupfinder'
+  user: 'root',
+  password: 'Xcrunner91!',
+  database: 'a'
 };
