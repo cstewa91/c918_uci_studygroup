@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 23, 2018 at 11:04 PM
+-- Generation Time: Nov 24, 2018 at 01:51 AM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.0.13
 
@@ -32,7 +32,7 @@ USE `studygroupfinder`;
 
 CREATE TABLE IF NOT EXISTS `groups` (
   `id` int(10) unsigned NOT NULL,
-  `author_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
   `name` varchar(40) NOT NULL,
   `location` varchar(40) NOT NULL,
   `subject` varchar(30) NOT NULL,
@@ -42,18 +42,22 @@ CREATE TABLE IF NOT EXISTS `groups` (
   `max_group_size` int(10) unsigned NOT NULL,
   `current_group_size` int(10) unsigned NOT NULL,
   `description` varchar(150) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `groups`
 --
 
-INSERT INTO `groups` (`id`, `author_id`, `name`, `location`, `subject`, `course`, `start_time`, `end_time`, `max_group_size`, `current_group_size`, `description`) VALUES
+INSERT INTO `groups` (`id`, `user_id`, `name`, `location`, `subject`, `course`, `start_time`, `end_time`, `max_group_size`, `current_group_size`, `description`) VALUES
 (1, 1, 'the awesome group', 'conference room 202', 'ENG', '202', '2018-11-16 06:00:00', '2018-11-16 07:00:00', 4, 3, 'Preparing for upcoming exam.'),
 (2, 1, 'the best group', 'conference room 201', 'BIO', '101', '2018-11-17 06:00:00', '2018-11-17 07:00:00', 10, 4, 'Preparing to become a doctor.'),
 (3, 3, 'the second best group', 'Random Hall 104', 'ECON', '101', '2018-11-18 06:00:00', '2018-11-18 08:00:00', 15, 0, 'Preparing for economic depression.'),
 (9, 0, '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0, ''),
-(10, 0, '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0, '');
+(10, 0, '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0, ''),
+(11, 0, 'We Study Long Time', 'Starbucks', 'coffee', '101', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 10, 1, 'we love coffee'),
+(12, 0, 'We Study Long Time', 'Starbucks', 'coffee', '101', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 10, 1, 'we love coffee'),
+(13, 0, 'We Study Long Time', 'Starbucks', 'coffee', '101', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 10, 1, 'we love coffee'),
+(16, 31, 'we study long time', 'Starbucks', 'coffee', '101', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 10, 0, 'we love coffee');
 
 -- --------------------------------------------------------
 
@@ -65,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `group_members` (
   `id` int(11) NOT NULL,
   `group_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `group_members`
@@ -78,24 +82,7 @@ INSERT INTO `group_members` (`id`, `group_id`, `user_id`) VALUES
 (6, 2, 3),
 (7, 3, 1),
 (11, 1, 29),
-(12, 1, 31),
-(13, 1, 33),
-(14, 1, 33),
-(15, 1, 33),
-(16, 1, 33),
-(17, 1, 33),
-(18, 1, 33),
-(19, 1, 33),
-(20, 1, 33),
-(21, 1, 33),
-(22, 1, 33),
-(23, 1, 33),
-(24, 1, 33),
-(25, 1, 33),
-(26, 1, 39),
-(27, 1, 39),
-(28, 1, 44),
-(29, 1, 47);
+(32, 16, 31);
 
 -- --------------------------------------------------------
 
@@ -107,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   `id` int(10) unsigned NOT NULL,
   `token` varchar(20) NOT NULL,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sessions`
@@ -118,7 +105,8 @@ INSERT INTO `sessions` (`id`, `token`, `user_id`) VALUES
 (5, 'rwu0aop8tlm', 19),
 (10, 'nm2srmicpk', 29),
 (19, '942pbdllew', 44),
-(21, 'citp58l33', 47);
+(21, 'citp58l33', 47),
+(22, '2fy40xypa5w', 31);
 
 -- --------------------------------------------------------
 
@@ -134,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `lastname` varchar(30) NOT NULL,
   `email` varchar(40) NOT NULL,
   `password` varchar(40) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
@@ -145,7 +133,8 @@ INSERT INTO `users` (`id`, `google_id`, `username`, `firstname`, `lastname`, `em
 (3, 'd5a5adkj', 'janedoe', 'jane', 'doe', 'janedoe@gmail.com', ''),
 (20, 'abcd', 'Hapachino', 'Hapa', 'Chino', 'lfz@gmail.com', ''),
 (29, 'a', 'b', 'king', 'james', 'kingjames@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef'),
-(30, 'a', 'b', 'king', 'james', 'gg@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef');
+(30, 'a', 'b', 'king', 'james', 'gg@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef'),
+(31, 'test', 'hellokitty', 'test', 'test', 'test@gmail.com', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3');
 
 --
 -- Indexes for dumped tables
@@ -185,22 +174,22 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `group_members`
 --
 ALTER TABLE `group_members`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

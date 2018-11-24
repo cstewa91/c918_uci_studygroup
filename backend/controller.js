@@ -65,21 +65,18 @@ module.exports = function(app) {
 
   // group members 
   app.get('/api/groups/members/:group_id', (req, res) => {
-    // check author
     const authorQuery = `SELECT user_id
                           FROM groups
                           WHERE id = ${req.params.group_id}`;
-    let author_id;
     
     connection.query(authorQuery, (err, results) => {
       if (err) return res.send(err);
 
-      author_id = results;
-    });
+      const author_id = results[0].user_id;
 
-    if (author_id !== req.body.user_id) return res.send('Permission denied');
+      if (author_id !== req.body.user_id) return res.send('Permission denied');
 
-    const membersQuery = `SELECT username 
+      const membersQuery = `SELECT username 
                             FROM users AS u
                             JOIN
                             (SELECT user_id
@@ -87,7 +84,8 @@ module.exports = function(app) {
                             WHERE group_id = ${req.params.group_id}) AS m
                             ON u.id = m.user_id`;
 
-    sendQuery('get', membersQuery, res);
+      sendQuery('get', membersQuery, res);
+    });
   });
 
   // profile 
@@ -134,7 +132,6 @@ module.exports = function(app) {
   // create user 
   app.post('/api/users', function (req, res) {
     const { columns, values } = postColumnsAndValues(req.body);
-
     const query = `INSERT INTO users (${columns})
                     VALUES(${values})`;
 
@@ -189,20 +186,36 @@ module.exports = function(app) {
 
   // edit user  
   app.put('/api/users', (req, res) => {
+    const id = req.body.user_id;
+    delete req.body.user_id;
+
     const updates = putColumnsAndValues(req.body);
     const query = `UPDATE users SET ${updates}
-                    WHERE id = ${req.body.user_id}`;
+                    WHERE id = ${id}`;
 
     sendQuery('put', query, res);
   });
 
   // edit group
-  app.put('/api/groups', (req, res) => {
-    const updates = putColumnsAndValues(req.body);
-    const query = `UPDATE groups SET ${updates}
-                    WHERE id = ${req.body.group_id}`;
+  app.put('/api/groups/:group_id', (req, res) => {
+    const authorQuery = `SELECT user_id
+                          FROM groups
+                          WHERE id = ${req.params.group_id}`;
 
-    sendQuery('put', query, res);
+    connection.query(authorQuery, (err, results) => {
+      if (err) return res.send(err);
+
+      const author_id = results[0].user_id;
+
+      if (author_id !== req.body.user_id) return res.send('Permission denied');
+
+      const updates = putColumnsAndValues(req.body);
+      delete req.body.user_id;
+      const updateQuery = `UPDATE groups SET ${updates}
+                            WHERE id = ${req.params.group_id}`;
+
+      sendQuery('put', updateQuery, res);
+    });
   });
 
   // send html
@@ -295,28 +308,31 @@ function validateToken(req, res, next) {
 } 
 
 // CURRENT:
-// permission denied
-// TEST!!
 // export new sql file
 
 // NOTES
-// changed author_id to user_id, 
 // moved PUT and DELETE parameters into body
-// validates requests by token
+// tokens are first validated for permission before requests are made
+// new sql file - updated author_id to user_id in groups
+// members query only return usernames
+// updates made to dbconfig.js will not be pushed to github
 
 
 // TODO:
 
+// edit group size? - current group members
+// delete group? - current group members
 // sort groups by starting time
 // check group size before joining
 // test bad inputs - extra fields
-// add remove from group to leave group
+// leave group
   // - if user id === user_id, can leave
+// kick from group
   // - if user_id === author_id of group with group_id, can remove
 // remove query string and check user_id via token?
 // group_members, email, other unique keys
 // API documentation
-// refactor with routers
+// send sql error or hide and send generic error?
 // update queries based on information needed
 // set db foreign key and required key
 // remove foreign key from group_members when user or group deleted
@@ -328,6 +344,8 @@ function validateToken(req, res, next) {
   // 4. Refresh the access token, if necessary.
 // add google_id to sessions table?
 // POSTMAN test suite
+// refactor with routers
+
 
 // CLEANUP:
 // remove cors  
