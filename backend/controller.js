@@ -19,7 +19,8 @@ module.exports = function(app) {
 
   // search groups 
   app.get('/api/groups', (req, res) => {
-    const query = 'SELECT * FROM groups';
+    const query = `SELECT * FROM groups
+                    ORDER BY start_time ASC`;
 
     sendQuery('get', query, res);
   });
@@ -37,7 +38,8 @@ module.exports = function(app) {
     const phrase = req.params.phrase;
     const query = `SELECT * FROM groups
                     WHERE subject = '${phrase}'
-                    OR name LIKE "%${phrase}%"`;
+                    OR name LIKE "%${phrase}%"
+                    ORDER BY start_time ASC`;
 
     sendQuery('get', query, res);
   });
@@ -307,35 +309,29 @@ function validateToken(req, res, next) {
   }
 } 
 
-// CURRENT:
-// export new sql file
+// UPDATE NOTES
+// groups id is foreign key for group_members group_id, on DELETE and UPDATE, cascade
+// user id is foreign key for group_members user_id, on DELETE and UPDATE, cascade
+// user id is foreign key for sessions user_id, on DELETE and UPDATE, cascade
+// group_members group_id user_id is unique key combination
+// users, username and email are unique
+// sessions tokens are unique
+// sort group results by starting time
+// update sql file
 
-// NOTES
-// moved PUT and DELETE parameters into body
-// tokens are first validated for permission before requests are made
-// new sql file - updated author_id to user_id in groups
-// members query only return usernames
-// updates made to dbconfig.js will not be pushed to github
-
-
-// TODO:
-
+// NEXT:
 // edit group size? - current group members
-// delete group? - current group members
-// sort groups by starting time
 // check group size before joining
-// test bad inputs - extra fields
-// leave group
-  // - if user id === user_id, can leave
 // kick from group
   // - if user_id === author_id of group with group_id, can remove
+
+// TODO:
+// delete group after end time passed
+// test bad inputs - extra fields
 // remove query string and check user_id via token?
-// group_members, email, other unique keys
 // API documentation
 // send sql error or hide and send generic error?
 // update queries based on information needed
-// set db foreign key and required key
-// remove foreign key from group_members when user or group deleted
 // sanitization
 // Google OAuth2.0 - https://developers.google.com/identity/protocols/OAuth2
   // 1. Obtain OAuth 2.0 credentials from the Google API Console.
