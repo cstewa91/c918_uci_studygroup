@@ -143,10 +143,18 @@ module.exports = function(app) {
   // join group 
   app.post('/api/groups/join', (req, res) => {
     const { columns, values } = postColumnsAndValues(req.body);
-    const query = `INSERT INTO group_members (${columns})
-                    VALUES(${values})`;
+    const insertQuery = `INSERT INTO group_members (${columns})
+                          VALUES(${values})`;
 
-    sendQuery('post', query, res);
+    connection.query(insertQuery, (err, results) => {
+      if (err) return res.send(err);
+
+      const incrementMembersQuery = `UPDATE groups
+                                      SET current_group_size = current_group_size + 1
+                                      WHERE id = ${req.body.group_id}`;
+      
+      sendQuery('post', incrementMembersQuery, res);
+    });
   });
 
   // create group 
@@ -179,11 +187,19 @@ module.exports = function(app) {
 
   // leave group  
   app.delete('/api/groups/leave', (req, res) => {
-    const query = `DELETE FROM group_members
-                    WHERE user_id = ${req.body.user_id}
-                    AND group_id = ${req.body.group_id}`;
+    const deleteQuery = `DELETE FROM group_members
+                          WHERE user_id = ${req.body.user_id}
+                          AND group_id = ${req.body.group_id}`;
 
-    sendQuery('delete', query, res);
+    connection.query(deleteQuery, (err, results) => {
+      if (err) return res.send(err);
+
+      const decrementMembersQuery = `UPDATE groups
+                                      SET current_group_size = current_group_size - 1
+                                      WHERE id = ${req.body.group_id}`;
+
+      sendQuery('delete', decrementMembersQuery, res);
+    });
   });
 
   // edit user  
@@ -309,27 +325,18 @@ function validateToken(req, res, next) {
   }
 } 
 
-// UPDATE NOTES
-// groups id is foreign key for group_members group_id, on DELETE and UPDATE, cascade
-// user id is foreign key for group_members user_id, on DELETE and UPDATE, cascade
-// user id is foreign key for sessions user_id, on DELETE and UPDATE, cascade
-// group_members group_id user_id is unique key combination
-// users, username and email are unique
-// sessions tokens are unique
-// sort group results by starting time
-// update sql file
 
-// NEXT:
-// edit group size? - current group members
-// check group size before joining
-// kick from group
-  // - if user_id === author_id of group with group_id, can remove
+// NOTES:
+// Added API doc to readme
+// /api/groups/join increments group size - prevent joining if current = max on frontend
+// /api/groups/leave increments group size 
+
 
 // TODO:
 // delete group after end time passed
+// kick from group? decrement group_size count
 // test bad inputs - extra fields
 // remove query string and check user_id via token?
-// API documentation
 // send sql error or hide and send generic error?
 // update queries based on information needed
 // sanitization

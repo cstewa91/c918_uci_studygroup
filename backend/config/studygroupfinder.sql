@@ -20,8 +20,8 @@ SET time_zone = "+00:00";
 -- Database: `studygroupfinder`
 --
 
-DROP TABLE IF EXISTS `studygroupfinder`;
-CREATE TABLE `studygroupfinder`;
+DROP DATABASE IF EXISTS `studygroupfinder`;
+CREATE DATABASE `studygroupfinder`;
 USE `studygroupfinder`;
 
 -- --------------------------------------------------------
