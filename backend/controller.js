@@ -27,7 +27,7 @@ module.exports = function(app) {
   // group details 
   app.get('/api/groups/:group_id', (req, res) => {
     const query = `SELECT * FROM groups
-                  WHERE id = ${req.params.group_id}`;
+                    WHERE id = ${req.params.group_id}`;
 
     sendQuery('get', query, res);
   });
@@ -47,39 +47,51 @@ module.exports = function(app) {
     const query = `SELECT * 
                     FROM groups AS s
                     JOIN
-                    (SELECT m.group_id 
-                    FROM group_members AS m
-                    WHERE m.user_id = ${req.params.user_id}) AS m
+                    (SELECT group_id 
+                    FROM group_members
+                    WHERE user_id = ${req.body.user_id}) AS m
                     ON s.id = m.group_id`;
 
     sendQuery('get', query, res);
   });
 
   // created groups  
-  app.get('/api/groups/created/:author_id', (req, res) => {
+  app.get('/api/groups/created/:user_id', (req, res) => {
     const query = `SELECT * FROM groups
-                    WHERE id = ${req.params.author_id}`;
+                    WHERE user_id = ${req.body.user_id}`;
 
     sendQuery('get', query, res);
   })
 
   // group members 
   app.get('/api/groups/members/:group_id', (req, res) => {
-    const query = `SELECT * 
-                    FROM users AS u
-                    JOIN
-                    (SELECT user_id
-                    FROM group_members
-                    WHERE group_id = ${req.params.group_id}) AS m
-                    ON u.id = m.user_id`;
+    const authorQuery = `SELECT user_id
+                          FROM groups
+                          WHERE id = ${req.params.group_id}`;
+    
+    connection.query(authorQuery, (err, results) => {
+      if (err) return res.send(err);
 
-    sendQuery('get', query, res);
+      const author_id = results[0].user_id;
+
+      if (author_id !== req.body.user_id) return res.send('Permission denied');
+
+      const membersQuery = `SELECT username 
+                            FROM users AS u
+                            JOIN
+                            (SELECT user_id
+                            FROM group_members
+                            WHERE group_id = ${req.params.group_id}) AS m
+                            ON u.id = m.user_id`;
+
+      sendQuery('get', membersQuery, res);
+    });
   });
 
   // profile 
   app.get('/api/users/:user_id', (req, res) => {
     const query = `SELECT * FROM users
-                    WHERE id = ${req.params.user_id}`;
+                    WHERE id = ${req.body.user_id}`;
 
     sendQuery('get', query, res);
   });
@@ -120,7 +132,6 @@ module.exports = function(app) {
   // create user 
   app.post('/api/users', function (req, res) {
     const { columns, values } = postColumnsAndValues(req.body);
-
     const query = `INSERT INTO users (${columns})
                     VALUES(${values})`;
 
@@ -128,9 +139,8 @@ module.exports = function(app) {
   });
 
   // join group 
-  app.post('/api/members/join', (req, res) => {
+  app.post('/api/groups/join', (req, res) => {
     const { columns, values } = postColumnsAndValues(req.body);
-
     const query = `INSERT INTO group_members (${columns})
                     VALUES(${values})`;
 
@@ -139,55 +149,73 @@ module.exports = function(app) {
 
   // create group 
   app.post('/api/groups', (req, res) => {
+    req.body.current_group_size = 0;
+
     const { columns, values } = postColumnsAndValues(req.body);
+    const createQuery = `INSERT INTO groups (${columns})
+                          VALUES(${values})`;
 
-    const query = `INSERT INTO groups (${columns})
-                    VALUES(${values})`;
-
-    sendQuery('post', query, res);
+    sendQuery('post', createQuery, res);
   });
 
   // delete group  
-  app.delete('/api/groups/:group_id', (req, res) => {
+  app.delete('/api/groups', (req, res) => {
     const query = `DELETE FROM groups
-                    WHERE id = ${req.params.group_id}`;
+                    WHERE user_id = ${req.body.user_id} 
+                    AND id = ${req.body.group_id}`;
 
     sendQuery('delete', query, res);
   });
 
   // delete user   
-  app.delete('/api/users/:user_id', (req, res) => {
+  app.delete('/api/users', (req, res) => {
     const query = `DELETE FROM users
-                    WHERE id = ${req.params.user_id}`;
+                    WHERE id = ${req.body.user_id}`;
 
     sendQuery('delete', query, res);
   });
 
   // leave group  
-  app.delete('/api/members/leave/:user_id/:group_id', (req, res) => {
+  app.delete('/api/groups/leave', (req, res) => {
     const query = `DELETE FROM group_members
-                    WHERE user_id = ${req.params.user_id}
-                    AND group_id = ${req.params.group_id}`;
+                    WHERE user_id = ${req.body.user_id}
+                    AND group_id = ${req.body.group_id}`;
 
     sendQuery('delete', query, res);
   });
 
   // edit user  
-  app.put('/api/users/:user_id', (req, res) => {
+  app.put('/api/users', (req, res) => {
+    const id = req.body.user_id;
+    delete req.body.user_id;
+
     const updates = putColumnsAndValues(req.body);
     const query = `UPDATE users SET ${updates}
-                    WHERE id = ${req.params.user_id}`;
+                    WHERE id = ${id}`;
 
     sendQuery('put', query, res);
   });
 
   // edit group
   app.put('/api/groups/:group_id', (req, res) => {
-    const updates = putColumnsAndValues(req.body);
-    const query = `UPDATE groups SET ${updates}
-                    WHERE id = ${req.params.group_id}`;
+    const authorQuery = `SELECT user_id
+                          FROM groups
+                          WHERE id = ${req.params.group_id}`;
 
-    sendQuery('put', query, res);
+    connection.query(authorQuery, (err, results) => {
+      if (err) return res.send(err);
+
+      const author_id = results[0].user_id;
+
+      if (author_id !== req.body.user_id) return res.send('Permission denied');
+
+      const updates = putColumnsAndValues(req.body);
+      delete req.body.user_id;
+      const updateQuery = `UPDATE groups SET ${updates}
+                            WHERE id = ${req.params.group_id}`;
+
+      sendQuery('put', updateQuery, res);
+    });
   });
 
   // send html
@@ -196,7 +224,10 @@ module.exports = function(app) {
   });
 }
 
-// builds SQL POST queries 
+/**
+ * Returns an SQL POST query using data from body
+ * @param {object} body 
+ */
 function postColumnsAndValues(body) {
   if (body.password) body.password = sha1(body.password);
   const columns = Object.keys(body).join(', ');
@@ -205,14 +236,22 @@ function postColumnsAndValues(body) {
   return { columns, values };
 }
 
-// builds SQL PUT queries 
+/**
+ * Returns an SQL PUT query using data from body
+ * @param {object} body 
+ */
 function putColumnsAndValues(body) {
   const updates = Object.keys(body).map(key => `${key} = '${body[key]}'`).join(', ');
 
   return updates;
 }
 
-// Sends SQL queries and returns results
+/**
+ * Sends SQL queries and returns results
+ * @param {string} method 
+ * @param {string} query 
+ * @param {object} res 
+ */
 function sendQuery(method, query, res) {
   connection.query(query, (err, results) => {
     if (err) return res.send(err);
@@ -222,34 +261,42 @@ function sendQuery(method, query, res) {
   });
 }
 
-// creates token with length 11 [0-9a-z]
+/**
+ * Returns a length-11 token using [0-9a-z]
+ */
 function createToken() {
   return Math.random().toString(36).slice(2);
 }
 
+/**
+ * Validates user token and if validated, adds authenticated_user_id to body for requests
+ * @param {object} req 
+ * @param {object} res 
+ * @param {function} next 
+ */
 function validateToken(req, res, next) {
   if (autoValidate) return next();
 
   const route = req.url;
   const excludedRoutes = [
-    /\/api\/login/,              // api/login
-    /\/api\/users$/,             // api/users
-    /\/api\/groups$/,            // api/groups
-    /\/api\/groups\/\d+/,        // api/groups/:group_id
-    /\/api\/groups\/\filter/,    // api/groups/filter/:phrase
+    { route: /\/api\/login/, method: 'POST' },              // api/login
+    { route: /\/api\/users$/, method: 'POST' },             // api/users
+    { route: /\/api\/groups$/, method: 'GET' },             // api/groups
+    { route: /\/api\/groups\/\d+/, method: 'GET' },         // api/groups/:group_id
+    { route: /\/api\/groups\/\filter/, method: 'GET' },     // api/groups/filter/:phrase
   ]
+  const isExcludedRoute = excludedRoutes.some(excludedRoute => {
+    return excludedRoute.route.test(route) && excludedRoute.method === req.method;
+  });
   const token = req.cookies.token;
   const query = `SELECT user_id FROM sessions WHERE token = '${token}'`;
-  const isExcludedRoute = excludedRoutes.some(excludedRoute => {
-    return excludedRoute.test(route);
-  });
 
   if (isExcludedRoute) return next();
 
   if (token) {
     connection.query(query, (err, results) => {
-      console.log(results);
       if (!err && results[0].user_id) {
+        req.body.user_id = results[0].user_id;
         return next();
       } else {
         res.send('Login required.');
@@ -260,22 +307,33 @@ function validateToken(req, res, next) {
   }
 } 
 
+// CURRENT:
+// export new sql file
+
+// NOTES
+// moved PUT and DELETE parameters into body
+// tokens are first validated for permission before requests are made
+// new sql file - updated author_id to user_id in groups
+// members query only return usernames
+// updates made to dbconfig.js will not be pushed to github
+
 
 // TODO:
-// dbconfig 
-// date created for group creation
-// order groups by date created
-// add remove from group to leave group
+
+// edit group size? - current group members
+// delete group? - current group members
+// sort groups by starting time
+// check group size before joining
+// test bad inputs - extra fields
+// leave group
   // - if user id === user_id, can leave
+// kick from group
   // - if user_id === author_id of group with group_id, can remove
 // remove query string and check user_id via token?
-// add validate before every query? - axios.defaults.withCredentials = true; 
-// email - unique key? 
-// group_members unique entry
+// group_members, email, other unique keys
 // API documentation
-// refactor with routers
-// ask for req and res data format 
-// update queries based on format
+// send sql error or hide and send generic error?
+// update queries based on information needed
 // set db foreign key and required key
 // remove foreign key from group_members when user or group deleted
 // sanitization
@@ -286,6 +344,8 @@ function validateToken(req, res, next) {
   // 4. Refresh the access token, if necessary.
 // add google_id to sessions table?
 // POSTMAN test suite
+// refactor with routers
+
 
 // CLEANUP:
 // remove cors  
