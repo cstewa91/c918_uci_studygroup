@@ -1,10 +1,11 @@
 import types from './types';
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:9000/'
-const API_GROUPS_JOINED = 'api/groups/joined/:user_id'
-const API_GROUPS_CREATED = 'api/groups/created/:author_id'
-const API_GROUPS = 'api/groups';
+const BASE_URL = 'http://localhost:9000'
+const API_GROUPS_JOINED = '/api/groups/joined/:user_id'
+const API_GROUPS_CREATED = '/api/groups/created/:author_id'
+const API_GROUPS = '/api/groups';
+const API_LOGIN =  '/api/login'
 
 
 export function getCreatedGroups() {

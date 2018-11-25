@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { Link } from 'react-router-dom';
 import worm from '../../assets/images/bookworm.png'
 import './login.css';
 
 
 class Login extends Component {
-   // renderInput() {
-   //    console.log('hello')
-   // }
+   renderInput() {
+      return (
+         <div>
+            <input type="text"/>
+         </div>
+      )
+   }
    render() {
       return (
          <div>
@@ -18,21 +21,21 @@ class Login extends Component {
             </div>
             <h1>Book Worms</h1>
             <h1>Google Sign In</h1>
-            {/* <form>
+            <form>
                <div>
                   <Field name="email" label="E-mail" component={this.renderInput} />
                </div>
                <div>
                   <Field name="password" label="Password" component={this.renderInput} />
                </div>
-            </form> */}
+            </form>
          </div>
       )
    }
 }
 
-// Login = reduxForm({
-//    form: 'login'
-// })(Login)
+Login = reduxForm({
+   form: 'login'
+})(Login);
 
-export default Login
+export default connect(null)(Login);
