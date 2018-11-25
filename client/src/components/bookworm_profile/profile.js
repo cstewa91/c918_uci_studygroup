@@ -28,7 +28,7 @@ export default ()=>{
             <footer>
                 <div className='confirm'>
                 <Link to='/home-joined' className='confirm'>
-                    <button type="button" className="btn blue">Confirm</button>
+                    <button type="button" className="btn btn-primary">Confirm</button>
                 </Link>
                 </div>
             </footer>
