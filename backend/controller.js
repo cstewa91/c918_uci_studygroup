@@ -20,6 +20,7 @@ module.exports = function(app) {
   // search groups 
   app.get('/api/groups', (req, res) => {
     const query = `SELECT * FROM groups
+                    WHERE end_time >= NOW()
                     ORDER BY start_time ASC`;
 
     sendQuery('get', query, res);
@@ -38,6 +39,7 @@ module.exports = function(app) {
     const phrase = req.params.phrase;
     const query = `SELECT * FROM groups
                     WHERE subject = '${phrase}'
+                    AND end_time >= NOW()
                     OR name LIKE "%${phrase}%"
                     ORDER BY start_time ASC`;
 
@@ -202,6 +204,45 @@ module.exports = function(app) {
     });
   });
 
+  // kick from group  
+  app.delete('/api/groups/kick', (req, res) => {
+    const authorQuery = `SELECT user_id
+                          FROM groups
+                          WHERE id = ${req.body.group_id}`;
+
+    connection.query(authorQuery, (err, results) => {
+      if (err) return res.send(err);
+
+      const author_id = results[0].user_id;
+
+      if (author_id !== req.body.user_id) return res.send('Permission denied');
+
+      const userIdQuery = `SELECT id 
+                            FROM users
+                            WHERE username = '${req.body.username}'`;
+
+      connection.query(userIdQuery, (err, results) => {
+        if (err) return res.send(err);
+
+        const user_id = results[0].id;
+
+        const deleteQuery = `DELETE FROM group_members
+                              WHERE user_id = ${user_id}
+                              AND group_id = ${req.body.group_id}`;
+
+        connection.query(deleteQuery, (err, results) => {
+          if (err) return res.send(err);
+
+          const decrementMembersQuery = `UPDATE groups
+                                          SET current_group_size = current_group_size - 1
+                                          WHERE id = ${req.body.group_id}`;
+
+          sendQuery('put', decrementMembersQuery, res);
+        });
+      });
+    });
+  });
+
   // edit user  
   app.put('/api/users', (req, res) => {
     const id = req.body.user_id;
@@ -325,20 +366,17 @@ function validateToken(req, res, next) {
   }
 } 
 
-
-// NOTES:
-// Added API doc to readme
-// /api/groups/join increments group size - prevent joining if current = max on frontend
-// /api/groups/leave increments group size 
-
+// UPDATES:
+// new route - DELETE /api/groups/kick - body parameters: username (kick target), group_id (group to be removed from)
+// updated API DOC
+// group search and filter only show groups where end time is greater than current time
+// updated SQL info for testing purposes
 
 // TODO:
-// delete group after end time passed
-// kick from group? decrement group_size count
 // test bad inputs - extra fields
 // remove query string and check user_id via token?
 // send sql error or hide and send generic error?
-// update queries based on information needed
+// check if unnecessary sensitive info returned
 // sanitization
 // Google OAuth2.0 - https://developers.google.com/identity/protocols/OAuth2
   // 1. Obtain OAuth 2.0 credentials from the Google API Console.
