@@ -24,7 +24,7 @@ class App extends Component {
                 <Route path='/hamburger' component={Hamburger}/>
                 <Route path='/search-group' component={Search}/>
                 <Route path='/selected-group' component={GroupModal}/>
-                <Route path='/awesome-group' component={GroupInfo}/>
+                <Route path='/awesome-group' component={GroupInfo}/> 
             </div>
         )
     }

@@ -3,6 +3,7 @@ import worm from '../images/bookworm.png';
 import menu from '../images/menu.png';
 import magnifier from '../images/magnifier.png';
 import './header.css';
+import {Link} from 'react-router-dom';
 
 
 export default ()=>{
@@ -20,7 +21,10 @@ export default ()=>{
                         <span className='navbar-text'>Book Worms</span>
                     </div>
                     <div className="nav-search">
-                        <img src={magnifier} className="search-icon"/>
+                        <Link to='/search-group'>
+                            <img src={magnifier} className="search-icon"></img>
+                        </Link>
+                        
                     </div>
                 </div>
             </nav>  
