@@ -162,7 +162,6 @@ module.exports = function(app) {
 
   // create user 
   app.post('/api/users', function (req, res) {
-    req.body.password = sha1(req.body.password);
     const { columns, values } = postColumnsAndValues(req.body);
     const createQuery = `INSERT INTO users (${columns})
                           VALUES(${values})`;
