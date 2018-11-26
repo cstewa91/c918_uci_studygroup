@@ -3,6 +3,7 @@ import worm from '../../assets/images/bookworm.png';
 import menu from '../../assets/images/menu.png';
 import magnifier from '../../assets/images/magnifier.png';
 import './header.css';
+import {Link} from 'react-router-dom';
 
 
 export default () => {

@@ -39,7 +39,7 @@ export default () => {
                             <input type='text' placeholder='Wheeler Hall'/>
                         </div>
                         <div className='details'>        
-                            <textarea className='form-control' rows='5'>We're going to study React Redux</textarea>
+                            <textarea className='form-control' rows='5' value='' onChange=''></textarea>
                         </div>
                     </form>    
                 </div>
