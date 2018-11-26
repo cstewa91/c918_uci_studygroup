@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+import { loginApp } from '../../actions'
 import worm from '../../assets/images/bookworm.png'
 import './login.css';
 
 
 class Login extends Component {
-   renderInput() {
+   renderInput(props) {
+      const { input, label, meta: { touched, error } } = props
       return (
          <div>
-            <input type="text"/>
+            <input  {...input} type="text" />
+            <label>{label}</label>
          </div>
       )
    }
+   handleAddItem = async (values) => {
+      await this.props.loginApp(values);
+      this.props.history.push('/home')
+   }
    render() {
+      const { handleSubmit } = this.props
       return (
          <div>
             <div>
@@ -21,13 +29,14 @@ class Login extends Component {
             </div>
             <h1>Book Worms</h1>
             <h1>Google Sign In</h1>
-            <form>
+            <form onSubmit={handleSubmit(this.handleAddItem)}>
                <div>
                   <Field name="email" label="E-mail" component={this.renderInput} />
                </div>
                <div>
                   <Field name="password" label="Password" component={this.renderInput} />
                </div>
+               <button>Login</button>
             </form>
          </div>
       )
@@ -38,4 +47,6 @@ Login = reduxForm({
    form: 'login'
 })(Login);
 
-export default connect(null)(Login);
+export default connect(null, {
+   loginApp: loginApp
+})(Login);

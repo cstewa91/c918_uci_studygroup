@@ -12,7 +12,6 @@ class Home extends Component {
       this.props.getJoinedGroups();
    }
    render() {
-      console.log(this.props.created[0])
       const listCreatedGroups = this.props.created.map(item => {
          return <Link to="/awesome-group"><div key={item.id}>{item.name} {item.location} {item.subject}</div></Link>
       })
