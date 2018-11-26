@@ -3,9 +3,6 @@ const sha1 = require('sha1');
 const { resolve } = require('path');
 const dbconfig = require('./config/dbconfig');
 
-// for development use - true requires cookies to access most routes
-const autoValidate = false;
-
 var connection = mysql.createConnection(dbconfig);
 
 connection.connect((err) => {
@@ -15,6 +12,7 @@ connection.connect((err) => {
 });
 
 module.exports = function(app) {
+  app.use(sanitizeBody);
   app.use(validateToken);
 
   // search groups 
@@ -32,9 +30,11 @@ module.exports = function(app) {
 
   // group details 
   app.get('/api/groups/:group_id', (req, res) => {
-    const query = `SELECT g.*, COUNT(gm.group_id) AS current_group_size FROM
-                    (SELECT * FROM groups
-                    WHERE id = ${req.params.group_id}) AS g
+    const query = `SELECT g.*, COUNT(gm.group_id) AS current_group_size 
+                    FROM 
+                    (SELECT * 
+                    FROM groups
+                    WHERE id = ${req.params['`group_id`']}) AS g
                     LEFT JOIN group_members AS gm 
                     ON g.id = gm.group_id`;
 
@@ -42,14 +42,14 @@ module.exports = function(app) {
   });
 
   // filter groups
-  app.get('/api/groups/filter/:phrase', (req, res) => {
-    const phrase = req.params.phrase;
+  app.get('/api/groups/filter/:phrase', sanitizeParams, (req, res) => {
+    const phrase = req.params['`phrase`'];
     const query = `SELECT g.*, COUNT(gm.group_id) AS current_group_size 
                     FROM groups AS g
                     LEFT JOIN group_members AS gm 
                     ON g.id = gm.group_id
-                    WHERE (subject = '${phrase}'
-                    OR name LIKE '%${phrase}%')
+                    WHERE (subject = ${phrase}
+                    OR name LIKE "${phrase.replace(/'/g, '%')}")
                     AND end_time >= NOW()
                     GROUP BY g.id
                     ORDER BY start_time ASC`;
@@ -61,7 +61,8 @@ module.exports = function(app) {
   app.get('/api/groups/joined/:user_id', (req, res) => {
     const query = `SELECT g.*, COUNT(j.group_id) AS current_group_size 
                     FROM
-                    (SELECT group_id FROM group_members
+                    (SELECT group_id 
+                    FROM group_members
                     WHERE user_id = ${req.body.user_id}) AS gm
                     LEFT JOIN groups AS g
                     ON g.id = gm.group_id
@@ -89,10 +90,10 @@ module.exports = function(app) {
   })
 
   // group members 
-  app.get('/api/groups/members/:group_id', (req, res) => {
+  app.get('/api/groups/members/:group_id', sanitizeParams, (req, res) => {
     const authorQuery = `SELECT user_id
                           FROM groups
-                          WHERE id = ${req.params.group_id}`;
+                          WHERE id = ${req.params['`group_id`']}`;
     
     connection.query(authorQuery, (err, results) => {
       if (err) return res.send(err);
@@ -106,7 +107,7 @@ module.exports = function(app) {
                             JOIN
                             (SELECT user_id
                             FROM group_members
-                            WHERE group_id = ${req.params.group_id}) AS m
+                            WHERE group_id = ${req.params['`group_id`']}) AS m
                             ON u.id = m.user_id`;
 
       sendQuery('get', membersQuery, res);
@@ -115,7 +116,8 @@ module.exports = function(app) {
 
   // profile 
   app.get('/api/users/:user_id', (req, res) => {
-    const query = `SELECT * FROM users
+    const query = `SELECT * 
+                    FROM users
                     WHERE id = ${req.body.user_id}`;
 
     sendQuery('get', query, res);
@@ -123,10 +125,14 @@ module.exports = function(app) {
 
   // login
   app.post('/api/login', (req, res) => {
-    const email = req.body.email.replace(/["']/g, "\\'");
-    const password = sha1(req.body.password);
-    const query = `SELECT id FROM users 
-                    WHERE email = '${email}' AND password = '${password}'`;
+    if (!req.body['`email`'] || !req.body['`password`']) return res.send('Email and password required');
+
+    const email = req.body['`email`'];
+    const password = req.body['`password`'].replace(/'/g, '');
+    const encryptedPassword = `'${sha1(password)}'`;
+    const query = `SELECT id 
+                    FROM users 
+                    WHERE email = ${email} AND password = ${encryptedPassword}`;
 
     connection.query(query, (err, results) => {
       if (err) {
@@ -168,9 +174,10 @@ module.exports = function(app) {
 
   // join group 
   app.post('/api/groups/join', (req, res) => {
-    const groupSizeQuery = `SELECT g.max_group_size, COUNT(gm.group_id) AS current_group_size FROM
+    const groupSizeQuery = `SELECT g.max_group_size, COUNT(gm.group_id) AS current_group_size 
+                            FROM
                             (SELECT * FROM groups
-                            WHERE id = ${req.body.group_id}) AS g
+                            WHERE id = ${req.body['`group_id`']}) AS g
                             LEFT JOIN group_members AS gm 
                             ON g.id = gm.group_id`;
 
@@ -204,7 +211,7 @@ module.exports = function(app) {
   app.delete('/api/groups', (req, res) => {
     const query = `DELETE FROM groups
                     WHERE user_id = ${req.body.user_id} 
-                    AND id = ${req.body.group_id}`;
+                    AND id = ${req.body['`group_id`']}`;
 
     sendQuery('delete', query, res);
   });
@@ -221,7 +228,7 @@ module.exports = function(app) {
   app.delete('/api/groups/leave', (req, res) => {
     const query = `DELETE FROM group_members
                     WHERE user_id = ${req.body.user_id}
-                    AND group_id = ${req.body.group_id}`;
+                    AND group_id = ${req.body['`group_id`']}`;
 
     sendQuery('delete', query, res);
   });
@@ -230,7 +237,7 @@ module.exports = function(app) {
   app.delete('/api/groups/kick', (req, res) => {
     const authorQuery = `SELECT user_id
                           FROM groups
-                          WHERE id = ${req.body.group_id}`;
+                          WHERE id = ${req.body['`group_id`']}`;
 
     connection.query(authorQuery, (err, results) => {
       if (err) return res.send(err);
@@ -241,8 +248,8 @@ module.exports = function(app) {
       const deleteQuery = `DELETE FROM group_members
                             WHERE user_id IN
                             (SELECT id FROM users
-                            WHERE username = '${req.body.username}')
-                            AND group_id = ${req.body.group_id}`;
+                            WHERE username = ${req.body['`username`']})
+                            AND group_id = ${req.body['`group_id`']}`;
  
       sendQuery('delete', deleteQuery, res);
     });
@@ -252,7 +259,6 @@ module.exports = function(app) {
   app.put('/api/users', (req, res) => {
     const id = req.body.user_id;
     delete req.body.user_id;
-    req.body.password = sha1(req.body.password);
     const updates = putColumnsAndValues(req.body);
     const query = `UPDATE users SET ${updates}
                     WHERE id = ${id}`;
@@ -261,24 +267,48 @@ module.exports = function(app) {
   });
 
   // edit group
-  app.put('/api/groups/:group_id', (req, res) => {
+  app.put('/api/groups/:group_id', sanitizeParams, (req, res) => {
+    const group_id = req.params['`group_id`'];
     const authorQuery = `SELECT user_id
                           FROM groups
-                          WHERE id = ${req.params.group_id}`;
+                          WHERE id = ${group_id}`;
 
     connection.query(authorQuery, (err, results) => {
       if (err) return res.send(err);
 
       const author_id = results[0].user_id;
-
       if (author_id !== req.body.user_id) return res.send('Permission denied');
 
-      const updates = putColumnsAndValues(req.body);
-      delete req.body.user_id;
-      const updateQuery = `UPDATE groups SET ${updates}
-                            WHERE id = ${req.params.group_id}`;
+      const new_max_group_size = req.body['`max_group_size`'];
+      if (new_max_group_size) {
+        const groupSizeQuery = `SELECT COUNT(group_id) AS current_group_size 
+                                FROM 
+                                group_members
+                                WHERE group_id = ${group_id}`;
+        
+        connection.query(groupSizeQuery, (err, results) => {
+          if (err) return res.send(err);
 
-      sendQuery('put', updateQuery, res);
+          const { current_group_size } = results[0];
+          if (current_group_size > parseInt(new_max_group_size.match(/\d+/)[0])) {
+            return res.send('New max group size cannot be smaller than current group size');
+          } else {
+            const updates = putColumnsAndValues(req.body);
+            delete req.body.user_id;
+            const updateQuery = `UPDATE groups SET ${updates}
+                                  WHERE id = ${group_id}`;
+
+            sendQuery('put', updateQuery, res);
+          }
+        });
+      } else {
+        const updates = putColumnsAndValues(req.body);
+        delete req.body.user_id;
+        const updateQuery = `UPDATE groups SET ${updates}
+                                  WHERE id = ${group_id}`;
+
+        sendQuery('put', updateQuery, res);
+      }
     });
   });
 
@@ -295,7 +325,7 @@ module.exports = function(app) {
 function postColumnsAndValues(body) {
   if (body.password) body.password = sha1(body.password);
   const columns = Object.keys(body).join(', ');
-  const values = Object.values(body).map(value => `'${value}'`).join(', ');
+  const values = Object.values(body).map(value => `${value}`).join(', ');
 
   return { columns, values };
 }
@@ -305,7 +335,8 @@ function postColumnsAndValues(body) {
  * @param {object} body 
  */
 function putColumnsAndValues(body) {
-  const updates = Object.keys(body).map(key => `${key} = '${body[key]}'`).join(', ');
+  if (body.password) body.password = sha1(body.password);
+  const updates = Object.keys(body).map(key => `${key} = ${body[key]}`).join(', ');
 
   return updates;
 }
@@ -333,14 +364,50 @@ function createToken() {
 }
 
 /**
- * Validates user token and if validated, adds authenticated_user_id to body for requests
+ * Middleware - sanitizes req.params, must be used in the route itself to gain access to req.params
+ * @param {object} req
+ * @param {object} res
+ * @param {function} next
+ */
+function sanitizeParams(req, res, next) {
+  const params = req.params;
+
+  for (let key of Object.keys(params)) {
+    const newKey = mysql.escapeId(key);
+    const newValue = mysql.escape(params[key]);
+    delete params[key];
+    params[newKey] = newValue;
+  }
+
+  next();
+}
+
+/**
+ * Middleware - sanitizes req.body
+ * @param {object} req
+ * @param {object} res
+ * @param {function} next
+ */
+function sanitizeBody(req, res, next) {
+  const body = req.body;
+
+  for (let key of Object.keys(body)) {
+    const newKey = mysql.escapeId(key);
+    const newValue = mysql.escape(body[key]);
+    delete body[key];
+    body[newKey] = newValue;
+  }
+
+  next();
+}
+
+/**
+ * Middleware - Validates user token and if validated, adds authenticated_user_id to body for requests
  * @param {object} req 
  * @param {object} res 
  * @param {function} next 
  */
 function validateToken(req, res, next) {
-  if (autoValidate) return next();
-
   const route = req.url;
   const excludedRoutes = [
     { route: /\/api\/login/, method: 'POST' },                      // api/login
@@ -372,22 +439,12 @@ function validateToken(req, res, next) {
 } 
 
 // NOTES
-// /groups/join - can only join if current_group_size < max_group_size
-// /groups/kick - reduced total queries 
-// order joined and created groups by start_time, hide inactive groups
-// removed current_group_size field from groups, field and value generated during queries
-// fixed /group/filter/:phrase as excluded route
-// create and edit user (POST PUT /users) - sha1 encrypts password before storing
-// remove existing token when creating user - prevent existing user using old token for making requests
-
-// NEXT
-// sanitization
-// test bad inputs - extra fields
-// check if unnecessary sensitive info returned
-// send sql error or hide and send generic error?
+// removed autoValidate - deprecated
+// added sanitization to all parameters and values 
+// PUT /groups (edit groups) - max_group_size can't be edited to be lower than current_group_size
 
 // TODO:
-// ask frontend to restrict edits - max_group_size, 
+// res.send(err) - send sql error or hide and send generic error?
 // remove user_id from query's? already validated and appended via token
 // mail notifications? group delete, group edit, group start_time approaching
 // Google OAuth2.0 - https://developers.google.com/identity/protocols/OAuth2
@@ -402,4 +459,3 @@ function validateToken(req, res, next) {
 // CLEANUP:
 // remove cors  
 // remove console.logs
-// remove autoValidate
