@@ -56,7 +56,7 @@ class GroupModal extends Component {
         }
 
         return (
-            <button onClick={this.open} className="btn btn-outline-primary">Open Button Modal</button>
+            <button onClick={this.open} className="btn btn-outline-primary">Details</button>
         );
     }
 }

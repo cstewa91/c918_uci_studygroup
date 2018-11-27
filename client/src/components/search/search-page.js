@@ -32,7 +32,7 @@ export default () => {
                                 <td>11/6</td>
                                 <td>8:00 AM - 9:00 AM</td>
                                 <td>2/3</td>
-                                <Link to="/selected-group"><span className="btn btn-primary">Details</span></Link>
+                                <GroupModal/>
                             </tr>
                         <tr>
                             <td>MATH</td>
