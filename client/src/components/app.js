@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import Login from './login/login';
 import Home from './home/home';
-import Create from './create/create-group';
+import Create from './create_group/create-group';
 import Profile from './profile/profile';
 import EditCreated from './edit/edit-created';
 import Hamburger from './general/hamburger';
 import Search from './search/search-page';
 import GroupModal from './general/group-modal';
 import GroupInfo from './info/group-info';
+import CreateAccount from './create_account/create-account';
 
 
 
@@ -25,6 +26,7 @@ class App extends Component {
                 <Route path='/search-group' component={Search} />
                 <Route path='/selected-group' component={GroupModal} />
                 <Route path='/awesome-group' component={GroupInfo} />
+                <Route path='/create-account' component={CreateAccount}/>
             </div>
         )
     }
