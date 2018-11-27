@@ -1,10 +1,7 @@
 import types from '../actions/types';
 
 const DEFAULT_STATE = {
-   username: '',
-   firstname: '',
-   lastname: '',
-   email:'',
+   user: {}
    
 }
 
