@@ -4,4 +4,5 @@ export default {
    CREATE_NEW_GROUP: 'create_new_group',
    GET_USER_INFO: 'get_user_info',
    EDIT_USER_INFO: 'EDIT_USER_INFO',
+   LOGIN_APP: 'login_app'
 }

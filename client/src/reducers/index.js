@@ -4,7 +4,6 @@ import homeReducer from './home_reducer'
 import loginReducer from './login_reducer';
 import profileReducer from './profile_reducer';
 
-
 const rootReducer = combineReducers({
    form: formReducer,
    home: homeReducer,
