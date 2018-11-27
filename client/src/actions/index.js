@@ -6,6 +6,8 @@ const API_GROUPS_JOINED = '/api/groups/joined/:user_id';
 const API_GROUPS_CREATED = '/api/groups/created/:author_id';
 const API_GROUPS = '/api/groups';
 const API_LOGIN =  '/api/login';
+const API_USER = '/api/users/:user_id';
+const API_EDIT_USER = '/api/users'
 axios.defaults.withCredentials = true;
 
 
@@ -25,6 +27,22 @@ export function getJoinedGroups() {
    }
 }
 
+export function getUserInfo(userId) {
+   const resp = axios.get(`${BASE_URL}/${API_USER/userID}` )
+   return {
+      type: types.GET_USER_INFO,
+      payload: resp,
+   }
+}
+
+export function editUserInfo() {
+   const resp = axios.put(BASE_URL + API_EDIT_USER )
+   return {
+      type: types.EDIT_USER_INFO,
+      payload: resp,
+   }
+}
+
 export function createNewGroup(item) {
    const resp = axios.post(BASE_URL + API_GROUPS, item);
    console.log(resp)
@@ -41,3 +59,4 @@ export function loginApp(item) {
       payload: resp
    }
 }
+
