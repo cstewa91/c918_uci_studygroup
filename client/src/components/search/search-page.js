@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './search-page.css';
 import Header from '../general/header'
+import GroupModal from '../general/group-modal';
 
 export default () => {
     return (
@@ -25,13 +26,14 @@ export default () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>ENG</td>
-                            <td>101</td>
-                            <td>11/6</td>
-                            <td>8:00 AM - 9:00 AM</td>
-                            <td>2/3</td>
-                        </tr>
+                            <tr>
+                                <td>ENG</td>
+                                <td>101</td>
+                                <td>11/6</td>
+                                <td>8:00 AM - 9:00 AM</td>
+                                <td>2/3</td>
+                                <Link to="/selected-group"><span className="btn btn-primary">Details</span></Link>
+                            </tr>
                         <tr>
                             <td>MATH</td>
                             <td>101</td>
