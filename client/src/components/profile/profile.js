@@ -10,6 +10,9 @@ import Header from '../general/header';
 
 
 class Profile extends Component {
+    state = {
+        isEditable: false
+    }
 
     componentDidMount(){
         console.log(this.props)
@@ -19,6 +22,14 @@ class Profile extends Component {
     render(){
 
         const {username, firstname, lastname, email } = this.props.user
+
+        if(this.state.isEditable){
+            // return form for editing
+
+            return <form>Edit Profile</form>
+        }
+
+        
         return (
             <div className='profile'>
                 <Header/>
