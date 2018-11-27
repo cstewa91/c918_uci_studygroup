@@ -13,7 +13,7 @@ class Profile extends Component {
 
     componentDidMount(){
         console.log(this.props)
-        this.props.getUserInfo(this.props.match.params.id);
+        this.props.getUserInfo(this.props);
     }
 
     render(){
@@ -60,7 +60,7 @@ class Profile extends Component {
                 </main>
                 <footer>
                     <div className='confirm'>
-                    <Link to='/home-joined' className='confirm btn btn-primary'>Confirm</Link>
+                    <Link to='/home' className='confirm btn btn-primary'>Confirm</Link>
                     </div>
                 </footer>
                 

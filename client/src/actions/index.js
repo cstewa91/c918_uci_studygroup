@@ -8,6 +8,8 @@ const API_GROUPS = '/api/groups';
 const API_LOGIN =  '/api/login';
 const API_USER = '/api/users/:user_id';
 const API_EDIT_USER = '/api/users'
+const API_EDIT_GROUP_INFO = '/api/groups/:group_id'
+const API_GET_GROUP_DETAILS = '/api/groups/:group_id'
 axios.defaults.withCredentials = true;
 
 
@@ -27,8 +29,8 @@ export function getJoinedGroups() {
    }
 }
 
-export function getUserInfo(userId) {
-   const resp = axios.get(`${BASE_URL}/${API_USER/userID}` )
+export function getUserInfo() {
+   const resp = axios.get(`${BASE_URL + API_USER}/1` )
    return {
       type: types.GET_USER_INFO,
       payload: resp,
@@ -60,3 +62,18 @@ export function loginApp(item) {
    }
 }
 
+export function getGroupDetails(groupId){
+   const resp = axios.get(`${BASE_URL + API_GET_GROUP_DETAILS}/${groupId}`);
+   return {
+      type: types.GET_GROUP_DETAILS,
+      payload: resp
+   }
+}
+
+export function editGroupInfo(groupId){
+   const resp = axios.put(`${BASE_URL + API_EDIT_GROUP_INFO}/${groupId}`);
+   return {
+      type: types.EDIT_GROUP_INFO,
+      payload: resp
+   }
+}
