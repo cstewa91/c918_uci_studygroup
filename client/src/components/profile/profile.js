@@ -1,16 +1,19 @@
-import React from 'react'
+import React, {Component} from 'react'
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
-import {getUserInfo} from '../actions';
+import {getUserInfo} from '../../actions';
+import {editUserInfo} from '../../actions'
 import './profile.css';
 import Header from '../general/header';
+
 
 
 
 class Profile extends Component {
 
     componentDidMount(){
-        this.props.getUserInfo();
+        console.log(this.props)
+        this.props.getUserInfo(this.props.match.params.id);
     }
 
     render(){
