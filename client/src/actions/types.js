@@ -1,4 +1,5 @@
 export default {
+   GET_ALL_GROUPS: 'get_all_groups',
    GET_CREATED_GROUPS: 'get_created_groups',
    GET_JOINED_GROUPS: 'get_joined_groups',
    CREATE_NEW_GROUP: 'create_new_group',

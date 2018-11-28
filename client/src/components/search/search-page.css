@@ -1,0 +1,10 @@
+td {
+    height: 100%;
+    width: 125px;
+    border: 0;
+}
+td a {
+    display: block;
+    height: 100%;
+    width: 100%;
+}

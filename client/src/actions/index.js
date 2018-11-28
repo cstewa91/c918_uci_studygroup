@@ -7,7 +7,7 @@ const API_GROUPS_CREATED = '/api/groups/created/:user_id';
 const API_GROUPS = '/api/groups';
 const API_LOGIN = '/api/login';
 const API_USER = '/api/users/:user_id';
-const API_EDIT_USER = '/api/users'
+const API_EDIT_USER = '/api/users';
 const API_NEW_ACCOUNT = '/api/users'
 axios.defaults.withCredentials = true;
 
@@ -65,7 +65,15 @@ export function loginApp(item) {
    
 }
 
-export function createAccount(item) {
+export function getAllGroups(){
+   const resp = axios.get(BASE_URL + API_GROUPS);
+   return {
+      type: types.GET_ALL_GROUPS,
+       payload: resp
+   }
+}
+
+export function createAccount(item){
    const resp = axios.post(BASE_URL + API_NEW_ACCOUNT, item)
    console.log(resp)
    return {
