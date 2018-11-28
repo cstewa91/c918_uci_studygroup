@@ -7,7 +7,7 @@ const API_GROUPS_CREATED = '/api/groups/created/:author_id';
 const API_GROUPS = '/api/groups';
 const API_LOGIN =  '/api/login';
 const API_USER = '/api/users/:user_id';
-const API_EDIT_USER = '/api/users'
+const API_EDIT_USER = '/api/users';
 axios.defaults.withCredentials = true;
 
 
@@ -60,3 +60,10 @@ export function loginApp(item) {
    }
 }
 
+export function getAllGroups(){
+   const resp = axios.get(BASE_URL + API_GROUPS);
+   return {
+      type: types.GET_ALL_GROUPS,
+       payload: resp
+   }
+}

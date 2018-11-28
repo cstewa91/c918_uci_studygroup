@@ -37,8 +37,7 @@ class GroupModal extends Component {
                                 <p className="group-description">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi et pretium tellus.
                                     Phasellus vulputate dignissim magna sed sodales. Phasellus convallis posuere magna
-                                    vel
-                                    malesuada. Quisque at efficitur arcu. Ut quis enim cursus, sollicitudin orci eu,
+                                    vel malesuada. Quisque at efficitur arcu. Ut quis enim cursus, sollicitudin orci eu,
                                     fermentum tellus. Vestibulum porta purus eget luctus luctus. Praesent non diam
                                     hendrerit, egestas sapien ac, molestie mauris. Pellentesque elementum, dui a congue
                                     dignissim, eros urna maximus arcu, quis interdum risus ligula quis risus. Cras ac
@@ -47,7 +46,7 @@ class GroupModal extends Component {
                                 </p>
                             </div>
                             <Link to="/home">
-                                <div className="btn btn-primary join-group">Join</div>
+                                <div className="btn btn-primary join-group offset-5">Join</div>
                             </Link>
                         </div>
                     </div>
