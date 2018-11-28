@@ -128,7 +128,7 @@ module.exports = function(app) {
     if (!req.body['`email`'] || !req.body['`password`']) return res.send('Email and password required');
 
     const email = req.body['`email`'];
-    const password = req.body['`password`'].replace(/'/g, '');
+    const password = req.body['`password`'];
     const encryptedPassword = `'${sha1(password)}'`;
     const query = `SELECT id 
                     FROM users 
@@ -438,11 +438,16 @@ function validateToken(req, res, next) {
   }
 } 
 
+// UPDATES:
+// fix login
+
 // NEXT:
 // res.send(err) - send sql error or hide and send generic error?
 // remove user_id from query's? already validated and appended via token
+// .config json file
 
 // TODO:
+// optional parameters?
 // google auth with passport
 // mail notifications? group delete, group edit, group start_time approaching
 // add google_id to sessions table?
