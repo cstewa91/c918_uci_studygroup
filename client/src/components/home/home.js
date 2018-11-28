@@ -6,6 +6,7 @@ import { getCreatedGroups } from '../../actions';
 import { getJoinedGroups } from '../../actions';
 import { connect } from 'react-redux';
 
+
 class Home extends Component {
    componentDidMount() {
       this.props.getCreatedGroups();

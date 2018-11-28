@@ -25,7 +25,11 @@ class App extends Component {
                 <Route path='/hamburger' component={Hamburger} />
                 <Route path='/search-group' component={Search} />
                 <Route path='/selected-group' component={GroupModal} />
+<<<<<<< HEAD
                 <Route path='/group-info' component={GroupInfo} />
+=======
+                <Route path='/api/groups/:group_id' component={GroupInfo} />
+>>>>>>> 781e234505c2145540ca55c97bcecdf5fd33249a
                 <Route path='/create-account' component={CreateAccount}/>
             </div>
         )
