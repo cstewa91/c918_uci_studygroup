@@ -5,5 +5,6 @@ export default {
    GET_USER_INFO: 'get_user_info',
    EDIT_USER_INFO: 'EDIT_USER_INFO',
    LOGIN_APP: 'login_app',
-   CREATE_ACCOUNT: 'create_account'
+   CREATE_ACCOUNT: 'create_account',
+   GET_USER_ID: 'get_user_id'
 }
