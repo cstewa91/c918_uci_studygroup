@@ -1,11 +1,11 @@
 const mysql = require('mysql');
 const sha1 = require('sha1');
 const { resolve } = require('path');
-const dbconfig = require('./config/dbconfig');
+const dbconfig = require('./config/db.json');
 
 var connection = mysql.createConnection(dbconfig);
 
-connection.connect((err) => {
+connection.connect(err => {
   if (err) throw err;
 
   console.log('MySql connected...');
@@ -29,7 +29,7 @@ module.exports = function(app) {
   });
 
   // group details 
-  app.get('/api/groups/:group_id', (req, res) => {
+  app.get('/api/groups/details/:group_id', (req, res) => {
     const query = `SELECT g.*, COUNT(gm.group_id) AS current_group_size 
                     FROM 
                     (SELECT * 
@@ -58,7 +58,7 @@ module.exports = function(app) {
   });
 
   // joined groups  
-  app.get('/api/groups/joined/:user_id', (req, res) => {
+  app.get('/api/groups/joined', (req, res) => {
     const query = `SELECT g.*, COUNT(j.group_id) AS current_group_size 
                     FROM
                     (SELECT group_id 
@@ -76,7 +76,7 @@ module.exports = function(app) {
   });
 
   // created groups  
-  app.get('/api/groups/created/:user_id', (req, res) => {
+  app.get('/api/groups/created', (req, res) => {
     const query = `SELECT g.*, COUNT(gm.group_id) AS current_group_size 
                     FROM groups AS g
                     LEFT JOIN group_members AS gm 
@@ -96,7 +96,10 @@ module.exports = function(app) {
                           WHERE id = ${req.params['`group_id`']}`;
     
     connection.query(authorQuery, (err, results) => {
-      if (err) return res.send(err);
+      if (err) {
+        console.log(err);
+        return res.send('Database query error');
+      }
 
       const author_id = results[0].user_id;
 
@@ -115,7 +118,7 @@ module.exports = function(app) {
   });
 
   // profile 
-  app.get('/api/users/:user_id', (req, res) => {
+  app.get('/api/users', (req, res) => {
     const query = `SELECT * 
                     FROM users
                     WHERE id = ${req.body.user_id}`;
@@ -128,7 +131,7 @@ module.exports = function(app) {
     if (!req.body['`email`'] || !req.body['`password`']) return res.send('Email and password required');
 
     const email = req.body['`email`'];
-    const password = req.body['`password`'].replace(/'/g, '');
+    const password = req.body['`password`'];
     const encryptedPassword = `'${sha1(password)}'`;
     const query = `SELECT id 
                     FROM users 
@@ -144,7 +147,10 @@ module.exports = function(app) {
                               ON DUPLICATE KEY UPDATE token = '${token}'`;
 
         connection.query(loginQuery, (err) => {
-          if (err) return res.send(err);
+          if (err) {
+            console.log(err);
+            return res.send('Database query error');
+          }
 
           res.cookie('token', token, { maxAge: 900000, httpOnly: true })
           res.send({ success: true });
@@ -181,7 +187,10 @@ module.exports = function(app) {
                             ON g.id = gm.group_id`;
 
     connection.query(groupSizeQuery, (err, results) => {
-      if (err) return res.send(err);
+      if (err) {
+        console.log(err);
+        return res.send('Database query error');
+      }
 
       const { max_group_size, current_group_size } = results[0];
       
@@ -239,7 +248,10 @@ module.exports = function(app) {
                           WHERE id = ${req.body['`group_id`']}`;
 
     connection.query(authorQuery, (err, results) => {
-      if (err) return res.send(err);
+      if (err) {
+        console.log(err);
+        return res.send('Database query error');
+      }
 
       const author_id = results[0].user_id;
       if (author_id !== req.body.user_id) return res.send('Permission denied');
@@ -273,7 +285,10 @@ module.exports = function(app) {
                           WHERE id = ${group_id}`;
 
     connection.query(authorQuery, (err, results) => {
-      if (err) return res.send(err);
+      if (err) {
+        console.log(err);
+        return res.send('Database query error');
+      }
 
       const author_id = results[0].user_id;
       if (author_id !== req.body.user_id) return res.send('Permission denied');
@@ -286,7 +301,10 @@ module.exports = function(app) {
                                 WHERE group_id = ${group_id}`;
         
         connection.query(groupSizeQuery, (err, results) => {
-          if (err) return res.send(err);
+          if (err) {
+            console.log(err);
+            return res.send('Database query error');
+          }
 
           const { current_group_size } = results[0];
           if (current_group_size > parseInt(new_max_group_size.match(/\d+/)[0])) {
@@ -304,7 +322,7 @@ module.exports = function(app) {
         const updates = putColumnsAndValues(req.body);
         delete req.body.user_id;
         const updateQuery = `UPDATE groups SET ${updates}
-                                  WHERE id = ${group_id}`;
+                              WHERE id = ${group_id}`;
 
         sendQuery('put', updateQuery, res);
       }
@@ -322,7 +340,8 @@ module.exports = function(app) {
  * @param {object} body 
  */
 function postColumnsAndValues(body) {
-  if (body.password) body.password = sha1(body.password);
+  if (body['`password`']) body['`password`'] = `'${sha1(body['`password`'])}'`;
+
   const columns = Object.keys(body).join(', ');
   const values = Object.values(body).map(value => `${value}`).join(', ');
 
@@ -334,9 +353,9 @@ function postColumnsAndValues(body) {
  * @param {object} body 
  */
 function putColumnsAndValues(body) {
-  if (body.password) body.password = sha1(body.password);
+  if (body['`password`']) body['`password`'] = `'${sha1(body['`password`'])}'`;
+  
   const updates = Object.keys(body).map(key => `${key} = ${body[key]}`).join(', ');
-
   return updates;
 }
 
@@ -348,7 +367,10 @@ function putColumnsAndValues(body) {
  */
 function sendQuery(method, query, res) {
   connection.query(query, (err, results) => {
-    if (err) return res.send(err);
+    if (err) {
+      console.log(err);
+      return res.send('Database query error');
+    }
 
     const response = method === 'get' ? results : { success: true };
     res.send(response);
@@ -437,20 +459,20 @@ function validateToken(req, res, next) {
   }
 } 
 
-// NOTES
-// removed autoValidate - deprecated
-// added sanitization to all parameters and values 
-// PUT /groups (edit groups) - max_group_size can't be edited to be lower than current_group_size
+// UPDATES:
+// db.json.config - must copy into a db.json with username and password for import
+// remove user_id from GET query's, changed routes:
+// GET /api/groups/details/:group_id
+// GET /api/groups/joined
+// GET /api/groups/created
+// GET /api/users 
+// mysql errors sends 'Database query error' instead of returning err object, console logs err object on backend server
 
 // TODO:
-// res.send(err) - send sql error or hide and send generic error?
-// remove user_id from query's? already validated and appended via token
+// check config file is hidden
+// optional parameters?
+// google auth with passport
 // mail notifications? group delete, group edit, group start_time approaching
-// Google OAuth2.0 - https://developers.google.com/identity/protocols/OAuth2
-  // 1. Obtain OAuth 2.0 credentials from the Google API Console.
-  // 2. Obtain an access token from the Google Authorization Server.
-  // 3. Send the access token to an API.
-  // 4. Refresh the access token, if necessary.
 // add google_id to sessions table?
 // POSTMAN test suite
 // refactor with routers
