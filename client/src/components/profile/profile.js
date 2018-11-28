@@ -7,18 +7,33 @@ import './profile.css';
 import Header from '../general/header';
 
 
-
-
 class Profile extends Component {
+    state = {
+        isEditable: false,
+    }
 
     componentDidMount(){
         console.log(this.props)
-        this.props.getUserInfo(this.props.match.params.id);
+        this.props.getUserInfo(this.props);
+    }
+
+    handleEditClick= (event)=>{
+        this.setState ({
+            isEditable: true,
+        })
     }
 
     render(){
 
         const {username, firstname, lastname, email } = this.props.user
+
+        if(this.state.isEditable){
+            // return form for editing
+
+            return <form>Edit Profile</form>
+        }
+
+
         return (
             <div className='profile'>
                 <Header/>
@@ -60,7 +75,7 @@ class Profile extends Component {
                 </main>
                 <footer>
                     <div className='confirm'>
-                    <Link to='/home-joined' className='confirm btn btn-primary'>Confirm</Link>
+                    <Link to='/home' className='confirm btn btn-primary'>Confirm</Link>
                     </div>
                 </footer>
                 
