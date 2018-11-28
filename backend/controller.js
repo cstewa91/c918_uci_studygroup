@@ -322,7 +322,7 @@ module.exports = function(app) {
  * @param {object} body 
  */
 function postColumnsAndValues(body) {
-  if (body['`password`']) body['`password`'] = sha1(body['`password`']);
+  if (body['`password`']) body['`password`'] = `'${sha1(body['`password`'])}'`;
 
   const columns = Object.keys(body).join(', ');
   const values = Object.values(body).map(value => `${value}`).join(', ');
@@ -335,7 +335,7 @@ function postColumnsAndValues(body) {
  * @param {object} body 
  */
 function putColumnsAndValues(body) {
-  if (body['`password`']) body['`password`'] = sha1(body['`password`']);
+  if (body['`password`']) body['`password`'] = `'${sha1(body['`password`'])}'`;
   
   const updates = Object.keys(body).map(key => `${key} = ${body[key]}`).join(', ');
   return updates;
@@ -438,20 +438,13 @@ function validateToken(req, res, next) {
   }
 } 
 
-// NOTES
-// removed autoValidate - deprecated
-// added sanitization to all parameters and values 
-// PUT /groups (edit groups) - max_group_size can't be edited to be lower than current_group_size
-
-// TODO:
+// NEXT:
 // res.send(err) - send sql error or hide and send generic error?
 // remove user_id from query's? already validated and appended via token
+
+// TODO:
+// google auth with passport
 // mail notifications? group delete, group edit, group start_time approaching
-// Google OAuth2.0 - https://developers.google.com/identity/protocols/OAuth2
-  // 1. Obtain OAuth 2.0 credentials from the Google API Console.
-  // 2. Obtain an access token from the Google Authorization Server.
-  // 3. Send the access token to an API.
-  // 4. Refresh the access token, if necessary.
 // add google_id to sessions table?
 // POSTMAN test suite
 // refactor with routers
