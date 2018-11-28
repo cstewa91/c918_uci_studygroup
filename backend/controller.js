@@ -165,7 +165,7 @@ module.exports = function(app) {
     const { columns, values } = postColumnsAndValues(req.body);
     const createQuery = `INSERT INTO users (${columns})
                           VALUES(${values})`;
-
+    console.log(createQuery);
     res.cookie('token', '', { maxAge: -1, httpOnly: true });
 
     sendQuery('post', createQuery, res);
@@ -322,7 +322,8 @@ module.exports = function(app) {
  * @param {object} body 
  */
 function postColumnsAndValues(body) {
-  if (body.password) body.password = sha1(body.password);
+  if (body['`password`']) body['`password`'] = sha1(body['`password`']);
+
   const columns = Object.keys(body).join(', ');
   const values = Object.values(body).map(value => `${value}`).join(', ');
 
@@ -334,9 +335,9 @@ function postColumnsAndValues(body) {
  * @param {object} body 
  */
 function putColumnsAndValues(body) {
-  if (body.password) body.password = sha1(body.password);
+  if (body['`password`']) body['`password`'] = sha1(body['`password`']);
+  
   const updates = Object.keys(body).map(key => `${key} = ${body[key]}`).join(', ');
-
   return updates;
 }
 
