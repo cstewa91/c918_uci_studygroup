@@ -1,39 +1,84 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux';
+import { getGroupDetails } from '../../actions';
+import NavButton from '../general/nav-button';
 import './group-info.css';
-import Header from '../general/header'
+import Header from '../general/header';
 
-export default () => {
-    return (
-        <div>
-            <Header />
-            <Link to="/hamburger">Menu</Link>
-            <div className="group-information-container">
-                <div className="group-information">
-                    <h1 className="group-name">The Awesome Group</h1>
-                    <div className="group-owner">Edit Group Details</div>
-                    <div className="group-member">Leave Group</div>
-                    <div className="group-details">
-                        <span className="group-subject">ENG</span> <span className="group-course">101</span>
-                        <span className="group-capacity">2/3</span>
-                        <span className="group-timeslot">8:00 AM - 9:00 AM</span>
-                        <span className="group-date">11/6</span>
-                        <span className="group-location">Wheeler Hall</span>
-                        <div className="btn map-button"><a href="https://map.uci.edu/" target="_blank">MAP</a></div>
-                        <div className="group-description-container">
-                            <p className="group-description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi et pretium tellus.
-                                Phasellus vulputate dignissim magna sed sodales. Phasellus convallis posuere magna vel
-                                malesuada. Quisque at efficitur arcu. Ut quis enim cursus, sollicitudin orci eu,
-                                fermentum tellus. Vestibulum porta purus eget luctus luctus. Praesent non diam
-                                hendrerit, egestas sapien ac, molestie mauris. Pellentesque elementum, dui a congue
-                                dignissim, eros urna maximus arcu, quis interdum risus ligula quis risus. Cras ac
-                                molestie velit. Duis interdum mauris vitae metus aliquam, non auctor lacus consectetur.
-                            </p>
+
+class GroupInfo extends Component{
+
+    componentDidMount(){
+        console.log(this.props);
+
+        this.props.getGroupDetails(17);
+    }
+
+    render(){
+        console.log(this.props.singleGroup)
+
+        const {name, subject, course, start_time, end_time, max_group_size, current_group_size, location, description } = this.props.singleGroup
+
+        return (
+            <div className="edit-created">
+                <Header/>   
+                <main className='main-content'>
+                    <div className='container'>
+                    <Link to='/hamburger' className='btn blue'>Hamburger</Link>
+                    
+                        <div className='main-title'>
+                            <p className='edit-group'>Created Group Details:</p>
+                        </div>
+
+                        <div className="group-details">
+                            <form className='group-info'>
+                                <div className='group-name form-group'>
+                                    <p>{name}</p>
+                                </div>
+                                <div className='subject form-group'>                  
+                                    <p>{subject}</p>
+                                </div>
+                                <div className='course form-group'>                       
+                                    <p>{course}</p>
+                                </div>
+                                <div className='date form-group'>               
+                                    <p>{`${start_time}-${end_time}`}</p>
+                                </div>
+                                <div className='users form-group'>             
+                                    <p>{`${current_group_size}-${max_group_size}`}</p>
+                                </div>
+                                <div className='time form-group'>                 
+                                    <p>{`${start_time}-${end_time}`}</p>
+                                </div>
+                                <div className='location form-group'>                  
+                                    <p>{location}</p>
+                                </div>
+                                <div className='details'>        
+                                    <p>{description}</p>
+                                </div>
+                            </form>    
                         </div>
                     </div>
-                </div>
+                </main>
+                <footer>
+                    <div className='update'>
+                        <NavButton to={`/api/groups/`}/>
+                    </div>
+                </footer>
             </div>
-        </div>
-    )
+                )
+        }
 }
+
+function mapStateToProps(state){
+    console.log('state', state)
+    return {
+        singleGroup: state.editGroup.singleGroup
+    }
+}
+
+export default connect(mapStateToProps, {
+    getGroupDetails: getGroupDetails,
+})(GroupInfo)
+

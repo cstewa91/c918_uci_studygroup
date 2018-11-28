@@ -12,16 +12,16 @@ class EditGroup extends Component{
     componentDidMount(){
         console.log(this.props);
 
-        this.props.getGroupDetails(this.props.match.params.group_id)
+        // this.props.getGroupDetails(this.props.match.params.group_id)
     }
 
     render(){
 
-        if(this.state.isEditable){
-            // return form for editing
+        // if(this.state.isEditable){
+        //     // return form for editing
 
-            return <form>Edit Profile</form>
-        }
+        //     return <form>Edit Profile</form>
+        // }
 
 
         return (

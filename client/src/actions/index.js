@@ -8,8 +8,8 @@ const API_GROUPS = '/api/groups';
 const API_LOGIN =  '/api/login';
 const API_USER = '/api/users/:user_id';
 const API_EDIT_USER = '/api/users'
-const API_EDIT_GROUP_INFO = '/api/groups/:group_id'
-const API_GET_GROUP_DETAILS = '/api/groups/:group_id'
+const API_EDIT_GROUP_INFO = '/api/groups/'
+const API_GET_GROUP_DETAILS = '/api/groups/:user_id'
 const API_NEW_ACCOUNT = '/api/users'
 axios.defaults.withCredentials = true;
 
@@ -63,16 +63,16 @@ export function loginApp(item) {
    }
 }
 
-export function getGroupDetails(groupId){
-   const resp = axios.get(`${BASE_URL + API_GET_GROUP_DETAILS}/${groupId}`);
+export function getGroupDetails(){
+   const resp = axios.get(BASE_URL + API_GET_GROUP_DETAILS);
    return {
       type: types.GET_GROUP_DETAILS,
       payload: resp
    }
 }
 
-export function editGroupInfo(groupId){
-   const resp = axios.put(`${BASE_URL + API_EDIT_GROUP_INFO}/${groupId}`);
+export function editGroupInfo(){
+   const resp = axios.put(BASE_URL + API_EDIT_GROUP_INFO);
    return {
       type: types.EDIT_GROUP_INFO,
       payload: resp
