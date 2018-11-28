@@ -13,10 +13,10 @@ class Home extends Component {
    }
    render() {
       const listCreatedGroups = this.props.created.map(item => {
-         return <Link to="/awesome-group"><div key={item.id}>{item.name} {item.location} {item.subject}</div></Link>
+         return <div key={item.id}><Link to={`/api/groups/${item.id}`}> {item.name} {item.location} {item.subject}</Link></div>
       })
       const listJoinedGroups = this.props.joined.map(item => {
-         return <Link to="/awesome-group"><div key={item.id}>{item.name} {item.location} {item.subject}</div></Link>
+         return <div key={item.id}><Link to={`/api/groups/${item.id}`}> {item.name} {item.location} {item.subject}</Link></div>
       })
       return (
          <div>

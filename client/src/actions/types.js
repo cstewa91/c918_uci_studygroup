@@ -7,4 +7,5 @@ export default {
    LOGIN_APP: 'login_app',
    GET_GROUP_DETAILS: 'get_group_details',
    EDIT_GROUP_INFO: 'edit_group_info',
+   CREATE_ACCOUNT: 'create_account'
 }

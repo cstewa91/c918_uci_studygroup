@@ -7,16 +7,20 @@ import './profile.css';
 import Header from '../general/header';
 
 
-
-
 class Profile extends Component {
     state = {
-        isEditable: false
+        isEditable: false,
     }
 
     componentDidMount(){
         console.log(this.props)
         this.props.getUserInfo(this.props);
+    }
+
+    handleEditClick= (event)=>{
+        this.setState ({
+            isEditable: true,
+        })
     }
 
     render(){
@@ -29,7 +33,7 @@ class Profile extends Component {
             return <form>Edit Profile</form>
         }
 
-        
+
         return (
             <div className='profile'>
                 <Header/>

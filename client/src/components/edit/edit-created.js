@@ -16,6 +16,14 @@ class EditGroup extends Component{
     }
 
     render(){
+
+        if(this.state.isEditable){
+            // return form for editing
+
+            return <form>Edit Profile</form>
+        }
+
+
         return (
             <div className="edit-created">
                 <Header/>   
