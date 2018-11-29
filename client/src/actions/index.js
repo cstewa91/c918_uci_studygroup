@@ -99,11 +99,3 @@ export function createAccount(item){
       payload: resp
    }
 }
-
-export function getUserId() {
-   const resp = axios.get(BASE_URL + API_USER)
-   return {
-      type: types.GET_USER_ID,
-      payload: resp
-   }
-}
