@@ -38,7 +38,14 @@ module.exports = function(app) {
                     LEFT JOIN group_members AS gm 
                     ON g.id = gm.group_id`;
 
-    sendQuery('get', query, res);
+    connection.query(query, (err, results) => {
+      if (err) {
+        console.log(err);
+        return res.send('Database query error');
+      }
+
+      return res.send(results[0]);
+    });
   });
 
   // filter groups
@@ -434,7 +441,7 @@ function validateToken(req, res, next) {
     { route: /\/api\/login/, method: 'POST' },                      // api/login
     { route: /\/api\/users$/, method: 'POST' },                     // api/users
     { route: /\/api\/groups$/, method: 'GET' },                     // api/groups
-    { route: /\/api\/groups\/\d+/, method: 'GET' },                 // api/groups/:group_id
+    { route: /\/api\/groups\/details\/\d+/, method: 'GET' },        // api/groups/details/:group_id
     { route: /\/api\/groups\/filter\/.+/, method: 'GET' },          // api/groups/filter/:phrase
   ]
   const isExcludedRoute = excludedRoutes.some(excludedRoute => {
@@ -459,18 +466,7 @@ function validateToken(req, res, next) {
   }
 } 
 
-// UPDATES:
-// db.json.config - must copy into a db.json with username and password for import
-// remove user_id from GET query's, changed routes:
-// GET /api/groups/details/:group_id
-// GET /api/groups/joined
-// GET /api/groups/created
-// GET /api/users 
-// mysql errors sends 'Database query error' instead of returning err object, console logs err object on backend server
-
 // TODO:
-// check config file is hidden
-// optional parameters?
 // google auth with passport
 // mail notifications? group delete, group edit, group start_time approaching
 // add google_id to sessions table?
