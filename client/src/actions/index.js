@@ -2,14 +2,14 @@ import types from './types';
 import axios from 'axios';
 
 const BASE_URL = 'http://localhost:9000';
-const API_GROUPS_JOINED = '/api/groups/joined/:user_id';
-const API_GROUPS_CREATED = '/api/groups/created/:user_id';
+const API_GROUPS_JOINED = '/api/groups/joined';
+const API_GROUPS_CREATED = '/api/groups/created';
 const API_GROUPS = '/api/groups';
 const API_LOGIN = '/api/login';
-const API_USER = '/api/users/:user_id';
+const API_USER = '/api/users';
 const API_EDIT_USER = '/api/users';
-const API_EDIT_GROUP_INFO = '/api/groups/';
-const API_GET_GROUP_DETAILS = '/api/groups/:user_id';
+const API_EDIT_GROUP_INFO = '/api/groups';
+const API_GET_GROUP_DETAILS = '/api/groups';
 const API_NEW_ACCOUNT = '/api/users';
 axios.defaults.withCredentials = true;
 
