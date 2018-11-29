@@ -8,10 +8,12 @@ import worm from '../../assets/images/bookworm.png'
 class CreateNewAccount extends Component {
    renderInput(props) {
       const { input, label, meta: { touched, error } } = props
+      console.log(props)
       return (
          <div>
             <input {...input} type="text" />
             <label>{label}</label>
+            <p>{touched && error}</p>
          </div>
       )
    }
@@ -40,6 +42,9 @@ class CreateNewAccount extends Component {
                <div>
                   <Field name="password" label="Password" component={this.renderInput} />
                </div>
+               {/* <div>
+                  <Field name="retypePassword" label="Retype Password" component={this.renderInput} />
+               </div> */}
                <div>
                   <Field name="google_id" label="Google ID" component={this.renderInput} />
                </div>
@@ -50,11 +55,38 @@ class CreateNewAccount extends Component {
    }
 }
 
+function validate({ firstname, lastname, username, email, password, google_id }) {
+   const error = {};
+   if (!firstname) {
+      error.firstname = "Please enter your first name"
+   }
+   if (!lastname) {
+      error.lastname = "Please enter your last name"
+   }
+   if (!username) {
+      error.username = "Please enter a username"
+   }
+   if (!email) {
+      error.email = "Please enter your email"
+   }
+   if (!password) {
+      error.password = "Please enter a password"
+   }
+   // if (retypePassword !== password) {
+   //    error.retypePassword = "Your passwords do not match"
+   // }
+   if (!google_id) {
+      error.google_id = "Please enter a google id"
+   }
+   return error
+}
+
 CreateNewAccount = reduxForm({
-   form: 'create-account'
+   form: 'create-account',
+   validate: validate
 })(CreateNewAccount);
 
-export default connect(null,{
+export default connect(null, {
    createAccount: createAccount,
    loginApp: loginApp,
 })(CreateNewAccount)

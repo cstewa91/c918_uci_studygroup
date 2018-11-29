@@ -14,18 +14,28 @@ class Login extends Component {
          <div>
             <input  {...input} type="text" />
             <label>{label}</label>
+            <p>{touched && error}</p>
          </div>
       )
    }
    handleAddItem = async (values) => {
-      await this.props.loginApp(values);
-      this.props.history.push('/home')
+      await this.props.loginApp(values)
+      this.validLogin();
+   }
+   validLogin = () => {
+      const { user } = this.props
+      if(user === "valid"){
+         this.props.history.push('/home')
+      }
+   }
+   invalidLogin = () => {
+      const { user } = this.props
+      if(user === "invalid"){
+         return "Invalid Email or Password"
+      }
    }
    render() {
       const { handleSubmit } = this.props
-      if (this.props.userId) {
-         const userIdNumber = (this.props.userId[0].username)
-      }
       return (
          <div>
             <div>
@@ -41,6 +51,7 @@ class Login extends Component {
                   <Field name="password" label="Password" component={this.renderInput} />
                </div>
                <button>Login</button>
+               <p>{this.invalidLogin()}</p>
             </form>
             <Link to='/create-account'>create account</Link>
          </div>
@@ -48,14 +59,26 @@ class Login extends Component {
    }
 }
 
+function validate({ email, password }) {
+   const error = {};
+   if (!email) {
+      error.email = 'Please enter your email'
+   }
+   if (!password) {
+      error.password = 'Please enter your password'
+   }
+   return error
+}
+
 function mapStateToProps(state) {
    return {
-      userId: state.login.user
+      user: state.login.user
    }
 }
 
 Login = reduxForm({
-   form: 'login'
+   form: 'login',
+   validate: validate
 })(Login);
 
 export default connect(mapStateToProps, {
