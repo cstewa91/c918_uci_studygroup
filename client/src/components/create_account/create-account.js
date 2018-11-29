@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { createAccount } from '../../actions'
+import { createAccount } from '../../actions';
+import { loginApp } from '../../actions';
 import worm from '../../assets/images/bookworm.png'
 
 class CreateNewAccount extends Component {
@@ -16,6 +17,7 @@ class CreateNewAccount extends Component {
    }
    handleAddItem = async (values) => {
       await this.props.createAccount(values);
+      await this.props.loginApp(values)
       this.props.history.push('/home')
    }
    render() {
@@ -53,5 +55,6 @@ CreateNewAccount = reduxForm({
 })(CreateNewAccount);
 
 export default connect(null,{
-   createAccount: createAccount
+   createAccount: createAccount,
+   loginApp: loginApp,
 })(CreateNewAccount)

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import { loginApp } from '../../actions'
-import { getUserId } from '../../actions'
 import worm from '../../assets/images/bookworm.png'
 import './login.css';
 
@@ -20,7 +19,6 @@ class Login extends Component {
    }
    handleAddItem = async (values) => {
       await this.props.loginApp(values);
-      await this.props.getUserId()
       this.props.history.push('/home')
    }
    render() {
@@ -62,5 +60,4 @@ Login = reduxForm({
 
 export default connect(mapStateToProps, {
    loginApp: loginApp,
-   getUserId: getUserId
 })(Login);
