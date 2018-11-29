@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
+import {getAllGroups} from '../../actions';
 import './group-modal.css';
 
-class GroupModal extends Component {
+class GroupModal extends Component{
     state = {
         show: false
     };
+
 
     open = () => this.setState({show: true});
 
@@ -13,11 +15,20 @@ class GroupModal extends Component {
 
     render(){
 
+        // const listAllGroups = this.props.all.map(item => {
+        //     return (
+        //         <div className="search-result">
+        //             <li key={item.id}>
+        //
+        //             </li>
+        //         </div>
+        //     )
+        // });
+
         if(this.state.show) {
             return (
                 <div id="group-modal" className="basic-modal">
                     <div onClick={e => e.stopPropagation()} className="basic-modal-content">
-                        <h1 className="group-name">The Awesome Group</h1>
                         <Link to="/search-group">
                             <div className="basic-modal-close" onClick={this.close}>
                                 x
@@ -54,9 +65,7 @@ class GroupModal extends Component {
             )
         }
 
-        return (
-            <button onClick={this.open} className="btn btn-outline-primary">Details</button>
-        );
+        return <div className="btn btn-outline-primary" onClick={this.open}>Data gotten from server goes here</div>;
     }
 }
 
