@@ -2,14 +2,23 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import {getAllGroups} from '../../actions';
 import './group-modal.css';
+import {connect} from 'react-redux';
 
 class GroupModal extends Component{
     state = {
         show: false
     };
 
+    componentDidMount(){
+        console.log('Call action creator on mount to get item details for item:', this.props.id);
+    }
 
-    open = () => this.setState({show: true});
+
+    open = () => {
+        this.setState({show: true});
+
+        console.log('**** _OR_ **** Call action creator on open to get item details for item:', this.props.id);
+    }
 
     close = () => this.setState({show: false});
 
@@ -39,11 +48,10 @@ class GroupModal extends Component{
                             <p className="group-capacity">2/3 members</p>
                             <p className="group-timeslot">8:00 AM - 9:00 AM</p>
                             <p className="group-date">11/6</p>
-                            <p className="group-location">Wheeler Hall
-                                <div className="btn btn-light map-button">
-                                    <a href="https://map.uci.edu/" target="_blank">MAP</a>
-                                </div>
-                            </p>
+                            <p className="group-location">Wheeler Hall</p>
+                            <div className="btn btn-light map-button">
+                                <a href="https://map.uci.edu/" target="_blank">MAP</a>
+                            </div>
                             <div className="group-description-container">
                                 <p className="group-description">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi et pretium tellus.
@@ -65,8 +73,16 @@ class GroupModal extends Component{
             )
         }
 
-        return <div className="btn btn-outline-primary" onClick={this.open}>Data gotten from server goes here</div>;
+        return <li onClick={this.open}>{this.props.text}</li>;
     }
 }
 
-export default GroupModal;
+function mapStateToProps(state) {
+    return {
+        all: state.search.all
+    }
+}
+
+export default connect(mapStateToProps,{
+    getAllGroups: getAllGroups
+})(GroupModal);
