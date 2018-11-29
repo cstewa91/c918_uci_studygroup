@@ -29,7 +29,7 @@ module.exports = function(app) {
   });
 
   // group details 
-  app.get('/api/groups/details/:group_id', (req, res) => {
+  app.get('/api/groups/details/:group_id', sanitizeParams, (req, res) => {
     const query = `SELECT g.*, COUNT(gm.group_id) AS current_group_size 
                     FROM 
                     (SELECT * 

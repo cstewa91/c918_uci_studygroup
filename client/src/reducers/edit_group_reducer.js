@@ -9,9 +9,9 @@ export default (state = DEFAULT_STATE, action) => {
     switch (action.type) {
         case types.GET_GROUP_DETAILS:
         console.log(action.payload)
-            return { ...state, singleGroup: action.payload.data}
+            return { ...state, singleGroup: action.payload.data[0]}
         case types.EDIT_GROUP_INFO:
-            return { ...state, single_group: action.payload.data }
+            return { ...state, single_group: action.payload.data[0] }
         default:
             return state;
    }

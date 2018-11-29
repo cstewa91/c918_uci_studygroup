@@ -10,16 +10,17 @@ import Header from '../general/header';
 class GroupInfo extends Component{
 
     componentDidMount(){
-        console.log(this.props);
-
-        this.props.getGroupDetails(17);
+        console.log('mount', this.props.location.pathname.slice(-2));
+        const groupId = this.props.location.pathname.slice(-2)
+        this.props.getGroupDetails(groupId);
     }
 
     render(){
-        console.log(this.props.singleGroup)
+        console.log('render props', this.props.singleGroup)
 
         const {name, subject, course, start_time, end_time, max_group_size, current_group_size, location, description } = this.props.singleGroup
 
+        // const adjustedDate = start_time.slice(6,10)  information is not sending fast enough
         return (
             <div className="edit-created">
                 <Header/>   
@@ -43,10 +44,10 @@ class GroupInfo extends Component{
                                     <p>{course}</p>
                                 </div>
                                 <div className='date form-group'>               
-                                    <p>{`${start_time}-${end_time}`}</p>
+                                    <p>{start_time}</p>
                                 </div>
                                 <div className='users form-group'>             
-                                    <p>{`${current_group_size}-${max_group_size}`}</p>
+                                    <p>{`${current_group_size}/${max_group_size}`}</p>
                                 </div>
                                 <div className='time form-group'>                 
                                     <p>{`${start_time}-${end_time}`}</p>
@@ -63,7 +64,7 @@ class GroupInfo extends Component{
                 </main>
                 <footer>
                     <div className='update'>
-                        <NavButton to={`/api/groups/`}/>
+                        <NavButton to={`/edit-group`} text='UPDATE'/>
                     </div>
                 </footer>
             </div>

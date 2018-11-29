@@ -2,14 +2,14 @@ import types from './types';
 import axios from 'axios';
 
 const BASE_URL = 'http://localhost:9000';
-const API_GROUPS_JOINED = '/api/groups/joined/:user_id';
-const API_GROUPS_CREATED = '/api/groups/created/:user_id';
+const API_GROUPS_JOINED = '/api/groups/joined/';
+const API_GROUPS_CREATED = '/api/groups/created/';
 const API_GROUPS = '/api/groups';
 const API_LOGIN = '/api/login';
-const API_USER = '/api/users/:user_id';
+const API_USER = '/api/users/';
 const API_EDIT_USER = '/api/users';
 const API_EDIT_GROUP_INFO = '/api/groups/';
-const API_GET_GROUP_DETAILS = '/api/groups/:user_id';
+const API_GET_GROUP_DETAILS = '/api/groups/details';
 const API_NEW_ACCOUNT = '/api/users';
 axios.defaults.withCredentials = true;
 
@@ -75,16 +75,16 @@ export function getAllGroups(){
    }
 }
 
-export function getGroupDetails(){
-   const resp = axios.get(BASE_URL + API_GET_GROUP_DETAILS);
+export function getGroupDetails(groupId){
+   const resp = axios.get(`${BASE_URL + API_GET_GROUP_DETAILS}/${groupId}`);
    return {
       type: types.GET_GROUP_DETAILS,
       payload: resp
    }
 }
 
-export function editGroupInfo(){
-   const resp = axios.put(BASE_URL + API_EDIT_GROUP_INFO);
+export function editGroupInfo(groupId){
+   const resp = axios.put(`${BASE_URL + API_EDIT_GROUP_INFO}/${groupId}`);
    return {
       type: types.EDIT_GROUP_INFO,
       payload: resp
