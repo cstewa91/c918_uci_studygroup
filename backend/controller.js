@@ -130,7 +130,14 @@ module.exports = function(app) {
                     FROM users
                     WHERE id = ${req.body.user_id}`;
 
-    sendQuery('get', query, res);
+    connection.query(query, (err, results) => {
+      if (err) {
+        console.log(err);
+        return res.send('Database query error');
+      }
+
+      return res.send(results[0]);
+    });
   });
 
   // login
