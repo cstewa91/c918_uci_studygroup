@@ -10,17 +10,14 @@ import Header from '../general/header';
 class GroupInfo extends Component{
 
     componentDidMount(){
-        console.log('mount', this.props.location.pathname.slice(-2));
-        const groupId = this.props.location.pathname.slice(-2)
-        this.props.getGroupDetails(groupId);
+
+        this.props.getGroupDetails(this.props.match.params.group_id);
     }
 
     render(){
-        console.log('render props', this.props.singleGroup)
 
         const {name, subject, course, start_time, end_time, max_group_size, current_group_size, location, description } = this.props.singleGroup
-
-        // const adjustedDate = start_time.slice(6,10)  information is not sending fast enough
+    
         return (
             <div className="edit-created">
                 <Header/>   
@@ -44,10 +41,10 @@ class GroupInfo extends Component{
                                     <p>{course}</p>
                                 </div>
                                 <div className='date form-group'>               
-                                    <p>{start_time}</p>
+                                    <p>{`${start_time}-${end_time}`}</p>
                                 </div>
                                 <div className='users form-group'>             
-                                    <p>{`${current_group_size}/${max_group_size}`}</p>
+                                    <p>{`${current_group_size}-${max_group_size}`}</p>
                                 </div>
                                 <div className='time form-group'>                 
                                     <p>{`${start_time}-${end_time}`}</p>
@@ -64,7 +61,7 @@ class GroupInfo extends Component{
                 </main>
                 <footer>
                     <div className='update'>
-                        <NavButton to={`/edit-group`} text='UPDATE'/>
+                        <NavButton to={`/edit-group/${this.props.match.params.group_id}`} text='EDIT'/>
                     </div>
                 </footer>
             </div>
@@ -73,7 +70,6 @@ class GroupInfo extends Component{
 }
 
 function mapStateToProps(state){
-    console.log('state', state)
     return {
         singleGroup: state.editGroup.singleGroup
     }

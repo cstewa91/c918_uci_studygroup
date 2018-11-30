@@ -21,11 +21,11 @@ class App extends Component {
                 <Route path="/home" component={Home} />
                 <Route path="/create-group" component={Create} />
                 <Route path="/profile" component={Profile} />
-                <Route path='/edit-group' component={EditCreated} />
+                <Route path='/edit-group/:group_id' component={EditCreated} />
                 <Route path='/hamburger' component={Hamburger} />
                 <Route path='/search-group' component={Search} />
                 <Route path='/selected-group' component={GroupModal} />
-                <Route path='/group-info' component={GroupInfo} />
+                <Route path='/group-info/:group_id' component={GroupInfo} />
                 <Route path='/create-account' component={CreateAccount}/>
             </div>
         )
