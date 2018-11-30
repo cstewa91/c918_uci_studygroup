@@ -75,7 +75,7 @@ export function getAllGroups(){
    }
 }
 
-export function getGroupDetails(groupId){
+export function  getGroupDetails(groupId){
    const resp = axios.get(`${BASE_URL + API_GET_GROUP_DETAILS}/${groupId}`);
    return {
       type: types.GET_GROUP_DETAILS,
@@ -83,8 +83,8 @@ export function getGroupDetails(groupId){
    }
 }
 
-export function editGroupInfo(groupId){
-   const resp = axios.put(`${BASE_URL + API_EDIT_GROUP_INFO}/${groupId}`);
+export function editGroupInfo(groupId, item){
+   const resp = axios.put(`${BASE_URL + API_EDIT_GROUP_INFO}${groupId}`, item);
    return {
       type: types.EDIT_GROUP_INFO,
       payload: resp

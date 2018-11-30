@@ -5,24 +5,35 @@ import { getGroupDetails } from '../../actions'
 import { editGroupInfo } from '../../actions'
 import './edit-created.css';
 import Header from '../general/header'
+import { Field, reduxForm } from 'redux-form'
+import NavButton from '../general/nav-button'
+
+
 
 
 class EditGroup extends Component{
 
     componentDidMount(){
-        console.log(this.props);
+        this.props.getGroupDetails(this.props.match.params.group_id)
+    }
 
-        // this.props.getGroupDetails(this.props.match.params.group_id)
+    renderInputs(props){
+        const{input, label, meta: {touched, error}} = props;
+        return(
+            <div>
+                <input {...input} type="text"/>
+                <label>{label}</label>
+            </div>
+        )
+    }
+
+    handleUpdateItem = async (values) => {
+        await this.props.editGroupInfo(this.props.match.params.group_id, values);
+        this.props.history.push('/home');
     }
 
     render(){
-
-        // if(this.state.isEditable){
-        //     // return form for editing
-
-        //     return <form>Edit Profile</form>
-        // }
-
+        const {handleSubmit} = this.props
 
         return (
             <div className="edit-created">
@@ -31,55 +42,55 @@ class EditGroup extends Component{
                     <div className='container'>
                     <Link to='/hamburger' className='btn blue'>Hamburger</Link>
                     <Link to='/home'>X</Link>
-                        <div className='main-title'>
-                            <p className='edit-group'>Edit Group:</p>
+                    <p className='edit-group'>Edit Group:</p>
+                    <form onSubmit={handleSubmit(this.handleUpdateItem)}>
+                        <div>
+                            <Field name="name" label="Group Name" component={this.renderInputs} />
                         </div>
-
-                        <div className="group-details">
-                            <form className='group-info'>
-                                <div className='group-name form-group'>
-                                    <input type='text' placeholder='The Amazing Group'/>
-                                </div>
-                                <div className='subject form-group'>                  
-                                    <input type='text' placeholder='Bio'/>
-                                </div>
-                                <div className='course form-group'>                       
-                                    <input type='text' placeholder='101'/>
-                                </div>
-                                <div className='date form-group'>               
-                                    <input type='text' placeholder='11/18/18'/>
-                                </div>
-                                <div className='users form-group'>             
-                                    <input type='text' placeholder='4'/>
-                                </div>
-                                <div className='time form-group'>                 
-                                    <input type='text' placeholder='7:00pm-9:00pm'/>
-                                </div>
-                                <div className='location form-group'>                  
-                                    <input type='text' placeholder='Wheeler Hall'/>
-                                </div>
-                                <div className='details'>        
-                                    <textarea className='form-control' rows='5' value='' onChange=''></textarea>
-                                </div>
-                            </form>    
+                        <div>
+                            <Field name="subject" label="Subject" component={this.renderInputs} />
                         </div>
+                        <div>
+                            <Field name="course" label="Course Number" component={this.renderInputs} />
+                        </div>
+                        <div>
+                            <Field name="max_group_size" label="Group Size" component={this.renderInputs} />
+                        </div>
+                        <div>
+                            <Field name="start_time" label="Starting Time" component={this.renderInputs} />
+                        </div>
+                        <div>
+                            <Field name="end_time" label="Ending Time" component={this.renderInputs} />
+                        </div>
+                        <div>
+                            <Field name="location" label="Location" component={this.renderInputs} />
+                        </div>
+                        <div>
+                            <Field name="description" label="Description" component={this.renderInputs} />
+                        </div>
+                        <button>update</button>
+                        {/* <NavButton to='' text='UPDATE' /> */}
+                    </form>
                     </div>
                 </main>
-                <footer>
-                    <div className='update'>
-                    <Link to='/home' className='btn blue'>
-                        <button type="button" className="btn btn-primary">Update</button>
-                    </Link>
-                    </div>
-                </footer>
+               
             </div>
                 )
         }
 }
 
+EditGroup = reduxForm({
+    form: 'edit-group',
+    enableReinitialize: true
+})(EditGroup)
+
 function mapStateToProps(state){
+    
+    const { singleGroup } = state.editGroup;
+
     return {
-        single_group: state.editGroup.single_group
+        initialValues: singleGroup,
+        single_group: state.editGroup.singleGroup
     }
 }
 

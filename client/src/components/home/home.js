@@ -9,10 +9,13 @@ import { connect } from 'react-redux';
 
 class Home extends Component {
    componentDidMount() {
+      
       this.props.getCreatedGroups();
       this.props.getJoinedGroups();
+      console.log('mount', this.props)
    }
    render() {
+      console.log(this.props)
       const listCreatedGroups = this.props.created.map(item => {
          return <div key={item.id}><Link to={`/group-info/${item.id}`}> {item.name} {item.location} {item.subject}</Link></div>
       })
