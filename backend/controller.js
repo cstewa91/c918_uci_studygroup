@@ -13,6 +13,7 @@ connection.connect(err => {
 
 module.exports = function(app) {
   app.use(sanitizeBody);
+  app.use(encryptPassword);
   app.use(validateToken);
 
   // search groups 
@@ -139,10 +140,9 @@ module.exports = function(app) {
 
     const email = req.body['`email`'];
     const password = req.body['`password`'];
-    const encryptedPassword = `'${sha1(password)}'`;
     const query = `SELECT id 
                     FROM users 
-                    WHERE email = ${email} AND password = ${encryptedPassword}`;
+                    WHERE email = ${email} AND password = ${password}`;
 
     connection.query(query, (err, results) => {
       if (err) {
@@ -174,11 +174,10 @@ module.exports = function(app) {
 
   // create user 
   app.post('/api/users', function (req, res) {
-    // const { columns, values } = postColumnsAndValues(req.body);
-    // const createQuery = `INSERT INTO users (${columns})
-    //                       VALUES(${values})`;
-    
-    
+    const body = req.body;
+    const createQuery = `INSERT INTO users (google_id, username, firstname, lastname, email, password)
+                          VALUES(${body['`google_id`'] || null}, ${body['`username`']}, ${body['`firstname`'] || null}, 
+                                 ${body['`lastname`'] || null}, ${body['`email`']}, ${body['`password`']})`;
 
     res.cookie('token', '', { maxAge: -1, httpOnly: true });
 
@@ -205,9 +204,9 @@ module.exports = function(app) {
       if (current_group_size >= max_group_size) {
         return res.send('Unable to join - group is max size');
       } else {
-        const { columns, values } = postColumnsAndValues(req.body);
-        const query = `INSERT INTO group_members (${columns})
-                        VALUES(${values})`;
+        const body = req.body;
+        const query = `INSERT INTO group_members (group_id, user_id)
+                        VALUES(${body['`group_id`']}, ${body.user_id})`;
 
         sendQuery('post', query, res);
       }
@@ -216,9 +215,10 @@ module.exports = function(app) {
 
   // create group 
   app.post('/api/groups', (req, res) => {
-    const { columns, values } = postColumnsAndValues(req.body);
-    const createQuery = `INSERT INTO groups (${columns})
-                          VALUES(${values})`;
+    const body = req.body;
+    const createQuery = `INSERT INTO groups (user_id, name, location, subject, course, start_time, end_time, max_group_size, description)
+                          VALUES(${body.user_id}, ${body['`name`']}, ${body['`location`']}, ${body['`subject`']}, ${body['`course`'] || null}, 
+                          ${body['`start_time`']}, ${body['`end_time`']}, ${body['`max_group_size`']}, ${body['`description`'] || null})`;
 
     sendQuery('post', createQuery, res);
   });
@@ -276,12 +276,15 @@ module.exports = function(app) {
 
   // edit user  
   app.put('/api/users', (req, res) => {
-    const id = req.body.user_id;
-    delete req.body.user_id;
-    const updates = putColumnsAndValues(req.body);
-    const query = `UPDATE users SET ${updates}
-                    WHERE id = ${id}`;
-
+    const body = req.body;
+    const query = `UPDATE users SET google_id = ${body['`google_id`']},
+                                    username = ${body['`username`']},
+                                    firstname = ${body['`firstname`']},
+                                    lastname = ${body['`lastname`']},
+                                    email = ${body['`email`']},
+                                    password = ${body['`password`']}
+                    WHERE id = ${body.user_id}`;
+    console.log(query);
     sendQuery('put', query, res);
   });
 
@@ -302,38 +305,37 @@ module.exports = function(app) {
       if (author_id !== req.body.user_id) return res.send('Permission denied');
 
       const new_max_group_size = req.body['`max_group_size`'];
-      if (new_max_group_size) {
-        const groupSizeQuery = `SELECT COUNT(group_id) AS current_group_size 
-                                FROM 
-                                group_members
-                                WHERE group_id = ${group_id}`;
-        
-        connection.query(groupSizeQuery, (err, results) => {
-          if (err) {
-            console.log(err);
-            return res.send('Database query error');
-          }
+      
+      const groupSizeQuery = `SELECT COUNT(group_id) AS current_group_size 
+                              FROM 
+                              group_members
+                              WHERE group_id = ${group_id}`;
+      
+      connection.query(groupSizeQuery, (err, results) => {
+        if (err) {
+          console.log(err);
+          return res.send('Database query error');
+        }
 
-          const { current_group_size } = results[0];
-          if (current_group_size > parseInt(new_max_group_size.match(/\d+/)[0])) {
-            return res.send('New max group size cannot be smaller than current group size');
-          } else {
-            const updates = putColumnsAndValues(req.body);
-            delete req.body.user_id;
-            const updateQuery = `UPDATE groups SET ${updates}
-                                  WHERE id = ${group_id}`;
-
-            sendQuery('put', updateQuery, res);
-          }
-        });
-      } else {
-        const updates = putColumnsAndValues(req.body);
-        delete req.body.user_id;
-        const updateQuery = `UPDATE groups SET ${updates}
-                              WHERE id = ${group_id}`;
-
-        sendQuery('put', updateQuery, res);
-      }
+        const { current_group_size } = results[0];
+        if (current_group_size > parseInt(new_max_group_size.match(/\d+/)[0])) {
+          return res.send('New max group size cannot be smaller than current group size');
+        } else {
+          const body = req.body;
+          const updateQuery = `UPDATE groups SET user_id = ${body.user_id}, 
+                                                  name = ${body['`name`']}, 
+                                                  location = ${body['`location`']}, 
+                                                  subject = ${body['`subject`']}, 
+                                                  course = ${body['`course`']}, 
+                                                  start_time = ${body['`start_time`']}, 
+                                                  end_time = ${body['`end_time`']},
+                                                  max_group_size = ${body['`max_group_size`']}, 
+                                                  description = ${body['`description`']}
+                                WHERE id = ${group_id}`;
+          
+          sendQuery('put', updateQuery, res);
+        }
+      });
     });
   });
 
@@ -343,28 +345,12 @@ module.exports = function(app) {
   });
 }
 
-/**
- * Returns an SQL POST query using data from body
- * @param {object} body 
- */
-function postColumnsAndValues(body) {
+function encryptPassword(req, res, next) {
+  const body = req.body;
+
   if (body['`password`']) body['`password`'] = `'${sha1(body['`password`'])}'`;
 
-  const columns = Object.keys(body).join(', ');
-  const values = Object.values(body).map(value => `${value}`).join(', ');
-
-  return { columns, values };
-}
-
-/**
- * Returns an SQL PUT query using data from body
- * @param {object} body 
- */
-function putColumnsAndValues(body) {
-  if (body['`password`']) body['`password`'] = `'${sha1(body['`password`'])}'`;
-  
-  const updates = Object.keys(body).map(key => `${key} = ${body[key]}`).join(', ');
-  return updates;
+  next();
 }
 
 /**
