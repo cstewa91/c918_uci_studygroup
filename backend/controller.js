@@ -174,9 +174,11 @@ module.exports = function(app) {
 
   // create user 
   app.post('/api/users', function (req, res) {
-    const { columns, values } = postColumnsAndValues(req.body);
-    const createQuery = `INSERT INTO users (${columns})
-                          VALUES(${values})`;
+    // const { columns, values } = postColumnsAndValues(req.body);
+    // const createQuery = `INSERT INTO users (${columns})
+    //                       VALUES(${values})`;
+    
+    
 
     res.cookie('token', '', { maxAge: -1, httpOnly: true });
 
@@ -465,11 +467,10 @@ function validateToken(req, res, next) {
   }
 } 
 
-// UPDATES:
-// cookie timeout set to 12 hours
+// CURRENT
+// rewrite queries with prepared statements
 
 // TODO:
-// rewrite queries with prepared statements
 // error handling middleware
 // encrypt
 // google auth with passport
