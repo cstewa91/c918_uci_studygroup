@@ -11,4 +11,6 @@ export default {
    CREATE_ACCOUNT: 'create_account',
    GET_USER_ID: 'get_user_id',
    ERROR_LOGIN: 'error_login',
+   USERNAME_ALREADY_EXISTS: 'username_already_exists',
+   EMAIL_ALREADY_EXISTS: 'email_already_exists',
 }

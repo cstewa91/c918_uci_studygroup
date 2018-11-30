@@ -6,6 +6,7 @@ import { editGroupInfo } from '../../actions'
 import './edit-created.css';
 import Header from '../general/header'
 import { Field, reduxForm } from 'redux-form'
+import Input from '../input';
 import NavButton from '../general/nav-button'
 
 
@@ -15,16 +16,6 @@ class EditGroup extends Component{
 
     componentDidMount(){
         this.props.getGroupDetails(this.props.match.params.group_id)
-    }
-
-    renderInputs(props){
-        const{input, label, meta: {touched, error}} = props;
-        return(
-            <div>
-                <input {...input} type="text"/>
-                <label>{label}</label>
-            </div>
-        )
     }
 
     handleUpdateItem = async (values) => {
@@ -45,28 +36,28 @@ class EditGroup extends Component{
                     <p className='edit-group'>Edit Group:</p>
                     <form onSubmit={handleSubmit(this.handleUpdateItem)}>
                         <div>
-                            <Field name="name" label="Group Name" component={this.renderInputs} />
+                            <Field name="name" label="Group Name" component={Input} />
                         </div>
                         <div>
-                            <Field name="subject" label="Subject" component={this.renderInputs} />
+                            <Field name="subject" label="Subject" component={Input} />
                         </div>
                         <div>
-                            <Field name="course" label="Course Number" component={this.renderInputs} />
+                            <Field name="course" label="Course Number" component={Input} />
                         </div>
                         <div>
-                            <Field name="max_group_size" label="Group Size" component={this.renderInputs} />
+                            <Field name="max_group_size" label="Group Size" component={Input} />
                         </div>
                         <div>
-                            <Field name="start_time" label="Starting Time" component={this.renderInputs} />
+                            <Field name="start_time" label="Starting Time" component={Input} />
                         </div>
                         <div>
-                            <Field name="end_time" label="Ending Time" component={this.renderInputs} />
+                            <Field name="end_time" label="Ending Time" component={Input} />
                         </div>
                         <div>
-                            <Field name="location" label="Location" component={this.renderInputs} />
+                            <Field name="location" label="Location" component={Input} />
                         </div>
                         <div>
-                            <Field name="description" label="Description" component={this.renderInputs} />
+                            <Field name="description" label="Description" component={Input} />
                         </div>
                         <button>update</button>
                         {/* <NavButton to='' text='UPDATE' /> */}

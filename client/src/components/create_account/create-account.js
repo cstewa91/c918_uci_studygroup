@@ -3,33 +3,14 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { createAccount } from '../../actions';
 import { loginApp } from '../../actions';
+import Input from '../input';
 import worm from '../../assets/images/bookworm.png'
 
 class CreateNewAccount extends Component {
-   renderInput(props) {
-      const { input, label, meta: { touched, error } } = props
-      if (props.input.name !== "password" && props.input.name !== "retypePassword") {
-         return (
-            <div>
-               <input {...input} type="text" />
-               <label>{label}</label>
-               <p>{touched && error}</p>
-            </div>
-         )
-      } else {
-         return (
-            <div>
-               <input {...input} type="password" />
-               <label>{label}</label>
-               <p>{touched && error}</p>
-            </div>
-         )
-      }
-   }
    handleAddItem = async (values) => {
       await this.props.createAccount(values);
-      await this.props.loginApp(values)
-      this.props.history.push('/home')
+      await this.props.loginApp(values);
+      this.props.history.push('/home');
    }
    render() {
       const { handleSubmit } = this.props
@@ -37,24 +18,23 @@ class CreateNewAccount extends Component {
          <div>
             <form onSubmit={handleSubmit(this.handleAddItem)}>
                <div>
-                  <Field name="firstname" label="First Name" component={this.renderInput} />
+                  <Field name="firstname" label="First Name" component={Input} />
                </div>
                <div>
-                  <Field name="lastname" label="Last Name" component={this.renderInput} />
+                  <Field name="lastname" label="Last Name" component={Input} />
                </div>
                <div>
-                  <Field name="username" label="Username" component={this.renderInput} />
+                  <Field name="username" label="Username" component={Input} />
                </div>
                <div>
-                  <Field name="email" label="E-mail" component={this.renderInput} />
+                  <Field name="email" label="E-mail" component={Input} />
                </div>
                <div>
-                  <Field name="password" label="Password" component={this.renderInput} />
+                  <Field name="password" label="Password" component={Input} type="password" />
                </div>
                <div>
-                  <Field name="retypePassword" label="Retype Password" component={this.renderInput} />
+                  <Field name="confirmPassword" label="Confirm Password" component={Input} type="password" />
                </div>
-
                <button>Create Account</button>
             </form>
          </div>
@@ -62,7 +42,7 @@ class CreateNewAccount extends Component {
    }
 }
 
-function validate({ firstname, lastname, username, email, password, retypePassword }) {
+function validate({ firstname, lastname, username, email, password, confirmPassword }) {
    const error = {};
    if (!firstname) {
       error.firstname = "Please enter your first name"
@@ -79,11 +59,12 @@ function validate({ firstname, lastname, username, email, password, retypePasswo
    if (!password) {
       error.password = "Please enter a password"
    }
-   if (retypePassword !== password) {
-      error.retypePassword = "Your passwords do not match"
+   if (confirmPassword !== password) {
+      error.confirmPassword = "Your passwords do not match"
    }
    return error
 }
+
 
 CreateNewAccount = reduxForm({
    form: 'create-account',
