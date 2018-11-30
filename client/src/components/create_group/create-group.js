@@ -10,14 +10,25 @@ import { createNewGroup } from '../../actions'
 class CreateGroup extends Component {
    renderInput(props) {
       const { input, label, meta: { touched, error } } = props
-      return (
-         <div>
-            <input  {...input} type="text" />
-            <label>{label}</label>
-         </div>
-      )
+      if (props.input.name !== "start_time" && props.input.name !== "end_time") {
+         return (
+            <div>
+               <input  {...input} type="text" />
+               <label>{label}</label>
+            </div>
+         )
+      } else {
+         console.log("hello")
+         return (
+            <div>
+               <input  {...input} type="datetime-local" />
+               <label>{label}</label>
+            </div>
+         )
+      }
    }
    handleAddItem = async (values) => {
+      console.log(values)
       await this.props.createNewGroup(values);
       this.props.history.push('/home')
    }
@@ -54,7 +65,7 @@ class CreateGroup extends Component {
                <div>
                   <Field name="description" label="Description" component={this.renderInput} />
                </div>
-              <button>Create Group</button>
+               <button>Create Group</button>
             </form>
          </div>
       )
