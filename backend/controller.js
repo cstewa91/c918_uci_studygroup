@@ -370,7 +370,14 @@ function sendQuery(method, query, res) {
   connection.query(query, (err, results) => {
     if (err) {
       console.log(err);
-      return res.send('Database query error');
+
+      if (err.code === 'ER_DUP_ENTRY') {
+        const field = err.sqlMessage.match(/(?<=key)\W*(\w+)/)[1];
+        const message = `This ${field} already exists.`;
+        return res.send(message);
+      }
+
+      return res.send('Database query error.');
     }
 
     const response = method === 'get' ? results : { success: true };
@@ -461,7 +468,7 @@ function validateToken(req, res, next) {
 } 
 
 // CURRENT
-// rewrite queries with prepared statements
+// Error message for duplicate username and email when creating users, and name when creating groups
 
 // TODO:
 // error handling middleware
