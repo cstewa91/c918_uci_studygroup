@@ -10,27 +10,38 @@ import './login.css';
 class Login extends Component {
    renderInput(props) {
       const { input, label, meta: { touched, error } } = props
-      return (
-         <div>
-            <input  {...input} type="text" />
-            <label>{label}</label>
-            <p>{touched && error}</p>
-         </div>
-      )
+      if (props.input.name === "email") {
+         return (
+            <div>
+               <input  {...input} type="text" />
+               <label>{label}</label>
+               <p>{touched && error}</p>
+            </div>
+         )
+      } else {
+         return (
+            <div>
+               <input  {...input} type="password" />
+               <label>{label}</label>
+               <p>{touched && error}</p>
+            </div>
+         )
+      }
    }
+
    handleAddItem = async (values) => {
       await this.props.loginApp(values)
       this.validLogin();
    }
    validLogin = () => {
       const { user } = this.props
-      if(user === "valid"){
+      if (user === "valid") {
          this.props.history.push('/home')
       }
    }
    invalidLogin = () => {
       const { user } = this.props
-      if(user === "invalid"){
+      if (user === "invalid") {
          return "Invalid Email or Password"
       }
    }
@@ -58,6 +69,7 @@ class Login extends Component {
       )
    }
 }
+
 
 function validate({ email, password }) {
    const error = {};

@@ -8,14 +8,23 @@ import worm from '../../assets/images/bookworm.png'
 class CreateNewAccount extends Component {
    renderInput(props) {
       const { input, label, meta: { touched, error } } = props
-      console.log(props)
-      return (
-         <div>
-            <input {...input} type="text" />
-            <label>{label}</label>
-            <p>{touched && error}</p>
-         </div>
-      )
+      if (props.input.name !== "password" && props.input.name !== "retypePassword") {
+         return (
+            <div>
+               <input {...input} type="text" />
+               <label>{label}</label>
+               <p>{touched && error}</p>
+            </div>
+         )
+      } else {
+         return (
+            <div>
+               <input {...input} type="password" />
+               <label>{label}</label>
+               <p>{touched && error}</p>
+            </div>
+         )
+      }
    }
    handleAddItem = async (values) => {
       await this.props.createAccount(values);
@@ -42,12 +51,10 @@ class CreateNewAccount extends Component {
                <div>
                   <Field name="password" label="Password" component={this.renderInput} />
                </div>
-               {/* <div>
-                  <Field name="retypePassword" label="Retype Password" component={this.renderInput} />
-               </div> */}
                <div>
-                  <Field name="google_id" label="Google ID" component={this.renderInput} />
+                  <Field name="retypePassword" label="Retype Password" component={this.renderInput} />
                </div>
+
                <button>Create Account</button>
             </form>
          </div>
@@ -55,7 +62,7 @@ class CreateNewAccount extends Component {
    }
 }
 
-function validate({ firstname, lastname, username, email, password, google_id }) {
+function validate({ firstname, lastname, username, email, password, retypePassword }) {
    const error = {};
    if (!firstname) {
       error.firstname = "Please enter your first name"
@@ -72,11 +79,8 @@ function validate({ firstname, lastname, username, email, password, google_id })
    if (!password) {
       error.password = "Please enter a password"
    }
-   // if (retypePassword !== password) {
-   //    error.retypePassword = "Your passwords do not match"
-   // }
-   if (!google_id) {
-      error.google_id = "Please enter a google id"
+   if (retypePassword !== password) {
+      error.retypePassword = "Your passwords do not match"
    }
    return error
 }
