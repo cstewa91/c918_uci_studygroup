@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
    profile: profileReducer,
    editGroup: editGroupReducer,
    login: loginReducer,
-   search: searchReducer
+   search: searchReducer,
 });
 
 export default rootReducer;

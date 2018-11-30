@@ -3,32 +3,12 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import { loginApp } from '../../actions'
+import Input from '../input';
 import worm from '../../assets/images/bookworm.png'
 import './login.css';
 
 
 class Login extends Component {
-   renderInput(props) {
-      const { input, label, meta: { touched, error } } = props
-      if (props.input.name === "email") {
-         return (
-            <div>
-               <input  {...input} type="text" />
-               <label>{label}</label>
-               <p>{touched && error}</p>
-            </div>
-         )
-      } else {
-         return (
-            <div>
-               <input  {...input} type="password" />
-               <label>{label}</label>
-               <p>{touched && error}</p>
-            </div>
-         )
-      }
-   }
-
    handleAddItem = async (values) => {
       await this.props.loginApp(values)
       this.validLogin();
@@ -56,10 +36,10 @@ class Login extends Component {
             <h1>Google Sign In</h1>
             <form onSubmit={handleSubmit(this.handleAddItem)}>
                <div>
-                  <Field name="email" label="E-mail" component={this.renderInput} />
+                  <Field name="email" label="E-mail" component={Input} />
                </div>
                <div>
-                  <Field name="password" label="Password" component={this.renderInput} />
+                  <Field name="password" label="Password" component={Input} type="password" />
                </div>
                <button>Login</button>
                <p>{this.invalidLogin()}</p>
