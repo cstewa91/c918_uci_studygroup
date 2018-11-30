@@ -470,6 +470,8 @@ function validateToken(req, res, next) {
 
 // TODO:
 // rewrite queries with prepared statements
+// error handling middleware
+// encrypt
 // google auth with passport
 // mail notifications? group delete, group edit, group start_time approaching
 // add google_id to sessions table?
