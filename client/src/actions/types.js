@@ -9,5 +9,6 @@ export default {
    GET_GROUP_DETAILS: 'get_group_details',
    EDIT_GROUP_INFO: 'edit_group_info',
    CREATE_ACCOUNT: 'create_account',
-   GET_USER_ID: 'get_user_id'
+   GET_USER_ID: 'get_user_id',
+   ERROR_LOGIN: 'error_login',
 }

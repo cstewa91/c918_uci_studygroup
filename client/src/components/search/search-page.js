@@ -7,23 +7,21 @@ import {getAllGroups} from '../../actions';
 import { connect } from 'react-redux';
 
 class SearchGroups extends Component{
+    constructor(props){
+        super(props)
+    }
+
     componentDidMount() {
         this.props.getAllGroups();
     }
+
     render() {
 
         const listAllGroups = this.props.all.map(item => {
             return (
-                <tr key={item.id}>
-                    <td><Link to="/selected-group">{item.subject}</Link></td>
-                    <td><Link to="/selected-group">{item.course}</Link></td>
-                    <td><Link to="/selected-group">{item.name}</Link></td>
-                    <td><Link to="/selected-group">{item.start_time} - {item.end_time}</Link></td>
-                    <td><Link to="/selected-group">{item.current_group_size}/{item.max_group_size}</Link></td>
-                </tr>
+                <GroupModal key={item.id} id={item.id} description={item.description} text={`${item.subject} ${item.course} ${item.name} ${item.start_time} - ${item.end_time} ${item.current_group_size}/${item.max_group_size}`}/>
             )
         });
-
 
         return (
             <div>
@@ -32,25 +30,17 @@ class SearchGroups extends Component{
                     <Link to="/hamburger">Menu</Link>
                     <h1>Search Groups</h1>
                     <div className="search-filter-container">
-                        <input id="search-field" type="text" placeholder="Enter a group name or subject"/>
+                        <input size="26" id="search-field" type="text" placeholder="Enter a group name or subject"/>
                         <button className="search-filter" type="submit">Filter</button>
                     </div>
-                    <div>
-                    </div>
-                    <table className="search-results">
-                        <thead>
-                        <tr>
-                            <th>Subject</th>
-                            <th>Course</th>
-                            <th width="200px">Group Name</th>
-                            <th width="420px">Date/Time</th>
-                            <th>Members</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+                    <div id="search-results">
+                        <ul>
                             {listAllGroups}
-                        </tbody>
-                    </table>
+                        </ul>
+
+
+                    </div>
+
                 </div>
             </div>
         )
