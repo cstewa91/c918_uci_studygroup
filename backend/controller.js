@@ -152,14 +152,13 @@ module.exports = function(app) {
         const loginQuery = `INSERT INTO sessions 
                               SET token = '${token}', user_id ='${results[0].id}'
                               ON DUPLICATE KEY UPDATE token = '${token}'`;
-
         connection.query(loginQuery, (err) => {
           if (err) {
             console.log(err);
             return res.send('Database query error');
           }
 
-          res.cookie('token', token, { maxAge: 900000, httpOnly: true })
+          res.cookie('token', token, { maxAge: 60 * 60 * 1000 * 12, httpOnly: true })
           res.send({ success: true });
         })
       } else {
@@ -466,7 +465,11 @@ function validateToken(req, res, next) {
   }
 } 
 
+// UPDATES:
+// cookie timeout set to 12 hours
+
 // TODO:
+// rewrite queries with prepared statements
 // google auth with passport
 // mail notifications? group delete, group edit, group start_time approaching
 // add google_id to sessions table?
@@ -476,3 +479,4 @@ function validateToken(req, res, next) {
 // CLEANUP:
 // remove cors  
 // remove console.logs
+// lower cookie session time
