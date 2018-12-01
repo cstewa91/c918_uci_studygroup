@@ -110,7 +110,7 @@ export function createAccount(item) {
 }
 
 export function joinGroup(groupId){
-    const resp = axios.post(BASE_URL + API_JOIN_GROUP, groupId);
+    const resp = axios.post(BASE_URL + API_JOIN_GROUP, {group_id: groupId});
     console.log(resp);
     return {
        type: types.JOIN_GROUP,

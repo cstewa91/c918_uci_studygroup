@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import {getGroupDetails} from '../../actions';
 import {joinGroup} from '../../actions';
+
 import './group-modal.css';
 import {connect} from 'react-redux';
 
@@ -18,7 +19,7 @@ class GroupModal extends Component{
 
     joinStudyGroup = (id) => {
         console.log('joinStudyGroup props', this.props);
-        this.props.joinGroup(id);
+        this.props.joinGroup(this.props.id);
     };
 
     open = () => {
