@@ -179,6 +179,40 @@ module.exports = function(app) {
     res.send('You are now logged out');
   })
 
+  // search username
+  app.get('/api/users/username/:username', sanitizeParams, function(req, res) {
+    const username = req.params['`username`'];
+    const query = `SELECT *
+                    FROM users
+                    WHERE username = ${username}`;
+    
+    connection.query(query, (err, results) => {
+      if (err) {
+        console.log(err);
+        return res.send('Database query error');
+      }
+
+      res.send(!!results.length);
+    });
+  });
+
+  // search email
+  app.get('/api/users/email/:email', sanitizeParams, function (req, res) {
+    const email = req.params['`email`'];
+    const query = `SELECT *
+                    FROM users
+                    WHERE email = ${email}`;
+
+    connection.query(query, (err, results) => {
+      if (err) {
+        console.log(err);
+        return res.send('Database query error');
+      }
+
+      res.send(!!results.length);
+    });
+  });
+
   // create user 
   app.post('/api/users', function (req, res) {
     const body = req.body;
@@ -218,6 +252,23 @@ module.exports = function(app) {
         sendQuery('post', query, res);
       }
     })
+  });
+
+  // search name
+  app.get('/api/groups/name/:name', sanitizeParams, function (req, res) {
+    const name = req.params['`name`'];
+    const query = `SELECT *
+                    FROM groups
+                    WHERE name = ${name}`;
+
+    connection.query(query, (err, results) => {
+      if (err) {
+        console.log(err);
+        return res.send('Database query error');
+      }
+
+      res.send(!!results.length);
+    });
   });
 
   // create group 
@@ -439,6 +490,8 @@ function sanitizeBody(req, res, next) {
 function validateToken(req, res, next) {
   const route = req.url;
   const excludedRoutes = [
+    { route: /\/api\/users\/.+/, method: 'GET' },                   // api/users/username/:username, api/users/email/:email 
+    { route: /\/api\/groups\/name\/.+/, method: 'GET' },            // api/groups/name/:name
     { route: /\/api\/login/, method: 'POST' },                      // api/login
     { route: /\/api\/users$/, method: 'POST' },                     // api/users
     { route: /\/api\/groups$/, method: 'GET' },                     // api/groups
@@ -468,16 +521,14 @@ function validateToken(req, res, next) {
 } 
 
 // CURRENT
-// Error message for duplicate username and email when creating users, and name when creating groups
+// duplicate entry clarification routes
 
 // TODO:
 // error handling middleware
-// encrypt
+// encrypt with bcrypt
 // google auth with passport
 // mail notifications? group delete, group edit, group start_time approaching
 // add google_id to sessions table?
-// POSTMAN test suite
-// refactor with routers
 
 // CLEANUP:
 // remove cors  
