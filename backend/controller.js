@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-const sha1 = require('sha1');
+const bcrypt = require('bcrypt');
 const { resolve } = require('path');
 const dbconfig = require('./config/db.json');
 
@@ -13,7 +13,6 @@ connection.connect(err => {
 
 module.exports = function(app) {
   app.use(sanitizeBody);
-  app.use(encryptPassword);
   app.use(validateToken);
 
   // search groups 
@@ -147,27 +146,40 @@ module.exports = function(app) {
 
     const email = req.body['`email`'];
     const password = req.body['`password`'];
-    const query = `SELECT id 
+    // const query = `SELECT id 
+    //                 FROM users 
+    //                 WHERE email = ${email} AND password = ${password}`;
+
+    const query = `SELECT id, password
                     FROM users 
-                    WHERE email = ${email} AND password = ${password}`;
+                    WHERE email = ${email}`;
 
     connection.query(query, (err, results) => {
       if (err) {
-        return res.send(err);
+        return res.send('Invalid username');
       } else if (results.length) {
-        const token = createToken();
-        const loginQuery = `INSERT INTO sessions 
-                              SET token = '${token}', user_id ='${results[0].id}'
-                              ON DUPLICATE KEY UPDATE token = '${token}'`;
-        connection.query(loginQuery, (err) => {
-          if (err) {
-            console.log(err);
-            return res.send('Database query error');
-          }
+        const hashedPassword = results[0].password;
 
-          res.cookie('token', token, { maxAge: 60 * 60 * 1000 * 12, httpOnly: true })
-          res.send({ success: true });
-        })
+        bcrypt.compare(password, hashedPassword, function(errObj, resultObj) {
+          if (resultObj) {
+            const token = createToken();
+            const loginQuery = `INSERT INTO sessions 
+                                SET token = '${token}', user_id ='${results[0].id}'
+                                ON DUPLICATE KEY UPDATE token = '${token}'`;
+
+            connection.query(loginQuery, (err) => {
+              if (err) {
+                console.log(err);
+                return res.send('Database query error');
+              }
+
+              res.cookie('token', token, { maxAge: 60 * 60 * 1000 * 12, httpOnly: true })
+              return res.send({ success: true });
+            })
+          } else {
+            return res.send({ success: false });
+          }
+        });
       } else {
         res.send({ success: false });
       }
@@ -214,7 +226,7 @@ module.exports = function(app) {
   });
 
   // create user 
-  app.post('/api/users', function (req, res) {
+  app.post('/api/users', encryptPassword, function (req, res) {
     const body = req.body;
     const createQuery = `INSERT INTO users (google_id, username, firstname, lastname, email, password)
                           VALUES(${body['`google_id`'] || null}, ${body['`username`']}, ${body['`firstname`'] || null}, 
@@ -405,9 +417,8 @@ module.exports = function(app) {
 
 function encryptPassword(req, res, next) {
   const body = req.body;
-
-  if (body['`password`']) body['`password`'] = `'${sha1(body['`password`'])}'`;
-
+  // if (body['`password`']) body['`password`'] = `'${sha1(body['`password`'])}'`;
+  if (body['`password`']) body['`password`'] = `'${bcrypt.hashSync(body['`password`'], 10)}'`;
   next();
 }
 
@@ -521,11 +532,10 @@ function validateToken(req, res, next) {
 } 
 
 // CURRENT
-// duplicate entry clarification routes
+// encrypt with bcrypt
 
 // TODO:
 // error handling middleware
-// encrypt with bcrypt
 // google auth with passport
 // mail notifications? group delete, group edit, group start_time approaching
 // add google_id to sessions table?
