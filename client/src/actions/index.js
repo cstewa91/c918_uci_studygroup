@@ -30,16 +30,16 @@ export function getJoinedGroups() {
    }
 }
 
-export function getUserInfo(userId) {
-   const resp = axios.get(`${BASE_URL + API_USER}/${userId}`);
+export function getUserInfo() {
+   const resp = axios.get(BASE_URL + API_USER);
    return {
       type: types.GET_USER_INFO,
       payload: resp,
    }
 }
 
-export function editUserInfo() {
-   const resp = axios.put(BASE_URL + API_EDIT_USER)
+export function editUserInfo(item) {
+   const resp = axios.put(BASE_URL + API_EDIT_USER, item)
    return {
       type: types.EDIT_USER_INFO,
       payload: resp,
