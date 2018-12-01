@@ -37,8 +37,6 @@ class SearchGroups extends Component{
                         <ul>
                             {listAllGroups}
                         </ul>
-
-
                     </div>
 
                 </div>

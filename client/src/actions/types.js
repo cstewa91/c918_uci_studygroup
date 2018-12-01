@@ -11,4 +11,5 @@ export default {
    CREATE_ACCOUNT: 'create_account',
    GET_USER_ID: 'get_user_id',
    ERROR_LOGIN: 'error_login',
+    JOIN_GROUP: 'join_group'
 }
