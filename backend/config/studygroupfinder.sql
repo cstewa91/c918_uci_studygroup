@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 30, 2018 at 07:29 AM
+-- Generation Time: Dec 02, 2018 at 07:25 AM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.0.13
 
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   `id` int(10) unsigned NOT NULL,
   `token` varchar(20) NOT NULL,
   `user_id` int(11) unsigned NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sessions`
@@ -97,7 +97,8 @@ INSERT INTO `sessions` (`id`, `token`, `user_id`) VALUES
 (32, 'fryijnng0e', 37),
 (33, 'i05925mpvu', 38),
 (35, 'x97cmnd2aha', 39),
-(36, '7xslc33yfas', 41);
+(36, '7xslc33yfas', 41),
+(39, 'bzn29umeulu', 83);
 
 -- --------------------------------------------------------
 
@@ -112,8 +113,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `firstname` varchar(30) DEFAULT NULL,
   `lastname` varchar(30) DEFAULT NULL,
   `email` varchar(40) NOT NULL,
-  `password` varchar(40) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8;
+  `password` varchar(70) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
@@ -132,7 +133,9 @@ INSERT INTO `users` (`id`, `google_id`, `username`, `firstname`, `lastname`, `em
 (41, '{{google_id}}', 'testerbot162', 'tester', 'bot', 'test10@test.com', '895df4f75b316de68d167ed2e83adb0bedbbde17'),
 (44, '', 'testerbot163', '', '', 'test11@test.com', '895df4f75b316de68d167ed2e83adb0bedbbde17'),
 (45, '', 'testerbot1666', '', '', 'test12@test.com', '895df4f75b316de68d167ed2e83adb0bedbbde17'),
-(80, '', 'testerbot19', '', '', 'test19@test.com', '895df4f75b316de68d167ed2e83adb0bedbbde17');
+(80, '', 'testerbot19', '', '', 'test19@test.com', '895df4f75b316de68d167ed2e83adb0bedbbde17'),
+(82, '', 'testerbot23', '', '', 'test23@test.com', '$2b$10$iMshPDgIWXcx36azuLv5.uP9GUXl1VK2x'),
+(83, '', 'testerbot24', '', '', 'test24@test.com', '$2b$10$82qtolSI4zWndHyz7D5vCuQPLmBpplSSaxWoXtowBrKc5xBs/BPMK');
 
 --
 -- Indexes for dumped tables
@@ -188,12 +191,12 @@ ALTER TABLE `group_members`
 -- AUTO_INCREMENT for table `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=82;
+  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=84;
 --
 -- Constraints for dumped tables
 --

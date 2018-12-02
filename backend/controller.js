@@ -146,10 +146,6 @@ module.exports = function(app) {
 
     const email = req.body['`email`'];
     const password = req.body['`password`'];
-    // const query = `SELECT id 
-    //                 FROM users 
-    //                 WHERE email = ${email} AND password = ${password}`;
-
     const query = `SELECT id, password
                     FROM users 
                     WHERE email = ${email}`;
@@ -532,7 +528,7 @@ function validateToken(req, res, next) {
 } 
 
 // CURRENT
-// encrypt with bcrypt
+// Uploaded new mysql file
 
 // TODO:
 // error handling middleware
