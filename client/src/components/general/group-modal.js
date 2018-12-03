@@ -12,15 +12,20 @@ class GroupModal extends Component{
     };
 
     componentDidMount(){
+        console.log('component Did Mount', this.props);
         console.log('Call action creator on mount to get item details for item:', this.props.id);
 
 
     }
 
-    joinStudyGroup = (id) => {
+    joinStudyGroup = async () => {
         console.log('joinStudyGroup props', this.props);
-        this.props.joinGroup(this.props.id);
-    };
+        await this.props.joinGroup(this.props.id);
+    }
+
+    goToHomePage = () => {
+        this.props.history.push('/home');
+    }
 
     open = () => {
         this.props.getGroupDetails(this.props.id);
@@ -51,9 +56,8 @@ class GroupModal extends Component{
                             {group.description}
                         </p>
                     </div>
-                    <Link to="/home">
-                        <div onClick={this.joinStudyGroup(id)} className="btn btn-primary join-group offset-5">Join</div>
-                    </Link>
+                        <div onClick={this.joinStudyGroup} className="btn btn-primary join-group offset-5">Join</div>
+                        <div onClick={this.goToHomePage} className="btn btn-primary go-to-home-page offset-5">Go To Home Page</div>
                 </div>
         )
 
