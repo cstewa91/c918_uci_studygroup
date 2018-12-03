@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-const sha1 = require('sha1');
+const bcrypt = require('bcrypt');
 const { resolve } = require('path');
 const dbconfig = require('./config/db.json');
 
@@ -130,7 +130,14 @@ module.exports = function(app) {
                     FROM users
                     WHERE id = ${req.body.user_id}`;
 
-    sendQuery('get', query, res);
+    connection.query(query, (err, results) => {
+      if (err) {
+        console.log(err);
+        return res.send('Database query error');
+      }
+
+      return res.send(results[0]);
+    });
   });
 
   // login
@@ -139,29 +146,36 @@ module.exports = function(app) {
 
     const email = req.body['`email`'];
     const password = req.body['`password`'];
-    const encryptedPassword = `'${sha1(password)}'`;
-    const query = `SELECT id 
+    const query = `SELECT id, password
                     FROM users 
-                    WHERE email = ${email} AND password = ${encryptedPassword}`;
+                    WHERE email = ${email}`;
 
     connection.query(query, (err, results) => {
       if (err) {
-        return res.send(err);
+        return res.send('Invalid username');
       } else if (results.length) {
-        const token = createToken();
-        const loginQuery = `INSERT INTO sessions 
-                              SET token = '${token}', user_id ='${results[0].id}'
-                              ON DUPLICATE KEY UPDATE token = '${token}'`;
+        const hashedPassword = results[0].password;
 
-        connection.query(loginQuery, (err) => {
-          if (err) {
-            console.log(err);
-            return res.send('Database query error');
+        bcrypt.compare(password, hashedPassword, function(errObj, resultObj) {
+          if (resultObj) {
+            const token = createToken();
+            const loginQuery = `INSERT INTO sessions 
+                                SET token = '${token}', user_id ='${results[0].id}'
+                                ON DUPLICATE KEY UPDATE token = '${token}'`;
+
+            connection.query(loginQuery, (err) => {
+              if (err) {
+                console.log(err);
+                return res.send('Database query error');
+              }
+
+              res.cookie('token', token, { maxAge: 60 * 60 * 1000 * 12, httpOnly: true })
+              return res.send({ success: true });
+            })
+          } else {
+            return res.send({ success: false });
           }
-
-          res.cookie('token', token, { maxAge: 900000, httpOnly: true })
-          res.send({ success: true });
-        })
+        });
       } else {
         res.send({ success: false });
       }
@@ -173,15 +187,85 @@ module.exports = function(app) {
     res.send('You are now logged out');
   })
 
+  // search username
+  app.get('/api/users/username/:username', sanitizeParams, function(req, res) {
+    const username = req.params['`username`'];
+    const query = `SELECT *
+                    FROM users
+                    WHERE username = ${username}`;
+    
+    connection.query(query, (err, results) => {
+      if (err) {
+        console.log(err);
+        return res.send('Database query error');
+      }
+
+      res.send(!!results.length);
+    });
+  });
+
+  // search email
+  app.get('/api/users/email/:email', sanitizeParams, function (req, res) {
+    const email = req.params['`email`'];
+    const query = `SELECT *
+                    FROM users
+                    WHERE email = ${email}`;
+
+    connection.query(query, (err, results) => {
+      if (err) {
+        console.log(err);
+        return res.send('Database query error');
+      }
+
+      res.send(!!results.length);
+    });
+  });
+
   // create user 
-  app.post('/api/users', function (req, res) {
-    const { columns, values } = postColumnsAndValues(req.body);
-    const createQuery = `INSERT INTO users (${columns})
-                          VALUES(${values})`;
+  app.post('/api/users', encryptPassword, function (req, res) {
+    const body = req.body;
+    const createQuery = `INSERT INTO users (google_id, username, firstname, lastname, email, password)
+                          VALUES(${body['`google_id`'] || null}, ${body['`username`']}, ${body['`firstname`'] || null}, 
+                                 ${body['`lastname`'] || null}, ${body['`email`']}, ${body['`password`']})`;
 
-    res.cookie('token', '', { maxAge: -1, httpOnly: true });
+    connection.query(createQuery, (err, results) => {
+      if (err) {
+        if (err.code === 'ER_DUP_ENTRY') {
+          const field = err.sqlMessage.match(/(?<=key)\W*(\w+)/)[1];
+          const message = `This ${field} already exists.`;
+          return res.send(message);
+        }
 
-    sendQuery('post', createQuery, res);
+        console.log(err);
+        return res.send('Database query error.');
+      } else {
+        const email = req.body['`email`'];
+        const query = `SELECT id
+                        FROM users
+                        WHERE email = ${email}`;
+
+        connection.query(query, (err, results) => {
+          if (err) {
+            console.log(err);
+            return res.send('Database query error');
+          }
+
+          const token = createToken();
+          const loginQuery = `INSERT INTO sessions 
+                                SET token = '${token}', user_id ='${results[0].id}'`;
+
+          connection.query(loginQuery, (err) => {
+            if (err) {
+              console.log(err);
+              return res.send('Database query error');
+            }
+
+            res.cookie('token', token, { maxAge: 60 * 60 * 1000 * 12, httpOnly: true })
+            return res.send({ success: true });
+          });
+        });
+      }
+    });
   });
 
   // join group 
@@ -204,20 +288,38 @@ module.exports = function(app) {
       if (current_group_size >= max_group_size) {
         return res.send('Unable to join - group is max size');
       } else {
-        const { columns, values } = postColumnsAndValues(req.body);
-        const query = `INSERT INTO group_members (${columns})
-                        VALUES(${values})`;
+        const body = req.body;
+        const query = `INSERT INTO group_members (group_id, user_id)
+                        VALUES(${body['`group_id`']}, ${body.user_id})`;
 
         sendQuery('post', query, res);
       }
     })
   });
 
+  // search name
+  app.get('/api/groups/name/:name', sanitizeParams, function (req, res) {
+    const name = req.params['`name`'];
+    const query = `SELECT *
+                    FROM groups
+                    WHERE name = ${name}`;
+
+    connection.query(query, (err, results) => {
+      if (err) {
+        console.log(err);
+        return res.send('Database query error');
+      }
+
+      res.send(!!results.length);
+    });
+  });
+
   // create group 
   app.post('/api/groups', (req, res) => {
-    const { columns, values } = postColumnsAndValues(req.body);
-    const createQuery = `INSERT INTO groups (${columns})
-                          VALUES(${values})`;
+    const body = req.body;
+    const createQuery = `INSERT INTO groups (user_id, name, location, subject, course, start_time, end_time, max_group_size, description)
+                          VALUES(${body.user_id}, ${body['`name`']}, ${body['`location`']}, ${body['`subject`']}, ${body['`course`'] || null}, 
+                          ${body['`start_time`']}, ${body['`end_time`']}, ${body['`max_group_size`']}, ${body['`description`'] || null})`;
 
     sendQuery('post', createQuery, res);
   });
@@ -275,12 +377,15 @@ module.exports = function(app) {
 
   // edit user  
   app.put('/api/users', (req, res) => {
-    const id = req.body.user_id;
-    delete req.body.user_id;
-    const updates = putColumnsAndValues(req.body);
-    const query = `UPDATE users SET ${updates}
-                    WHERE id = ${id}`;
-
+    const body = req.body;
+    const query = `UPDATE users SET google_id = ${body['`google_id`']},
+                                    username = ${body['`username`']},
+                                    firstname = ${body['`firstname`']},
+                                    lastname = ${body['`lastname`']},
+                                    email = ${body['`email`']},
+                                    password = ${body['`password`']}
+                    WHERE id = ${body.user_id}`;
+    console.log(query);
     sendQuery('put', query, res);
   });
 
@@ -301,38 +406,37 @@ module.exports = function(app) {
       if (author_id !== req.body.user_id) return res.send('Permission denied');
 
       const new_max_group_size = req.body['`max_group_size`'];
-      if (new_max_group_size) {
-        const groupSizeQuery = `SELECT COUNT(group_id) AS current_group_size 
-                                FROM 
-                                group_members
-                                WHERE group_id = ${group_id}`;
-        
-        connection.query(groupSizeQuery, (err, results) => {
-          if (err) {
-            console.log(err);
-            return res.send('Database query error');
-          }
+      
+      const groupSizeQuery = `SELECT COUNT(group_id) AS current_group_size 
+                              FROM 
+                              group_members
+                              WHERE group_id = ${group_id}`;
+      
+      connection.query(groupSizeQuery, (err, results) => {
+        if (err) {
+          console.log(err);
+          return res.send('Database query error');
+        }
 
-          const { current_group_size } = results[0];
-          if (current_group_size > parseInt(new_max_group_size.match(/\d+/)[0])) {
-            return res.send('New max group size cannot be smaller than current group size');
-          } else {
-            const updates = putColumnsAndValues(req.body);
-            delete req.body.user_id;
-            const updateQuery = `UPDATE groups SET ${updates}
-                                  WHERE id = ${group_id}`;
-
-            sendQuery('put', updateQuery, res);
-          }
-        });
-      } else {
-        const updates = putColumnsAndValues(req.body);
-        delete req.body.user_id;
-        const updateQuery = `UPDATE groups SET ${updates}
-                              WHERE id = ${group_id}`;
-
-        sendQuery('put', updateQuery, res);
-      }
+        const { current_group_size } = results[0];
+        if (current_group_size > parseInt(new_max_group_size.match(/\d+/)[0])) {
+          return res.send('New max group size cannot be smaller than current group size');
+        } else {
+          const body = req.body;
+          const updateQuery = `UPDATE groups SET user_id = ${body.user_id}, 
+                                                  name = ${body['`name`']}, 
+                                                  location = ${body['`location`']}, 
+                                                  subject = ${body['`subject`']}, 
+                                                  course = ${body['`course`']}, 
+                                                  start_time = ${body['`start_time`']}, 
+                                                  end_time = ${body['`end_time`']},
+                                                  max_group_size = ${body['`max_group_size`']}, 
+                                                  description = ${body['`description`']}
+                                WHERE id = ${group_id}`;
+          
+          sendQuery('put', updateQuery, res);
+        }
+      });
     });
   });
 
@@ -342,28 +446,11 @@ module.exports = function(app) {
   });
 }
 
-/**
- * Returns an SQL POST query using data from body
- * @param {object} body 
- */
-function postColumnsAndValues(body) {
-  if (body['`password`']) body['`password`'] = `'${sha1(body['`password`'])}'`;
+function encryptPassword(req, res, next) {
+  const body = req.body;
 
-  const columns = Object.keys(body).join(', ');
-  const values = Object.values(body).map(value => `${value}`).join(', ');
-
-  return { columns, values };
-}
-
-/**
- * Returns an SQL PUT query using data from body
- * @param {object} body 
- */
-function putColumnsAndValues(body) {
-  if (body['`password`']) body['`password`'] = `'${sha1(body['`password`'])}'`;
-  
-  const updates = Object.keys(body).map(key => `${key} = ${body[key]}`).join(', ');
-  return updates;
+  if (body['`password`']) body['`password`'] = `'${bcrypt.hashSync(body['`password`'], 10)}'`;
+  next();
 }
 
 /**
@@ -376,7 +463,14 @@ function sendQuery(method, query, res) {
   connection.query(query, (err, results) => {
     if (err) {
       console.log(err);
-      return res.send('Database query error');
+
+      if (err.code === 'ER_DUP_ENTRY') {
+        const field = err.sqlMessage.match(/(?<=key)\W*(\w+)/)[1];
+        const message = `This ${field} already exists.`;
+        return res.send(message);
+      }
+
+      return res.send('Database query error.');
     }
 
     const response = method === 'get' ? results : { success: true };
@@ -438,6 +532,8 @@ function sanitizeBody(req, res, next) {
 function validateToken(req, res, next) {
   const route = req.url;
   const excludedRoutes = [
+    { route: /\/api\/users\/.+/, method: 'GET' },                   // api/users/username/:username, api/users/email/:email 
+    { route: /\/api\/groups\/name\/.+/, method: 'GET' },            // api/groups/name/:name
     { route: /\/api\/login/, method: 'POST' },                      // api/login
     { route: /\/api\/users$/, method: 'POST' },                     // api/users
     { route: /\/api\/groups$/, method: 'GET' },                     // api/groups
@@ -466,13 +562,16 @@ function validateToken(req, res, next) {
   }
 } 
 
+// CURRENT
+// Uploaded new mysql file
+
 // TODO:
+// error handling middleware
 // google auth with passport
 // mail notifications? group delete, group edit, group start_time approaching
 // add google_id to sessions table?
-// POSTMAN test suite
-// refactor with routers
 
 // CLEANUP:
 // remove cors  
 // remove console.logs
+// lower cookie session time

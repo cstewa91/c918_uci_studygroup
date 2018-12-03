@@ -12,7 +12,9 @@ const API_EDIT_GROUP_INFO = '/api/groups/';
 const API_GET_GROUP_DETAILS = '/api/groups/details';
 const API_NEW_ACCOUNT = '/api/users';
 const API_JOIN_GROUP = '/api/groups/join';
-
+const API_USERNAME = '/api/users/username';
+const API_EMAIL = '/api/users/email'
+const API_GROUP_NAME = '/api/groups/name'
 axios.defaults.withCredentials = true;
 
 
@@ -32,16 +34,16 @@ export function getJoinedGroups() {
    }
 }
 
-export function getUserInfo(userId) {
-   const resp = axios.get(`${BASE_URL + API_USER}/${userId}`);
+export function getUserInfo() {
+   const resp = axios.get(BASE_URL + API_USER);
    return {
       type: types.GET_USER_INFO,
       payload: resp,
    }
 }
 
-export function editUserInfo() {
-   const resp = axios.put(BASE_URL + API_EDIT_USER)
+export function editUserInfo(item) {
+   const resp = axios.put(BASE_URL + API_EDIT_USER, item)
    return {
       type: types.EDIT_USER_INFO,
       payload: resp,
@@ -49,11 +51,20 @@ export function editUserInfo() {
 }
 
 export function createNewGroup(item) {
-   const resp = axios.post(BASE_URL + API_GROUPS, item);
-   console.log(resp)
-   return {
-      type: types.CREATE_NEW_GROUP,
-      payload: resp
+   return async function (dispatch){
+      const validGroupName = await axios.get(`${BASE_URL + API_GROUP_NAME}/${item.name}`)
+      if (!validGroupName.data){
+         const resp = await axios.post(BASE_URL + API_GROUPS, item)
+         dispatch({
+            type: types.VALID_GROUPNAME,
+            payload: resp
+         })
+      } else {
+         dispatch({
+            type: types.GROUPNAME_ALREADY_EXIST,
+            error: 'Group name already in use'
+         })
+      }
    }
 }
 
@@ -61,7 +72,9 @@ export function loginApp(item) {
    return async function (dispatch) {
       const resp = await axios.post(BASE_URL + API_LOGIN, item);
       console.log(resp)
-      if (resp.data.success === true) {
+      if (resp.data.success) {
+         localStorage.setItem('token', resp.data.success)
+         console.log(resp)
          dispatch({
             type: types.LOGIN_APP,
             payload: resp
@@ -69,7 +82,7 @@ export function loginApp(item) {
       } else {
          dispatch({
             type: types.ERROR_LOGIN,
-            payload: resp
+            error: 'Invalid email or password'
          })
       }
    }
@@ -92,7 +105,7 @@ export function getGroupDetails(groupId) {
    }
 }
 
-export function editGroupInfo(groupId, item){
+export function editGroupInfo(groupId, item) {
    const resp = axios.put(`${BASE_URL + API_EDIT_GROUP_INFO}${groupId}`, item);
    return {
       type: types.EDIT_GROUP_INFO,
@@ -101,11 +114,31 @@ export function editGroupInfo(groupId, item){
 }
 
 export function createAccount(item) {
-   const resp = axios.post(BASE_URL + API_NEW_ACCOUNT, item)
-   console.log(resp)
-   return {
-      type: types.CREATE_ACCOUNT,
-      payload: resp
+   return async function (dispatch) {
+      const validEmail = await axios.get(`${BASE_URL + API_EMAIL}/${item.email}`)
+      const validUsername = await axios.get(`${BASE_URL + API_USERNAME}/${item.username}`)
+      if (!validEmail.data && !validUsername.data) {
+         const resp = await axios.post(BASE_URL + API_NEW_ACCOUNT, item)
+         localStorage.setItem('token', resp.data.success)
+         dispatch({
+            type: types.CREATE_ACCOUNT,
+            payload: resp
+         })
+      } else if (validEmail.data && !validUsername.data) {
+         dispatch({
+            type: types.EMAIL_ALREADY_EXISTS,
+            error: 'Email already in use'
+         })
+      } else if (validUsername.data && !validEmail.data) {
+         dispatch({
+            type: types.USERNAME_ALREADY_EXISTS,
+            error: 'Username already in use'
+         })
+      } else {
+         dispatch({
+            type: types.USERNAME_AND_EMAIL_EXIST
+         })
+      }
    }
 }
 
@@ -117,3 +150,4 @@ export function joinGroup(groupId){
         payload: resp
     }
 }
+

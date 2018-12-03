@@ -5,66 +5,102 @@ import { Field, reduxForm } from 'redux-form'
 import './create-group.css';
 import Header from '../general/header'
 import { createNewGroup } from '../../actions'
+import Input from '../input';
 
 
 class CreateGroup extends Component {
-   renderInput(props) {
-      const { input, label, meta: { touched, error } } = props
-      return (
-         <div>
-            <input  {...input} type="text" />
-            <label>{label}</label>
-         </div>
-      )
-   }
-   handleAddItem = async (values) => {
+   handleCreateGroup = async (values) => {
       await this.props.createNewGroup(values);
-      this.props.history.push('/home')
+      await this.pushToHome()
+   }
+   pushToHome = () => {
+      const { validName } = this.props
+      if (validName) {
+         this.props.history.push('/home')
+      }
    }
    render() {
-      const { handleSubmit } = this.props
+      const { handleSubmit, invalidName } = this.props
       return (
          <div>
             <Header />
             <h1>Create Group Page</h1>
             <Link to="/hamburger">Hamburger</Link>
             <Link to="/home">X</Link>
-            <form onSubmit={handleSubmit(this.handleAddItem)}>
+            <form onSubmit={handleSubmit(this.handleCreateGroup)}>
                <div>
-                  <Field name="name" label="Group Name" component={this.renderInput} />
+                  <Field name="name" label="Group Name" component={Input} />
+               </div>
+               <p>{invalidName}</p>
+               <div>
+                  <Field name="subject" label="Subject" component={Input} />
                </div>
                <div>
-                  <Field name="subject" label="Subject" component={this.renderInput} />
+                  <Field name="course" label="Course Number" component={Input} />
                </div>
                <div>
-                  <Field name="course" label="Course Number" component={this.renderInput} />
+                  <Field name="max_group_size" label="Group Size" component={Input} />
                </div>
                <div>
-                  <Field name="max_group_size" label="Group Size" component={this.renderInput} />
+                  <Field name="start_time" label="Starting Time" component={Input} type="datetime-local" />
                </div>
                <div>
-                  <Field name="start_time" label="Starting Time" component={this.renderInput} />
+                  <Field name="end_time" label="Ending Time" component={Input} type="datetime-local" />
                </div>
                <div>
-                  <Field name="end_time" label="Ending Time" component={this.renderInput} />
+                  <Field name="location" label="Location" component={Input} />
                </div>
                <div>
-                  <Field name="location" label="Location" component={this.renderInput} />
+                  <Field name="description" label="Description" component={Input} />
                </div>
-               <div>
-                  <Field name="description" label="Description" component={this.renderInput} />
-               </div>
-              <button>Create Group</button>
+               <button>Create Group</button>
             </form>
          </div>
       )
    }
 }
 
+function validate({ name, subject, course, max_group_size, start_time, end_time, location, description }) {
+   const error = {}
+   if (!name) {
+      error.name = "Please enter your group name"
+   }
+   if (!subject) {
+      error.subject = "Please enter the subject"
+   }
+   if (!course) {
+      error.course = "Please enter the course number"
+   }
+   if (!max_group_size) {
+      error.max_group_size = "Please enter the group size"
+   }
+   if (!start_time) {
+      error.start_time = "Please enter the start time"
+   }
+   if (!end_time) {
+      error.end_time = "Please enter the end time"
+   }
+   if (!location) {
+      error.location = "Please enter the location"
+   }
+   if (!description) {
+      error.description = "Please enter a short description"
+   }
+   return error;
+}
+
+function mapStateToProps(state) {
+   return {
+      validName: state.createGroup.validName,
+      invalidName: state.createGroup.invalidName
+   }
+}
+
 CreateGroup = reduxForm({
-   form: 'create-group'
+   form: 'create-group',
+   validate: validate
 })(CreateGroup);
 
-export default connect(null, {
+export default connect(mapStateToProps, {
    createNewGroup: createNewGroup
 })(CreateGroup);

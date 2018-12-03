@@ -8,7 +8,7 @@ const DEFAULT_STATE = {
 export default (state = DEFAULT_STATE, action) => {
    switch (action.type) {
       case types.GET_USER_INFO:
-         return { ...state, profile: action.payload.data }
+         return { ...state, user: action.payload.data }
       default:
          return state;
    }

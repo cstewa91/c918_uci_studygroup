@@ -21,12 +21,12 @@
   },
   "homepage": "https://github.com/cstewa91/c918_uci_studygroup#readme",
   "dependencies": {
+    "bcrypt": "^3.0.2",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "mysql": "^2.16.0",
-    "redux-form": "^7.4.2",
-    "sha1": "^1.1.1"
+    "redux-form": "^7.4.2"
   },
   "devDependencies": {
     "nodemon": "^1.18.6",

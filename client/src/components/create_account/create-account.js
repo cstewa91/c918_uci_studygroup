@@ -3,50 +3,50 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { createAccount } from '../../actions';
 import { loginApp } from '../../actions';
+import Input from '../input';
 import worm from '../../assets/images/bookworm.png'
 
 class CreateNewAccount extends Component {
-   renderInput(props) {
-      const { input, label, meta: { touched, error } } = props
-      console.log(props)
-      return (
-         <div>
-            <input {...input} type="text" />
-            <label>{label}</label>
-            <p>{touched && error}</p>
-         </div>
-      )
-   }
-   handleAddItem = async (values) => {
+   handleCreateAccount = async (values) => {
       await this.props.createAccount(values);
-      await this.props.loginApp(values)
-      this.props.history.push('/home')
+      await this.pushToHome()
+   }
+   pushToHome = () => {
+      const { account } = this.props
+      if (account) {
+         this.props.history.push('/home')
+      }
+   }
+   loginNewAccount = (values) => {
+      const { account } = this.props
+      if (account) {
+         this.props.loginApp(values)
+      }
    }
    render() {
-      const { handleSubmit } = this.props
+      const { handleSubmit, invalidEmail, invalidUsername } = this.props
       return (
          <div>
-            <form onSubmit={handleSubmit(this.handleAddItem)}>
+            <form onSubmit={handleSubmit(this.handleCreateAccount)}>
                <div>
-                  <Field name="firstname" label="First Name" component={this.renderInput} />
+                  <Field name="firstname" label="First Name" component={Input} />
                </div>
                <div>
-                  <Field name="lastname" label="Last Name" component={this.renderInput} />
+                  <Field name="lastname" label="Last Name" component={Input} />
                </div>
                <div>
-                  <Field name="username" label="Username" component={this.renderInput} />
+                  <Field name="username" label="Username" component={Input} />
+               </div>
+               <p>{invalidUsername}</p>
+               <div>
+                  <Field name="email" label="E-mail" component={Input} />
+               </div>
+               <p>{invalidEmail}</p>
+               <div>
+                  <Field name="password" label="Password" component={Input} type="password" />
                </div>
                <div>
-                  <Field name="email" label="E-mail" component={this.renderInput} />
-               </div>
-               <div>
-                  <Field name="password" label="Password" component={this.renderInput} />
-               </div>
-               {/* <div>
-                  <Field name="retypePassword" label="Retype Password" component={this.renderInput} />
-               </div> */}
-               <div>
-                  <Field name="google_id" label="Google ID" component={this.renderInput} />
+                  <Field name="confirmPassword" label="Confirm Password" component={Input} type="password" />
                </div>
                <button>Create Account</button>
             </form>
@@ -55,7 +55,7 @@ class CreateNewAccount extends Component {
    }
 }
 
-function validate({ firstname, lastname, username, email, password, google_id }) {
+function validate({ firstname, lastname, username, email, password, confirmPassword }) {
    const error = {};
    if (!firstname) {
       error.firstname = "Please enter your first name"
@@ -72,13 +72,19 @@ function validate({ firstname, lastname, username, email, password, google_id })
    if (!password) {
       error.password = "Please enter a password"
    }
-   // if (retypePassword !== password) {
-   //    error.retypePassword = "Your passwords do not match"
-   // }
-   if (!google_id) {
-      error.google_id = "Please enter a google id"
+   if (confirmPassword !== password) {
+      error.confirmPassword = "Your passwords do not match"
    }
    return error
+}
+
+function mapStateToProps(state) {
+   console.log(state.createAccount.account)
+   return {
+      invalidEmail: state.createAccount.validEmail,
+      invalidUsername: state.createAccount.validUsername,
+      account: state.createAccount.account
+   }
 }
 
 CreateNewAccount = reduxForm({
@@ -86,7 +92,7 @@ CreateNewAccount = reduxForm({
    validate: validate
 })(CreateNewAccount);
 
-export default connect(null, {
+export default connect(mapStateToProps, {
    createAccount: createAccount,
    loginApp: loginApp,
 })(CreateNewAccount)
