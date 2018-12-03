@@ -14,8 +14,8 @@ class Login extends Component {
       await this.pushToHome()
    }
    pushToHome = () => {
-      const { user } = this.props
-      if (user) {
+      const { auth } = this.props
+      if (auth) {
          this.props.history.push('/home')
       }
    }
@@ -59,7 +59,7 @@ function validate({ email, password }) {
 function mapStateToProps(state) {
    return {
       signInError: state.login.signInError,
-      user: state.login.user
+      auth: state.login.auth
    }
 }
 

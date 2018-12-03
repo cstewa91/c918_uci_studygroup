@@ -72,6 +72,8 @@ export function loginApp(item) {
       const resp = await axios.post(BASE_URL + API_LOGIN, item);
       console.log(resp)
       if (resp.data.success) {
+         localStorage.setItem('token', resp.data.success)
+         console.log(resp)
          dispatch({
             type: types.LOGIN_APP,
             payload: resp
@@ -116,6 +118,7 @@ export function createAccount(item) {
       const validUsername = await axios.get(`${BASE_URL + API_USERNAME}/${item.username}`)
       if (!validEmail.data && !validUsername.data) {
          const resp = await axios.post(BASE_URL + API_NEW_ACCOUNT, item)
+         localStorage.setItem('token', resp.data.success)
          dispatch({
             type: types.CREATE_ACCOUNT,
             payload: resp
