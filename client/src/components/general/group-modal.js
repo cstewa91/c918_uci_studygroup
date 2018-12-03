@@ -21,9 +21,6 @@ class GroupModal extends Component{
     joinStudyGroup = async () => {
         console.log('joinStudyGroup props', this.props);
         await this.props.joinGroup(this.props.id);
-    }
-
-    goToHomePage = () => {
         this.props.history.push('/home');
     }
 
@@ -57,7 +54,6 @@ class GroupModal extends Component{
                         </p>
                     </div>
                         <div onClick={this.joinStudyGroup} className="btn btn-primary join-group offset-5">Join</div>
-                        <div onClick={this.goToHomePage} className="btn btn-primary go-to-home-page offset-5">Go To Home Page</div>
                 </div>
         )
 
