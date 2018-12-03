@@ -11,6 +11,7 @@ const API_EDIT_USER = '/api/users';
 const API_EDIT_GROUP_INFO = '/api/groups/';
 const API_GET_GROUP_DETAILS = '/api/groups/details';
 const API_NEW_ACCOUNT = '/api/users';
+const API_JOIN_GROUP = '/api/groups/join';
 const API_USERNAME = '/api/users/username';
 const API_EMAIL = '/api/users/email'
 const API_GROUP_NAME = '/api/groups/name'
@@ -139,5 +140,14 @@ export function createAccount(item) {
          })
       }
    }
+}
+
+export function joinGroup(groupId){
+    const resp = axios.post(BASE_URL + API_JOIN_GROUP, {group_id: groupId});
+    console.log(resp);
+    return {
+       type: types.JOIN_GROUP,
+        payload: resp
+    }
 }
 
