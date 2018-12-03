@@ -146,10 +146,6 @@ module.exports = function(app) {
 
     const email = req.body['`email`'];
     const password = req.body['`password`'];
-    // const query = `SELECT id 
-    //                 FROM users 
-    //                 WHERE email = ${email} AND password = ${password}`;
-
     const query = `SELECT id, password
                     FROM users 
                     WHERE email = ${email}`;
@@ -232,9 +228,44 @@ module.exports = function(app) {
                           VALUES(${body['`google_id`'] || null}, ${body['`username`']}, ${body['`firstname`'] || null}, 
                                  ${body['`lastname`'] || null}, ${body['`email`']}, ${body['`password`']})`;
 
-    res.cookie('token', '', { maxAge: -1, httpOnly: true });
+    connection.query(createQuery, (err, results) => {
+      if (err) {
+        if (err.code === 'ER_DUP_ENTRY') {
+          const field = err.sqlMessage.match(/(?<=key)\W*(\w+)/)[1];
+          const message = `This ${field} already exists.`;
+          return res.send(message);
+        }
 
-    sendQuery('post', createQuery, res);
+        console.log(err);
+        return res.send('Database query error.');
+      } else {
+        const email = req.body['`email`'];
+        const query = `SELECT id
+                        FROM users
+                        WHERE email = ${email}`;
+
+        connection.query(query, (err, results) => {
+          if (err) {
+            console.log(err);
+            return res.send('Database query error');
+          }
+
+          const token = createToken();
+          const loginQuery = `INSERT INTO sessions 
+                                SET token = '${token}', user_id ='${results[0].id}'`;
+
+          connection.query(loginQuery, (err) => {
+            if (err) {
+              console.log(err);
+              return res.send('Database query error');
+            }
+
+            res.cookie('token', token, { maxAge: 60 * 60 * 1000 * 12, httpOnly: true })
+            return res.send({ success: true });
+          });
+        });
+      }
+    });
   });
 
   // join group 
@@ -417,7 +448,7 @@ module.exports = function(app) {
 
 function encryptPassword(req, res, next) {
   const body = req.body;
-  // if (body['`password`']) body['`password`'] = `'${sha1(body['`password`'])}'`;
+
   if (body['`password`']) body['`password`'] = `'${bcrypt.hashSync(body['`password`'], 10)}'`;
   next();
 }
@@ -532,7 +563,7 @@ function validateToken(req, res, next) {
 } 
 
 // CURRENT
-// encrypt with bcrypt
+// Uploaded new mysql file
 
 // TODO:
 // error handling middleware

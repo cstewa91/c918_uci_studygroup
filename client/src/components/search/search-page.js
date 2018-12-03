@@ -19,7 +19,7 @@ class SearchGroups extends Component{
 
         const listAllGroups = this.props.all.map(item => {
             return (
-                <GroupModal key={item.id} id={item.id} description={item.description} text={`${item.subject} ${item.course} ${item.name} ${item.start_time} - ${item.end_time} ${item.current_group_size}/${item.max_group_size}`}/>
+                <GroupModal key={item.id} history={this.props.history} id={item.id} description={item.description} text={`${item.subject} ${item.course} ${item.name} ${item.start_time} - ${item.end_time} ${item.current_group_size}/${item.max_group_size}`}/>
             )
         });
 
@@ -37,8 +37,6 @@ class SearchGroups extends Component{
                         <ul>
                             {listAllGroups}
                         </ul>
-
-
                     </div>
 
                 </div>

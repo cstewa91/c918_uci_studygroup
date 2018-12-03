@@ -159,8 +159,9 @@ class Profile extends Component {
     
 }
 
-function validate({username, firstname, lastname, email}){
-    console.log('formvalues', username)
+function validate(values){
+    console.log('formvalues', values)
+    const {username, firstname, lastname, email} = values;
     const error = {}
 
     if(!username){
@@ -175,7 +176,7 @@ function validate({username, firstname, lastname, email}){
     if(!email){
         error.email = 'Please enter a valid email address'
     }
-
+    return error
 }
 
 function mapStateToProps(state){
