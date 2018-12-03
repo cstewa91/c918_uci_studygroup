@@ -5,6 +5,8 @@ import { getGroupDetails } from '../../actions'
 import { editGroupInfo } from '../../actions'
 import './edit-created.css';
 import Header from '../general/header'
+import Hamburger from '../general/hamburger';
+import Backdrop from '../general/backdrop';
 import { Field, reduxForm } from 'redux-form'
 import Input from '../input';
 import NavButton from '../general/nav-button'
@@ -13,6 +15,24 @@ import NavButton from '../general/nav-button'
 
 
 class EditGroup extends Component{
+    state = {
+        hamburgerOpen: false,
+    }
+
+    toggleHamburger = () =>{
+        this.setState((prevState) =>{
+            console.log(prevState)
+            return {
+                hamburgerOpen: !prevState.hamburgerOpen
+            }
+        })
+    }
+
+    backdropHandler = () => {
+        this.setState ({
+            hamburgerOpen: false,
+        })
+    }
 
     componentDidMount(){
         this.props.getGroupDetails(this.props.match.params.group_id)
@@ -24,15 +44,22 @@ class EditGroup extends Component{
     }
 
     render(){
+
+        let backdrop;
+
+        if(this.state.hamburgerOpen){
+            backdrop = <Backdrop click={this.backdropHandler}/>
+        }
+
         const {handleSubmit} = this.props
 
         return (
             <div className="edit-created">
-                <Header/>   
+                <Header hamburgerClick = {this.toggleHamburger}/>  
+                <Hamburger show={this.state.hamburgerOpen}/>
+                {backdrop}  
                 <main className='main-content'>
                     <div className='container'>
-                    <Link to='/hamburger' className='btn blue'>Hamburger</Link>
-                    <Link to='/home'>X</Link>
                     <p className='edit-group'>Edit Group:</p>
                     <form onSubmit={handleSubmit(this.handleUpdateItem)}>
                         <div>

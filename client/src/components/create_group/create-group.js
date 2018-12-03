@@ -1,14 +1,35 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm } from 'redux-form';
 import './create-group.css';
-import Header from '../general/header'
-import { createNewGroup } from '../../actions'
+import Header from '../general/header';
+import Hamburger from '../general/hamburger';
+import Backdrop from '../general/backdrop';
+import { createNewGroup } from '../../actions';
 import Input from '../input';
 
 
 class CreateGroup extends Component {
+   state = {
+      hamburgerOpen: false,
+  }
+
+  toggleHamburger = () =>{
+      this.setState((prevState) =>{
+          console.log(prevState)
+          return {
+              hamburgerOpen: !prevState.hamburgerOpen
+          }
+      })
+  }
+
+  backdropHandler = () => {
+      this.setState ({
+          hamburgerOpen: false,
+      })
+  }
+
    handleCreateGroup = async (values) => {
       await this.props.createNewGroup(values);
       await this.pushToHome()
@@ -20,13 +41,20 @@ class CreateGroup extends Component {
       }
    }
    render() {
+
+      let backdrop;
+
+      if(this.state.hamburgerOpen){
+          backdrop = <Backdrop click={this.backdropHandler}/>
+      }
+
       const { handleSubmit, invalidName } = this.props
       return (
          <div>
-            <Header />
+            <Header hamburgerClick = {this.toggleHamburger}/>  
+            <Hamburger show={this.state.hamburgerOpen}/>
+            {backdrop} 
             <h1>Create Group Page</h1>
-            <Link to="/hamburger">Hamburger</Link>
-            <Link to="/home">X</Link>
             <form onSubmit={handleSubmit(this.handleCreateGroup)}>
                <div>
                   <Field name="name" label="Group Name" component={Input} />
