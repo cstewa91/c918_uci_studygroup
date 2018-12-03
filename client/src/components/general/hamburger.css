@@ -1,0 +1,49 @@
+.hamburger-nav {
+
+    height: 100%;
+    background: white;
+    box-shadow: 2px 0 3px rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70%;
+    max-width: 400px;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+}
+
+.hamburger-nav.open {
+    transform: translateX(0);
+}
+
+
+.hamburger-nav ul {
+
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.hamburger-nav li {
+
+    margin: 0.5rem;
+
+}
+
+.hamburger-nav a {
+
+    color: blue;
+    text-decoration: none;
+    font-size: 1.2rem;
+
+}
+
+.hamburger-nav a:hover
+.hamburger-nav a:active {
+
+    color: yellow;
+
+}

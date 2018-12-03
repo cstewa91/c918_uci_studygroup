@@ -5,25 +5,54 @@ import { getGroupDetails } from '../../actions';
 import NavButton from '../general/nav-button';
 import './group-info.css';
 import Header from '../general/header';
+import Hamburger from '../general/hamburger';
+import Backdrop from '../general/backdrop';
 
 
 class GroupInfo extends Component{
+    state = {
+        hamburgerOpen: false,
+    }
+
+    toggleHamburger = () =>{
+        this.setState((prevState) =>{
+            console.log(prevState)
+            return {
+                hamburgerOpen: !prevState.hamburgerOpen
+            }
+        })
+    }
+
+    backdropHandler = () => {
+        this.setState ({
+            hamburgerOpen: false,
+        })
+    }
 
     componentDidMount(){
 
         this.props.getGroupDetails(this.props.match.params.group_id);
     }
 
+
     render(){
+
+        let backdrop;
+
+        if(this.state.hamburgerOpen){
+            backdrop = <Backdrop click={this.backdropHandler}/>
+        }
+
 
         const {name, subject, course, start_time, end_time, max_group_size, current_group_size, location, description } = this.props.singleGroup
     
         return (
             <div className="edit-created">
-                <Header/>   
+                <Header hamburgerClick = {this.toggleHamburger}/>  
+                <Hamburger show={this.state.hamburgerOpen}/>
+                {backdrop} 
                 <main className='main-content'>
                     <div className='container'>
-                    <Link to='/hamburger' className='btn blue'>Hamburger</Link>
                     
                         <div className='main-title'>
                             <p className='edit-group'>Created Group Details:</p>

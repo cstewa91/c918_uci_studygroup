@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import './search-page.css';
 import Header from '../general/header'
+import Hamburger from '../general/hamburger';
+import Backdrop from '../general/backdrop';
 import GroupModal from '../general/group-modal';
 import {getAllGroups} from '../../actions';
 import { connect } from 'react-redux';
@@ -10,12 +12,36 @@ class SearchGroups extends Component{
     constructor(props){
         super(props)
     }
+    state = {
+        hamburgerOpen: false,
+    }
+
+    toggleHamburger = () =>{
+        this.setState((prevState) =>{
+            console.log(prevState)
+            return {
+                hamburgerOpen: !prevState.hamburgerOpen
+            }
+        })
+    }
+
+    backdropHandler = () => {
+        this.setState ({
+            hamburgerOpen: false,
+        })
+    }
 
     componentDidMount() {
         this.props.getAllGroups();
     }
 
     render() {
+
+        let backdrop;
+
+        if(this.state.hamburgerOpen){
+            backdrop = <Backdrop click={this.backdropHandler}/>
+        }
 
         const listAllGroups = this.props.all.map(item => {
             return (
@@ -25,9 +51,10 @@ class SearchGroups extends Component{
 
         return (
             <div>
-                <Header/>
+                <Header hamburgerClick = {this.toggleHamburger}/>  
+                <Hamburger show={this.state.hamburgerOpen}/>
+                {backdrop} 
                 <div className="main-content">
-                    <Link to="/hamburger">Menu</Link>
                     <h1>Search Groups</h1>
                     <div className="search-filter-container">
                         <input size="26" id="search-field" type="text" placeholder="Enter a group name or subject"/>

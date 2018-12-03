@@ -26,7 +26,8 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "mysql": "^2.16.0",
-    "redux-form": "^7.4.2"
+    "redux-form": "^7.4.2",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.6",

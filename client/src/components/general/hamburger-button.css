@@ -1,0 +1,24 @@
+.hamburger-button {
+    /* possibly add flex through bs4 classes  */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 30px;
+    width: 36px;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    box-sizing: border-box;
+    margin-left: 0.75rem;
+}
+
+.hamburger-button:focus {
+    outline: none;
+}
+
+.button-line {
+    width: 30px;
+    height: 2px;
+    background: white;
+}
