@@ -5,6 +5,8 @@ import profileReducer from './profile_reducer';
 import editGroupReducer from './edit_group_reducer';
 import loginReducer from './login_reducer'
 import searchReducer from './search_reducer';
+import createAccountReducer from './create_account_reducer'
+import createGroupReducer from './create_group_reducer'
 
 const rootReducer = combineReducers({
    form: formReducer,
@@ -13,6 +15,8 @@ const rootReducer = combineReducers({
    editGroup: editGroupReducer,
    login: loginReducer,
    search: searchReducer,
+   createAccount: createAccountReducer,
+   createGroup: createGroupReducer
 });
 
 export default rootReducer;

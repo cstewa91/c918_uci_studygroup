@@ -9,23 +9,29 @@ import Input from '../input';
 
 
 class CreateGroup extends Component {
-   handleAddItem = async (values) => {
-      console.log(values)
+   handleCreateGroup = async (values) => {
       await this.props.createNewGroup(values);
-      this.props.history.push('/home')
+      await this.pushToHome()
+   }
+   pushToHome = () => {
+      const { validName } = this.props
+      if (validName) {
+         this.props.history.push('/home')
+      }
    }
    render() {
-      const { handleSubmit } = this.props
+      const { handleSubmit, invalidName } = this.props
       return (
          <div>
             <Header />
             <h1>Create Group Page</h1>
             <Link to="/hamburger">Hamburger</Link>
             <Link to="/home">X</Link>
-            <form onSubmit={handleSubmit(this.handleAddItem)}>
+            <form onSubmit={handleSubmit(this.handleCreateGroup)}>
                <div>
                   <Field name="name" label="Group Name" component={Input} />
                </div>
+               <p>{invalidName}</p>
                <div>
                   <Field name="subject" label="Subject" component={Input} />
                </div>
@@ -36,10 +42,10 @@ class CreateGroup extends Component {
                   <Field name="max_group_size" label="Group Size" component={Input} />
                </div>
                <div>
-                  <Field name="start_time" label="Starting Time" component={Input} />
+                  <Field name="start_time" label="Starting Time" component={Input} type="datetime-local" />
                </div>
                <div>
-                  <Field name="end_time" label="Ending Time" component={Input} />
+                  <Field name="end_time" label="Ending Time" component={Input} type="datetime-local" />
                </div>
                <div>
                   <Field name="location" label="Location" component={Input} />
@@ -54,33 +60,40 @@ class CreateGroup extends Component {
    }
 }
 
-function validate({ name, subject, course, max_group_size, start_time, end_time, location, description}){
+function validate({ name, subject, course, max_group_size, start_time, end_time, location, description }) {
    const error = {}
-   if(!name){
+   if (!name) {
       error.name = "Please enter your group name"
    }
-   if(!subject){
+   if (!subject) {
       error.subject = "Please enter the subject"
    }
-   if(!course){
+   if (!course) {
       error.course = "Please enter the course number"
    }
-   if(!max_group_size){
+   if (!max_group_size) {
       error.max_group_size = "Please enter the group size"
    }
-   if(!start_time){
+   if (!start_time) {
       error.start_time = "Please enter the start time"
    }
-   if(!end_time){
+   if (!end_time) {
       error.end_time = "Please enter the end time"
    }
-   if(!location){
+   if (!location) {
       error.location = "Please enter the location"
    }
-   if(!description){
+   if (!description) {
       error.description = "Please enter a short description"
    }
    return error;
+}
+
+function mapStateToProps(state) {
+   return {
+      validName: state.createGroup.validName,
+      invalidName: state.createGroup.invalidName
+   }
 }
 
 CreateGroup = reduxForm({
@@ -88,6 +101,6 @@ CreateGroup = reduxForm({
    validate: validate
 })(CreateGroup);
 
-export default connect(null, {
+export default connect(mapStateToProps, {
    createNewGroup: createNewGroup
 })(CreateGroup);
