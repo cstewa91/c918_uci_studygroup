@@ -82,12 +82,9 @@ class Profile extends Component {
         if(this.state.isEditable){
             return(
                 <div className="profile">
-                <Header hamburgerClick = {this.toggleHamburger}/>  
-                <Hamburger show={this.state.hamburgerOpen}/>
-                {backdrop} 
+                <Header/> 
                 <main className='main-content'>
                     <div className='container'>
-                    <Link to='/hamburger' className='btn blue'>Hamburger</Link>
                         <div className='main-title'>
                             <p className='edit-group'>PROFILE</p>
                         </div>
@@ -122,8 +119,6 @@ class Profile extends Component {
                 {backdrop} 
                 <main className='main-content'>
                     <div className='container'>
-                    <Link to='/hamburger' className='btn blue'>Hamburger</Link>
-                    
                         <div className='main-title'>
                             <p className='edit-group'>PROFILE</p>
                         </div>
