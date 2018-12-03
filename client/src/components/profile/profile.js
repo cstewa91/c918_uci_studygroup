@@ -6,14 +6,30 @@ import {getUserInfo} from '../../actions';
 import {editUserInfo} from '../../actions'
 import './profile.css';
 import Header from '../general/header';
-
+import Backdrop from '../general/backdrop';
+import Hamburger from '../general/hamburger'
 
 
 
 class Profile extends Component {
     state = {
         isEditable: false,
+        hamburgerOpen: false,
+    }
 
+    toggleHamburger = () =>{
+        this.setState((prevState) =>{
+            console.log(prevState)
+            return {
+                hamburgerOpen: !prevState.hamburgerOpen
+            }
+        })
+    }
+
+    backdropHandler = () => {
+        this.setState ({
+            hamburgerOpen: false,
+        })
     }
 
     renderInput(props){
@@ -55,12 +71,18 @@ class Profile extends Component {
 
     render(){
 
+        let backdrop;
+
+        if(this.state.hamburgerOpen){
+            backdrop = <Backdrop click={this.backdropHandler}/>
+        }
+
         const {username, firstname, lastname, email } = this.props.user
         const {handleSubmit} = this.props
         if(this.state.isEditable){
             return(
                 <div className="profile">
-                <Header/>   
+                <Header/> 
                 <main className='main-content'>
                     <div className='container'>
                     <Link to='/hamburger' className='btn blue'>Hamburger</Link>
@@ -92,7 +114,10 @@ class Profile extends Component {
 
         return (
             <div className="profile">
-                <Header/>   
+                 
+                <Header hamburgerClick = {this.toggleHamburger}/>  
+                <Hamburger show={this.state.hamburgerOpen}/>
+                {backdrop} 
                 <main className='main-content'>
                     <div className='container'>
                     <Link to='/hamburger' className='btn blue'>Hamburger</Link>
