@@ -9,24 +9,18 @@ import './login.css';
 
 
 class Login extends Component {
-   handleAddItem = async (values) => {
+   handleLogin = async (values) => {
       await this.props.loginApp(values)
-      this.validLogin();
+      await this.pushToHome()
    }
-   validLogin = () => {
+   pushToHome = () => {
       const { user } = this.props
-      if (user === "valid") {
+      if (user) {
          this.props.history.push('/home')
       }
    }
-   invalidLogin = () => {
-      const { user } = this.props
-      if (user === "invalid") {
-         return "Invalid Email or Password"
-      }
-   }
    render() {
-      const { handleSubmit } = this.props
+      const { handleSubmit, signInError } = this.props
       return (
          <div>
             <div>
@@ -34,7 +28,7 @@ class Login extends Component {
             </div>
             <h1>Book Worms</h1>
             <h1>Google Sign In</h1>
-            <form onSubmit={handleSubmit(this.handleAddItem)}>
+            <form onSubmit={handleSubmit(this.handleLogin)}>
                <div>
                   <Field name="email" label="E-mail" component={Input} />
                </div>
@@ -42,7 +36,7 @@ class Login extends Component {
                   <Field name="password" label="Password" component={Input} type="password" />
                </div>
                <button>Login</button>
-               <p>{this.invalidLogin()}</p>
+               <p>{signInError}</p>
             </form>
             <Link to='/create-account'>create account</Link>
          </div>
@@ -64,6 +58,7 @@ function validate({ email, password }) {
 
 function mapStateToProps(state) {
    return {
+      signInError: state.login.signInError,
       user: state.login.user
    }
 }

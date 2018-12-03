@@ -13,4 +13,7 @@ export default {
    ERROR_LOGIN: 'error_login',
    USERNAME_ALREADY_EXISTS: 'username_already_exists',
    EMAIL_ALREADY_EXISTS: 'email_already_exists',
+   USERNAME_AND_EMAIL_EXIST: 'username_and_email_exist',
+   GROUPNAME_ALREADY_EXIST: 'groupname_already_exist',
+   VALID_GROUPNAME: 'valid_groupname'
 }

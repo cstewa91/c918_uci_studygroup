@@ -7,16 +7,27 @@ import Input from '../input';
 import worm from '../../assets/images/bookworm.png'
 
 class CreateNewAccount extends Component {
-   handleAddItem = async (values) => {
+   handleCreateAccount = async (values) => {
       await this.props.createAccount(values);
-      await this.props.loginApp(values);
-      this.props.history.push('/home');
+      await this.pushToHome()
+   }
+   pushToHome = () => {
+      const { account } = this.props
+      if (account) {
+         this.props.history.push('/home')
+      }
+   }
+   loginNewAccount = (values) => {
+      const { account } = this.props
+      if (account) {
+         this.props.loginApp(values)
+      }
    }
    render() {
-      const { handleSubmit } = this.props
+      const { handleSubmit, invalidEmail, invalidUsername } = this.props
       return (
          <div>
-            <form onSubmit={handleSubmit(this.handleAddItem)}>
+            <form onSubmit={handleSubmit(this.handleCreateAccount)}>
                <div>
                   <Field name="firstname" label="First Name" component={Input} />
                </div>
@@ -26,9 +37,11 @@ class CreateNewAccount extends Component {
                <div>
                   <Field name="username" label="Username" component={Input} />
                </div>
+               <p>{invalidUsername}</p>
                <div>
                   <Field name="email" label="E-mail" component={Input} />
                </div>
+               <p>{invalidEmail}</p>
                <div>
                   <Field name="password" label="Password" component={Input} type="password" />
                </div>
@@ -65,13 +78,21 @@ function validate({ firstname, lastname, username, email, password, confirmPassw
    return error
 }
 
+function mapStateToProps(state) {
+   console.log(state.createAccount.account)
+   return {
+      invalidEmail: state.createAccount.validEmail,
+      invalidUsername: state.createAccount.validUsername,
+      account: state.createAccount.account
+   }
+}
 
 CreateNewAccount = reduxForm({
    form: 'create-account',
    validate: validate
 })(CreateNewAccount);
 
-export default connect(null, {
+export default connect(mapStateToProps, {
    createAccount: createAccount,
    loginApp: loginApp,
 })(CreateNewAccount)
