@@ -13,8 +13,8 @@ const API_GET_GROUP_DETAILS = '/api/groups/details';
 const API_NEW_ACCOUNT = '/api/users';
 const API_JOIN_GROUP = '/api/groups/join';
 const API_USERNAME = '/api/users/username';
-const API_EMAIL = '/api/users/email'
-const API_GROUP_NAME = '/api/groups/name'
+const API_EMAIL = '/api/users/email';
+const API_GROUP_NAME = '/api/groups/name';
 axios.defaults.withCredentials = true;
 
 
@@ -154,3 +154,10 @@ export function joinGroup(groupId) {
    }
 }
 
+export function userSignOut(){
+   localStorage.removeItem('token');
+
+   return {
+      type: types.SIGN_OUT
+   }
+}

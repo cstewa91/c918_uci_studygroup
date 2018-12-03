@@ -17,4 +17,5 @@ export default {
    USERNAME_AND_EMAIL_EXIST: 'username_and_email_exist',
    GROUPNAME_ALREADY_EXIST: 'groupname_already_exist',
    VALID_GROUPNAME: 'valid_groupname',
+   SIGN_OUT: 'sign_out',
 }

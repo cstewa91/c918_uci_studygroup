@@ -29,12 +29,13 @@ module.exports = function(app) {
   });
 
   // group details 
-  app.get('/api/groups/details/:group_id', sanitizeParams, (req, res) => {
+  app.get('/api/groups/details/:group_id_name', sanitizeParams, (req, res) => {
     const query = `SELECT g.*, COUNT(gm.group_id) AS current_group_size 
                     FROM 
                     (SELECT * 
                     FROM groups
-                    WHERE id = ${req.params['`group_id`']}) AS g
+                    WHERE id = ${req.params['`group_id_name`']}
+                    OR name = ${req.params['`group_id_name`']}) AS g
                     LEFT JOIN group_members AS gm 
                     ON g.id = gm.group_id`;
 
@@ -537,7 +538,7 @@ function validateToken(req, res, next) {
     { route: /\/api\/login/, method: 'POST' },                      // api/login
     { route: /\/api\/users$/, method: 'POST' },                     // api/users
     { route: /\/api\/groups$/, method: 'GET' },                     // api/groups
-    { route: /\/api\/groups\/details\/\d+/, method: 'GET' },        // api/groups/details/:group_id
+    { route: /\/api\/groups\/details\/.+/, method: 'GET' },        // api/groups/details/:group_id_name
     { route: /\/api\/groups\/filter\/.+/, method: 'GET' },          // api/groups/filter/:phrase
   ]
   const isExcludedRoute = excludedRoutes.some(excludedRoute => {
@@ -563,7 +564,7 @@ function validateToken(req, res, next) {
 } 
 
 // CURRENT
-// Uploaded new mysql file
+// /group/details/group_id_name now get group details by group id or name
 
 // TODO:
 // error handling middleware

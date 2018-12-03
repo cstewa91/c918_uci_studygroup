@@ -12,6 +12,10 @@ export default (state = DEFAULT_STATE, action) => {
          return { ...state, auth: true}
       case types.ERROR_LOGIN:
          return {...state, auth: false, signInError: action.error}
+      case types.SIGN_OUT:
+         return {
+            auth: false
+         }
       default:
          return state;
    }
