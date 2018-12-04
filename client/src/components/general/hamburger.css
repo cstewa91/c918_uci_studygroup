@@ -79,14 +79,9 @@
 
 }
 
-.hamburger-nav a:hover
-.hamburger-nav a:active {
+.hamburger-signout
 
-    color: #F7EA31
-
-}
-
-.logout-button {
+.signout-button {
     font-family: 'Roboto';
     width: 86px;
     height: 36px;

@@ -22,7 +22,7 @@ class Hamburger extends Component {
         if(auth){
             return (
                 <div className='hamburger-signout d-flex'>
-                    <button onClick={userSignOut} className='btn logout-button'>Log Out</button>
+                    <button onClick={userSignOut} className='btn signout-button'>Log Out</button>
                 </div>
             )
         }
