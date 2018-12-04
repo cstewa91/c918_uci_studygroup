@@ -36,13 +36,22 @@ class GroupModal extends Component{
 
     render(){
 
-        const { group, id } = this.props;
+        const { group, id} = this.props;
+        const startDateTime = new Date(group.start_time);
+        const endDateTime = new Date(group.end_time);
+
+        const startingTime = startDateTime.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+        const endingTime = endDateTime.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+        const startDate = startDateTime.toLocaleDateString();
 
         const GroupData = (
+
+            
                 <div key={group.id} className="group-modal-details">
                     <h1 className="group-name">{group.name}</h1>
                     <p className="group-subject"><strong>Subject/Course:</strong> {group.subject}{group.course}</p>
-                    <p className="group-timeslot"><strong>Date/Time:</strong> {group.start_time} - {group.end_time}</p>
+                    <p className="group-date"><strong>Date:</strong> {startDate}</p>
+                    <p className="group-time"><strong>Time:</strong> {startingTime} - {endingTime}</p>
                     <p className="group-location"><strong>Location:</strong> {group.location}</p>
                     <div className="btn btn-light map-button">
                         <a href="https://map.uci.edu/" target="_blank">MAP</a>
