@@ -44,8 +44,15 @@ class SearchGroups extends Component{
         }
 
         const listAllGroups = this.props.all.map(item => {
+            const startDateTime = new Date(item.start_time);
+            const endDateTime = new Date(item.end_time);
+
+            const startingTime = startDateTime.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+            const endingTime = endDateTime.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+            const startDate = startDateTime.toLocaleDateString();
+
             return (
-                <GroupModal key={item.id} history={this.props.history} id={item.id} description={item.description} text={`${item.subject} ${item.course} ${item.name} ${item.start_time} - ${item.end_time} ${item.current_group_size}/${item.max_group_size}`}/>
+                <GroupModal key={item.id} history={this.props.history} id={item.id} description={item.description} text={`${item.subject}${item.course}: ${item.name} ${startDate} ${startingTime} - ${endingTime} ${item.current_group_size}/${item.max_group_size}`}/>
             )
         });
 
