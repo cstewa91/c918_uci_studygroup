@@ -15,8 +15,16 @@ const API_JOIN_GROUP = '/api/groups/join';
 const API_USERNAME = '/api/users/username';
 const API_EMAIL = '/api/users/email';
 const API_GROUP_NAME = '/api/groups/name';
+const API_FILTER_GROUPS = '/api/groups/filter/'
 axios.defaults.withCredentials = true;
 
+export function filterResults(value){
+   const resp = axios.get(BASE_URL + API_FILTER_GROUPS + value);
+   return {
+      type: types.FILTER_RESULTS,
+      payload: resp
+   }
+}
 
 export function getCreatedGroups() {
    const resp = axios.get(BASE_URL + API_GROUPS_CREATED);

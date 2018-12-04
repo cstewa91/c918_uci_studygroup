@@ -6,6 +6,7 @@ import Hamburger from '../general/hamburger';
 import Backdrop from '../general/backdrop';
 import GroupModal from '../general/group-modal';
 import {getAllGroups} from '../../actions';
+import {filterResults} from '../../actions';
 import { connect } from 'react-redux';
 
 class SearchGroups extends Component{
@@ -81,10 +82,12 @@ class SearchGroups extends Component{
 
 function mapStateToProps(state) {
     return {
-        all: state.search.all
+        all: state.search.all,
+        results: state.filter.results
     }
 }
 
 export default connect(mapStateToProps, {
     getAllGroups: getAllGroups,
+    filterResults: filterResults
 })(SearchGroups);

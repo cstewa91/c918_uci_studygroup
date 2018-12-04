@@ -11,11 +11,12 @@ export default {
    CREATE_ACCOUNT: 'create_account',
    GET_USER_ID: 'get_user_id',
    ERROR_LOGIN: 'error_login',
-    JOIN_GROUP: 'join_group',
+   JOIN_GROUP: 'join_group',
    USERNAME_ALREADY_EXISTS: 'username_already_exists',
    EMAIL_ALREADY_EXISTS: 'email_already_exists',
    USERNAME_AND_EMAIL_EXIST: 'username_and_email_exist',
    GROUPNAME_ALREADY_EXIST: 'groupname_already_exist',
    VALID_GROUPNAME: 'valid_groupname',
    SIGN_OUT: 'sign_out',
+   FILTER_RESULTS: 'filter_results'
 }
