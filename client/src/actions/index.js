@@ -57,7 +57,9 @@ export function createNewGroup(item) {
       const validGroupName = await axios.get(`${BASE_URL + API_GROUP_NAME}/${item.name}`)
       if (!validGroupName.data) {
          const resp = await axios.post(BASE_URL + API_GROUPS, item)
-         const getGroup = await axios.get(BASE_URL + API_GROUPS_CREATED)
+         const getGroup = await axios.get(`${BASE_URL + API_GET_GROUP_DETAILS}/${item.name}`)
+         const groupInfo = { group_id: getGroup.data.id, user_id: getGroup.data.user_id }
+         const addUserToGroup = await axios.post(BASE_URL + API_JOIN_GROUP, groupInfo);
          dispatch({
             type: types.VALID_GROUPNAME,
             payload: resp
