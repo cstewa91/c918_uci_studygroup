@@ -90,16 +90,18 @@ class CreateGroup extends Component {
 
 function validate({ name, subject, course, max_group_size, start_time, end_time, location, description }) {
    const error = {}
+   const validSubject = /^[a-z ,.'-]+$/i
+   const validNumber = /^[0-9]*$/
    if (!name) {
       error.name = "Please enter your group name"
    }
-   if (!subject) {
+   if (!subject || !validSubject.test(subject)) {
       error.subject = "Please enter the subject"
    }
-   if (!course) {
+   if (!course || !validNumber.test(course)) {
       error.course = "Please enter the course number"
    }
-   if (!max_group_size) {
+   if (!max_group_size || !validNumber.test(max_group_size)) {
       error.max_group_size = "Please enter the group size"
    }
    if (!start_time) {

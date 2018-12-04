@@ -57,17 +57,25 @@ class CreateNewAccount extends Component {
 
 function validate({ firstname, lastname, username, email, password, confirmPassword }) {
    const error = {};
+   const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+   const validName =  /^[a-z ,.'-]+$/i
    if (!firstname) {
       error.firstname = "Please enter your first name"
+   }
+   if( !validName.test(firstname)){
+      error.firstname = "Please enter a valid first name"
    }
    if (!lastname) {
       error.lastname = "Please enter your last name"
    }
+   if(!validName.test(lastname)){
+      error.lastname = "Please enter a valid last name"
+   }
    if (!username) {
       error.username = "Please enter a username"
    }
-   if (!email) {
-      error.email = "Please enter your email"
+   if(!validEmail.test(email) || !email){
+      error.email = "Please enter a valid email"
    }
    if (!password) {
       error.password = "Please enter a password"
@@ -79,7 +87,6 @@ function validate({ firstname, lastname, username, email, password, confirmPassw
 }
 
 function mapStateToProps(state) {
-   console.log(state.createAccount.account)
    return {
       invalidEmail: state.createAccount.validEmail,
       invalidUsername: state.createAccount.validUsername,
