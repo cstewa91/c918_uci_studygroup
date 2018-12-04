@@ -1,7 +1,7 @@
 .hamburger-nav {
 
     height: 100%;
-    background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), #1778BE;
+    background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), #1778BE; 
     box-shadow: 2px 0 3px rgba(0,0,0,0.5);
     position: fixed;
     top: 0;
@@ -13,7 +13,30 @@
     transition: transform 0.3s ease-out;
 }
 
-img {
+.hamburger-header {
+    height: 20%;
+    font-family: 'Gochi Hand';
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.hamburger-header img {
+    height: 50px;
+    width: 50px;
+    margin: 0.5em;
+}
+
+.hamburger-header span {
+    font-size: 2rem;
+}
+
+
+.hamburger-links img {
     height: 30px;
     width: 30px;
     margin: 0.5em;
@@ -27,7 +50,7 @@ img {
 .hamburger-nav ul {
     height: 60%;
     padding-left: 0;
-    padding-top: 15%;
+    padding-top: 10%;
     list-style: none;
     display: flex;
     flex-direction: column;

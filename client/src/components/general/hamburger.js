@@ -5,11 +5,16 @@ import user from '../../assets/images/user.png';
 import groupAdd from '../../assets/images/group-create.png';
 import home from '../../assets/images/home.png';
 import magnifier from '../../assets/images/magnifier.png';
-import NavButton from './nav-button';
 import {connect} from 'react-redux';
 import {userSignOut} from '../../actions/';
+import {getUserInfo} from '../../actions'
+import worm from '../../assets/images/bookworm.png'
 
 class Hamburger extends Component {
+    
+    componentDidMount(){
+        this.props.getUserInfo()
+    }
 
     SignOutButton(){
         const {auth, userSignOut} = this. props;
@@ -24,6 +29,9 @@ class Hamburger extends Component {
     }
 
     render(){
+
+    const {username} = this.props.user
+
     let hamburgerClasses = 'hamburger-nav'
 
     if(this.props.show){
@@ -31,8 +39,11 @@ class Hamburger extends Component {
     }
         return (
             <nav className={hamburgerClasses}>
-                <h1>This is the hamburger menu</h1>
-                <ul>
+                <div className="hamburger-header">
+                    <img src={worm}/>
+                    <span>{username}</span>
+                </div>
+                <ul className='hamburger-links'>
                     <li className='hamburger-home'>
                         <img src={home} /> 
                         <Link to='/home' className='btn blue confirm'>Home</Link>
@@ -59,10 +70,12 @@ class Hamburger extends Component {
 
 function mapStateToProps(state){
     return{
-        auth: state.login.auth
+        auth: state.login.auth,
+        user: state.profile.user,
     }
 }
 
 export default connect(mapStateToProps, {
     userSignOut: userSignOut,
+    getUserInfo: getUserInfo,
 }) (Hamburger)
