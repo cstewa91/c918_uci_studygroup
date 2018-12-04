@@ -6,6 +6,7 @@ import Backdrop from '../general/backdrop';
 import Hamburger from '../general/hamburger';
 import { getCreatedGroups } from '../../actions';
 import { getJoinedGroups } from '../../actions';
+import { getUserInfo } from '../../actions';
 import { connect } from 'react-redux';
 
 
@@ -15,47 +16,49 @@ class Home extends Component {
       hamburgerOpen: false,
    }
 
-   toggleHamburger = () =>{
-      this.setState((prevState) =>{
-          console.log(prevState)
-          return {
-              hamburgerOpen: !prevState.hamburgerOpen
-          }
+   toggleHamburger = () => {
+      this.setState((prevState) => {
+         console.log(prevState)
+         return {
+            hamburgerOpen: !prevState.hamburgerOpen
+         }
       })
-  }
+   }
 
-  backdropHandler = () => {
-   this.setState ({
-       hamburgerOpen: false,
-   })
-}
+   backdropHandler = () => {
+      this.setState({
+         hamburgerOpen: false,
+      })
+   }
 
 
    componentDidMount() {
-      
       this.props.getCreatedGroups();
       this.props.getJoinedGroups();
-      console.log('mount', this.props)
+      this.props.getUserInfo();
+      console.log(this.props.getJoinedGroups())
    }
    render() {
 
       let backdrop;
 
-      if(this.state.hamburgerOpen){
-         backdrop = <Backdrop click={this.backdropHandler}/>
-     }
+      if (this.state.hamburgerOpen) {
+         backdrop = <Backdrop click={this.backdropHandler} />
+      }
 
-      console.log(this.props)
       const listCreatedGroups = this.props.created.map(item => {
          return <div key={item.id}><Link to={`/group-info/${item.id}`}> {item.name} {item.location} {item.subject}</Link></div>
       })
       const listJoinedGroups = this.props.joined.map(item => {
-         return <div key={item.id}><Link to={`/group-info/${item.id}`}> {item.name} {item.location} {item.subject}</Link></div>
+         console.log(item)
+         if (this.props.userId !== item.user_id) {
+            return <div key={item.id}><Link to={`/group-info/${item.id}`}> {item.name} {item.location} {item.subject}</Link></div>
+         }
       })
       return (
          <div>
-            <Header hamburgerClick = {this.toggleHamburger}/>
-            <Hamburger show={this.state.hamburgerOpen}/>
+            <Header hamburgerClick={this.toggleHamburger} />
+            <Hamburger show={this.state.hamburgerOpen} />
             {backdrop}
             <h1>Home Page</h1>
             <Link to="/search-group"><button>Search</button></Link>
@@ -70,13 +73,16 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
+   console.log(state.profile.user.id)
    return {
       created: state.home.created,
-      joined: state.home.joined
+      joined: state.home.joined,
+      userId: state.profile.user.id
    }
 }
 
 export default connect(mapStateToProps, {
    getJoinedGroups: getJoinedGroups,
-   getCreatedGroups: getCreatedGroups
+   getCreatedGroups: getCreatedGroups,
+   getUserInfo: getUserInfo,
 })(Home)

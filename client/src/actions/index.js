@@ -35,10 +35,12 @@ export function getJoinedGroups() {
 }
 
 export function getUserInfo() {
-   const resp = axios.get(BASE_URL + API_USER);
-   return {
-      type: types.GET_USER_INFO,
-      payload: resp,
+   return async function (dispatch) {
+      const resp = await axios.get(BASE_URL + API_USER);
+      dispatch({
+         type: types.GET_USER_INFO,
+         payload: resp,
+      })
    }
 }
 
@@ -51,10 +53,13 @@ export function editUserInfo(item) {
 }
 
 export function createNewGroup(item) {
-   return async function (dispatch){
+   return async function (dispatch) {
       const validGroupName = await axios.get(`${BASE_URL + API_GROUP_NAME}/${item.name}`)
-      if (!validGroupName.data){
+      if (!validGroupName.data) {
          const resp = await axios.post(BASE_URL + API_GROUPS, item)
+         const getGroup = await axios.get(`${BASE_URL + API_GET_GROUP_DETAILS}/${item.name}`)
+         const groupInfo = { group_id: getGroup.data.id, user_id: getGroup.data.user_id }
+         const addUserToGroup = await axios.post(BASE_URL + API_JOIN_GROUP, groupInfo);
          dispatch({
             type: types.VALID_GROUPNAME,
             payload: resp
@@ -142,13 +147,13 @@ export function createAccount(item) {
    }
 }
 
-export function joinGroup(groupId){
-    const resp = axios.post(BASE_URL + API_JOIN_GROUP, {group_id: groupId});
-    console.log(resp);
-    return {
-       type: types.JOIN_GROUP,
-        payload: resp
-    }
+export function joinGroup(groupId) {
+   const resp = axios.post(BASE_URL + API_JOIN_GROUP, { group_id: groupId });
+   console.log(resp);
+   return {
+      type: types.JOIN_GROUP,
+      payload: resp
+   }
 }
 
 export function userSignOut(){
