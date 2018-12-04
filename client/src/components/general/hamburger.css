@@ -55,15 +55,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    
+    font-family: 'Roboto';
 
 }
 
 .hamburger-nav li {
-
-
     cursor: pointer;
-
 }
 
 .hamburger-nav li:hover {
@@ -87,4 +84,14 @@
 
     color: #F7EA31
 
+}
+
+.logout-button {
+    font-family: 'Roboto';
+    width: 86px;
+    height: 36px;
+    border-radius: 15px;
+    background: #1778BE;
+    color: white;
+    right:0;
 }
