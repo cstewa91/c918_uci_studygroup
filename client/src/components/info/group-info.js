@@ -29,6 +29,11 @@ class GroupInfo extends Component{
         })
     }
 
+    formatStartTime = (startTime) => {
+        const formattedStartTime = startTime.toLocaleTimeString();
+        return formattedStartTime;
+    }
+
     componentDidMount(){
 
         this.props.getGroupDetails(this.props.match.params.group_id);
@@ -45,7 +50,18 @@ class GroupInfo extends Component{
 
 
         const {name, subject, course, start_time, end_time, max_group_size, current_group_size, location, description } = this.props.singleGroup
-    
+
+        const startDateTime = new Date(start_time);
+        const endDateTime = new Date(end_time);
+        const startingTime = startDateTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        const startDate = startDateTime.toLocaleDateString();
+        const endingTime = endDateTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+
+        if(!{getGroupDetails}){
+            return
+            <h1>Loading...</h1>
+        }
+
         return (
             <div className="edit-created">
                 <Header hamburgerClick = {this.toggleHamburger}/>  
@@ -54,37 +70,30 @@ class GroupInfo extends Component{
                 <main className='main-content'>
                     <div className='container'>
                     
-                        <div className='main-title'>
-                            <p className='edit-group'>Created Group Details:</p>
+                        <div className='main-title group-name'>
+                            <h1>{name}</h1>
                         </div>
-
                         <div className="group-details">
-                            <form className='group-info'>
-                                <div className='group-name form-group'>
-                                    <p>{name}</p>
-                                </div>
+                        <form className='group-info'>
                                 <div className='subject form-group'>                  
-                                    <p>{subject}</p>
-                                </div>
-                                <div className='course form-group'>                       
-                                    <p>{course}</p>
+                                    <p><strong>Subject:</strong> {subject}{course}</p>
                                 </div>
                                 <div className='date form-group'>               
-                                    <p>{`${start_time}-${end_time}`}</p>
-                                </div>
-                                <div className='users form-group'>             
-                                    <p>{`${current_group_size}-${max_group_size}`}</p>
+                                    <p><strong>Date:</strong> {startDate}</p>
                                 </div>
                                 <div className='time form-group'>                 
-                                    <p>{`${start_time}-${end_time}`}</p>
+                                    <p><strong>Time:</strong> {`${startingTime} - ${endingTime}`}</p>
+                                </div>
+                                <div className='users form-group'>             
+                                    <p><strong>Group Size:</strong> {`${current_group_size}/${max_group_size}`}</p>
                                 </div>
                                 <div className='location form-group'>                  
-                                    <p>{location}</p>
+                                    <p><strong>Location:</strong> {location}</p>
                                 </div>
                                 <div className='details'>        
-                                    <p>{description}</p>
+                                    <p><strong>Description:</strong> {description}</p>
                                 </div>
-                            </form>    
+                            </form>
                         </div>
                     </div>
                 </main>
