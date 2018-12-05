@@ -18,4 +18,6 @@ export default {
    GROUPNAME_ALREADY_EXIST: 'groupname_already_exist',
    VALID_GROUPNAME: 'valid_groupname',
    SIGN_OUT: 'sign_out',
+   LEAVE_GROUP: 'leave_group',
+   DELETE_GROUP: 'delete_group'
 }

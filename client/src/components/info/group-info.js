@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import { getGroupDetails } from '../../actions';
 import NavButton from '../general/nav-button';
@@ -7,6 +6,9 @@ import './group-info.css';
 import Header from '../general/header';
 import Hamburger from '../general/hamburger';
 import Backdrop from '../general/backdrop';
+import {getUserInfo} from '../../actions';
+import {deleteGroup} from '../../actions';
+import {leaveGroup} from '../../actions';
 
 
 class GroupInfo extends Component{
@@ -16,7 +18,6 @@ class GroupInfo extends Component{
 
     toggleHamburger = () =>{
         this.setState((prevState) =>{
-            console.log(prevState)
             return {
                 hamburgerOpen: !prevState.hamburgerOpen
             }
@@ -29,14 +30,52 @@ class GroupInfo extends Component{
         })
     }
 
+    leaveCurrentGroup = async () => {
+        console.log('stuff', this.props.match.params.group_id)
+        await this.props.leaveGroup(this.props.match.params.group_id);
+        this.props.history.push('/home');
+    }
+
+    deleteCurrentGroup = async () => {
+        await this.props.deleteGroup(this.props.match.params.group_id)
+        this.props.history.push('/home')
+    }
+
+    renderButton = () =>{
+        const {id} = this.props.user;
+        const {user_id} = this.props.singleGroup;
+        if(id === user_id){
+            return(
+                <Fragment>
+                    <div className='update'>
+                        <NavButton to={`/edit-group/${this.props.match.params.group_id}`} text='EDIT'/>
+                    </div>
+                    <div className='delete-group'>
+                        <button onClick={this.deleteCurrentGroup}>Delete Group</button>
+                    </div>
+                </Fragment>
+                
+            ) 
+        }else{
+            return(
+                <div className="update">
+                    <button onClick={this.leaveCurrentGroup}>Leave Group</button>
+                </div>
+            )
+        }
+    }
+    
+
+    
+
     formatStartTime = (startTime) => {
         const formattedStartTime = startTime.toLocaleTimeString();
         return formattedStartTime;
     }
 
     componentDidMount(){
-
         this.props.getGroupDetails(this.props.match.params.group_id);
+        this.props.getUserInfo();
     }
 
 
@@ -48,9 +87,8 @@ class GroupInfo extends Component{
             backdrop = <Backdrop click={this.backdropHandler}/>
         }
 
-
-        const {name, subject, course, start_time, end_time, max_group_size, current_group_size, location, description } = this.props.singleGroup
-
+        
+        const {name, subject, course, start_time, end_time, max_group_size, current_group_size, location, description, user_id } = this.props.singleGroup
         const startDateTime = new Date(start_time);
         const endDateTime = new Date(end_time);
         const startingTime = startDateTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
@@ -61,6 +99,8 @@ class GroupInfo extends Component{
             return
             <h1>Loading...</h1>
         }
+
+       
 
         return (
             <div className="edit-created">
@@ -98,9 +138,7 @@ class GroupInfo extends Component{
                     </div>
                 </main>
                 <footer>
-                    <div className='update'>
-                        <NavButton to={`/edit-group/${this.props.match.params.group_id}`} text='EDIT'/>
-                    </div>
+                        {this.renderButton()}
                 </footer>
             </div>
                 )
@@ -109,11 +147,15 @@ class GroupInfo extends Component{
 
 function mapStateToProps(state){
     return {
-        singleGroup: state.editGroup.singleGroup
+        singleGroup: state.editGroup.singleGroup,
+        user: state.profile.user
     }
 }
 
 export default connect(mapStateToProps, {
     getGroupDetails: getGroupDetails,
+    getUserInfo: getUserInfo,
+    leaveGroup: leaveGroup,
+    deleteGroup: deleteGroup
 })(GroupInfo)
 

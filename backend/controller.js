@@ -326,7 +326,7 @@ module.exports = function(app) {
   });
 
   // delete group  
-  app.delete('/api/groups', (req, res) => {
+  app.delete('/api/groups/', (req, res) => {
     const query = `DELETE FROM groups
                     WHERE user_id = ${req.body.user_id} 
                     AND id = ${req.body['`group_id`']}`;

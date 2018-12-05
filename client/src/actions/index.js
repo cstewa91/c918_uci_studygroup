@@ -15,6 +15,7 @@ const API_JOIN_GROUP = '/api/groups/join';
 const API_USERNAME = '/api/users/username';
 const API_EMAIL = '/api/users/email';
 const API_GROUP_NAME = '/api/groups/name';
+const API_LEAVE_GROUP = '/api/groups/leave'
 axios.defaults.withCredentials = true;
 
 
@@ -162,4 +163,29 @@ export function userSignOut(){
    return {
       type: types.SIGN_OUT
    }
+}
+
+export function leaveGroup(groupId){
+   const config = {
+      data: {
+         group_id: groupId
+      }
+   };
+   const resp = axios.delete(BASE_URL + API_LEAVE_GROUP, config)
+      return {
+         type: types.LEAVE_GROUP,
+      
+   }
+}
+
+export function deleteGroup(groupId){
+   const config = {
+      data: {
+         group_id: groupId
+      }
+   }
+   const resp = axios.delete(BASE_URL + API_GROUPS, config)
+      return {
+         type: types.DELETE_GROUP,
+      }
 }

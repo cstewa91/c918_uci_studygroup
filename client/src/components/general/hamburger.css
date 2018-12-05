@@ -79,14 +79,25 @@
 
 }
 
-.hamburger-signout
 
 .signout-button {
-    font-family: 'Roboto';
-    width: 86px;
-    height: 36px;
+    
+    width: 65px;
+    height: 30px;
     border-radius: 15px;
     background: #1778BE;
     color: white;
-    right:0;
+    right: 0;
+    margin: 1em;
+    font-family: 'Roboto';
+    font-size: 0.75em;
+    border: 0;
+    padding: 0;
+    
+}
+
+.signout-button:hover {
+
+    box-shadow: 0 0 6px white
+
 }
