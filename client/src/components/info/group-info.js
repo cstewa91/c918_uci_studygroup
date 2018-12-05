@@ -85,7 +85,7 @@ class GroupInfo extends Component{
                                     <p><strong>Time:</strong> {`${startingTime} - ${endingTime}`}</p>
                                 </div>
                                 <div className='users form-group'>             
-                                    <p><strong>Group Size:</strong> {   `${current_group_size}/${max_group_size}`}</p>
+                                    <p><strong>Group Size:</strong> {`${current_group_size}/${max_group_size}`}</p>
                                 </div>
                                 <div className='location form-group'>                  
                                     <p><strong>Location:</strong> {location}</p>

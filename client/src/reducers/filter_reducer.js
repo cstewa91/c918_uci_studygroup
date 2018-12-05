@@ -6,7 +6,7 @@ const DEFAULT_STATE = {
 
 export default (state = DEFAULT_STATE, action) => {
     switch (action.type) {
-        case types.FILTER_GROUPS:
+        case types.FILTER_RESULTS:
             console.log('Filtering Results:', action);
             return { ...state, results: action.payload.data};
         default:
