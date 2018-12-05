@@ -75,10 +75,10 @@ class EditGroup extends Component{
                             <Field name="max_group_size" label="Group Size" component={Input} />
                         </div>
                         <div>
-                            <Field name="start_time" label="Starting Time" component={Input} />
+                            <Field name="start_time" label="Starting Time" component={Input} type='datetime-local'/>
                         </div>
                         <div>
-                            <Field name="end_time" label="Ending Time" component={Input} />
+                            <Field name="end_time" label="Ending Time" component={Input} type="datetime-local" />
                         </div>
                         <div>
                             <Field name="location" label="Location" component={Input} />
