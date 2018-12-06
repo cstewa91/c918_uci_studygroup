@@ -38,7 +38,7 @@ class GroupInfo extends Component{
 
     deleteCurrentGroup = async () => {
         await this.props.deleteGroup(this.props.match.params.group_id)
-        this.props.history.push('/home')
+        await this.props.history.push('/home')
     }
 
     renderButton = () =>{

@@ -40,8 +40,10 @@ class Hamburger extends Component {
         return (
             <nav className={hamburgerClasses}>
                 <div className="hamburger-header">
-                    <img src={worm}/>
-                    <span>{username}</span>
+                    <Link to='/home'>
+                        <img src={worm}/>
+                        <span>{username}</span>
+                    </Link>     
                 </div>
                 <ul className='hamburger-links'>
                     <li className='hamburger-home rounded'>
