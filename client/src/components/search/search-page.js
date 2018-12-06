@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
 import './search-page.css';
 import Header from '../general/header'
 import Hamburger from '../general/hamburger';
@@ -44,21 +43,14 @@ class SearchGroups extends Component{
         this.props.getAllGroups();
     }
 
-    renderFilterResults(){
-        {this.props.filterResults(values.filter)}
+    componentDidUpdate() {
+        console.log("This is the new props ", this.props);
     }
 
-    render() {
+    renderResults = () => {
+        const resultType = (this.props.results && this.props.results.length) ? "results" : "all";
 
-        let backdrop;
-
-        if(this.state.hamburgerOpen){
-            backdrop = <Backdrop click={this.backdropHandler}/>
-        }
-
-        const {handleSubmit} = this.props;
-
-        const listAllGroups = this.props.all.map(item => {
+        const results = this.props[resultType].map(item => {
             const startDateTime = new Date(item.start_time);
             const endDateTime = new Date(item.end_time);
 
@@ -70,6 +62,19 @@ class SearchGroups extends Component{
                 <GroupModal key={item.id} history={this.props.history} id={item.id} description={item.description} text={`${item.subject}${item.course}: ${item.name} ${startDate} ${startingTime} - ${endingTime} ${item.current_group_size}/${item.max_group_size}`}/>
             )
         });
+
+        return results;
+    }
+
+    render() {
+
+        let backdrop;
+
+        if(this.state.hamburgerOpen){
+            backdrop = <Backdrop click={this.backdropHandler}/>
+        }
+
+        const {handleSubmit} = this.props;
 
         return (
             <div>
@@ -87,10 +92,9 @@ class SearchGroups extends Component{
                     </div>
                     <div id="search-results">
                         <ul>
-                            {listAllGroups}
+                            { this.renderResults() }
                         </ul>
                     </div>
-
                 </div>
             </div>
         )
