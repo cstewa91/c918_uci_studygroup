@@ -49,19 +49,19 @@ class Hamburger extends Component {
                 <ul className='hamburger-links nav flex-column justify-content-start'>
                     <li className='hamburger-home rounded'>
                         <img src={home} /> 
-                        <Link to='/home' className='btn blue confirm'>Home</Link>
+                        <Link to='/home' className='btn'>Home</Link>
                     </li>
                     <li className='hamburger-search rounded'>
                         <img src={magnifier} /> 
-                        <Link to='/search-group' className='btn blue confirm'>Search</Link>
+                        <Link to='/search-group' className='btn'>Search</Link>
                     </li>
                     <li className='hamburger-create rounded'>
                         <img src={groupAdd} /> 
-                        <Link to='/create-group' className='btn blue confirm'>Create</Link>
+                        <Link to='/create-group' className='btn'>Create</Link>
                     </li>       
                     <li className='hamburger-profile rounded'>
                         <img src={user} /> 
-                        <Link to='/profile' className='btn blue confirm'>Profile</Link>
+                        <Link to='/profile' className='btn'>Profile</Link>
                     </li>  
                 </ul>
                 {this.SignOutButton()}
