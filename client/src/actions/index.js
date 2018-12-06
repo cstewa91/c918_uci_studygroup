@@ -187,5 +187,6 @@ export function deleteGroup(groupId){
    const resp = axios.delete(BASE_URL + API_GROUPS, config)
       return {
          type: types.DELETE_GROUP,
+         payload: resp
       }
 }

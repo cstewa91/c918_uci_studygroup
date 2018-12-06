@@ -34,9 +34,11 @@ class Header extends Component {
                         <div className='nav-hamburger-button'>
                             <HamburgerButton click={this.props.hamburgerClick}/>
                         </div>
-                        <div className='nav-title align-items-center'>
-                            <img className='worm nav-logo' src={worm}/>
-                            <span className='navbar-text'>Book Worms</span>
+                        <div className='nav-title'>
+                            <Link to='/home'>
+                                <img className='worm nav-logo' src={worm}/>
+                                <span className='navbar-text'>Book Worms</span>
+                            </Link>
                         </div>
                         <div className="nav-search">
                             <Link to='/search-group'>
