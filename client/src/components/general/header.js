@@ -30,7 +30,7 @@ class Header extends Component {
     render(){
         return (
             <div className=' header-container'>
-                    <nav className=' navbar row nav-header d-flex flex-row '>
+                    <nav className=' navbar nav-header d-flex justify-content-between '>
                         <div className='nav-hamburger-button'>
                             <HamburgerButton click={this.props.hamburgerClick}/>
                         </div>
