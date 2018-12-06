@@ -88,10 +88,6 @@ body {
         width: 45px;
     }
 
-    .hamburger-signout {
-        display: none;
-    }
-
 }
 
 @media (min-width: 769px) {
