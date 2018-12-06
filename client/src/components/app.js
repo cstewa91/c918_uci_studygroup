@@ -24,7 +24,7 @@ class App extends Component {
                 <Route path="/profile" component={auth(Profile)} />
                 <Route path='/edit-group/:group_id' component={auth(EditCreated)} />
                 <Route path='/hamburger' component={auth(Hamburger)} />
-                <Route path='/search-group' component={auth(Search)} />
+                <Route path='/search-group' component={Search} />
                 <Route path='/selected-group' component={auth(GroupModal)} />
                 <Route path='/group-info/:group_id' component={auth(GroupInfo)} />
                 <Route path='/create-account' component={CreateAccount}/>

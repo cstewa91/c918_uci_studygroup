@@ -55,6 +55,7 @@ export function editUserInfo(item) {
 export function createNewGroup(item) {
    return async function (dispatch) {
       const validGroupName = await axios.get(`${BASE_URL + API_GROUP_NAME}/${item.name}`)
+      console.log(validGroupName)
       if (!validGroupName.data) {
          const resp = await axios.post(BASE_URL + API_GROUPS, item)
          const getGroup = await axios.get(`${BASE_URL + API_GET_GROUP_DETAILS}/${item.name}`)

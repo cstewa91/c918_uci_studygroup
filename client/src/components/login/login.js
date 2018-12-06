@@ -22,23 +22,24 @@ class Login extends Component {
    render() {
       const { handleSubmit, signInError } = this.props
       return (
-         <div>
-            <div>
-               <img src={worm} className="worm" />
+         <div className="container">
+            <div className="padding">
+               <img src={worm} className="worm-image" />
+               <h1 className="title">Book Worms</h1>
             </div>
-            <h1>Book Worms</h1>
-            <h1>Google Sign In</h1>
-            <form onSubmit={handleSubmit(this.handleLogin)}>
+            <form className="center padding" onSubmit={handleSubmit(this.handleLogin)}>
                <div>
                   <Field name="email" label="E-mail" component={Input} />
                </div>
                <div>
                   <Field name="password" label="Password" component={Input} type="password" />
                </div>
-               <button>Login</button>
+               <button>Sign In</button>
                <p>{signInError}</p>
             </form>
-            <Link to='/create-account'>create account</Link>
+            <div className="center">
+               <Link to='/create-account' className="create-button" >create account</Link>
+            </div>
          </div>
       )
    }
