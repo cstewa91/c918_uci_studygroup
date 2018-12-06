@@ -95,7 +95,7 @@ class GroupInfo extends Component{
         const startDate = startDateTime.toLocaleDateString();
         const endingTime = endDateTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 
-        if(!{getGroupDetails}){
+        if(!{name}){
             return
             <h1>Loading...</h1>
         }

@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
 import './search-page.css';
 import Header from '../general/header'
 import Hamburger from '../general/hamburger';
 import Backdrop from '../general/backdrop';
+import { Field, reduxForm } from 'redux-form';
 import GroupModal from '../general/group-modal';
+import Input from '../input';
 import {getAllGroups} from '../../actions';
+import {filterResults} from '../../actions';
 import { connect } from 'react-redux';
 
 class SearchGroups extends Component{
@@ -31,19 +33,24 @@ class SearchGroups extends Component{
         })
     }
 
+    handleFilterSubmit = (values) => {
+        console.log('values', values);
+        console.log('props of filter', this.props);
+        this.props.filterResults(values.filter);
+    }
+
     componentDidMount() {
         this.props.getAllGroups();
     }
 
-    render() {
+    componentDidUpdate() {
+        console.log("This is the new props ", this.props);
+    }
 
-        let backdrop;
+    renderResults = () => {
+        const resultType = (this.props.results && this.props.results.length) ? "results" : "all";
 
-        if(this.state.hamburgerOpen){
-            backdrop = <Backdrop click={this.backdropHandler}/>
-        }
-
-        const listAllGroups = this.props.all.map(item => {
+        const results = this.props[resultType].map(item => {
             const startDateTime = new Date(item.start_time);
             const endDateTime = new Date(item.end_time);
 
@@ -56,6 +63,19 @@ class SearchGroups extends Component{
             )
         });
 
+        return results;
+    }
+
+    render() {
+
+        let backdrop;
+
+        if(this.state.hamburgerOpen){
+            backdrop = <Backdrop click={this.backdropHandler}/>
+        }
+
+        const {handleSubmit} = this.props;
+
         return (
             <div>
                 <Header hamburgerClick = {this.toggleHamburger}/>  
@@ -64,15 +84,17 @@ class SearchGroups extends Component{
                 <div className="main-content">
                     <h1>Search Groups</h1>
                     <div className="search-filter-container">
-                        <input size="26" id="search-field" type="text" placeholder="Enter a group name or subject"/>
-                        <button className="search-filter" type="submit">Filter</button>
+                        <form onSubmit={handleSubmit(this.handleFilterSubmit)}>
+                            <Field name="filter" label="Search" placeholder="placeholder" component={Input}/>
+                            <button className="search-filter" type="submit">Filter</button>
+                            {/* <input size="26" id="search-field" type="text" placeholder="Enter a group name or subject"/> */}
+                        </form>
                     </div>
                     <div id="search-results">
                         <ul>
-                            {listAllGroups}
+                            { this.renderResults() }
                         </ul>
                     </div>
-
                 </div>
             </div>
         )
@@ -80,11 +102,18 @@ class SearchGroups extends Component{
 }
 
 function mapStateToProps(state) {
+    console.log(state);
     return {
-        all: state.search.all
+        all: state.search.all,
+        results: state.filter.results
     }
 }
 
+SearchGroups = reduxForm({
+    form: 'search-results',
+ })(SearchGroups);
+
 export default connect(mapStateToProps, {
     getAllGroups: getAllGroups,
+    filterResults: filterResults
 })(SearchGroups);
