@@ -50,3 +50,36 @@
    padding-top: 30px;
    text-align: center;
 }
+
+.user-input {
+   background: none;
+   border: none;
+   border-bottom: 1px solid white;
+   color: white;
+   -webkit-appearance: none !important;
+}
+
+input:focus {
+   outline: none
+}
+
+input::placeholder {
+   color: white
+}
+
+label {
+   display: inline-block;
+   position: absolute;
+   transition: all 150ms ease-in;
+   color: white;
+}
+
+label.field-active {
+   transform: translateY(-25px);
+   font-size: .9em;
+   color: white;
+  }
+  
+ .floating-label {
+   -webkit-appearance: none !important;
+  }
