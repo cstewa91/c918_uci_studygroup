@@ -82,7 +82,6 @@ class SearchGroups extends Component{
                 <Hamburger show={this.state.hamburgerOpen}/>
                 {backdrop} 
                 <div className="search-main-content">
-                    <h1>Search Groups</h1>
                     <div className="search-filter-container">
                         <form onSubmit={handleSubmit(this.handleFilterSubmit)}>
                             <Field className="search-field" name="filter" label="Enter group name or subject" type="text" size="30" component={SearchInput}/>

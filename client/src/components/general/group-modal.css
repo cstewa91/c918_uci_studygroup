@@ -35,6 +35,11 @@
     margin-left: 10px;
 }
 
+.modal-map-button a {
+    text-decoration: none;
+    color: #1778BE;
+}
+
 .modal-group-description-container {
     background-color: white;
     border-radius: 10px;
