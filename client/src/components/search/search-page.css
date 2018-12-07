@@ -3,6 +3,7 @@
     border: 2px solid grey;
     height: 40px;
     padding: 0px 10px;
+    width: 75%;
 }
 
 .search-field:focus {
