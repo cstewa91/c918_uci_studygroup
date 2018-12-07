@@ -32,9 +32,9 @@ class Login extends Component {
                   <Field name="email" label="E-mail" component={Input} />
                </div>
                <div>
-                  <Field name="password" label="Password" component={Input} type="password" />
+                  <Field name="password" label="Password" component={Input}  type="password" />
                </div>
-               <button className="sign-in-button">Sign In</button>
+               <button className="btn sign-in-button">Sign In</button>
                <p>{signInError}</p>
             </form>
             <div className="create-account-container">
@@ -44,7 +44,6 @@ class Login extends Component {
       )
    }
 }
-
 
 function validate({ email, password }) {
    const error = {};
