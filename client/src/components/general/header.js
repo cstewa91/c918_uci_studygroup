@@ -21,7 +21,7 @@ class Header extends Component {
         if(auth){
             return (
                 <div className='header-signout d-flex flex-row-reverse'>
-                    <button onClick={userSignOut} className='btn signout-button '>Log Out</button>
+                    <button onClick={userSignOut} className='btn header-signout-button '>Log Out</button>
                 </div>
             )
         }
@@ -30,23 +30,25 @@ class Header extends Component {
     render(){
         return (
             <div className=' header-container'>
-                    <nav className=' navbar nav-header d-flex justify-content-between '>
+                    <nav className=' nav navbar row justify-content-between '>
                         <div className='nav-hamburger-button'>
                             <HamburgerButton click={this.props.hamburgerClick}/>
                         </div>
-                        <div className='nav-title'>
+                        <div className='nav-title nav-brand'>
                             <Link to='/home'>
                                 <img className='worm nav-logo' src={worm}/>
                                 <span className='navbar-text'>Book Worms</span>
                             </Link>
+                            {this.SignOutButton()}
                         </div>
+                        
                         <div className="nav-search">
                             <Link to='/search-group'>
                                 <img src={magnifier} className="search-icon"></img>
                             </Link>
                         </div>
-                        <div className="nav-links col-5 ">
-                            <ul className="d-flex align-items-center">
+                        <div className="nav-links row ">
+                            <ul className="d-flex col-12 justify-content-around align-items-end">
                                 <li>
                                     <Link to='/home'>HOME</Link>
                                 </li>
@@ -60,7 +62,7 @@ class Header extends Component {
                                     <Link to='/profile'>PROFILE</Link>
                                 </li>
                             </ul>
-                            {this.SignOutButton()}
+                            
                         </div>
                     </nav>
                     
