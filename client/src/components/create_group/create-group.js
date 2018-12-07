@@ -50,7 +50,7 @@ class CreateGroup extends Component {
 
       const { handleSubmit, invalidName } = this.props
       return (
-         <div>
+         <div className="blue">
             <Header hamburgerClick = {this.toggleHamburger}/>  
             <Hamburger show={this.state.hamburgerOpen}/>
             {backdrop} 
@@ -70,10 +70,10 @@ class CreateGroup extends Component {
                   <Field name="max_group_size" label="Group Size" component={Input} />
                </div>
                <div>
-                  <Field name="start_time" label="Starting Time" component={Input} type="datetime-local" />
+                  <Field name="start_time" component={Input} type="datetime-local" />
                </div>
                <div>
-                  <Field name="end_time" label="Ending Time" component={Input} type="datetime-local" />
+                  <Field name="end_time" component={Input} type="datetime-local" />
                </div>
                <div>
                   <Field name="location" label="Location" component={Input} />
