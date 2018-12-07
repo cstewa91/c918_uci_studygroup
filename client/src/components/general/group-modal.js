@@ -48,21 +48,21 @@ class GroupModal extends Component{
 
             
                 <div key={group.id} className="group-modal-details">
-                    <h1 className="group-name">{group.name}</h1>
-                    <p className="group-subject"><strong>Subject/Course:</strong> {group.subject}{group.course}</p>
-                    <p className="group-date"><strong>Date:</strong> {startDate}</p>
-                    <p className="group-time"><strong>Time:</strong> {startingTime} - {endingTime}</p>
-                    <p className="group-location"><strong>Location:</strong> {group.location}</p>
-                    <div className="btn btn-light map-button">
+                    <h1 className="modal-group-name">{group.name}</h1>
+                    <p className="modal-group-subject"><strong>Subject/Course:</strong> {group.subject}{group.course}</p>
+                    <p className="modal-group-date"><strong>Date:</strong> {startDate}</p>
+                    <p className="modal-group-time"><strong>Time:</strong> {startingTime} - {endingTime}</p>
+                    <p className="modal-group-location"><strong>Location:</strong> {group.location}</p>
+                    <div className="btn btn-light modal-map-button">
                         <a href="https://map.uci.edu/" target="_blank">MAP</a>
                     </div>
-                    <p className="group-capacity"><strong>Group Capacity:</strong> {group.current_group_size}/{group.max_group_size}</p>
-                    <div className="group-description-container">
-                        <p className="group-description">
+                    <p className="modal-group-capacity"><strong>Group Capacity:</strong> {group.current_group_size}/{group.max_group_size}</p>
+                    <div className="modal-group-description-container">
+                        <p className="modal-group-description">
                             {group.description}
                         </p>
                     </div>
-                        <div onClick={this.joinStudyGroup} className="btn btn-primary join-group offset-5">Join</div>
+                        <div onClick={this.joinStudyGroup} className="btn btn-primary btn-lg join-group offset-5">Join</div>
                 </div>
         )
 
@@ -84,7 +84,7 @@ class GroupModal extends Component{
             )
         }
 
-        return <li onClick={this.open}>{this.props.text}</li>;
+        return <li className="search-result-modal" onClick={this.open}>{this.props.text}</li>;
     }
 }
 

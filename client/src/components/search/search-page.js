@@ -5,7 +5,7 @@ import Hamburger from '../general/hamburger';
 import Backdrop from '../general/backdrop';
 import { Field, reduxForm } from 'redux-form';
 import GroupModal from '../general/group-modal';
-import Input from '../input';
+import SearchInput from './search-input';
 import {getAllGroups} from '../../actions';
 import {filterResults} from '../../actions';
 import { connect } from 'react-redux';
@@ -81,17 +81,16 @@ class SearchGroups extends Component{
                 <Header hamburgerClick = {this.toggleHamburger}/>  
                 <Hamburger show={this.state.hamburgerOpen}/>
                 {backdrop} 
-                <div className="main-content">
+                <div className="search-main-content">
                     <h1>Search Groups</h1>
                     <div className="search-filter-container">
                         <form onSubmit={handleSubmit(this.handleFilterSubmit)}>
-                            <Field name="filter" label="Search" placeholder="placeholder" component={Input}/>
-                            <button className="search-filter" type="submit">Filter</button>
-                            {/* <input size="26" id="search-field" type="text" placeholder="Enter a group name or subject"/> */}
+                            <Field className="search-field" name="filter" label="Enter group name or subject" type="text" size="30" component={SearchInput}/>
                         </form>
                     </div>
                     <div id="search-results">
-                        <ul>
+                        <p className="search-result-section"><span><b><u>Subject</u></b></span> <span><b><u>Group Name</u></b></span> <span><b><u>Date & Time</u></b></span> <span><b><u>Members</u></b></span></p>
+                        <ul className="search-results">
                             { this.renderResults() }
                         </ul>
                     </div>
