@@ -60,6 +60,7 @@ class SearchGroups extends Component{
 
             return (
                 <GroupModal key={item.id} history={this.props.history} id={item.id} description={item.description} text={`${item.subject}${item.course}: ${item.name} ${startDate} ${startingTime} - ${endingTime} ${item.current_group_size}/${item.max_group_size}`}/>
+                //make these each an individual span
             )
         });
 
