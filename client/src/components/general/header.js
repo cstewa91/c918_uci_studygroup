@@ -20,32 +20,35 @@ class Header extends Component {
 
         if(auth){
             return (
-                    <button onClick={userSignOut} className='btn header-signout-button '>Log Out</button>
+                <div className="header-signout-button col-1">
+                    <button onClick={userSignOut} className='btn header-button'>Log Out</button>
+                </div>
+                    
             )
         }
     }
 
     render(){
         return (
-            <div className='header-container container-fluid'>
-                <nav className='header-navbar row justify-content-between align-items-center'>
-                    <div className='nav-hamburger-button'>
+            <div className='header-container container-fluid '>
+                <div className='header-section row  align-items-center'>
+                    <div className='nav-hamburger-button col-2'>
                         <HamburgerButton click={this.props.hamburgerClick}/>
                     </div>
-                    <div className='nav-title'>
+                    <div className='nav-title col-6 col-md-8 offset-md-2 '>
                         <Link to='/home'>
-                            <img className='worm nav-logo' src={worm}/>
+                            <img className='header-worm nav-logo' src={worm}/>
                             <span className='navbar-text'>Book Worms</span>
-                        </Link>
-                        
+                        </Link>        
                     </div>
-                    <div className="nav-search">
+                    {this.SignOutButton()}  
+                    <div className="nav-search col-2 d-flex justify-content-center">
                         <Link to='/search-group'>
                             <img src={magnifier} className="search-icon"></img>
                         </Link>
                     </div>
-                    <div className="nav-links row justify-content-center">
-                        <ul className="d-flex align-items-center">
+                    <nav className="nav-links col-12">
+                        <ul className='d-flex'>
                             <li>
                                 <Link to='/home'>HOME</Link>
                             </li>
@@ -58,13 +61,11 @@ class Header extends Component {
                             <li>
                                 <Link to='/profile'>PROFILE</Link>
                             </li>
-                            <li>
-                            {this.SignOutButton()}  
-                            </li>
-                        </ul>
-                        
-                    </div>
-                </nav>                    
+                        </ul>             
+                    </nav>   
+                </div>
+                {/* <nav className='header-navbar row justify-content-between align-items-center'> */}
+                 
         </div>
         )
 
