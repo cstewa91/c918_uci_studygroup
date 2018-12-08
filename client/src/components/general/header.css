@@ -173,8 +173,14 @@ body {
     }
 
     .header-button {  
-        width: 50px;
+        width: 55px;
         height: 25px;
+    }
+
+    .header-signout-button {
+        display: flex;
+        justify-content: flex-end;
+        align-self: end;
     }
 
 }
@@ -195,8 +201,14 @@ body {
     }
 
     .header-button {  
-        width: 50px;
-        height: 35px;
+        width: 60px;
+        height: 25px;
+    }
+
+    .header-signout-button {
+        display: flex;
+        justify-content: flex-end;
+        align-self: end;
     }
 
     .nav-title {
@@ -223,12 +235,18 @@ body {
 
     .header-button {  
         width: 65px;
-        height: 35px;
+        height: 30px;
+    }
+
+    .header-signout-button {
+        display: flex;
+        justify-content: flex-end;
+        align-self: end;
     }
 
     .nav-title {
         display: flex;
         justify-content: center;
     }
-    
+
 }

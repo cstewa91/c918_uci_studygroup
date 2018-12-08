@@ -20,7 +20,7 @@ class Header extends Component {
 
         if(auth){
             return (
-                <div className="header-signout-button col-1">
+                <div className="header-signout-button col-2">
                     <button onClick={userSignOut} className='btn header-button'>Log Out</button>
                 </div>
                     
