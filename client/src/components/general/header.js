@@ -36,7 +36,7 @@ class Header extends Component {
                         <HamburgerButton click={this.props.hamburgerClick}/>
                     </div>
                     <div className='nav-title col-6 col-md-8 offset-md-2 '>
-                        <Link to='/home'>
+                        <Link className='header-main-title' to='/home'>
                             <img className='header-worm nav-logo' src={worm}/>
                             <span className='navbar-text'>Book Worms</span>
                         </Link>        

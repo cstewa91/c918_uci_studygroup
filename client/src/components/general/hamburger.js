@@ -40,7 +40,7 @@ class Hamburger extends Component {
         return (
             <nav className={hamburgerClasses}>
                 <div className="hamburger-header border-bottom">
-                    <Link to='/home'>
+                    <Link className='hamburger-main-title' to='/home'>
                         <img src={worm}/>
                         <span>{username}</span>
                     </Link>     
