@@ -35,10 +35,10 @@ span {
     margin: 0.3em;
 }
 
-h3 {
+.hamburger-menu {
     font-family: 'Gochi Hand';
     text-align: center;
-    margin: 0.2em;
+    margin: 0;
     padding: 0.5em;
 }
 
@@ -49,7 +49,7 @@ h3 {
 }
 
 .hamburger-header span {
-    font-size: 2rem;
+    font-size: 2em;
 }
 
 .hamburger-links img {
@@ -63,7 +63,7 @@ h3 {
 }
 
 .hamburger-nav ul {
-    height: 50%;
+    height: 55%;
     padding-left: 0;
     list-style: none;
     font-family: 'Roboto';
@@ -108,7 +108,7 @@ h3 {
 }
 
 .hamburger-links li {
-    transition-duration: 0.3s;
+    transition-duration: 0.4s;
     transition-property: transform;
 }
 
@@ -121,4 +121,105 @@ h3 {
 .hamburger-links a:hover,
 .hamburger-links a:focus {
     color: rgb(171, 171, 180);
+}
+
+
+@media (max-width: 576px){
+
+    .hamburger-menu {
+        font-size: 2.3em
+    }
+
+    .hamburger-nav ul {
+        margin-top: 10%;
+        height: 45%;
+    }
+
+    .hamburger-links a {
+        width: 200px;
+        text-align: start;
+        padding-left: 30px;
+        font-size: 1.55em;
+    }
+
+    .hamburger-nav li {
+        height: 60px;
+        
+    }
+
+}
+
+@media (max-width: 374px){
+
+    .hamburger-menu {
+        font-size: 1.65em
+    }
+
+    .hamburger-nav ul {
+        margin-top: 0;
+        height: 55%;
+    }
+
+    .hamburger-links a {
+        width: 160px;
+        text-align: start;
+        padding-left: 30px;
+        font-size: 1.2rem;
+    }
+
+    .hamburger-nav li {
+        height: 50px;
+        
+    }
+
+}
+
+@media (min-width: 576px) and (max-width: 767.98px){
+
+    .hamburger-menu {
+        font-size: 2.3em;
+    }
+
+    .hamburger-nav ul {
+        margin-top: 10% ;
+        height: 55%;
+    }
+
+    .hamburger-links a {
+        width: 335px;
+        text-align: start;
+        padding-left: 45px;
+        font-size: 1.75em;
+    }
+
+    .hamburger-nav li {
+        height: 70px;
+        
+    }
+
+}
+
+@media (max-width: 767.98px) and (orientation: landscape) {
+
+    .hamburger-menu {
+        font-size: 1.2em;
+    }
+
+    .hamburger-nav {
+        width: 70%;
+        max-width: 600px;
+
+    }
+
+    .hamburger-links a {
+        width: 65%;
+        text-align: start;
+        font-size: .85em;
+    }
+
+    .hamburger-nav ul {
+        margin: 0;
+        height: 45%;
+    }
+
 }

@@ -45,7 +45,7 @@ class Hamburger extends Component {
                         <span>{username}</span>
                     </Link>     
                 </div>
-                <h3>MENU</h3>
+                <p className='hamburger-menu'>MENU</p>
                 <ul className='hamburger-links nav flex-column justify-content-start'>
                     <li className='hamburger-home rounded'>
                         <img src={home} /> 
