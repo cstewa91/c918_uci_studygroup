@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import './search-page.css';
 import Header from '../general/header'
 import Hamburger from '../general/hamburger';
@@ -59,7 +59,30 @@ class SearchGroups extends Component{
             const startDate = startDateTime.toLocaleDateString();
 
             return (
-                <GroupModal key={item.id} history={this.props.history} id={item.id} description={item.description} text={`${item.subject}${item.course}: ${item.name} ${startDate} ${startingTime} - ${endingTime} ${item.current_group_size}/${item.max_group_size}`}/>
+
+                <Fragment>
+                    <div onClick={this.open} className="btn btn-outline-primary" key={item.id}>
+                        <div>
+                            {item.subject}{item.course}
+                        </div>
+                        <div>
+                            {startDate}
+                        </div>
+                        <div>
+                            {startingTime} - {endingTime}
+                        </div>
+                        <div>
+                            {item.current_group_size}/{item.max_group_size}
+                        </div>
+                    </div>
+
+                    <GroupModal key={item.id} history={this.props.history} id={item.id} description={item.description} text={`${item.subject}${item.course}: ${item.name} ${startDate} ${startingTime} - ${endingTime} ${item.current_group_size}/${item.max_group_size}`}/>
+                </Fragment>
+
+
+                
+
+                //text={`${item.subject}${item.course}: ${item.name} ${startDate} ${startingTime} - ${endingTime} ${item.current_group_size}/${item.max_group_size}`}
                 //make these each an individual span
             )
         });
@@ -90,9 +113,9 @@ class SearchGroups extends Component{
                     </div>
                     <div id="search-results">
                         <p className="search-result-section"><span><b><u>Subject</u></b></span> <span><b><u>Group Name</u></b></span> <span><b><u>Date & Time</u></b></span> <span><b><u>Members</u></b></span></p>
-                        <ul className="search-results">
+                        <div className="search-results">
                             { this.renderResults() }
-                        </ul>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -84,7 +84,7 @@ class GroupModal extends Component{
             )
         }
 
-        return <li className="search-result-modal" onClick={this.open}>{this.props.text}</li>;
+        return <div className="search-result-modal" onClick={this.open}>{this.props.text}</div>;
     }
 }
 
