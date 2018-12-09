@@ -16,7 +16,7 @@ class Header extends Component {
     }
 
     SignOutButton(){
-        const {auth, userSignOut} = this. props;
+        const {auth, userSignOut} = this.props;
 
         if(auth){
             return (
@@ -65,7 +65,6 @@ class Header extends Component {
                     </nav>   
                 </div>
                 {/* <nav className='header-navbar row justify-content-between align-items-center'> */}
-                 
         </div>
         )
 

@@ -183,6 +183,12 @@ body {
         align-self: end;
     }
 
+    .navbar-text {
+        padding: 0;
+        margin: 0;
+    }
+
+
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
@@ -216,6 +222,12 @@ body {
         justify-content: center;
     }
 
+    .navbar-text {
+        padding: 0;
+        margin: 0;
+    }
+
+
 }
 
 @media (min-width: 1200px) {
@@ -247,6 +259,11 @@ body {
     .nav-title {
         display: flex;
         justify-content: center;
+    }
+
+    .navbar-text {
+        padding: 0;
+        margin: 0;
     }
 
 }
