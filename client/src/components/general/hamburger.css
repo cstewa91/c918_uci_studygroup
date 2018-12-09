@@ -106,3 +106,19 @@ h3 {
 .hamburger-signout-button:hover {
     box-shadow: 0 0 6px white
 }
+
+.hamburger-links li {
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.hamburger-links li:hover,
+.hamburger-links li:focus {
+    transform: translateY(-3px);
+
+}
+
+.hamburger-links a:hover,
+.hamburger-links a:focus {
+    color: rgb(171, 171, 180);
+}

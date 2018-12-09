@@ -48,18 +48,18 @@ class Header extends Component {
                         </Link>
                     </div>
                     <nav className="nav-links col-12">
-                        <ul className='d-flex'>
+                        <ul className='d-flex link-group'>
                             <li>
-                                <Link to='/home'>HOME</Link>
+                                <Link to='/home' data-hover='HOME'>HOME</Link>
                             </li>
                             <li>
-                                <Link to='/search-group'>SEARCH</Link>
+                                <Link to='/search-group' data-hover='SEARCH'>SEARCH</Link>
                             </li>
                             <li>
-                                <Link to='/create-group'>CREATE</Link>
+                                <Link to='/create-group' data-hover='CREATE'>CREATE</Link>
                             </li>
                             <li>
-                                <Link to='/profile'>PROFILE</Link>
+                                <Link to='/profile' data-hover='PROFILE'>PROFILE</Link>
                             </li>
                         </ul>             
                     </nav>   
