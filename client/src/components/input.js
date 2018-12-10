@@ -19,10 +19,10 @@ class Input extends Component {
       });
    }
    render() {
-      const { input, label, inputClassName, meta: { error, touched }, size, type = 'text' } = this.props
-      let floatText = ""
+      const { input, label, inputClassName, labelClassName, meta: { error, touched }, size, type = 'text' } = this.props
+      let floatText = labelClassName
       if (this.state.activeField) {
-         floatText = "field-active"
+         floatText = `field-active ${labelClassName}`
       }
       return (
          <div>
