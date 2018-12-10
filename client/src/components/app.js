@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+
+import React, { Component, Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Login from './login/login';
 import Home from './home/home';
@@ -17,7 +18,7 @@ import NotFound from './404';
 class App extends Component {
     render() {
         return (
-            <div>
+            <Fragment>
                 <Switch>
                     <Route exact path="/" component={Login} />
                     <Route path="/home" component={auth(Home)} />
@@ -28,11 +29,10 @@ class App extends Component {
                     <Route path='/search-group' component={Search} />
                     <Route path='/selected-group' component={auth(GroupModal)} />
                     <Route path='/group-info/:group_id' component={auth(GroupInfo)} />
-                    <Route path='/create-account' component={CreateAccount}/>
-                    <Route component={NotFound}/>
+                    <Route path='/create-account' component={CreateAccount} />
+                    <Route component={NotFound} />
                 </Switch>
-                
-            </div>
+            </Fragment>
         )
     }
 }
