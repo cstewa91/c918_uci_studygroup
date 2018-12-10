@@ -49,14 +49,16 @@ class GroupModal extends Component{
             
                 <div key={group.id} className="group-modal-details">
                     <h1 className="modal-group-name">{group.name}</h1>
-                    <p className="modal-group-subject"><strong>Subject/Course:</strong> {group.subject}{group.course}</p>
-                    <p className="modal-group-date"><strong>Date:</strong> {startDate}</p>
-                    <p className="modal-group-time"><strong>Time:</strong> {startingTime} - {endingTime}</p>
-                    <p className="modal-group-location"><strong>Location:</strong> {group.location}</p>
-                    <div className="btn btn-light modal-map-button">
-                        <a href="https://map.uci.edu/" target="_blank">MAP</a>
-                    </div>
-                    <p className="modal-group-capacity"><strong>Group Capacity:</strong> {group.current_group_size}/{group.max_group_size}</p>
+                    <p className="modal-group-info"><strong>Subject/Course:</strong> {group.subject}{group.course}</p>
+                    <p className="modal-group-info"><strong>Date:</strong> {startDate}</p>
+                    <p className="modal-group-info"><strong>Time:</strong> {startingTime} - {endingTime}</p>
+                    <p className="modal-group-info">
+                        <strong>Location:</strong> {group.location}
+                        <div className="btn btn-light modal-map-button">
+                            <a href="https://map.uci.edu/" target="_blank">Map</a>
+                        </div>
+                    </p>
+                    <p className="modal-group-info"><strong>Group Capacity:</strong> {group.current_group_size}/{group.max_group_size}</p>
                     <div className="modal-group-description-container">
                         <p className="modal-group-description">
                             {group.description}
