@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import worm from '../../assets/images/bookworm.png';
+import home from '../../assets/images/home.png';
 import './404.css';
 
 export default props => {
@@ -13,7 +14,7 @@ export default props => {
                 <div>
                 <h1 className="not-found">404 Not Found</h1>
                 <Link className="transparent-btn" to="/home">
-                    Home
+                  <img src={home}/>Home
                 </Link>
             </div>
         </div>
