@@ -1,11 +1,40 @@
+.login-background {
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), #1778BE;
+    background-blend-mode: hard-light, normal, normal;
+ }
+
+ .not-found-page {
+     text-align: center;
+ }
+
 .not-found {
-    background-color: #1778BE;
-    display: flex;
-    height: 100vh;
-    margin: auto;
-    text-align: center;
+    font-family: 'Gochi Hand';
+    color: #FFFFFF;
+    text-shadow: -1px 4px 4px black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-.not-found-img {
-    width: 75%;
+ .transparent-btn {
+   display: inline-block;
+   border-radius: 10%;
+   border: 1px solid #FFFFFF;
+   background-color: rgba(255,255,255,0);
+   margin: 5%;
+   color: #FFFFFF;
+   transition: background-color 300ms ease;
+   text-align: center;
+   padding: 1%;
+}
+
+.transparent-btn img {
+    vertical-align: bottom;
+}
+a.transparent-btn {
+    text-decoration: none;
+}
+
+.transparent-btn:hover {
+    background-color: rgba(255,255,255, 0.2);
+    color: #FFF;
 }
