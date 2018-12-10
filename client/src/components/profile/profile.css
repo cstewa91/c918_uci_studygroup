@@ -1,17 +1,99 @@
-.profile-inputs label {
-    color: black;
+.profile-content {
+    height: 90vh;
 }
 
-.profile-details label {
-    color: black;
+.profile-header {
+    font-family: 'Gochi Hand';
+    font-size: 1.75em;
+    color: white;
+    text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-align: center;
+}
+
+.profile-title {
+    margin: 0.3em;
+}
+
+.profile-info {
+    height: 70%;
+    padding: 0;
+}
+
+.profile-info div {
+    font-family: Roboto;
+    font-size: 1.1em;
+    margin-bottom: 0.2em;
+    padding: 0;
+}
+
+.profile-info p {
+    color: #9E9E9E;
+    border-bottom: 1px solid grey;
 }
 
 .profile-confirm-button, .profile-edit-button {
     font-family: 'Gochi Hand';
     color: #FFFFFF;
     text-align: center;
-    text-shadow: -1px 4px 4px black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
     background: linear-gradient(178.26deg, rgba(255, 255, 255, 0) 50.39%, rgba(255, 255, 255, 0.34) 114.5%), #1778BE;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
+}
+
+.profile-edit {
+    height: 10%;
+    margin: 0.2em;
+}
+
+.profile-edit-button {
+    height: 90%;
+    text-align: center;
+    font-size: 1.5em;
+    transition-property: transform;
+    padding: 0;
+}
+
+.profile-edit-button:hover {
+    box-shadow: 1px 2px 3px grey;
+    transform: translateY(-2px);
+}
+
+.profile-form {
+    height: 70%;
+    padding: 0;
+}
+
+.profile-form div {
+    font-family: Roboto;
+    font-size: 1.1em;
+    margin-bottom: 0.2em;
+    padding: 0;
+}
+
+.profile-form input {
+    border: none;
+}
+
+.profile-form p {
+    color: #9E9E9E;
+    border-bottom: 1px solid grey;
+}
+
+.profile-confirm {
+    height: 10%;
+    margin: 0.2em;
+}
+
+.profile-confirm-button {
+    height: 90%;
+    text-align: center;
+    font-size: 1.5em;
+    transition-property: transform;
+    padding: 0;
+}
+
+.profile-confirm-button:hover {
+    box-shadow: 1px 2px 3px grey;
+    transform: translateY(-2px);
 }
