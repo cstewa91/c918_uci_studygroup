@@ -21,7 +21,7 @@ class Header extends Component {
         if(auth){
             return (
                 <div className="header-signout-button col-2">
-                    <button onClick={userSignOut} className='btn header-button'>Log Out</button>
+                    <button onClick={userSignOut} className=' header-button'>Log Out</button>
                 </div>
                     
             )
@@ -36,7 +36,7 @@ class Header extends Component {
                         <HamburgerButton click={this.props.hamburgerClick}/>
                     </div>
                     <div className='nav-title col-6 col-md-8 offset-md-2 '>
-                        <Link to='/home'>
+                        <Link className='header-main-title' to='/home'>
                             <img className='header-worm nav-logo' src={worm}/>
                             <span className='navbar-text'>Book Worms</span>
                         </Link>        
@@ -48,18 +48,18 @@ class Header extends Component {
                         </Link>
                     </div>
                     <nav className="nav-links col-12">
-                        <ul className='d-flex'>
+                        <ul className='d-flex link-group'>
                             <li>
-                                <Link to='/home'>HOME</Link>
+                                <Link to='/home' data-hover='HOME'>HOME</Link>
                             </li>
                             <li>
-                                <Link to='/search-group'>SEARCH</Link>
+                                <Link to='/search-group' data-hover='SEARCH'>SEARCH</Link>
                             </li>
                             <li>
-                                <Link to='/create-group'>CREATE</Link>
+                                <Link to='/create-group' data-hover='CREATE'>CREATE</Link>
                             </li>
                             <li>
-                                <Link to='/profile'>PROFILE</Link>
+                                <Link to='/profile' data-hover='PROFILE'>PROFILE</Link>
                             </li>
                         </ul>             
                     </nav>   
