@@ -77,13 +77,13 @@ span {
 }
 
 .hamburger-nav li:hover {
-    box-shadow: 0 0 6px white;
+    box-shadow: 0 0 6px #FFFFFF;
     background-color: #006DAA;
 }
 
 .hamburger-nav a {
     cursor: pointer;
-    color: white;
+    color: #FFFFFF;
     text-decoration: none;
     font-size: 1.2rem;
     align-items: center;
@@ -92,14 +92,16 @@ span {
 .hamburger-signout-button {  
     width: 65px;
     height: 30px;
-    border-radius: 15px;
-    background: #1778BE;
-    color: white;
+    border-radius: 10px;
+    background: none;
+    border: 1px solid #FFFFFF;
+    text-shadow: 0px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;    
+    color: #FFFFFF;
     right: 0;
     margin: 1em;
     font-family: 'Roboto';
     font-size: 0.75em;
-    border: 0;
+    /* border: 0; */
     padding: 0;  
 }
 
@@ -117,7 +119,7 @@ span {
 }
 
 .hamburger-signout-button:hover {
-    box-shadow: 0 0 6px white
+    box-shadow: 0 0 6px #FFFFFF
 }
 
 .hamburger-links li {
@@ -215,7 +217,7 @@ span {
 @media (max-width: 767.98px) and (orientation: landscape) {
 
     .hamburger-menu {
-        font-size: 1.2em;
+        font-size: 1.5em;
     }
 
     .hamburger-nav {
@@ -227,7 +229,7 @@ span {
     .hamburger-links a {
         width: 65%;
         text-align: start;
-        font-size: .85em;
+        font-size: 1.25em;
     }
 
     .hamburger-nav ul {
