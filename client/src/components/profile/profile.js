@@ -7,7 +7,8 @@ import {editUserInfo} from '../../actions'
 import './profile.css';
 import Header from '../general/header';
 import Backdrop from '../general/backdrop';
-import Hamburger from '../general/hamburger'
+import Hamburger from '../general/hamburger';
+import Input from '../input'
 
 
 
@@ -91,16 +92,16 @@ class Profile extends Component {
                             <p className='edit-group'>PROFILE</p>
                         </div>
                         <form onSubmit={handleSubmit(this.handleAddItem)}>
-                            <div className='row'>
-                                    <Field size='12' name='username' label='Username' component={this.renderInput}/>
+                            <div className='profile-inputs row'>
+                                    <Field size='12' name='username' label='Username' component={Input}/>
                             </div>
                             <div className='row'>
-                                    <Field size='6' name='firstname' label='First name' component={this.renderInput}/>
+                                    <Field size='6' name='firstname' label='First name' component={Input}/>
                                                 
-                                    <Field size='6' name='lastname' label='Last name' component={this.renderInput}/>
+                                    <Field size='6' name='lastname' label='Last name' component={Input}/>
                             </div>
                             <div className='row'>
-                                    <Field size='12' name='email' label='E-mail' component={this.renderInput}/>
+                                    <Field size='12' name='email' label='E-mail' component={Input}/>
                             </div>
                             <div className='col-6 center'>
                                 <button className='confirm btn btn-primary'>CONFIRM</button>
@@ -126,8 +127,9 @@ class Profile extends Component {
                         </div>
                         <div className="profile-details">
                             <div className='profile-info'>
-                                <label>USERNAME</label>
+                                
                                 <div className='profile-username form-group'>
+                                    <label>USERNAME</label>
                                     <p>{username}</p>
                                 </div>
                                 <label>FIRST NAME</label>
