@@ -6,6 +6,13 @@ class Input extends Component {
       activeField: false
 
    }
+   componentDidMount = () => {
+      if (this.props.input.value) {
+         this.setState({
+            activeField: true,
+         })
+      }
+   }
    landInputLabel = (event) => {
       if (event.target.value === "") {
          this.setState({
@@ -28,7 +35,7 @@ class Input extends Component {
          <div>
             <label htmlFor={input.name} className={floatText}>{label}</label>
             <input {...input} type={type} id={input.name} label={label} size={size} className={inputClassName} onFocus={this.floatInputLabel} onBlur={this.landInputLabel} autoComplete="off" />
-            <p>{touched && error}</p>
+            <p className="login-error">{touched && error}</p>
          </div>
       )
    }
