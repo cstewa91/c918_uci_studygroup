@@ -19,7 +19,7 @@ class Input extends Component {
       });
    }
    render() {
-      const { input, label, className = 'user-input', meta: { error, touched }, size, type = 'text' } = this.props
+      const { input, label, inputClassName, meta: { error, touched }, size, type = 'text' } = this.props
       let floatText = ""
       if (this.state.activeField) {
          floatText = "field-active"
@@ -27,7 +27,7 @@ class Input extends Component {
       return (
          <div>
             <label htmlFor={input.name} className={floatText}>{label}</label>
-            <input {...input} type={type} id={input.name} label={label} className={className} onFocus={this.floatInputLabel} onBlur={this.landInputLabel} />
+            <input {...input} type={type} id={input.name} label={label} size={size} className={inputClassName} onFocus={this.floatInputLabel} onBlur={this.landInputLabel} autoComplete="off" />
             <p>{touched && error}</p>
          </div>
       )

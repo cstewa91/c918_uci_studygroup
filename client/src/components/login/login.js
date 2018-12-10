@@ -22,19 +22,19 @@ class Login extends Component {
    render() {
       const { handleSubmit, signInError } = this.props
       return (
-         <div className="login-container">
-            <div className="padding">
+         <div className="login-background container-fluid">
+            <div className="login-padding">
                <img src={worm} className="worm-image" />
                <h1 className="login-title">Book Worms</h1>
             </div>
-            <form className="login-form-container" onSubmit={handleSubmit(this.handleLogin)}>
-               <div>
-                  <Field name="email" label="E-mail" component={Input} />
+            <form className="login-form-container row" onSubmit={handleSubmit(this.handleLogin)}>
+               <div className="col-12 login-input-padding ">
+                  <Field name="email" label="E-mail" component={Input} inputClassName="user-input col-8" />
                </div>
-               <div>
-                  <Field name="password" label="Password" component={Input}  type="password" />
+               <div className="col-12 login-input-padding ">
+                  <Field name="password" label="Password" component={Input} type="password" inputClassName="user-input col-8" />
                </div>
-               <button className="btn sign-in-button">Sign In</button>
+               <button className="btn sign-in-button col-8 offset-2">Sign In</button>
                <p>{signInError}</p>
             </form>
             <div className="create-account-container">
