@@ -1,0 +1,11 @@
+.not-found {
+    background-color: #1778BE;
+    display: flex;
+    height: 100vh;
+    margin: auto;
+    text-align: center;
+}
+
+.not-found-img {
+    width: 75%;
+}
