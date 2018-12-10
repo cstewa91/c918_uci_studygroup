@@ -14,7 +14,7 @@ export default props => {
                 <div>
                 <h1 className="not-found">404 Not Found</h1>
                 <Link className="transparent-btn" to="/home">
-                  <img src={home}/>Home
+                  <img src={home}/> Home
                 </Link>
             </div>
         </div>

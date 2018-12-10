@@ -27,6 +27,9 @@
    padding: 1%;
 }
 
+.transparent-btn img {
+    vertical-align: bottom;
+}
 a.transparent-btn {
     text-decoration: none;
 }
