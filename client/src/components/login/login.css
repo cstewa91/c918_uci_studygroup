@@ -67,11 +67,14 @@ input:focus {
    outline: none
 }
 
+.label-login-color {
+   color: white
+}
+
 label {
    display: inline-block;
    position: absolute;
    transition: all 150ms ease-in;
-   color: white;
 }
 
 label.field-active {
