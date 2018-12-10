@@ -104,7 +104,7 @@ class Profile extends Component {
                                     <Field size='12' name='email' label='E-mail' component={Input}/>
                             </div>
                             <div className='col-6 center'>
-                                <button className='confirm btn btn-primary'>CONFIRM</button>
+                                <div className='profile-confirm-button col-6'>CONFIRM</div>
                             </div>
                         </form>  
                     </div>
@@ -122,7 +122,7 @@ class Profile extends Component {
                 {backdrop} 
                 <main className='main-content'>
                     <div className='container'>
-                        <div className='main-title'>
+                        <div className='main-title row'>
                             <p className='edit-group'>PROFILE</p>
                         </div>
                         <div className="profile-details">
@@ -150,7 +150,7 @@ class Profile extends Component {
                 </main>
                 <footer>
                     <div className='confirm'>
-                    <button onClick={this.handleEditClick} className='confirm btn btn-primary'>EDIT</button>
+                        <div onClick={this.handleEditClick} className='profile-edit-button col-6'>EDIT</div>
                     </div>
                 </footer>
                 
