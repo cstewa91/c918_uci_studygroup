@@ -43,6 +43,10 @@
    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
    border-radius: 5px;
    padding: 5px 65px;
+   position: static;
+   flex: 0 0 66.666667%;
+   max-width: 66.666667%;
+   margin-left: 16.666667%;
 }
 
 .create-account-container {
@@ -51,6 +55,7 @@
 }
 
 .user-input {
+   margin-bottom: 15px;
    padding: 0px 0px;
    background: none;
    border: none;
@@ -61,6 +66,14 @@
 
 .login-input-padding {
    padding: 10px 0px;
+   flex: 0 0 100%;
+   max-width: 100%;
+}
+
+.login-error {
+   margin: 0px 0px 10px 0px;
+   line-height: 0.5;
+   color: rgb(204, 44, 44);
 }
 
 input:focus {
@@ -81,8 +94,215 @@ label.field-active {
    transform: translateY(-25px);
    font-size: .9em;
    color: rgba(255, 255, 255, 0.37);
-  }
-  
- .floating-label {
+}
+
+.floating-label {
    -webkit-appearance: none !important;
-  }
+}
+
+
+@media (min-width: 576px) {
+   .worm-image {
+      width: 110px;
+   }
+
+   .login-form-container {
+      padding-top: 90px;
+   }
+
+   .create-button {
+      font-size: 17px;
+   }
+
+   .login-padding {
+      padding-top: 90px;
+   }
+
+   .create-button {
+      font-size: 17px;
+   }
+
+   .sign-in-button {
+      font-size: 25px;
+      padding: 5px 65px;
+   }
+
+   .create-account-container {
+      padding-top: 30px;
+   }
+
+   .user-input {
+      margin-bottom: 15px;
+   }
+
+   .login-input-padding {
+      padding: 10px 0px;
+   }
+
+   .login-error {
+      margin: 0px 0px 10px 0px;
+   }
+
+   label.field-active {
+      transform: translateY(-25px);
+   }
+}
+
+@media (min-width: 768px) {
+   .worm-image {
+      width: 110px;
+   }
+
+   .login-form-container {
+      padding-top: 90px;
+   }
+
+   .create-button {
+      font-size: 17px;
+   }
+
+   .login-padding {
+      padding-top: 80px;
+      padding-bottom: 46px;
+   }
+
+   .create-button {
+      font-size: 17px;
+   }
+
+   .sign-in-button {
+      font-size: 25px;
+      width: 25%;
+      flex: 0 0 15%;
+      margin-left: 39%;
+      margin-top: 5%;
+   }
+
+   .create-account-container {
+      padding-top: 30px;
+
+   }
+
+   .user-input {
+      margin-bottom: 15px;
+      width: 25%;
+   }
+
+   .login-input-padding {
+      padding: 25px 0px;
+   }
+
+   .login-error {
+      margin: 0px 0px 10px 0px;
+   }
+
+   label.field-active {
+      transform: translateY(-25px);
+   }
+}
+
+@media (min-width: 992px) {
+   .worm-image {
+      width: 110px;
+   }
+
+   .login-form-container {
+      padding-top: 90px;
+   }
+
+   .create-button {
+      font-size: 17px;
+   }
+
+   .login-padding {
+      padding-top: 80px;
+      padding-bottom: 46px;
+   }
+
+   .create-button {
+      font-size: 17px;
+   }
+
+   .sign-in-button {
+      font-size: 25px;
+      width: 25%;
+      flex: 0 0 15%;
+      margin-left: 41%;
+      margin-top: 0%;
+   }
+
+   .create-account-container {
+      padding-top: 30px;
+      padding-left: 1%;
+   }
+
+   .user-input {
+      margin-bottom: 15px;
+      width: 25%;
+   }
+
+   .login-input-padding {
+      padding: 25px 0px;
+   }
+
+   .login-error {
+      margin: 0px 0px 10px 0px;
+   }
+
+   label.field-active {
+      transform: translateY(-25px);
+   }
+}
+
+@media (min-width: 1200px) {
+   .worm-image {
+      width: 110px;
+   }
+
+   .login-form-container {
+      padding-top: 90px;
+   }
+
+   .create-button {
+      font-size: 17px;
+   }
+
+   .login-padding {
+      padding-top: 80px;
+      padding-bottom: 46px;
+   }
+
+   .create-button {
+      font-size: 17px;
+   }
+
+   .sign-in-button {
+      font-size: 25px;
+      width: 25%;
+      flex: 0 0 15%;
+      margin-left: 42%;
+      margin-top: 5%;
+   }
+
+   .create-account-container {
+      padding-top: 30px;
+      /* padding-left: 0; */
+   }
+
+   .user-input {
+      margin-bottom: 15px;
+      width: 25%;
+   }
+
+   .login-input-padding {
+      padding: 25px 0px;
+   }
+
+   .login-error {
+      margin: 0px 0px 10px 0px;
+   }
+
+   label.field-active {
+      transform: translateY(-25px);
+   }
+}
