@@ -40,7 +40,9 @@
 }
 
 #search-results {
-    width: 75%;
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
     display: table;
     font-size: 1em;
 }
@@ -53,6 +55,10 @@
 .search-results-head-cell {
     display: table-cell;
     text-align: justify;
+}
+
+.button-for-modal {
+    display: inline-block;
 }
 
 #search-results-body {

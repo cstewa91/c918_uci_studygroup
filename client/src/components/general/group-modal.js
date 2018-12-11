@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import { Link } from 'react-router-dom';
 import {getGroupDetails} from '../../actions';
 import {joinGroup} from '../../actions';
@@ -36,13 +36,13 @@ class GroupModal extends Component{
 
     render(){
 
-        const { group, id} = this.props;
+        const { children, group, id} = this.props;
         const startDateTime = new Date(group.start_time);
         const endDateTime = new Date(group.end_time);
 
         const startingTime = startDateTime.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
         const endingTime = endDateTime.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
-        const startDate = startDateTime.toLocaleDateString();
+        const startDate = startDateTime.toLocaleDateString([], {month: '2-digit', day: '2-digit'});
 
         const GroupData = (
 
@@ -54,9 +54,7 @@ class GroupModal extends Component{
                     <p className="modal-group-info"><strong>Time:</strong> {startingTime} - {endingTime}</p>
                     <p className="modal-group-info">
                         <strong>Location:</strong> {group.location}
-                        <div className="btn btn-light modal-map-button">
-                            <a href="https://map.uci.edu/" target="_blank">Map</a>
-                        </div>
+                            <a className="btn btn-light modal-map-button" href="https://map.uci.edu/" target="_blank">Map</a>
                     </p>
                     <p className="modal-group-info"><strong>Group Capacity:</strong> {group.current_group_size}/{group.max_group_size}</p>
                     <div className="modal-group-description-container">
@@ -64,29 +62,36 @@ class GroupModal extends Component{
                             {group.description}
                         </p>
                     </div>
-                        <div onClick={this.joinStudyGroup} className="btn btn-primary btn-lg join-group offset-5">Join</div>
+                        <div onClick={this.joinStudyGroup} className="btn btn-primary btn-lg join-group">Join</div>
                 </div>
         )
 
         if(this.state.show) {
 
             return (
-                <div id="group-modal" className="basic-modal">
-                    <div onClick={e => e.stopPropagation()} className="basic-modal-content">
-                        <Link to="/search-group">
-                            <div className="basic-modal-close" onClick={this.close}>
-                                x
+                <Fragment>
+                    {children}
+                    <div id="group-modal" className="basic-modal">
+                        <div onClick={e => e.stopPropagation()} className="basic-modal-content">
+                            <Link to="/search-group">
+                                <div className="group-modal-close" onClick={this.close}>
+                                    x
+                                </div>
+                            </Link>
+                            <div className="group-modal-details">
+                                {GroupData }
                             </div>
-                        </Link>
-                        <div className="group-modal-details">
-                            {GroupData }
                         </div>
                     </div>
-                </div>
+                </Fragment>
             )
         }
 
-        return <div className="search-result-modal" onClick={this.open}>{this.props.text}</div>;
+        return (
+            <div className="search-results-body-row" onClick={this.open}>
+                {children}
+            </div>
+        )
     }
 }
 

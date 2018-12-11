@@ -59,7 +59,8 @@ class SearchGroups extends Component{
             const startDate = startDateTime.toLocaleDateString([], {month: '2-digit', day: '2-digit'});
     
             return (
-                    <div className="search-results-body-row" key={item.id}>
+                <GroupModal key={item.id} history={this.props.history} id={item.id} description={item.description}>
+                    <Fragment key={item.id}>
                         <div className="search-results-body-cell">
                             {item.subject}{item.course}
                         </div>
@@ -75,10 +76,8 @@ class SearchGroups extends Component{
                         <div className="search-results-body-cell">
                             {<sup>{item.current_group_size}</sup>}&frasl;{<sub>{item.max_group_size}</sub>}
                         </div>
-                        <div className="search-filter-button">
-                            <GroupModal key={item.id} history={this.props.history} id={item.id} description={item.description} text={`Info`}/>
-                        </div>
-                    </div>
+                    </Fragment>
+                </GroupModal>
             )
         });
     
@@ -112,7 +111,7 @@ class SearchGroups extends Component{
                                 <u>Subject</u>
                             </div>
                             <div className="search-results-head-cell">
-                                <u>Group Name</u>
+                                <u>Name</u>
                             </div>
                             <div className="search-results-head-cell">
                                 <u>Date</u>
@@ -121,12 +120,10 @@ class SearchGroups extends Component{
                                 <u>Time</u>
                             </div>
                             <div className="search-results-head-cell">
-                                <u>Members</u>
+                                <u>Size</u>
                             </div>
                         </div>
-                        <div id="search-results-body">
                             { this.renderResults() }
-                        </div>
                     </div>
                 </div>
             </div>

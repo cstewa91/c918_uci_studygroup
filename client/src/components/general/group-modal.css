@@ -23,18 +23,22 @@
     font-size: .8em;
 }
 
+.modal-group-info {
+    margin-bottom: .5em;
+}
+
 @media only screen and (max-width: 600px) {
     .basic-modal-content h1 {
-        font-size: 2em;
+        font-size: 1.25em;
     }
 
     .basic-modal-content {
-        font-size: .5em;
+        font-size: .75em;
         width: 80%;
     }
 
     .modal-group-info p {
-        margin-bottom: 1.5em;
+        margin-bottom: 0;
     }
 }
 
@@ -74,10 +78,6 @@
     box-shadow: 0 0 6px white
 }
 
-
-
-
-
 .modal-group-description-container {
     background-color: white;
     border-radius: 10px;
@@ -88,7 +88,7 @@
     margin-bottom: 2%;
 }
 
-.basic-modal-close {
+.group-modal-close {
     height: 30px;
     width: 30px;
     line-height: 30px;
@@ -103,15 +103,17 @@
 }
 
 .modal-group-location {
+    margin: .5em;
     display: inline-block;
 }
 
 .join-group {
     font-family: 'Gochi Hand';
     font-size: 1.5em;
+    width: 100%;
 }
 
-.basic-modal-close:hover {
+.group-modal-close:hover {
     color: #ff0000;
     background-color: #dedede;
 }
