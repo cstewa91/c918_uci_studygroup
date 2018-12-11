@@ -32,17 +32,6 @@ class Profile extends Component {
             hamburgerOpen: false,
         })
     }
-
-    renderInput(props){
-        console.log(props)
-        return (
-            <div className={`input-field col-${props.size}`}>
-                <label>{props.label}</label>
-                <input {...props.input} type='text'/>
-                <p>{props.meta.touched && props.meta.error}</p>
-            </div>
-        )
-    }
     
     handleAddItem = async (values) => {
         await this.props.editUserInfo(values);
@@ -58,10 +47,12 @@ class Profile extends Component {
         this.props.getUserInfo();
     }
 
-    handleEditClick= (event)=>{
+    handleEditClick = (event)=>{
+        
         this.setState ({
             isEditable: true,
         })
+        
     }
 
     handleConfirm = (event)=>{
@@ -86,28 +77,30 @@ class Profile extends Component {
                 <Header hamburgerClick = {this.toggleHamburger}/>  
                 <Hamburger show={this.state.hamburgerOpen}/>
                 {backdrop} 
-                <main className='main-content'>
-                    <div className='container'>
-                        <div className='main-title'>
-                            <p className='edit-group'>PROFILE</p>
+                <main className='profile-content container'>
+                        <div className='profile-header row justify-content-center'>
+                            <p className='profile-title col-10'>PROFILE</p>
+                            <div onClick={this.handleConfirm} className='profile-return'>X</div>
                         </div>
-                        <form onSubmit={handleSubmit(this.handleAddItem)}>
-                            <div className='row'>
-                                    <Field size='12' name='username' label='Username' component={Input}/>
+                        <form className='profile-form row justify-content-center' onSubmit={handleSubmit(this.handleAddItem)}>
+                            <div className='form-username col-10'>
+                                    <Field name='username' label='Username' component={Input}/>
                             </div>
-                            <div className='row'>
-                                    <Field size='6' name='firstname' label='First name' component={Input}/>
-                                                
-                                    <Field size='6' name='lastname' label='Last name' component={Input}/>
+                            <div className='form-first col-10'>
+                                    <Field name='firstname' label="First Name" component={Input}/>
+                            </div>    
+                            <div className='form-last col-10'>               
+                                    <Field name='lastname' label="Last Name" component={Input}/>
                             </div>
-                            <div className='row'>
-                                    <Field size='12' name='email' label='E-mail' component={Input}/>
+                            <div className='form-email col-10'>
+                                    <Field name='email' label="E-mail" component={Input}/>
                             </div>
-                            <div className='col-6 center'>
-                                <button className='confirm btn btn-primary'>CONFIRM</button>
+                            <div className='profile-confirm col-10'>
+                                    <button className='btn profile-confirm-button'>CONFIRM</button>
                             </div>
+                            
                         </form>  
-                    </div>
+                        
                 </main>               
             </div>
             )
@@ -116,43 +109,35 @@ class Profile extends Component {
 
         return (
             <div className="profile">
-                 
                 <Header hamburgerClick = {this.toggleHamburger}/>  
                 <Hamburger show={this.state.hamburgerOpen}/>
                 {backdrop} 
-                <main className='main-content'>
-                    <div className='container'>
-                        <div className='main-title'>
-                            <p className='edit-group'>PROFILE</p>
-                        </div>
-                        <div className="profile-details">
-                            <div className='profile-info'>
-                                <label>USERNAME</label>
-                                <div className='profile-username form-group'>
-                                    <p>{username}</p>
-                                </div>
-                                <label>FIRST NAME</label>
-                                <div className='profile-firstname form-group'>                  
-                                    <p>{firstname}</p>
-                                </div>
-                                <label>LAST NAME</label>
-                                <div className='profile-lastname form-group'>                       
-                                    <p>{lastname}</p>
-                                </div>
-                                <label>E-MAIL</label>
-                                <div className='profile-email form-group'>               
-                                    <p>{email}</p>
-                                </div>
-                            </div>    
-                        </div>
+                <main className='profile-content container'>
+                    <div className='profile-header row justify-content-center'>
+                        <p className='profile-title col-10 '>PROFILE</p>
                     </div>
-                </main>
-                <footer>
-                    <div className='confirm'>
-                    <button onClick={this.handleEditClick} className='confirm btn btn-primary'>EDIT</button>
+                    <div className="profile-info row justify-content-center">     
+                        <div className='profile-username col-10'>
+                            <div className='profile-username-label'><b>Username</b></div>
+                            <p>{username}</p>
+                        </div>
+                        <div className='profile-firstname col-10'>  
+                            <div className='profile-firstName-label'><b>First Name</b></div>                
+                            <p>{firstname}</p>
+                        </div>
+                        <div className='profile-lastname col-10'> 
+                            <div className='profile-lastName-label'><b>Last Name</b></div>                      
+                            <p>{lastname}</p>
+                        </div>
+                        <div className='profile-email col-10'>        
+                            <div className='profile-email-label'><b>E-mail</b></div>       
+                            <p>{email}</p>
+                        </div> 
                     </div>
-                </footer>
-                
+                    <div className='profile-edit row justify-content-center'>
+                        <div onClick={this.handleEditClick} className='profile-edit-button col-10'>EDIT</div>
+                    </div>
+                </main>                
             </div>
         )
     }

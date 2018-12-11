@@ -1,4 +1,4 @@
-.create-account-button {
+.create-account {
    color: white;
    font-size: 17px;
 }
@@ -27,7 +27,7 @@
 
 .login-error {
    margin: 0px 0px 10px 0px;
-   line-height: 0.5;
+   line-height: 0;
    color: rgb(204, 44, 44);
 }
 
@@ -99,7 +99,7 @@
 /****** MEDIA QUERIES *******/
 
 @media (min-width: 0px) {
-   .create-account-button {
+   .create-account {
       font-size: 17px;
    }
 
@@ -150,7 +150,7 @@
 }
 
 @media (min-width: 576px) {
-   .create-account-button {
+   .create-account {
       font-size: 17px;
    }
 
@@ -201,8 +201,7 @@
 }
 
 @media (min-width: 768px) {
-
-   .create-account-button {
+   .create-account {
       font-size: 17px;
    }
 
@@ -256,7 +255,7 @@
 }
 
 @media (min-width: 992px) {
-   .create-account-button {
+   .create-account {
       font-size: 17px;
    }
 
@@ -311,7 +310,7 @@
 }
 
 @media (min-width: 1200px) {
-   .create-account-button {
+   .create-account {
       font-size: 17px;
    }
 
