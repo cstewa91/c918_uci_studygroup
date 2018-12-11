@@ -13,22 +13,22 @@ import Input from '../input';
 class CreateGroup extends Component {
    state = {
       hamburgerOpen: false,
-  }
+   }
 
-  toggleHamburger = () =>{
-      this.setState((prevState) =>{
-          console.log(prevState)
-          return {
-              hamburgerOpen: !prevState.hamburgerOpen
-          }
+   toggleHamburger = () => {
+      this.setState((prevState) => {
+         console.log(prevState)
+         return {
+            hamburgerOpen: !prevState.hamburgerOpen
+         }
       })
-  }
+   }
 
-  backdropHandler = () => {
-      this.setState ({
-          hamburgerOpen: false,
+   backdropHandler = () => {
+      this.setState({
+         hamburgerOpen: false,
       })
-  }
+   }
 
    handleCreateGroup = async (values) => {
       await this.props.createNewGroup(values);
@@ -41,19 +41,16 @@ class CreateGroup extends Component {
       }
    }
    render() {
-
       let backdrop;
-
-      if(this.state.hamburgerOpen){
-          backdrop = <Backdrop click={this.backdropHandler}/>
+      if (this.state.hamburgerOpen) {
+         backdrop = <Backdrop click={this.backdropHandler} />
       }
-
       const { handleSubmit, invalidName } = this.props
       return (
          <div className="blue">
-            <Header hamburgerClick = {this.toggleHamburger}/>  
-            <Hamburger show={this.state.hamburgerOpen}/>
-            {backdrop} 
+            <Header hamburgerClick={this.toggleHamburger} />
+            <Hamburger show={this.state.hamburgerOpen} />
+            {backdrop}
             <h1>Create Group Page</h1>
             <form onSubmit={handleSubmit(this.handleCreateGroup)}>
                <div>
@@ -78,9 +75,9 @@ class CreateGroup extends Component {
                <div>
                   <Field name="location" label="Location" component={Input} inputClassName="create-group-user-input" />
                </div>
-               {/* <div>
-                  <Field name="description" label="Description" size="35" component={Input} inputClassName="create-group-user-input" />
-               </div> */}
+               <div>
+                  <Field name="description"  label="Description" component={Input} textArea="true" />
+               </div>
                <button>Create Group</button>
             </form>
          </div>
@@ -112,9 +109,9 @@ function validate({ name, subject, course, max_group_size, start_time, end_time,
    if (!location) {
       error.location = "Please enter the location"
    }
-   // if (!description) {
-   //    error.description = "Please enter a short description"
-   // }
+   if (!description) {
+      error.description = "Please enter a short description"
+   }
    return error;
 }
 

@@ -73,6 +73,8 @@
    border-bottom: 1px solid white;
    color: white;
    -webkit-appearance: none !important;
+   max-width: 66.666667%;
+   width: 100%;
 }
 
 .sign-in-button {
