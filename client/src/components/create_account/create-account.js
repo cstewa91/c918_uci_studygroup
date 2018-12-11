@@ -29,8 +29,8 @@ class CreateNewAccount extends Component {
       return (
          <div>
             <div className='create-account-header-container container-fluid '>
-               <img className='header-worm nav-logo' src={worm} />
-               <span className='navbar-text'>Book Worms</span>
+               <img className='create-account-header-worm nav-logo' src={worm} />
+               <span className='create-account-navbar-text'>Book Worms</span>
             </div>
             <h1 className='create-account-header'>CREATE ACCOUNT</h1>
             <form className="account-details-container" onSubmit={handleSubmit(this.handleCreateAccount)}>
