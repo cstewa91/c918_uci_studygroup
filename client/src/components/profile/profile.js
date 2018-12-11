@@ -8,11 +8,7 @@ import './profile.css';
 import Header from '../general/header';
 import Backdrop from '../general/backdrop';
 import Hamburger from '../general/hamburger';
-<<<<<<< HEAD
 import Input from '../input'
-=======
-import Input from '../input';
->>>>>>> dev
 
 
 
@@ -91,40 +87,29 @@ class Profile extends Component {
                 <Hamburger show={this.state.hamburgerOpen}/>
                 {backdrop} 
                 <main className='profile-content container'>
-                        <div className='profile-header'>
-                            <p className='profile-title'>PROFILE</p>
+                        <div className='profile-header row justify-content-center'>
+                            <p className='profile-title col-10'>PROFILE</p>
+                            <div onClick={this.handleConfirm} className='profile-return'>X</div>
                         </div>
-<<<<<<< HEAD
                         <form className='profile-form row justify-content-center' onSubmit={handleSubmit(this.handleAddItem)}>
-                            <div className='col-10'>
-                                    <Field name='username' label={username} component={Input}/>
+                            <div className='form-username col-10'>
+                                    <Field name='username' label='Username' component={Input}/>
                             </div>
-                            <div className='col-10'>
-                                    <Field name='firstname' label={firstname} component={Input}/>
+                            <div className='form-first col-10'>
+                                    <Field name='firstname' label="First Name" component={Input}/>
                             </div>    
-                            <div className='col-10'>               
-                                    <Field name='lastname' label={lastname} component={Input}/>
-=======
-                        <form onSubmit={handleSubmit(this.handleAddItem)}>
-                            <div className='row'>
-                                    <Field size='12' name='username' label='Username' component={Input}/>
+                            <div className='form-last col-10'>               
+                                    <Field name='lastname' label="Last Name" component={Input}/>
                             </div>
-                            <div className='row'>
-                                    <Field size='6' name='firstname' label='First name' component={Input}/>
-                                                
-                                    <Field size='6' name='lastname' label='Last name' component={Input}/>
+                            <div className='form-email col-10'>
+                                    <Field name='email' label="E-mail" component={Input}/>
                             </div>
-                            <div className='row'>
-                                    <Field size='12' name='email' label='E-mail' component={Input}/>
->>>>>>> dev
+                            <div className='profile-confirm col-10'>
+                                    <button className='btn profile-confirm-button'>CONFIRM</button>
                             </div>
-                            <div className='col-10'>
-                                    <Field name='email' label={email} component={Input}/>
-                            </div>
+                            
                         </form>  
-                        <div className='profile-confirm row justify-content-center'>
-                                <div className='profile-confirm-button col-10'>CONFIRM</div>
-                        </div>
+                        
                 </main>               
             </div>
             )

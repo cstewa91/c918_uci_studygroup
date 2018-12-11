@@ -1,5 +1,5 @@
 .profile-content {
-    height: 90vh;
+    height: 88vh;
 }
 
 .profile-header {
@@ -14,6 +14,12 @@
     margin: 0.3em;
 }
 
+.profile-return {
+    background: none;
+    display: flex;
+
+}
+
 .profile-info {
     height: 70%;
     padding: 0;
@@ -22,13 +28,14 @@
 .profile-info div {
     font-family: Roboto;
     font-size: 1.1em;
-    margin-bottom: 0.2em;
+    margin: 0;
     padding: 0;
 }
 
 .profile-info p {
     color: #9E9E9E;
     border-bottom: 1px solid grey;
+    margin: 0;
 }
 
 .profile-confirm-button, .profile-edit-button {
@@ -60,33 +67,42 @@
 }
 
 .profile-form {
-    height: 70%;
+    height: 78%;
+    padding: 0;
+    font-size: 1em;
+    margin-top: 8%;
+}
+
+.form-username, .form-first, .form-last, .form-email {
+    height: 15%;
+    font-family: Roboto;
+    font-size: 1em;
+    margin: 0;
     padding: 0;
 }
 
-.profile-form div {
-    font-family: Roboto;
-    font-size: 1.1em;
-    margin-bottom: 0.2em;
-    padding: 0;
+.profile-form label {
+    font-weight: bold;
+    font-size: 0.75em;
+    margin: 0;
 }
 
 .profile-form input {
-    border: none;
-}
-
-.profile-form p {
+    width: 100%;
     color: #9E9E9E;
+    border: none;
     border-bottom: 1px solid grey;
 }
 
-.profile-confirm {
-    height: 10%;
-    margin: 0.2em;
+.profile-form p {
+    height: 20px;
+    color: red;
+    margin: 0;
 }
 
 .profile-confirm-button {
-    height: 90%;
+    height: 70%;
+    width: 100%;
     text-align: center;
     font-size: 1.5em;
     transition-property: transform;
