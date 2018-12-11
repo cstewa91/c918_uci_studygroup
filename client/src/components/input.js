@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './login/login.css'
+import '../assets/css/input.css'
 
 class Input extends Component {
    state = {
@@ -26,10 +26,13 @@ class Input extends Component {
       });
    }
    render() {
-      const { input, label, inputClassName, labelClassName, meta: { error, touched }, size, type = 'text' } = this.props
+      const { input, label, inputClassName, labelClassName, loginActive, meta: { error, touched }, size, type = 'text' } = this.props
       let floatText = labelClassName
-      if (this.state.activeField) {
+      if (this.state.activeField && !loginActive) {
          floatText = `field-active ${labelClassName}`
+      }
+      if (this.state.activeField && loginActive) {
+         floatText = `${loginActive} ${labelClassName}`
       }
       return (
          <div>

@@ -1,8 +1,61 @@
+.create-account-button {
+   color: white;
+   font-size: 17px;
+}
+
+.create-account-container {
+   padding-top: 30px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.create-account-container a:hover {
+   color: white;
+}
+
+.floating-label {
+   -webkit-appearance: none !important;
+}
+
 .login-background {
    min-height: 100vh;
    margin: 0;
    background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), #1778BE;
    background-blend-mode: hard-light, normal, normal;
+}
+
+.login-error {
+   margin: 0px 0px 10px 0px;
+   line-height: 0.5;
+   color: rgb(204, 44, 44);
+}
+
+.login-form-container {
+   text-align: center;
+   padding-top: 90px;
+   justify-content: center;
+   align-items: center;
+}
+
+.login-form-container label.login-active {
+   transform: translateY(-25px);
+   font-size: .9em;
+   color: rgba(255, 255, 255, 0.37);
+}
+
+.login-input-padding {
+   padding: 10px 0px;
+   flex: 0 0 100%;
+   max-width: 100%;
+}
+
+.label-login-color {
+   color: white
+}
+
+.login-padding {
+   padding-top: 90px;
 }
 
 .login-title {
@@ -12,25 +65,14 @@
    text-shadow: -1px 4px 4px black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-.worm-image {
-   display: block;
-   margin-left: auto;
-   margin-right: auto;
-   width: 110px
-}
-
-.login-form-container {
-   text-align: center;
-   padding-top: 90px;
-}
-
-.create-button {
+.login-user-input {
+   margin-bottom: 15px;
+   padding: 0px 0px;
+   background: none;
+   border: none;
+   border-bottom: 1px solid white;
    color: white;
-   font-size: 17px;
-}
-
-.login-padding {
-   padding-top: 90px;
+   -webkit-appearance: none !important;
 }
 
 .sign-in-button {
@@ -45,81 +87,56 @@
    padding: 5px 65px;
    position: static;
    flex: 0 0 66.666667%;
-   max-width: 66.666667%;
-   margin-left: 16.666667%;
 }
 
-.create-account-container {
-   padding-top: 30px;
-   text-align: center;
+.worm-image {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   width: 110px
 }
 
-.user-input {
-   margin-bottom: 15px;
-   padding: 0px 0px;
-   background: none;
-   border: none;
-   border-bottom: 1px solid white;
-   color: white;
-   -webkit-appearance: none !important;
-}
+/****** MEDIA QUERIES *******/
 
-.login-input-padding {
-   padding: 10px 0px;
-   flex: 0 0 100%;
-   max-width: 100%;
-}
+@media (min-width: 0px) {
+   .create-account-button {
+      font-size: 17px;
+   }
 
-.login-error {
-   margin: 0px 0px 10px 0px;
-   line-height: 0.5;
-   color: rgb(204, 44, 44);
-}
+   .create-account-container {
+      padding-top: 30px;
+   }
 
-input:focus {
-   outline: none
-}
+   .create-button {
+      font-size: 17px;
+   }
 
-.label-login-color {
-   color: white
-}
+   label.login-active {
+      transform: translateY(-25px);
+   }
 
-label {
-   display: inline-block;
-   position: absolute;
-   transition: all 150ms ease-in;
-}
-
-label.field-active {
-   transform: translateY(-25px);
-   font-size: .9em;
-   color: rgba(255, 255, 255, 0.37);
-}
-
-.floating-label {
-   -webkit-appearance: none !important;
-}
-
-
-@media (min-width: 576px) {
-   .worm-image {
-      width: 110px;
+   .login-error {
+      margin: 0px 0px 10px 0px;
    }
 
    .login-form-container {
-      padding-top: 90px;
+      padding-top: 42px;
    }
 
-   .create-button {
-      font-size: 17px;
+   .login-input-padding {
+      padding: 10px 0px;
    }
 
    .login-padding {
-      padding-top: 90px;
+      padding-top: 39px;
    }
 
-   .create-button {
-      font-size: 17px;
+   .login-title {
+      font-size: 1.5rem;
+   }
+
+   .login-user-input {
+      margin-bottom: 15px;
    }
 
    .sign-in-button {
@@ -127,91 +144,90 @@ label.field-active {
       padding: 5px 65px;
    }
 
+   .worm-image {
+      width: 85px;
+   }
+}
+
+@media (min-width: 576px) {
+   .create-account-button {
+      font-size: 17px;
+   }
+
    .create-account-container {
       padding-top: 30px;
    }
 
-   .user-input {
-      margin-bottom: 15px;
+   .create-button {
+      font-size: 17px;
+   }
+
+   label.login-active {
+      transform: translateY(-25px);
+   }
+
+   .login-error {
+      margin: 0px 0px 10px 0px;
+   }
+
+   .login-form-container {
+      padding-top: 90px;
    }
 
    .login-input-padding {
       padding: 10px 0px;
    }
 
-   .login-error {
-      margin: 0px 0px 10px 0px;
+   .login-padding {
+      padding-top: 90px;
    }
 
-   label.field-active {
-      transform: translateY(-25px);
+   .login-title {
+      font-size: 2.5rem;
+   }
+
+   .login-user-input {
+      margin-bottom: 15px;
+   }
+
+   .sign-in-button {
+      font-size: 25px;
+      padding: 5px 65px;
+   }
+
+   .worm-image {
+      width: 110px;
    }
 }
 
 @media (min-width: 768px) {
-   .worm-image {
-      width: 110px;
-   }
 
-   .login-form-container {
-      padding-top: 90px;
-   }
-
-   .create-button {
+   .create-account-button {
       font-size: 17px;
-   }
-
-   .login-padding {
-      padding-top: 80px;
-      padding-bottom: 46px;
-   }
-
-   .create-button {
-      font-size: 17px;
-   }
-
-   .sign-in-button {
-      font-size: 25px;
-      width: 25%;
-      flex: 0 0 15%;
-      margin-left: 39%;
-      margin-top: 5%;
    }
 
    .create-account-container {
       padding-top: 30px;
-
    }
 
-   .user-input {
-      margin-bottom: 15px;
-      width: 25%;
+   .create-button {
+      font-size: 17px;
    }
 
-   .login-input-padding {
-      padding: 25px 0px;
+   label.login-active {
+      transform: translateY(-25px);
    }
 
    .login-error {
       margin: 0px 0px 10px 0px;
    }
 
-   label.field-active {
-      transform: translateY(-25px);
-   }
-}
-
-@media (min-width: 992px) {
-   .worm-image {
-      width: 110px;
-   }
-
    .login-form-container {
       padding-top: 90px;
    }
 
-   .create-button {
-      font-size: 17px;
+   .login-input-padding {
+      padding: 16px 0px;
    }
 
    .login-padding {
@@ -219,16 +235,29 @@ label.field-active {
       padding-bottom: 46px;
    }
 
-   .create-button {
-      font-size: 17px;
+   .login-title {
+      font-size: 2.5rem;
+   }
+
+   .login-user-input {
+      margin-bottom: 15px;
+      width: 25%;
    }
 
    .sign-in-button {
       font-size: 25px;
       width: 25%;
-      flex: 0 0 15%;
-      margin-left: 41%;
-      margin-top: 0%;
+      flex: 0 0 21%;
+   }
+
+   .worm-image {
+      width: 110px;
+   }
+}
+
+@media (min-width: 992px) {
+   .create-account-button {
+      font-size: 17px;
    }
 
    .create-account-container {
@@ -236,35 +265,24 @@ label.field-active {
       padding-left: 1%;
    }
 
-   .user-input {
-      margin-bottom: 15px;
-      width: 25%;
+   .create-button {
+      font-size: 17px;
    }
 
-   .login-input-padding {
-      padding: 25px 0px;
+   label.login-active {
+      transform: translateY(-25px);
    }
 
    .login-error {
       margin: 0px 0px 10px 0px;
    }
 
-   label.field-active {
-      transform: translateY(-25px);
-   }
-}
-
-@media (min-width: 1200px) {
-   .worm-image {
-      width: 110px;
-   }
-
    .login-form-container {
       padding-top: 90px;
    }
 
-   .create-button {
-      font-size: 17px;
+   .login-input-padding {
+      padding: 25px 0px;
    }
 
    .login-padding {
@@ -272,37 +290,77 @@ label.field-active {
       padding-bottom: 46px;
    }
 
-   .create-button {
-      font-size: 17px;
+   .login-title {
+      font-size: 2.5rem;
+   }
+
+   .login-user-input {
+      margin-bottom: 15px;
+      width: 25%;
    }
 
    .sign-in-button {
       font-size: 25px;
       width: 25%;
       flex: 0 0 15%;
-      margin-left: 42%;
-      margin-top: 5%;
+   }
+
+   .worm-image {
+      width: 110px;
+   }
+}
+
+@media (min-width: 1200px) {
+   .create-account-button {
+      font-size: 17px;
    }
 
    .create-account-container {
       padding-top: 30px;
-      /* padding-left: 0; */
+      padding-left: 0;
    }
 
-   .user-input {
-      margin-bottom: 15px;
-      width: 25%;
+   .create-button {
+      font-size: 17px;
    }
 
-   .login-input-padding {
-      padding: 25px 0px;
+   label.login-active {
+      transform: translateY(-25px);
    }
 
    .login-error {
       margin: 0px 0px 10px 0px;
    }
 
-   label.field-active {
-      transform: translateY(-25px);
+   .login-form-container {
+      padding-top: 90px;
+   }
+
+   .login-input-padding {
+      padding: 25px 0px;
+   }
+
+   .login-padding {
+      padding-top: 80px;
+      padding-bottom: 46px;
+   }
+
+   .login-title {
+      font-size: 2.5rem;
+   }
+
+   .login-user-input {
+      margin-bottom: 15px;
+      width: 25%;
+   }
+
+   .sign-in-button {
+      font-size: 25px;
+      width: 25%;
+      flex: 0 0 15%;
+   }
+
+   .worm-image {
+      width: 110px;
    }
 }

@@ -1,3 +1,8 @@
-.blue {
-   background: blue
+.create-group-user-input {
+   margin-bottom: 15px;
+   padding: 0px 0px;
+   background: none;
+   border: none;
+   border-bottom: 1px solid black;
+   -webkit-appearance: none !important;
 }
