@@ -57,30 +57,30 @@ class CreateGroup extends Component {
             <h1>Create Group Page</h1>
             <form onSubmit={handleSubmit(this.handleCreateGroup)}>
                <div>
-                  <Field name="name" label="Group Name" component={Input} />
+                  <Field name="name" label="Group Name" component={Input} inputClassName="create-group-user-input" />
                </div>
                <p>{invalidName}</p>
                <div>
-                  <Field name="subject" label="Subject" component={Input} />
+                  <Field name="subject" label="Subject" component={Input} inputClassName="create-group-user-input" />
                </div>
                <div>
-                  <Field name="course" label="Course Number" component={Input} />
+                  <Field name="course" label="Course Number" component={Input} inputClassName="create-group-user-input" />
                </div>
                <div>
-                  <Field name="max_group_size" label="Group Size" component={Input} />
+                  <Field name="max_group_size" label="Group Size" component={Input} inputClassName="create-group-user-input" />
                </div>
                <div>
-                  <Field name="start_time" component={Input} type="datetime-local" />
+                  <Field name="start_time" component={Input} type="datetime-local" inputClassName="create-group-user-input" />
                </div>
                <div>
-                  <Field name="end_time" component={Input} type="datetime-local" />
+                  <Field name="end_time" component={Input} type="datetime-local" inputClassName="create-group-user-input" />
                </div>
                <div>
-                  <Field name="location" label="Location" component={Input} />
+                  <Field name="location" label="Location" component={Input} inputClassName="create-group-user-input" />
                </div>
-               <div>
-                  <Field name="description" label="Description" component={Input} />
-               </div>
+               {/* <div>
+                  <Field name="description" label="Description" size="35" component={Input} inputClassName="create-group-user-input" />
+               </div> */}
                <button>Create Group</button>
             </form>
          </div>
@@ -90,12 +90,11 @@ class CreateGroup extends Component {
 
 function validate({ name, subject, course, max_group_size, start_time, end_time, location, description }) {
    const error = {}
-   const validSubject = /^[a-z ,.'-]+$/i
    const validNumber = /^[0-9]*$/
    if (!name) {
       error.name = "Please enter your group name"
    }
-   if (!subject || !validSubject.test(subject)) {
+   if (!subject) {
       error.subject = "Please enter the subject"
    }
    if (!course || !validNumber.test(course)) {
@@ -113,9 +112,9 @@ function validate({ name, subject, course, max_group_size, start_time, end_time,
    if (!location) {
       error.location = "Please enter the location"
    }
-   if (!description) {
-      error.description = "Please enter a short description"
-   }
+   // if (!description) {
+   //    error.description = "Please enter a short description"
+   // }
    return error;
 }
 

@@ -8,7 +8,7 @@ import './profile.css';
 import Header from '../general/header';
 import Backdrop from '../general/backdrop';
 import Hamburger from '../general/hamburger';
-import Input from '../input'
+import Input from '../input';
 
 
 

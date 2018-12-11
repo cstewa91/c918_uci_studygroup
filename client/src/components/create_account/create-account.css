@@ -1,0 +1,72 @@
+.account-details-container {
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   flex-direction: column;
+}
+.create-account-button {
+   font-family: 'Gochi Hand';
+   color: #FFFFFF;
+   text-align: center;
+   text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
+   background: linear-gradient(178.26deg, rgba(255, 255, 255, 0) 50.39%, rgba(255, 255, 255, 0.34) 114.5%), #1778BE;
+   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+   border-radius: 5px;
+}
+
+.create-account-error {
+      margin: 0;
+      line-height: 0;
+      color: rgb(204, 44, 44);
+}
+
+.create-account-header {
+   font-family: 'Gochi Hand';
+   font-size: 1.75em;
+   color: white;
+   text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
+   text-align: center;
+   padding: 7px 0px  7px 0px;
+}
+
+.create-account-header-container {
+   width: 100vw;
+   padding: 0;
+   margin: 0;
+   background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), #1778BE;
+   background-blend-mode: hard-light, normal, normal;
+   font-family: 'Gochi Hand';
+   overflow: hidden;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.create-account-input-padding {
+   padding: 16px 0px;
+   flex: 0 0 100%;
+   max-width: 100%;
+}
+
+.create-account-user-input {
+   margin-bottom: 15px;
+   padding: 0px 0px;
+   background: none;
+   border: none;
+   border-bottom: 1px solid black;
+   color: black;
+   -webkit-appearance: none !important;
+   width: 66.666667%;
+}
+
+.header-worm {
+   height: 75px;
+   width: 80px;
+   margin: 0.5em;
+}
+
+.navbar-text {
+   color: #FFFFFF;
+   text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
+   font-size: 9vw;
+}
