@@ -58,10 +58,12 @@ class Profile extends Component {
         this.props.getUserInfo();
     }
 
-    handleEditClick= (event)=>{
+    handleEditClick = (event)=>{
+        
         this.setState ({
             isEditable: true,
         })
+        
     }
 
     handleConfirm = (event)=>{
