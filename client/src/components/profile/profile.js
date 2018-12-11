@@ -32,17 +32,6 @@ class Profile extends Component {
             hamburgerOpen: false,
         })
     }
-
-    renderInput(props){
-        console.log(props)
-        return (
-            <div className={`input-field col-${props.size}`}>
-                <div>{props.div}</div>
-                <input {...props.input} type='text'/>
-                <p>{props.meta.touched && props.meta.error}</p>
-            </div>
-        )
-    }
     
     handleAddItem = async (values) => {
         await this.props.editUserInfo(values);
