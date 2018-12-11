@@ -23,7 +23,6 @@
     border-radius: 10px;
     margin: 1%;
     padding: 1% 2%;
-    display: flex;
 }
 
 .search-filter-button {
@@ -67,8 +66,10 @@
 
 .search-results-body-row {
     display: table-row;
+    cursor: pointer;
 }
 
 .search-results-body-cell {
     display: table-cell;
+    border-bottom: 1px solid #1778BE;
 }
