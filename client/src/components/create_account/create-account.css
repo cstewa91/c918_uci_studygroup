@@ -1,4 +1,10 @@
-.create-group-button {
+.account-details-container {
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   flex-direction: column;
+}
+.create-account-button {
    font-family: 'Gochi Hand';
    color: #FFFFFF;
    text-align: center;
@@ -8,7 +14,13 @@
    border-radius: 5px;
 }
 
-.create-group-header {
+.create-account-error {
+      margin: 0;
+      line-height: 0;
+      color: rgb(204, 44, 44);
+}
+
+.create-account-header {
    font-family: 'Gochi Hand';
    font-size: 1.75em;
    color: white;
@@ -17,7 +29,7 @@
    padding: 7px 0px  7px 0px;
 }
 
-.create-group-header-container {
+.create-account-header-container {
    width: 100vw;
    padding: 0;
    margin: 0;
@@ -30,39 +42,31 @@
    align-items: center;
 }
 
-.create-group-input-padding {
+.create-account-input-padding {
    padding: 16px 0px;
    flex: 0 0 100%;
    max-width: 100%;
 }
 
-.create-group-user-input {
+.create-account-user-input {
    margin-bottom: 15px;
    padding: 0px 0px;
    background: none;
    border: none;
    border-bottom: 1px solid black;
+   color: black;
    -webkit-appearance: none !important;
+   width: 66.666667%;
 }
 
-.create-group-error {
-   margin: 0;
-   line-height: 0;
-   color: rgb(204, 44, 44);
+.create-account-header-worm {
+   height: 75px;
+   width: 80px;
+   margin: 0.5em;
 }
 
-.group-details-container {
-   justify-content: center;
-   align-items: center;
-   text-align: center;
-   flex-direction: column;
+.create-account-navbar-text {
+   color: #FFFFFF;
+   text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
+   font-size: 9vw;
 }
-
-
-
-
-
-
-
-
-

@@ -13,22 +13,22 @@ import Input from '../input';
 class CreateGroup extends Component {
    state = {
       hamburgerOpen: false,
-  }
+   }
 
-  toggleHamburger = () =>{
-      this.setState((prevState) =>{
-          console.log(prevState)
-          return {
-              hamburgerOpen: !prevState.hamburgerOpen
-          }
+   toggleHamburger = () => {
+      this.setState((prevState) => {
+         console.log(prevState)
+         return {
+            hamburgerOpen: !prevState.hamburgerOpen
+         }
       })
-  }
+   }
 
-  backdropHandler = () => {
-      this.setState ({
-          hamburgerOpen: false,
+   backdropHandler = () => {
+      this.setState({
+         hamburgerOpen: false,
       })
-  }
+   }
 
    handleCreateGroup = async (values) => {
       await this.props.createNewGroup(values);
@@ -41,45 +41,42 @@ class CreateGroup extends Component {
       }
    }
    render() {
-
       let backdrop;
-
-      if(this.state.hamburgerOpen){
-          backdrop = <Backdrop click={this.backdropHandler}/>
+      if (this.state.hamburgerOpen) {
+         backdrop = <Backdrop click={this.backdropHandler} />
       }
-
       const { handleSubmit, invalidName } = this.props
       return (
          <div className="blue">
-            <Header hamburgerClick = {this.toggleHamburger}/>  
-            <Hamburger show={this.state.hamburgerOpen}/>
-            {backdrop} 
+            <Header hamburgerClick={this.toggleHamburger} />
+            <Hamburger show={this.state.hamburgerOpen} />
+            {backdrop}
             <h1>Create Group Page</h1>
             <form onSubmit={handleSubmit(this.handleCreateGroup)}>
                <div>
-                  <Field name="name" label="Group Name" component={Input} />
+                  <Field name="name" label="Group Name" component={Input} inputClassName="create-group-user-input" />
                </div>
                <p>{invalidName}</p>
                <div>
-                  <Field name="subject" label="Subject" component={Input} />
+                  <Field name="subject" label="Subject" component={Input} inputClassName="create-group-user-input" />
                </div>
                <div>
-                  <Field name="course" label="Course Number" component={Input} />
+                  <Field name="course" label="Course Number" component={Input} inputClassName="create-group-user-input" />
                </div>
                <div>
-                  <Field name="max_group_size" label="Group Size" component={Input} />
+                  <Field name="max_group_size" label="Group Size" component={Input} inputClassName="create-group-user-input" />
                </div>
                <div>
-                  <Field name="start_time" component={Input} type="datetime-local" />
+                  <Field name="start_time" component={Input} type="datetime-local" inputClassName="create-group-user-input" />
                </div>
                <div>
-                  <Field name="end_time" component={Input} type="datetime-local" />
+                  <Field name="end_time" component={Input} type="datetime-local" inputClassName="create-group-user-input" />
                </div>
                <div>
-                  <Field name="location" label="Location" component={Input} />
+                  <Field name="location" label="Location" component={Input} inputClassName="create-group-user-input" />
                </div>
                <div>
-                  <Field name="description" label="Description" component={Input} />
+                  <Field name="description"  label="Description" component={Input} textArea="true" />
                </div>
                <button>Create Group</button>
             </form>
@@ -90,12 +87,11 @@ class CreateGroup extends Component {
 
 function validate({ name, subject, course, max_group_size, start_time, end_time, location, description }) {
    const error = {}
-   const validSubject = /^[a-z ,.'-]+$/i
    const validNumber = /^[0-9]*$/
    if (!name) {
       error.name = "Please enter your group name"
    }
-   if (!subject || !validSubject.test(subject)) {
+   if (!subject) {
       error.subject = "Please enter the subject"
    }
    if (!course || !validNumber.test(course)) {

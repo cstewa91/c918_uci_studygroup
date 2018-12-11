@@ -27,18 +27,18 @@ class Login extends Component {
                <img src={worm} className="worm-image" />
                <h1 className="login-title">Book Worms</h1>
             </div>
-            <form className="login-form-container row" onSubmit={handleSubmit(this.handleLogin)}>
+            <form className="login-form-container" onSubmit={handleSubmit(this.handleLogin)}>
                <div className="login-input-padding ">
-                  <Field name="email" label="E-mail" component={Input} inputClassName="user-input col-8" labelClassName="label-login-color" />
+                  <Field name="email" label="E-mail" component={Input} inputClassName="login-user-input" labelClassName="label-login-color" loginActive="login-active" errorClassName="login-error" />
                </div>
                <div className="login-input-padding ">
-                  <Field name="password" label="Password" component={Input} type="password" inputClassName="user-input col-8" labelClassName="label-login-color"/>
+                  <Field name="password" label="Password" component={Input} type="password" inputClassName="login-user-input" labelClassName="label-login-color" loginActive="login-active"  errorClassName="login-error" />
                </div>
                <button className="btn sign-in-button">Sign In</button>
                <p>{signInError}</p>
             </form>
             <div className="create-account-container">
-               <Link to='/create-account' className="create-button" >Create Account</Link>
+               <Link to='/create-account' className="create-account" >Create Account</Link>
             </div>
          </div>
       )
