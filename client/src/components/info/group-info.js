@@ -48,10 +48,10 @@ class GroupInfo extends Component{
             return(
                 <Fragment>
                     <div className='update'>
-                        <NavButton to={`/edit-group/${this.props.match.params.group_id}`} text='EDIT'/>
+                        <NavButton to={`/edit-group/${this.props.match.params.group_id}`} text='Edit Group Details'/>
                     </div>
                     <div className='delete-group'>
-                        <button onClick={this.deleteCurrentGroup}>Delete Group</button>
+                        <div className="btn btn-danger" onClick={this.deleteCurrentGroup}>Delete Group</div>
                     </div>
                 </Fragment>
                 
@@ -59,7 +59,7 @@ class GroupInfo extends Component{
         }else{
             return(
                 <div className="update">
-                    <button onClick={this.leaveCurrentGroup}>Leave Group</button>
+                    <div className="btn btn-danger leave-group" onClick={this.leaveCurrentGroup}>Leave Group</div>
                 </div>
             )
         }
@@ -116,22 +116,22 @@ class GroupInfo extends Component{
                         <div className="group-details">
                         <form className='group-info'>
                                 <div className='subject form-group'>                  
-                                    <p><strong>Subject:</strong> {subject}{course}</p>
+                                    <strong>Subject:</strong> {subject}{course}
                                 </div>
                                 <div className='date form-group'>               
-                                    <p><strong>Date:</strong> {startDate}</p>
+                                    <strong>Date:</strong> {startDate}
                                 </div>
                                 <div className='time form-group'>                 
-                                    <p><strong>Time:</strong> {`${startingTime} - ${endingTime}`}</p>
+                                    <strong>Time:</strong> {`${startingTime} - ${endingTime}`}
                                 </div>
                                 <div className='users form-group'>             
-                                    <p><strong>Group Size:</strong> {`${current_group_size}/${max_group_size}`}</p>
+                                    <strong>Group Size:</strong> {`${current_group_size}/${max_group_size}`}
                                 </div>
                                 <div className='location form-group'>                  
-                                    <p><strong>Location:</strong> {location}</p>
+                                    <strong>Location:</strong> {location}
                                 </div>
                                 <div className='details'>        
-                                    <p><strong>Description:</strong> {description}</p>
+                                    <strong>Description:</strong> {description}
                                 </div>
                             </form>
                         </div>
