@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import './search-page.css';
 import Header from '../general/header'
 import Hamburger from '../general/hamburger';
@@ -49,20 +49,38 @@ class SearchGroups extends Component{
 
     renderResults = () => {
         const resultType = (this.props.results && this.props.results.length) ? "results" : "all";
-
+    
         const results = this.props[resultType].map(item => {
             const startDateTime = new Date(item.start_time);
             const endDateTime = new Date(item.end_time);
-
+    
             const startingTime = startDateTime.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
             const endingTime = endDateTime.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
-            const startDate = startDateTime.toLocaleDateString();
-
+            const startDate = startDateTime.toLocaleDateString([], {month: '2-digit', day: '2-digit'});
+    
             return (
-                <GroupModal key={item.id} history={this.props.history} id={item.id} description={item.description} text={`${item.subject}${item.course}: ${item.name} ${startDate} ${startingTime} - ${endingTime} ${item.current_group_size}/${item.max_group_size}`}/>
+                <GroupModal key={item.id} history={this.props.history} id={item.id} description={item.description}>
+                    <Fragment key={item.id}>
+                        <div className="search-results-body-cell">
+                            {item.subject}{item.course}
+                        </div>
+                        <div className="search-results-body-cell">
+                            {item.name}
+                        </div>
+                        <div className="search-results-body-cell">
+                            {startDate}
+                        </div>
+                        <div className="search-results-body-cell">
+                            {startingTime}
+                        </div>
+                        <div className="search-results-body-cell">
+                            {<sup>{item.current_group_size}</sup>}&frasl;{<sub>{item.max_group_size}</sub>}
+                        </div>
+                    </Fragment>
+                </GroupModal>
             )
         });
-
+    
         return results;
     }
 
@@ -88,10 +106,24 @@ class SearchGroups extends Component{
                         </form>
                     </div>
                     <div id="search-results">
-                        <p className="search-result-section"><span><b><u>Subject</u></b></span> <span><b><u>Group Name</u></b></span> <span><b><u>Date & Time</u></b></span> <span><b><u>Members</u></b></span></p>
-                        <ul className="search-results">
+                        <div id="search-results-header">
+                            <div className="search-results-head-cell">
+                                <u>Subject</u>
+                            </div>
+                            <div className="search-results-head-cell">
+                                <u>Name</u>
+                            </div>
+                            <div className="search-results-head-cell">
+                                <u>Date</u>
+                            </div>
+                            <div className="search-results-head-cell">
+                                <u>Time</u>
+                            </div>
+                            <div className="search-results-head-cell">
+                                <u>Size</u>
+                            </div>
+                        </div>
                             { this.renderResults() }
-                        </ul>
                     </div>
                 </div>
             </div>
