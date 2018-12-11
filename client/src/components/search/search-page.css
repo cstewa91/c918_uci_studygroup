@@ -5,7 +5,9 @@
     padding: 0px 10px;
     margin-top: 1%;
     margin-left: 1%;
+    margin-bottom: 1%;
     width: 60%;
+    font-size: .83em;
 }
 
 .search-field:focus {
@@ -23,6 +25,10 @@
     border-radius: 10px;
     margin: 1%;
     padding: 1% 2%;
+}
+
+.search-body-cell {
+    width: 20%;
 }
 
 .search-filter-button {
@@ -48,12 +54,13 @@
 
 #search-results-header {
     display: table-header-group;
-    font-weight: bold;
+    font-size: 1.2em;
 }
 
 .search-results-head-cell {
     display: table-cell;
     text-align: justify;
+    font-family: "Gochi Hand";
 }
 
 .button-for-modal {

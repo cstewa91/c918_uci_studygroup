@@ -64,7 +64,7 @@ class SearchGroups extends Component{
                         <div className="search-results-body-cell">
                             {item.subject}{item.course}
                         </div>
-                        <div className="search-results-body-cell">
+                        <div className="search-results-body-cell search-body-cell">
                             {item.name}
                         </div>
                         <div className="search-results-body-cell">
@@ -108,19 +108,19 @@ class SearchGroups extends Component{
                     <div id="search-results">
                         <div id="search-results-header">
                             <div className="search-results-head-cell">
-                                <u>Subject</u>
+                                <u>SUBJECT</u>
                             </div>
                             <div className="search-results-head-cell">
-                                <u>Name</u>
+                                <u>NAME</u>
                             </div>
                             <div className="search-results-head-cell">
-                                <u>Date</u>
+                                <u>DATE</u>
                             </div>
                             <div className="search-results-head-cell">
-                                <u>Time</u>
+                                <u>TIME</u>
                             </div>
                             <div className="search-results-head-cell">
-                                <u>Size</u>
+                                <u>SIZE</u>
                             </div>
                         </div>
                             { this.renderResults() }

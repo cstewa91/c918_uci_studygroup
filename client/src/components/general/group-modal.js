@@ -62,7 +62,7 @@ class GroupModal extends Component{
                             {group.description}
                         </p>
                     </div>
-                        <div onClick={this.joinStudyGroup} className="btn btn-primary btn-lg join-group">Join</div>
+                        <div onClick={this.joinStudyGroup} className="btn btn-lg join-group">Join</div>
                 </div>
         )
 

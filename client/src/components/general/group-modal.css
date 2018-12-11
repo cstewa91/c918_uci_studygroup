@@ -23,10 +23,6 @@
     font-size: .8em;
 }
 
-.modal-group-info {
-    margin-bottom: .5em;
-}
-
 @media only screen and (max-width: 600px) {
     .basic-modal-content h1 {
         font-size: 1.25em;
@@ -65,7 +61,7 @@
     background: #F8F9FA;
     color: #1778BE;
     right: 0;
-    margin: 1em;
+    margin-left: 1em;
     font-family: 'Roboto', sans-serif;
     font-size: 0.75em;
     border: 0;
@@ -107,11 +103,27 @@
 
 .join-group {
     font-family: 'Gochi Hand';
+    background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), #1778BE;
     font-size: 1.5em;
     width: 100%;
 }
 
-.group-modal-close:hover {
+.search-filter-button {
+    text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
+    border-radius: 10px;
+    background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), #1778BE; 
+    font-family: 'Gochi Hand';
+    font-size: 1.5em;
+    color: #FFFFFF;
+    border: 1px solid #1778BE;
+    box-sizing: border-box;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+
+
+/* .group-modal-close:hover {
     color: #ff0000;
     background-color: #dedede;
-}
+} */
