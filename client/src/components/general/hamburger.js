@@ -22,7 +22,7 @@ class Hamburger extends Component {
         if(auth){
             return (
                 <div className='d-flex hamburger-signout justify-content-end'>
-                    <button onClick={userSignOut} className='btn signout-button '>Log Out</button>
+                    <button onClick={userSignOut} className='hamburger-signout-button '>Log Out</button>
                 </div>
             )
         }
@@ -40,12 +40,12 @@ class Hamburger extends Component {
         return (
             <nav className={hamburgerClasses}>
                 <div className="hamburger-header border-bottom">
-                    <Link to='/home'>
+                    <Link className='hamburger-main-title' to='/home'>
                         <img src={worm}/>
                         <span>{username}</span>
                     </Link>     
                 </div>
-                <h3>MENU</h3>
+                <p className='hamburger-menu'>MENU</p>
                 <ul className='hamburger-links nav flex-column justify-content-start'>
                     <li className='hamburger-home rounded'>
                         <img src={home} /> 

@@ -26,7 +26,7 @@ class CreateNewAccount extends Component {
    render() {
       const { handleSubmit, invalidEmail, invalidUsername } = this.props
       return (
-         <div>
+         <div className="blue">
             <form onSubmit={handleSubmit(this.handleCreateAccount)}>
                <div>
                   <Field name="firstname" label="First Name" component={Input} />
