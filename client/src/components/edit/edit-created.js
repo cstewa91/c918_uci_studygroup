@@ -9,7 +9,7 @@ import Backdrop from '../general/backdrop';
 import { Field, reduxForm } from 'redux-form'
 import Input from '../input';
 import {Link} from "react-router-dom"
-import { createVerify } from 'crypto';
+
 
 
 
@@ -56,13 +56,13 @@ class EditGroup extends Component{
                 <Header hamburgerClick = {this.toggleHamburger}/>  
                 <Hamburger show={this.state.hamburgerOpen}/>
                 {backdrop}  
-                <main className='edit-content container'>
+                <main className='edit-content'>
                     <div className='edit-header row justify-content-center'>
-                        <p className='edit-title col-10'>EDIT</p>
+                        <p className='edit-title col-9'>EDIT</p>
                         <Link to={`/group-info/${this.props.match.params.group_id}`} className='edit-return'>X</Link>
                     </div>
-                    <form className='edit-form justify-content-center' onSubmit={handleSubmit(this.handleUpdateItem)}>
-                        <div className="row justify-content-between">
+                    <form className='edit-form justify-content-center container' onSubmit={handleSubmit(this.handleUpdateItem)}>
+                        <div className="row justify-content-around">
                             <div className='edit-groupName col-7'>  
                                 <Field name="name" label="Group Name" component={Input} />
                             </div>
@@ -70,7 +70,7 @@ class EditGroup extends Component{
                                 <Field name="max_group_size" label="Group Size" component={Input} />
                             </div>
                         </div>
-                        <div className="row justify-content-between">
+                        <div className="row justify-content-around">
                             <div className='edit-subject col-5'>
                                 <Field name="subject" label="Subject" component={Input} />
                             </div>
@@ -79,7 +79,7 @@ class EditGroup extends Component{
                             </div>
                         </div>
                         
-                        <div className="row justify-content-between">
+                        <div className="row justify-content-around">
                             <div className='edit-startTime col-5'>
                                 <Field name="start_time" label="Starting Time" component={Input} type='datetime-local'/>
                             </div>
@@ -94,12 +94,12 @@ class EditGroup extends Component{
                         </div>
                         <div className="row justify-content-center">
                             <div className='edit-description col-10'>
-                                <Field name="description" label="Description" component={Input} />
+                                <Field name="description" label="Description" component={Input} textArea='true'/>
                             </div>
                         </div>
                         <div className="row justify-content-center">
-                            <div className='edit-update col-8'>
-                                <button className='btn edit-update-button'>update</button>
+                            <div className='edit-update col-12'>
+                                <div className='btn edit-update-button'>Update</div>
                             </div>  
                         </div>
                         
