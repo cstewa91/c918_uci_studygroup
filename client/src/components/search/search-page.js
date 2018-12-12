@@ -20,7 +20,6 @@ class SearchGroups extends Component{
 
     toggleHamburger = () =>{
         this.setState((prevState) =>{
-            console.log(prevState)
             return {
                 hamburgerOpen: !prevState.hamburgerOpen
             }
@@ -34,8 +33,6 @@ class SearchGroups extends Component{
     }
 
     handleFilterSubmit = (values) => {
-        console.log('values', values);
-        console.log('props of filter', this.props);
         this.props.filterResults(values.filter);
     }
 
@@ -44,7 +41,8 @@ class SearchGroups extends Component{
     }
 
     componentDidUpdate() {
-        console.log("This is the new props ", this.props);
+
+
     }
 
     renderResults = () => {
@@ -132,7 +130,6 @@ class SearchGroups extends Component{
 }
 
 function mapStateToProps(state) {
-    console.log(state);
     return {
         all: state.search.all,
         results: state.filter.results

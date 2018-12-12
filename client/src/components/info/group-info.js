@@ -31,7 +31,6 @@ class GroupInfo extends Component{
     }
 
     leaveCurrentGroup = async () => {
-        console.log('stuff', this.props.match.params.group_id)
         await this.props.leaveGroup(this.props.match.params.group_id);
         this.props.history.push('/home');
     }
@@ -47,11 +46,11 @@ class GroupInfo extends Component{
         if(id === user_id){
             return(
                 <Fragment>
-                    <div className='update'>
+                    <div className="update">
                         <NavButton to={`/edit-group/${this.props.match.params.group_id}`} text='Edit Group Details'/>
                     </div>
-                    <div className='delete-group'>
-                        <div className="btn btn-danger" onClick={this.deleteCurrentGroup}>Delete Group</div>
+                    <div className="delete-group">
+                        <div className="btn delete-group-button" onClick={this.deleteCurrentGroup}>Delete Group</div>
                     </div>
                 </Fragment>
                 
@@ -59,7 +58,7 @@ class GroupInfo extends Component{
         }else{
             return(
                 <div className="update">
-                    <div className="btn btn-danger leave-group" onClick={this.leaveCurrentGroup}>Leave Group</div>
+                    <div className="btn leave-group-button" onClick={this.leaveCurrentGroup}>Leave Group</div>
                 </div>
             )
         }
@@ -92,7 +91,7 @@ class GroupInfo extends Component{
         const startDateTime = new Date(start_time);
         const endDateTime = new Date(end_time);
         const startingTime = startDateTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-        const startDate = startDateTime.toLocaleDateString();
+        const startDate = startDateTime.toLocaleDateString([], {month: '2-digit', day: '2-digit'});
         const endingTime = endDateTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 
         if(!{name}){
@@ -107,38 +106,36 @@ class GroupInfo extends Component{
                 <Header hamburgerClick = {this.toggleHamburger}/>  
                 <Hamburger show={this.state.hamburgerOpen}/>
                 {backdrop} 
-                <main className='main-content'>
-                    <div className='container'>
-                    
-                        <div className='main-title group-name'>
+                <main className="container group-details-content">                  
+                        <div className="group-details">
+                        <div className="group-details-name row group-details-header">
                             <h1>{name}</h1>
                         </div>
-                        <div className="group-details">
-                        <form className='group-info'>
-                                <div className='subject form-group'>                  
+                            <form className="group-info">
+                                <div className="group-info-subject form-group">                  
                                     <strong>Subject:</strong> {subject}{course}
                                 </div>
-                                <div className='date form-group'>               
+                                <div className="group-info-date form-group">               
                                     <strong>Date:</strong> {startDate}
                                 </div>
-                                <div className='time form-group'>                 
+                                <div className="group-info-time form-group">                 
                                     <strong>Time:</strong> {`${startingTime} - ${endingTime}`}
                                 </div>
-                                <div className='users form-group'>             
+                                <div className="group-info-users form-group">             
                                     <strong>Group Size:</strong> {`${current_group_size}/${max_group_size}`}
                                 </div>
-                                <div className='location form-group'>                  
+                                <div className="group-info-location form-group">                  
                                     <strong>Location:</strong> {location}
                                 </div>
-                                <div className='details'>        
-                                    <strong>Description:</strong> {description}
+                                <div className="group-info-description-container">        
+                                    {description}
                                 </div>
                             </form>
+                            {this.renderButton()}
                         </div>
-                    </div>
                 </main>
                 <footer>
-                        {this.renderButton()}
+                        
                 </footer>
             </div>
                 )
