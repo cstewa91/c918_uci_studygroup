@@ -443,7 +443,7 @@ module.exports = function(app) {
 
   // send html
   app.get('*', (req, res) => {
-    res.sendFile(resolve(__dirname, 'client', 'dist', 'index.html'));
+    res.sendFile(resolve(__dirname, '..', 'client', 'dist', 'index.html'));
   });
 }
 
