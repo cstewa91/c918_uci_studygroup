@@ -3,6 +3,8 @@
 }
 
 .create-header {
+   width: 100%;
+   margin: 0;
    font-family: 'Gochi Hand';
    font-size: 1.2em;
    color: white;

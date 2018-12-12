@@ -108,8 +108,8 @@ class EditGroup extends Component{
                                 
                             </div>
                         </div>
-                        <div className="row justify-content-center align-items-end">
-                            <div className='edit-update col-10'>
+                        <div className="row edit-button justify-content-center align-items-end">
+                            <div className='col-8 col-sm-5 col-lg-3'>
                                 <button className='btn edit-update-button'>Update</button>
                             </div>  
                         </div>
@@ -158,7 +158,7 @@ function validate(values){
 
 EditGroup = reduxForm({
     form: 'edit-group',
-    enableReinitialize: false,
+    enableReinitialize: true,
     validate: validate
 })(EditGroup)
 

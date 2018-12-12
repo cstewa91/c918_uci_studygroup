@@ -3,6 +3,8 @@
 }
 
 .edit-header {
+    width: 100%;
+    margin: 0;
     font-family: 'Gochi Hand';
     font-size: 1.2em;
     color: white;
@@ -31,6 +33,11 @@
 
 .edit-form .row {
     height: 14%;
+}
+
+.edit-form .edit-button {
+    margin-top: 5%;
+    height: 10%;
 }
 
 .edit-groupName, .edit-subject, .edit-course, .edit-groupSize,
