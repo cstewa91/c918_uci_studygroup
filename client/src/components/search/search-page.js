@@ -59,19 +59,19 @@ class SearchGroups extends Component{
             return (
                 <GroupModal key={item.id} history={this.props.history} id={item.id} description={item.description}>
                     <Fragment key={item.id}>
-                        <div className="search-results-body-cell">
+                        <div className="search-results-body-cell search-results-body-cell-left">
                             {item.subject}{item.course}
                         </div>
-                        <div className="search-results-body-cell search-body-cell">
+                        <div className="search-results-body-cell search-results-body-cell-center">
                             {item.name}
                         </div>
-                        <div className="search-results-body-cell">
+                        <div className="search-results-body-cell search-results-body-cell-center">
                             {startDate}
                         </div>
-                        <div className="search-results-body-cell">
+                        <div className="search-results-body-cell search-results-body-cell-center">
                             {startingTime}
                         </div>
-                        <div className="search-results-body-cell">
+                        <div className="search-results-body-cell search-results-body-cell-right">
                             {<sup>{item.current_group_size}</sup>}&frasl;{<sub>{item.max_group_size}</sub>}
                         </div>
                     </Fragment>

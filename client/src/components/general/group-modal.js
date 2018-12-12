@@ -49,7 +49,7 @@ class GroupModal extends Component{
                     <p className="modal-group-info"><strong>Time:</strong> {startingTime} - {endingTime}</p>
                     <p className="modal-group-info">
                         <strong>Location:</strong> {group.location}
-                            <a className="btn btn-light modal-map-button" href="https://map.uci.edu/" target="_blank">Map</a>
+                            <a className="btn modal-map-button" href="https://map.uci.edu/" target="_blank">Map</a>
                     </p>
                     <p className="modal-group-info"><strong>Group Capacity:</strong> {group.current_group_size}/{group.max_group_size}</p>
                     <div className="modal-group-description-container">
@@ -83,9 +83,16 @@ class GroupModal extends Component{
         }
 
         return (
-            <div className="search-results-body-row" onClick={this.open}>
-                {children}
-            </div>
+            <Fragment>
+                <div className="search-results-body-row-data" onClick={this.open}>
+                    {children}
+                </div>
+                <div className="search-results-body-row search-results-body-row-spacer">
+                    <div className="search-results-body-cell">
+                           
+                    </div>
+                </div>
+            </Fragment>
         )
     }
 }
