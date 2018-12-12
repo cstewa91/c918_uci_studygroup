@@ -32,17 +32,25 @@ class EditGroup extends Component{
         })
     }
 
-    componentDidMount(){
-        this.props.getGroupDetails(this.props.match.params.group_id)
+    componentDidMount = () => {
+         this.props.getGroupDetails(this.props.match.params.group_id)
+         
     }
+
 
     handleUpdateItem = async (values) => {
         await this.props.editGroupInfo(this.props.match.params.group_id, values);
         this.props.history.push('/home');
     }
 
+    convertDateString = async () => {
+        console.log('this', this.props.date.slice(0,10))
+        return this.props.date.slice(0,10)
+    }
+
     render(){
-        console.log(this.props)
+        console.log('date', this.props.date)
+        console.log(this.props.single_group)
         let backdrop;
 
         if(this.state.hamburgerOpen){
@@ -50,6 +58,15 @@ class EditGroup extends Component{
         }
 
         const {handleSubmit} = this.props
+
+        const {start_time, end_time} = this.props.single_group;
+        // const startDateTime = start_time.slice(0,10);
+        // console.log('time', startDateTime)
+        const endDateTime = new Date(end_time);
+        // const startingTime = startDateTime.toLocaleTimeString();
+        // console.log(startingTime);
+        // const startDate = startDateTime.toLocaleDateString();
+        // console.log(startDate)
 
         return (
             <div className="edit-created">
@@ -62,12 +79,9 @@ class EditGroup extends Component{
                         <Link to={`/group-info/${this.props.match.params.group_id}`} className='edit-return'>X</Link>
                     </div>
                     <form className='edit-form justify-content-center container' onSubmit={handleSubmit(this.handleUpdateItem)}>
-                        <div className="row justify-content-around">
-                            <div className='edit-groupName col-7'>  
+                        <div className="row justify-content-center">
+                            <div className='edit-groupName col-11'>  
                                 <Field name="name" label="Group Name" component={Input} />
-                            </div>
-                            <div className='edit-groupSize col-3'>
-                                <Field name="max_group_size" label="Group Size" component={Input} />
                             </div>
                         </div>
                         <div className="row justify-content-around">
@@ -81,25 +95,34 @@ class EditGroup extends Component{
                         
                         <div className="row justify-content-around">
                             <div className='edit-startTime col-5'>
-                                <Field name="start_time" label="Starting Time" component={Input} type='datetime-local'/>
+                                <Field name="start_time" type='time' label="Starting Time" component={Input} />
                             </div>
                             <div className='edit-endTime col-5'>
-                                <Field name="end_time" label="Ending Time" component={Input} type="datetime-local" />
+                                <Field name="end_time" type='time' label="Ending Time" component={Input} />
+                            </div>
+                        </div>
+                        <div className="row justify-content-around">
+                            <div className='edit-date col-5'>
+                                <Field name='date' type='date'  label="Date" component={Input} />
+                            </div>
+                            <div className='edit-groupSize col-5'>
+                                <Field name="max_group_size" label="Group Size" component={Input} />
                             </div>
                         </div>
                         <div className="row justify-content-center">
-                            <div className='edit-location col-10'>
+                            <div className='edit-location col-11'>
                                 <Field name="location" label="Location" component={Input} />
                             </div>
                         </div>
+
                         <div className="row justify-content-center">
                             <div className='edit-description col-10'>
                                 <Field name="description" label="Description" component={Input} textArea='true'/>
                             </div>
                         </div>
-                        <div className="row justify-content-center">
-                            <div className='edit-update col-12'>
-                                <div className='btn edit-update-button'>Update</div>
+                        <div className="row justify-content-center align-items-end">
+                            <div className='edit-update col-10'>
+                                <button className='btn edit-update-button'>Update</button>
                             </div>  
                         </div>
                         
@@ -111,21 +134,35 @@ class EditGroup extends Component{
 }
 
 function validate(values){
-    console.log('formvalues', values)
-    const {username, firstname, lastname, email} = values;
+    const {name, subject, course, start_time, end_time, date, max_group_size, location, description} = values;
     const error = {}
 
-    if(!username){
-        error.username = 'Please enter a username'
+    if(!name){
+        error.name = 'Enter a group name'
     }
-    if(!firstname){
-        error.firstname = 'Please enter your first name'
+    if(!subject){
+        error.subject = 'Enter a study subject'
     }
-    if(!lastname){
-        error.lastname = 'Please enter your last name'
+    if(!course){
+        error.course = 'Enter a course'
     }
-    if(!email){
-        error.email = 'Please enter a valid email address'
+    if(!start_time){
+        error.start_time = 'Enter a start time'
+    }
+    if(!end_time){
+        error.end_time = 'Enter a group name'
+    }
+    if(!date){
+        error.date = 'Enter your study subject'
+    }
+    if(!max_group_size){
+        error.max_group_size = 'Enter Group Size'
+    }
+    if(!location){
+        error.location = 'Enter study location'
+    }
+    if(!description){
+        error.description = 'Enter group description'
     }
     return error
 }
@@ -138,12 +175,12 @@ EditGroup = reduxForm({
 })(EditGroup)
 
 function mapStateToProps(state){
-    
     const { singleGroup } = state.editGroup;
 
     return {
         initialValues: singleGroup,
-        single_group: state.editGroup.singleGroup
+        single_group: state.editGroup.singleGroup,
+        date: state.editGroup.singleGroup.start_time
     }
 }
 

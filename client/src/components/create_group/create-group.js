@@ -55,38 +55,58 @@ class CreateGroup extends Component {
             <Header hamburgerClick={this.toggleHamburger} />
             <Hamburger show={this.state.hamburgerOpen} />
             {backdrop}
-            <h1>Create Group Page</h1>
-            <form onSubmit={handleSubmit(this.handleCreateGroup)}>
-               <div>
-                  <Field name="name" label="Group Name" component={Input} inputClassName="create-group-user-input" />
+            <main className='create-content'>
+               <div className='create-header row justify-content-center'>
+                  <p className='create-title col-9'>Create Group</p>
+                  <Link to={`/group-info/${this.props.match.params.group_id}`} className='create-return'>X</Link>
                </div>
-               <p>{invalidName}</p>
-               <div>
-                  <Field name="subject" label="Subject" component={Input} inputClassName="create-group-user-input" />
-               </div>
-               <div>
-                  <Field name="course" label="Course Number" component={Input} inputClassName="create-group-user-input" />
-               </div>
-               <div>
-                  <Field name="max_group_size" label="Group Size" component={Input} inputClassName="create-group-user-input" />
-               </div>
-               <div>
-                  <Field name="date" component={Input} type="date" inputClassName="create-group-user-input" />
-               </div>
-               <div>
-                  <Field name="start_time" component={Input} type="time" inputClassName="create-group-user-input" />
-               </div>
-               <div>
-                  <Field name="end_time" component={Input} type="time" inputClassName="create-group-user-input" />
-               </div>
-               <div>
-                  <Field name="location" label="Location" component={Input} inputClassName="create-group-user-input" />
-               </div>
-               <div>
-                  <Field name="description"  label="Description" component={Input} textArea="true" />
-               </div>
-               <button>Create Group</button>
-            </form>
+               <form className='create-form justify-content-center container' onSubmit={handleSubmit(this.handleCreateGroup)}>
+                  <div className="row justify-content-center">
+                        <div className='create-groupName col-11'>  
+                           <Field name="name" label="Group Name" component={Input} />
+                        </div>
+                  </div>
+                  <div className="row justify-content-around">
+                        <div className='create-subject col-5'>
+                           <Field name="subject" label="Subject" component={Input} />
+                        </div>
+                        <div className='create-course col-5'>
+                           <Field name="course" label="Course Number" component={Input} />
+                        </div>
+                  </div>                 
+                  <div className="row justify-content-around">
+                        <div className='create-startTime col-5'>
+                           <Field name="start_time" type='time' label="Starting Time" component={Input} />
+                        </div>
+                        <div className='create-endTime col-5'>
+                           <Field name="end_time" type='time' label="Ending Time" component={Input} />
+                        </div>
+                  </div>
+                  <div className="row justify-content-around">
+                        <div className='create-date col-5'>
+                           <Field name='date' type='date'  label="Date" component={Input} />
+                        </div>
+                        <div className='create-groupSize col-5'>
+                           <Field name="max_group_size" label="Group Size" component={Input} />
+                        </div>
+                  </div>
+                  <div className="row justify-content-center">
+                        <div className='create-location col-11'>
+                           <Field name="location" label="Location" component={Input} />
+                        </div>
+                  </div>
+                  <div className="row justify-content-center">
+                        <div className='create-description col-10'>
+                           <Field name="description" label="Description" component={Input} textArea='true'/>
+                        </div>
+                  </div>
+                  <div className="row justify-content-center align-items-end">
+                        <div className='create-update col-10'>
+                           <button className='btn create-update-button'>Update</button>
+                        </div>  
+                  </div>          
+               </form>
+            </main>
          </div>
       )
    }
