@@ -8,6 +8,7 @@ import { getCreatedGroups } from '../../actions';
 import { getJoinedGroups } from '../../actions';
 import { getUserInfo } from '../../actions';
 import { connect } from 'react-redux';
+import add from '../../assets/images/add.png'
 
 
 
@@ -74,12 +75,13 @@ class Home extends Component {
                <Hamburger show={this.state.hamburgerOpen} />
                {backdrop}
                <h1>Home Page</h1>
-               <Link to="/search-group"><button>Search</button></Link>
                <div>Joined</div>
                <div onClick={this.showCreatedGroups}>Created</div>
                <div>Name Subject Course Date Time Members</div>
                <div>{listJoinedGroups}</div>
-               <Link to="/create-group"><button>Create a group</button></Link>
+               <div>
+                  <Link to="/create-group"><img src={add} className="home-hello"/></Link>
+               </div>
             </div>
          )
       }
