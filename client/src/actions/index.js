@@ -112,12 +112,15 @@ export function getAllGroups() {
 }
 
 export function getGroupDetails(groupId) {
-   const resp = axios.get(`${BASE_URL + API_GET_GROUP_DETAILS}/${groupId}`);
-   return {
-      type: types.GET_GROUP_DETAILS,
-      payload: resp
+   return async function (dispatch) {
+      const resp = await axios.get(`${BASE_URL + API_GET_GROUP_DETAILS}/${groupId}`);
+      console.log('resp', resp)
+         dispatch({
+            type: types.GET_GROUP_DETAILS,
+            payload: resp
+         })
+      } 
    }
-}
 
 export function editGroupInfo(groupId, item) {
    const resp = axios.put(`${BASE_URL + API_EDIT_GROUP_INFO}${groupId}`, item);
