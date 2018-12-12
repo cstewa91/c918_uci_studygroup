@@ -67,7 +67,7 @@
     height: 10px;
     margin: 0;
     /* padding-top: 10px; */
-    font-size: 0.4em;
+    font-size: 0.75em;
     color: rgb(204, 44, 44);
 }
 
@@ -92,5 +92,5 @@
 }
 
 .edit-form label {
-    transform: translateY(-10px);
+    transform: translateY(-14px);
 }
