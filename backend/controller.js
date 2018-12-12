@@ -37,7 +37,8 @@ module.exports = function(app) {
                     WHERE id = ${req.params['`group_id_name`']}
                     OR name = ${req.params['`group_id_name`']}) AS g
                     LEFT JOIN group_members AS gm 
-                    ON g.id = gm.group_id`;
+                    ON g.id = gm.group_id
+                    GROUP BY g.id`;
 
     connection.query(query, (err, results) => {
       if (err) {
