@@ -79,9 +79,7 @@ class Home extends Component {
                <div onClick={this.showCreatedGroups}>Created</div>
                <div>Name Subject Course Date Time Members</div>
                <div>{listJoinedGroups}</div>
-               <div>
-                  <Link to="/create-group"><img src={add} className="home-hello"/></Link>
-               </div>
+               <Link to="/create-group"><i className="fas fa-plus"></i></Link>
             </div>
          )
       }
@@ -96,7 +94,7 @@ class Home extends Component {
             <div>Created</div>
             <div>Name Subject Course Date Time Members</div>
             <div>{listCreatedGroups}</div>
-            <Link to="/create-group"><button>Create a group</button></Link>
+            <Link to="/create-group"><i className="fas fa-plus"></i></Link>
          </div>
       )
    }
