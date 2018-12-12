@@ -47,7 +47,7 @@ class GroupInfo extends Component{
             return(
                 <Fragment>
                     <div className="update">
-                        <NavButton to={`/edit-group/${this.props.match.params.group_id}`} text='Edit Group Details'/>
+                        <NavButton to={`/edit-group/${this.props.match.params.group_id}`} text='EDIT GROUP'/>
                     </div>
                     <div className="delete-group">
                         <div className="btn delete-group-button" onClick={this.deleteCurrentGroup}>Delete Group</div>
