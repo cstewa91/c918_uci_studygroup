@@ -20,7 +20,6 @@ class SearchGroups extends Component{
 
     toggleHamburger = () =>{
         this.setState((prevState) =>{
-            console.log(prevState)
             return {
                 hamburgerOpen: !prevState.hamburgerOpen
             }
@@ -34,8 +33,6 @@ class SearchGroups extends Component{
     }
 
     handleFilterSubmit = (values) => {
-        console.log('values', values);
-        console.log('props of filter', this.props);
         this.props.filterResults(values.filter);
     }
 
@@ -44,7 +41,8 @@ class SearchGroups extends Component{
     }
 
     componentDidUpdate() {
-        console.log("This is the new props ", this.props);
+
+
     }
 
     renderResults = () => {
@@ -64,7 +62,7 @@ class SearchGroups extends Component{
                         <div className="search-results-body-cell">
                             {item.subject}{item.course}
                         </div>
-                        <div className="search-results-body-cell">
+                        <div className="search-results-body-cell search-body-cell">
                             {item.name}
                         </div>
                         <div className="search-results-body-cell">
@@ -108,19 +106,19 @@ class SearchGroups extends Component{
                     <div id="search-results">
                         <div id="search-results-header">
                             <div className="search-results-head-cell">
-                                <u>Subject</u>
+                                <u>SUBJECT</u>
                             </div>
                             <div className="search-results-head-cell">
-                                <u>Name</u>
+                                <u>NAME</u>
                             </div>
                             <div className="search-results-head-cell">
-                                <u>Date</u>
+                                <u>DATE</u>
                             </div>
                             <div className="search-results-head-cell">
-                                <u>Time</u>
+                                <u>TIME</u>
                             </div>
                             <div className="search-results-head-cell">
-                                <u>Size</u>
+                                <u>SIZE</u>
                             </div>
                         </div>
                             { this.renderResults() }
@@ -132,7 +130,6 @@ class SearchGroups extends Component{
 }
 
 function mapStateToProps(state) {
-    console.log(state);
     return {
         all: state.search.all,
         results: state.filter.results

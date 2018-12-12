@@ -1,0 +1,74 @@
+.leave-group-button, .delete-group-button {
+    border-radius: 15px;
+    background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), rgb(190, 23, 23); 
+    color: #FFFFFF;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.75em;
+    position: absolute;
+    right: 1%;
+    bottom: 1%;
+    /* text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
+    border-radius: 10px;
+    background: 
+    font-family: 'Gochi Hand';
+    font-size: 1.5em;
+    color: #FFFFFF;
+    border: 1px solid rgb(190, 23, 23);
+    box-sizing: border-box;
+    vertical-align: middle;
+    cursor: pointer;
+    display: inline-block;
+
+
+    .modal-map-button {
+        border-radius: 15px;
+        background: #F8F9FA;
+        color: #1778BE;
+        right: 0;
+        margin-left: 1em;
+        font-family: 'Roboto', sans-serif;
+        font-size: 0.75em;
+        border: 0;
+        padding: .5em;
+    } */
+}
+
+.group-details-header {
+    font-family: "Gochi Hand";
+    font-size: 1.75em;
+    text-align: center;
+    justify-content: center;
+}
+
+.group-info-description-container {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    border: 1px solid grey;
+    color: #000000;
+    text-shadow: none;
+    padding: 5px;
+    margin-bottom: 2%;
+}
+
+.group-details {
+    background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), #1778BE; 
+    color: white;
+    font-family: "Roboto", sans-serif;
+    text-shadow: -1px 1px 1px black;
+    border-radius: 5px;
+    height: 87vh;
+    margin: 4%;
+    padding: 15px;
+    position: relative;
+    z-index: 1;
+    font-size: .8em;
+    margin-bottom: 2%;
+}
+
+.update {
+    text-align: center;
+}
+
+.delete-group {
+    margin-right: 2%;
+}
