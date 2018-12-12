@@ -31,6 +31,10 @@ class CreateGroup extends Component {
    }
 
    handleCreateGroup = async (values) => {
+      const startDateAndTime = values.date + "T" + values.start_time
+      const endDateAndTime = values.date + "T" + values.end_time
+      values.start_time = startDateAndTime
+      values.end_time = endDateAndTime
       await this.props.createNewGroup(values);
       await this.pushToHome()
    }
@@ -67,10 +71,13 @@ class CreateGroup extends Component {
                   <Field name="max_group_size" label="Group Size" component={Input} inputClassName="create-group-user-input" />
                </div>
                <div>
-                  <Field name="start_time" component={Input} type="datetime-local" inputClassName="create-group-user-input" />
+                  <Field name="date" component={Input} type="date" inputClassName="create-group-user-input" />
                </div>
                <div>
-                  <Field name="end_time" component={Input} type="datetime-local" inputClassName="create-group-user-input" />
+                  <Field name="start_time" component={Input} type="time" inputClassName="create-group-user-input" />
+               </div>
+               <div>
+                  <Field name="end_time" component={Input} type="time" inputClassName="create-group-user-input" />
                </div>
                <div>
                   <Field name="location" label="Location" component={Input} inputClassName="create-group-user-input" />
