@@ -239,6 +239,26 @@ span {
 
 }
 
+@media (min-width: 768px) {
+    .hamburger-nav {
+        display: none;
+    }
+    
+    .backdrop {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) and (orientation: landscape) {
+    .hamburger-nav {
+        display: none;
+    }
+    
+    .backdrop {
+        display: none;
+    }
+}
+
 /* @media (max-width: 767.98px) and (orientation: landscape) {
 
     .hamburger-menu {
