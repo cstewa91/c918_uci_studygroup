@@ -15,6 +15,7 @@ class Hamburger extends Component {
     componentDidMount(){
         this.props.getUserInfo()
     }
+    
 
     SignOutButton(){
         const {auth, userSignOut} = this.props;
@@ -23,6 +24,13 @@ class Hamburger extends Component {
             return (
                 <div className='d-flex hamburger-signout justify-content-end'>
                     <button onClick={userSignOut} className='hamburger-signout-button '>Log Out</button>
+                </div>
+            )
+        }
+        if(!auth) {
+            return (
+                <div className='d-flex hamburger-signout justify-content-end'>
+                    <Link to='/' className='hamburger-signout-button '>Sign Up</Link>
                 </div>
             )
         }
