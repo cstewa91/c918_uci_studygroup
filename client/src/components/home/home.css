@@ -1,6 +1,134 @@
-.home-hello {
+.home-add-button {
+   margin-right: 11px;
    background: #1778BE;
    border: 3px solid #FFFFFF;
+   color: white;
    border-radius: 50%;
    width: 65px;
+   height: 64px;
+   text-align: center;
+   line-height: 1.75;
 }
+
+.home-add-button-container {
+   display: flex;
+   justify-content: flex-end;
+}
+
+.home-active-tab {
+   background: #308ED2;
+   display: inline-block;
+   color: white;
+   width: 187.5px;
+   height: 58.14px;
+   text-align: center;
+   font-size: 2em;
+}
+
+.home-not-active-tab {
+   background: linear-gradient(178.14deg, rgba(255, 255, 255, 0) 45.77%, rgba(255, 255, 255, 0.34) 103.91%), #6FB8ED;
+   color: #1778BE;
+   display: inline-block;
+   width: 187.5px;
+   height: 58.14px;
+   text-align: center;
+   font-size: 2em;
+}
+
+.home-container {
+   height: 91.5vh;
+}
+
+.home-groups-container {
+   height: 78%;
+}
+
+
+#home-results {
+   width: 96%;
+   margin-left: 2%;
+   margin-right: 2%;
+   display: table;
+   font-size: .95em;
+}
+
+#home-groups-header {
+   /* display: table-header-group; */
+   display: flex;
+   justify-content: space-around;
+}
+
+.home-groups-head-cell {
+   display: table-cell;
+   text-align: justify;
+   font-family: "Gochi Hand";
+   padding-left: .5em;
+   padding-right: .5em;
+}
+
+
+
+.home-groups-body-row {
+   display: table-row;
+}
+
+
+
+
+.home-groups-body-cell {
+   /* display: table-cell; */
+   padding-top: .25em;
+   padding-bottom: .25em;
+}
+
+.home-groups-body-cell a {
+   color: black;
+   text-decoration: none;
+}
+
+/* .home-groups-body-cell-left {
+   border-top: 1px solid #1778BE;
+   border-left: 1px solid #1778BE;
+   border-bottom: 1px solid #1778BE;
+   border-radius: 10px 0px 0px 10px; */
+   /* padding-left: 8px; */
+/* } */
+
+/* .home-groups-body-cell:hover {
+   background-color: #1778BE;
+   color: #FFFFFF;
+} */
+
+/* .home-groups-body-cell-center {
+   border-top: 1px solid #1778BE;
+   border-bottom: 1px solid #1778BE; */
+   /* padding-left: 8px; */
+/* } */
+
+/* .home-groups-body-cell-right {
+   border-top: 1px solid #1778BE;
+   border-right: 1px solid #1778BE;
+   border-bottom: 1px solid #1778BE;
+   border-radius: 0px 10px 10px 0px; */
+   /* padding-left: 17px; */
+/* } */
+
+.home-results-body-row-data {
+   /* display: table-row; */
+   cursor: pointer;
+   border: 1px solid red;
+   display: flex;
+   justify-content: space-around;
+}
+
+.home-results-body-row-data:hover {
+   background-color: #1778BE;
+
+}
+
+.home-results-body-row-data:hover a {
+   color: white;
+}
+
+
+
