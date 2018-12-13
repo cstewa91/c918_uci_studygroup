@@ -74,12 +74,11 @@ class Home extends Component {
                <Header hamburgerClick={this.toggleHamburger} />
                <Hamburger show={this.state.hamburgerOpen} />
                {backdrop}
-               <h1>Home Page</h1>
-               <div>Joined</div>
-               <div onClick={this.showCreatedGroups}>Created</div>
+               <div className="home-active-tab">Joined</div>
+               <div className="home-not-active-tab" onClick={this.showCreatedGroups}>Created</div>
                <div>Name Subject Course Date Time Members</div>
                <div>{listJoinedGroups}</div>
-               <Link to="/create-group"><i className="fas fa-plus"></i></Link>
+               <Link to="/create-group"><i className="fas fa-plus fa-2x home-add-button"></i></Link>
             </div>
          )
       }
@@ -88,13 +87,15 @@ class Home extends Component {
             <Header hamburgerClick={this.toggleHamburger} />
             <Hamburger show={this.state.hamburgerOpen} />
             {backdrop}
-            <h1>Home Page</h1>
-            <Link to="/search-group"><button>Search</button></Link>
-            <div onClick={this.showJoinedGroups}>Joined</div>
-            <div>Created</div>
-            <div>Name Subject Course Date Time Members</div>
-            <div>{listCreatedGroups}</div>
-            <Link to="/create-group"><i className="fas fa-plus"></i></Link>
+            <div className="home-container">
+               <div className="home-not-active-tab" onClick={this.showJoinedGroups}>Joined</div>
+               <div className="home-active-tab">Created</div>
+               <div>Name Subject Course Date Time Members</div>
+               <div>{listCreatedGroups}</div>
+               <div>
+                  <Link to="/create-group"><i className="fas fa-plus fa-2x home-add-button"></i></Link>
+               </div>
+            </div>
          </div>
       )
    }
