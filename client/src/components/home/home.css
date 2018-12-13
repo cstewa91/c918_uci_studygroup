@@ -1,22 +1,5 @@
-.home-active-tab {
-   background: #308ED2;
-   display: inline-block;
-   color: white;
-   width: 187.5px;
-   height: 58.14px;
-   text-align: center;
-}
-
-.home-not-active-tab {
-   background: linear-gradient(178.14deg, rgba(255, 255, 255, 0) 45.77%, rgba(255, 255, 255, 0.34) 103.91%), #6FB8ED;
-   color: #1778BE;
-   display: inline-block;
-   width: 187.5px;
-   height: 58.14px;
-   text-align: center;
-}
-
 .home-add-button {
+   margin-right: 11px;
    background: #1778BE;
    border: 3px solid #FFFFFF;
    color: white;
@@ -27,6 +10,100 @@
    line-height: 1.75;
 }
 
-.home-container {
-   height: 90vh;
+.home-add-button-container {
+   display: flex;
+   justify-content: flex-end;
+}
+
+.home-active-tab {
+   background: #308ED2;
+   display: inline-block;
+   color: white;
+   width: 187.5px;
+   height: 58.14px;
+   text-align: center;
+   font-size: 2em;
+}
+
+.home-not-active-tab {
+   background: linear-gradient(178.14deg, rgba(255, 255, 255, 0) 45.77%, rgba(255, 255, 255, 0.34) 103.91%), #6FB8ED;
+   color: #1778BE;
+   display: inline-block;
+   width: 187.5px;
+   height: 58.14px;
+   text-align: center;
+   font-size: 2em;
+}
+
+
+.search-results {
+   list-style: none;
+   padding-left: 0;
+}
+
+
+#home-results {
+   width: 96%;
+   margin-left: 2%;
+   margin-right: 2%;
+   display: table;
+   font-size: .95em;
+}
+
+#search-results-header {
+   display: table-header-group;
+}
+
+.search-results-head-cell {
+   display: table-cell;
+   text-align: justify;
+   font-family: "Gochi Hand";
+   padding-left: .5em;
+   padding-right: .5em;
+}
+
+
+#search-results-body {
+   display: table-row-group;
+}
+
+.search-results-body-row {
+   display: table-row;
+}
+
+.search-results-body-row-data {
+   display: table-row;
+   cursor: pointer;
+}
+
+.search-results-body-row-data:hover {
+   background-color: #1778BE;
+   color: #FFFFFF;
+}
+
+.search-results-body-cell {
+   display: table-cell;
+   padding-top: .25em;
+   padding-bottom: .25em;
+   padding-left: .25em;
+   padding-right: .25em;
+}
+
+.search-results-body-cell-left {
+   border-top: 1px solid #1778BE;
+   border-left: 1px solid #1778BE;
+   border-bottom: 1px solid #1778BE;
+   border-radius: 10px 0px 0px 10px;
+}
+
+.search-results-body-cell-center {
+   border-top: 1px solid #1778BE;
+   border-bottom: 1px solid #1778BE;
+}
+
+.search-results-body-cell-right {
+   border-top: 1px solid #1778BE;
+   border-right: 1px solid #1778BE;
+   border-bottom: 1px solid #1778BE;
+   border-radius: 0px 10px 10px 0px;
 }
