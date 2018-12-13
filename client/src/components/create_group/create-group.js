@@ -96,7 +96,7 @@ class CreateGroup extends Component {
                         </div>
                   </div>
                   <div className="row justify-content-center">
-                        <div className='create-description col-10'>
+                        <div className='create-description col-11'>
                            <Field name="description" label="Description" component={Input} textArea='true'/>
                         </div>
                   </div>
