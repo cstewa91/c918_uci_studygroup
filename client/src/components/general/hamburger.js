@@ -17,7 +17,7 @@ class Hamburger extends Component {
     }
 
     SignOutButton(){
-        const {auth, userSignOut} = this. props;
+        const {auth, userSignOut} = this.props;
 
         if(auth){
             return (

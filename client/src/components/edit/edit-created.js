@@ -43,10 +43,6 @@ class EditGroup extends Component{
         this.props.history.push('/home');
     }
 
-    convertDateString = async () => {
-        console.log('this', this.props.date.slice(0,10))
-        return this.props.date.slice(0,10)
-    }
 
     render(){
         console.log('date', this.props.date)
@@ -58,15 +54,6 @@ class EditGroup extends Component{
         }
 
         const {handleSubmit} = this.props
-
-        const {start_time, end_time} = this.props.single_group;
-        // const startDateTime = start_time.slice(0,10);
-        // console.log('time', startDateTime)
-        const endDateTime = new Date(end_time);
-        // const startingTime = startDateTime.toLocaleTimeString();
-        // console.log(startingTime);
-        // const startDate = startDateTime.toLocaleDateString();
-        // console.log(startDate)
 
         return (
             <div className="edit-created">
@@ -103,7 +90,7 @@ class EditGroup extends Component{
                         </div>
                         <div className="row justify-content-around">
                             <div className='edit-date col-5'>
-                                <Field name='date' type='date'  label="Date" component={Input} />
+                                <Field name='date' value='2018-12-12' type='date'  label="Date" component={Input} />
                             </div>
                             <div className='edit-groupSize col-5'>
                                 <Field name="max_group_size" label="Group Size" component={Input} />
@@ -116,12 +103,13 @@ class EditGroup extends Component{
                         </div>
 
                         <div className="row justify-content-center">
-                            <div className='edit-description col-10'>
+                            <div className='edit-description col-11'>
                                 <Field name="description" label="Description" component={Input} textArea='true'/>
+                                
                             </div>
                         </div>
-                        <div className="row justify-content-center align-items-end">
-                            <div className='edit-update col-10'>
+                        <div className="row edit-button justify-content-center">
+                            <div className='col-5 col-sm-5 col-lg-5'>
                                 <button className='btn edit-update-button'>Update</button>
                             </div>  
                         </div>
