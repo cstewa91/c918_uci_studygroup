@@ -53,45 +53,27 @@ class Home extends Component {
          const startDate = startDateTime.toLocaleDateString([], { month: '2-digit', day: '2-digit' });
          return (
             <Fragment key={item.id}>
-               <div className="search-results-body-cell search-results-body-cell-left">
+               <div className="home-results-body-row-data">
                   <Link to={`/group-info/${item.id}`}>
-                     <div>
-                        {item.subject}{item.course}
+                     <div className="home-groups-body-cell home-groups-body-cell-left">
+                           {item.subject}{item.course}
+                     </div>
+                     <div className="home-groups-body-cell home-groups-body-cell-center">
+                           {item.name}
+                     </div>
+                     <div className="home-groups-body-cell home-groups-body-cell-center">
+                           {startDate}
+                     </div>
+                     <div className="home-groups-body-cell home-groups-body-cell-center">
+                           {startingTime}
+                     </div>
+                     <div className="home-groups-body-cell home-groups-body-cell-right">
+                           {<sup>{item.current_group_size}</sup>}&frasl;{<sub>{item.max_group_size}</sub>}
                      </div>
                   </Link>
                </div>
-               <div className="search-results-body-cell search-results-body-cell-center">
-                  <Link to={`/group-info/${item.id}`}>
-                     <div>
-                        {item.name}
-                     </div>
-                  </Link>
-               </div>
-               <div className="search-results-body-cell search-results-body-cell-center">
-                  <Link to={`/group-info/${item.id}`}>
-                     <div>
-                        {startDate}
-                     </div>
-                  </Link>
-               </div>
-               <div className="search-results-body-cell search-results-body-cell-center">
-                  <Link to={`/group-info/${item.id}`}>
-                     <div>
-                        {startingTime}
-                     </div>
-                  </Link>
-               </div>
-               <div className="search-results-body-cell search-results-body-cell-right">
-                  <Link to={`/group-info/${item.id}`}>
-                     <div>
-                        {<sup>{item.current_group_size}</sup>}&frasl;{<sub>{item.max_group_size}</sub>}
-                     </div>
-                  </Link>
-               </div>
-               <div className="search-results-body-row-data">
-               </div>
-               <div className="search-results-body-row search-results-body-row-spacer">
-                  <div className="search-results-body-cell">
+               <div className="home-results-body-row search-results-body-row-spacer">
+                  <div className="home-results-body-cell">
                   </div>
                </div>
             </Fragment >
@@ -108,45 +90,43 @@ class Home extends Component {
          const startDate = startDateTime.toLocaleDateString([], { month: '2-digit', day: '2-digit' });
          if (this.props.userId !== item.user_id) {
             <Fragment key={item.id}>
-               <div className="search-results-body-cell search-results-body-cell-left">
+               <div className="home-groups-body-cell home-groups-body-cell-left">
                   <Link to={`/group-info/${item.id}`}>
                      <div>
                         {item.subject}{item.course}
                      </div>
                   </Link>
                </div>
-               <div className="search-results-body-cell search-results-body-cell-center">
+               <div className="home-groups-body-cell home-groups-body-cell-center">
                   <Link to={`/group-info/${item.id}`}>
                      <div>
                         {item.name}
                      </div>
                   </Link>
                </div>
-               <div className="search-results-body-cell search-results-body-cell-center">
+               <div className="home-groups-body-cell home-groups-body-cell-center">
                   <Link to={`/group-info/${item.id}`}>
                      <div>
                         {startDate}
                      </div>
                   </Link>
                </div>
-               <div className="search-results-body-cell search-results-body-cell-center">
+               <div className="home-groups-body-cell home-groups-body-cell-center">
                   <Link to={`/group-info/${item.id}`}>
                      <div>
                         {startingTime}
                      </div>
                   </Link>
                </div>
-               <div className="search-results-body-cell search-results-body-cell-right">
+               <div className="home-groups-body-cell home-groups-body-cell-right">
                   <Link to={`/group-info/${item.id}`}>
                      <div>
                         {<sup>{item.current_group_size}</sup>}&frasl;{<sub>{item.max_group_size}</sub>}
                      </div>
                   </Link>
                </div>
-               <div className="search-results-body-row-data">
-               </div>
-               <div className="search-results-body-row search-results-body-row-spacer">
-                  <div className="search-results-body-cell">
+               <div className="home-groups-body-row ">
+                  <div className="home-groups-body-cell">
                   </div>
                </div>
             </Fragment >
@@ -166,26 +146,26 @@ class Home extends Component {
                <Hamburger show={this.state.hamburgerOpen} />
                {backdrop}
 
-               <div className="search-main-content">
-                  <div className="search-filter-container">
+               <div className="home-container">
+                  <div>
                      <div className="home-active-tab">Joined</div>
                      <div className="home-not-active-tab" onClick={this.showCreatedGroups}>Created</div>
                   </div>
-                  <div>
-                     <div id="search-results-header">
-                        <div className="search-results-head-cell">
+                  <div className="home-groups-container">
+                     <div id="home-groups-header">
+                        <div className="home-groups-head-cell">
                            <u>SUBJECT</u>
                         </div>
-                        <div className="search-results-head-cell">
+                        <div className="home-groups-head-cell">
                            <u>NAME</u>
                         </div>
-                        <div className="search-results-head-cell">
+                        <div className="home-groups-head-cell">
                            <u>DATE</u>
                         </div>
-                        <div className="search-results-head-cell">
+                        <div className="home-groups-head-cell">
                            <u>TIME</u>
                         </div>
-                        <div className="search-results-head-cell">
+                        <div className="home-groups-head-cell">
                            <u>SIZE</u>
                         </div>
                      </div>
@@ -203,27 +183,26 @@ class Home extends Component {
             <Header hamburgerClick={this.toggleHamburger} />
             <Hamburger show={this.state.hamburgerOpen} />
             {backdrop}
-            <div className="home-groups-container"></div>
-            <div className="search-main-content">
-               <div className="search-filter-container">
+            <div className="home-container">
+               <div>
                   <div className="home-not-active-tab" onClick={this.showJoinedGroups}>Joined</div>
                   <div className="home-active-tab">Created</div>
                </div>
-               <div>
-                  <div id="search-results-header">
+               <div className="home-groups-container">
+                  <div id="home-groups-header">
                      <div className="search-results-head-cell">
                         <u>SUBJECT</u>
                      </div>
-                     <div className="search-results-head-cell">
+                     <div className="home-groups-head-cell">
                         <u>NAME</u>
                      </div>
-                     <div className="search-results-head-cell">
+                     <div className="home-groups-head-cell">
                         <u>DATE</u>
                      </div>
-                     <div className="search-results-head-cell">
+                     <div className="home-groups-head-cell">
                         <u>TIME</u>
                      </div>
-                     <div className="search-results-head-cell">
+                     <div className="home-groups-head-cell">
                         <u>SIZE</u>
                      </div>
                   </div>
