@@ -1,8 +1,8 @@
 .edit-content {
     height: 88vh;
-}
-
-.edit-header {
+ }
+ 
+ .edit-header {
     width: 100%;
     margin: 0;
     font-family: 'Gochi Hand';
@@ -11,74 +11,91 @@
     text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
     text-align: center;
     font-size: 25px;
-}
-
-.edit-title {
+ }
+ 
+ .edit-header a {
+    text-decoration: none;
+    color: #1778BE;
+    transition-duration: 0.3s;
+    transition-property: transform;
+ }
+ 
+ .edit-header a:hover,
+ .edit-header a:focus {
+    color: red;
+    -webkit-transform: scale(1.2);
+   -moz-transform: scale(1.2);
+   transform: scale(1.2);
+ }
+ 
+ .edit-title {
     height: 10%;
     margin: 0;
-}
-
-.edit-return {
+ }
+ 
+ .edit-return {
     background: none;
     display: flex;
-    color: white;
-}
-
-.edit-form {
+    color: #1778BE;
+    text-decoration: none;
+ }
+ 
+ .edit-form {
     height: 90%;
     width: 100%;
     font-size: 1em;
     /* margin-top: 8%; */
-}
-
-.edit-form .row {
+ }
+ 
+ .edit-form .row {
     height: 14%;
-}
-
-.edit-form .edit-button {
+ }
+ 
+ .edit-form .edit-button {
     margin-top: 5%;
     height: 10%;
-}
-
-.edit-groupName, .edit-subject, .edit-course, .edit-groupSize,
-.edit-startTime, .edit-endTime, .edit-date, .edit-location, .edit-description {
+ }
+ 
+ .edit-groupName, .edit-subject, .edit-course, .edit-groupSize,
+ .edit-startTime, .edit-endTime, .edit-date, .edit-location, .edit-description {
     height: 15%;
     font-family: Roboto;
     font-size: 1em;
     margin: 0;
     padding: 5px 0;
-}
-
-.edit-form label {
+ }
+ 
+ .edit-form label {
     font-weight: bold;
     font-size: 0.75em;
     margin: 0;
-}
-
-.edit-form input {
+    color: grey;
+    transform: translateY(-14px);
+ }
+ 
+ .edit-form input {
     font-size: 0.75em;
     width: 100%;
     color: black;
     border: none;
     border-bottom: 1px solid grey;
-}
-
-.edit-form textarea {
+ }
+ 
+ .edit-form textarea {
     width: 100%;
     color: black;
-
+ 
     border-bottom: 1px solid grey;
-}
-
-.edit-form p {
+ }
+ 
+ .edit-form p {
     height: 10px;
     margin: 0;
-    /* padding-top: 10px; */
     font-size: 0.75em;
     color: rgb(204, 44, 44);
-}
-
-.edit-update-button {
+ }
+ 
+ .edit-update-button {
     font-family: 'Gochi Hand';
     color: #FFFFFF;
     text-align: center;
@@ -91,33 +108,339 @@
     font-size: 1.5em;
     transition-property: transform;
     padding: 0;
-}
-
-.edit-update-button:hover {
+ }
+ 
+ .edit-update-button:hover {
     box-shadow: 1px 2px 3px grey;
     transform: translateY(-2px);
-}
-
-.edit-form label {
-    transform: translateY(-14px);
-}
-
-@media (min-width: 320px) and (max-width: 575.98) {
-    
-    .edit-header {
-        width: 100%;
-        margin: 0;
-        font-family: 'Gochi Hand';
-        font-size: 1.75em;
-        color: white;
-        text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
-        text-align: center;
-        font-size: 25px;
-    }
+ }
+ 
+ 
+ @media (min-width: 321px) {
     
     .edit-title {
         height: 15%;
         margin: 0;
+        font-size: 1.5em;
     }
     
-}
+    .edit-form input {
+        font-size: 1em;
+        width: 100%;
+        color: black;
+        border: none;
+        border-bottom: 1px solid grey;
+        background: none;
+    }
+ 
+    .edit-form label {
+        font-weight: bold;
+        font-size: 0.75em;
+        margin: 0;
+        color: grey;
+        transform: translateY(-18px);
+    }
+ 
+    .edit-form .edit-button {
+        margin: 0;
+    }
+ 
+ 
+    .edit-return{
+        font-size: 1.2em;
+    }
+ 
+ }
+ 
+ @media (min-width: 600px){
+ 
+    .edit-content {
+        height: 86vh;
+    }
+ 
+    .edit-title {
+        height: 15%;
+        margin: 0.3em;
+        font-size: 1.5em;
+    }
+    
+    .edit-form input {
+        font-size: 1.25em;
+        width: 100%;
+        color: black;
+        border: none;
+        border-bottom: 1px solid grey;
+        background: none;
+    }
+ 
+    .edit-form label {
+        font-weight: bold;
+        font-size: 1em;
+        margin: 0;
+        color: grey;
+        transform: translateY(-20px);
+    }
+ 
+    .edit-form .edit-button {
+        margin: 0;
+        align-items: center;
+    }
+ 
+    .edit-return {
+        font-size: 1.5em;
+    }
+ 
+    
+ }
+ 
+ @media (min-width: 768px) {
+ 
+    .edit-content {
+        height: 86vh;
+    }
+ 
+    .edit-title {
+        height: 15%;
+        margin: 0.3em;
+        font-size: 1.8em;
+    }
+    
+    .edit-form input {
+        font-size: 1.5em;
+        width: 100%;
+        color: black;
+        border: none;
+        border-bottom: 1px solid grey;
+        background: none;
+    }
+ 
+    .edit-form label {
+        font-weight: bold;
+        font-size: 1.2em;
+        margin: 0;
+        color: grey;
+        transform: translateY(-25px);
+    }
+ 
+    .edit-form .edit-button {
+        margin: 0;
+        align-items: center;
+    }
+ 
+    .edit-return {
+        font-size: 1.5em;
+    }
+ 
+    .edit-update-button {
+        height: 60px;
+        font-size: 2em;
+    }
+ 
+    textarea {
+        font-size: 1.5em;
+    }
+ 
+ }
+ 
+ @media (min-width: 992px) {
+ 
+    .edit-content {
+        height: 86vh;
+    }
+ 
+    .edit-title {
+        height: 15%;
+        margin: 0.3em;
+        font-size: 2.5em;
+    }
+    
+    .edit-form input {
+        font-size: 1.8em;
+        width: 100%;
+        color: black;
+        border: none;
+        border-bottom: 1px solid grey;
+        background: none;
+    }
+ 
+    .edit-form label {
+        font-weight: bold;
+        font-size: 1.5em;
+        margin: 0;
+        color: grey;
+        transform: translateY(-30px);
+    }
+ 
+    .edit-form .edit-button {
+        margin: 0;
+        align-items: center;
+    }
+ 
+    .edit-return {
+        font-size: 1.8em;
+    }
+ 
+    .edit-update-button {
+        height: 75px;
+        font-size: 2.5em;
+    }
+ 
+    textarea {
+        font-size: 1.8em;
+    }
+ 
+ }
+ 
+ @media (min-width: 1200px) {
+    .edit-title {
+        font-size:0;
+    }
+ 
+    .edit-content {
+        height: 76vh;
+    }
+ 
+    .edit-form input {
+        font-size: 1.3em;
+        width: 100%;
+        color: black;
+        border: none;
+        border-bottom: 1px solid grey;
+        background: none;
+    }
+ 
+    .edit-form label {
+        font-weight: bold;
+        font-size: 1em;
+        margin: 0;
+        color: grey;
+        transform: translateY(-20px);
+    }
+ 
+    .edit-form .edit-button {
+        margin-top: 1.2em;
+        align-items: center;
+    }
+ 
+    .edit-return {
+        font-size: 1.7em;
+    }
+ 
+    .edit-update-button {
+        height: 50px;
+        font-size: 2em;
+    }
+ 
+    textarea {
+        font-size: 1em;
+    }
+ 
+    .edit-form p {
+        font-size: 0.8em;
+    }
+ 
+ }
+ 
+ @media (min-width: 300px) and (max-width: 750px) and (orientation: landscape) {
+ 
+    .edit-content {
+        height: 90%;
+    }
+    
+    .edit-title {
+        height: 15%;
+        margin: 0.3em;
+        font-size: 1.5em;
+    }
+ 
+    .edit-form input {
+       background: none;
+   }
+ 
+    .edit-form label {
+        font-weight: bold;
+        font-size: 1em;
+        margin: 0;
+        color: grey;
+    }
+ 
+    .edit-form .row {
+        padding: 1em 0;
+    }
+ 
+    .edit-form>.edit-button {
+        padding-top: 0;
+    }
+ 
+ }
+ 
+ @media (min-width: 751px) and (max-width: 1023.9px) and (orientation: landscape) {
+    .edit-content {
+        height: 90%;
+    }
+    
+    .edit-title {
+        height: 15%;
+        margin: 0.3em;
+        font-size: 2em;
+    }
+ 
+    .edit-form input {
+       background: none;
+   }
+ 
+    .edit-form label {
+        font-weight: bold;
+        font-size: 1.5em;
+        margin: 0;
+        color: grey;
+    }
+ 
+    .edit-form .row {
+        padding: 1em 0;
+    }
+ 
+    .edit-form>.edit-button {
+        padding-top: 0;
+    }
+ 
+ }
+ 
+ @media (min-width: 1024px) and (max-width: 1200px) and (orientation: landscape) {
+    .edit-content {
+        height: 90%;
+    }
+    
+    .edit-title {
+        height: 15%;
+        margin: 0.3em;
+        font-size: 2em;
+    }
+ 
+    .edit-form input {
+        padding-top: 0.3em;
+        margin-top: 0.6em;
+        background: none;
+    }
+ 
+    .edit-form .row {
+        padding: 1em 0;
+    }
+ 
+    .edit-form label {
+        font-weight: bold;
+        font-size: 1.5em;
+        margin: 0;
+        color: grey;
+        transform: translateY(-30px);
+    }
+ 
+    .edit-form>.edit-button {
+        padding-top: 0;
+    }
+ 
+    .edit-form p {
+        font-size: 1em;
+    }
+ 
+ }

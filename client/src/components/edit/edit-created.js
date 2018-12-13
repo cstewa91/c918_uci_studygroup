@@ -103,13 +103,13 @@ class EditGroup extends Component{
                         </div>
 
                         <div className="row justify-content-center">
-                            <div className='edit-description col-10'>
+                            <div className='edit-description col-11'>
                                 <Field name="description" label="Description" component={Input} textArea='true'/>
                                 
                             </div>
                         </div>
-                        <div className="row edit-button justify-content-center align-items-end">
-                            <div className='col-8 col-sm-5 col-lg-3'>
+                        <div className="row edit-button justify-content-center">
+                            <div className='col-5 col-sm-5 col-lg-5'>
                                 <button className='btn edit-update-button'>Update</button>
                             </div>  
                         </div>

@@ -13,6 +13,21 @@
    font-size: 25px;
 }
 
+.create-header a {
+   text-decoration: none;
+   color: #1778BE;
+   transition-duration: 0.3s;
+   transition-property: transform;
+}
+
+.create-header a:hover,
+.create-header a:focus {
+   color: red;
+   -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
 .create-title {
    height: 10%;
    margin: 0;
@@ -21,7 +36,8 @@
 .create-return {
    background: none;
    display: flex;
-   color: white;
+   color: #1778BE;
+   text-decoration: none;
 }
 
 .create-form {
@@ -33,6 +49,11 @@
 
 .create-form .row {
    height: 14%;
+}
+
+.create-form .create-button {
+   margin-top: 5%;
+   height: 10%;
 }
 
 .create-groupName, .create-subject, .create-course, .create-groupSize,
@@ -48,6 +69,8 @@
    font-weight: bold;
    font-size: 0.75em;
    margin: 0;
+   color: grey;
+   transform: translateY(-14px);
 }
 
 .create-form input {
@@ -68,7 +91,6 @@
 .create-form p {
    height: 10px;
    margin: 0;
-   /* padding-top: 10px; */
    font-size: 0.75em;
    color: rgb(204, 44, 44);
 }
@@ -93,13 +115,332 @@
    transform: translateY(-2px);
 }
 
-.create-form label {
-   transform: translateY(-15px);
+
+@media (min-width: 321px) {
+   
+   .create-title {
+       height: 15%;
+       margin: 0;
+       font-size: 1.5em;
+   }
+   
+   .create-form input {
+       font-size: 1em;
+       width: 100%;
+       color: black;
+       border: none;
+       border-bottom: 1px solid grey;
+       background: none;
+   }
+
+   .create-form label {
+       font-weight: bold;
+       font-size: 0.75em;
+       margin: 0;
+       color: grey;
+       transform: translateY(-18px);
+   }
+
+   .create-form .create-button {
+       margin: 0;
+   }
+
+
+   .create-return{
+       font-size: 1.2em;
+   }
+
 }
 
+@media (min-width: 600px){
 
+   .create-content {
+       height: 86vh;
+   }
 
+   .create-title {
+       height: 15%;
+       margin: 0.3em;
+       font-size: 1.5em;
+   }
+   
+   .create-form input {
+       font-size: 1.25em;
+       width: 100%;
+       color: black;
+       border: none;
+       border-bottom: 1px solid grey;
+       background: none;
+   }
 
+   .create-form label {
+       font-weight: bold;
+       font-size: 1em;
+       margin: 0;
+       color: grey;
+       transform: translateY(-20px);
+   }
 
+   .create-form .create-button {
+       margin: 0;
+       align-items: center;
+   }
 
+   .create-return {
+       font-size: 1.5em;
+   }
 
+   
+}
+
+@media (min-width: 768px) {
+
+   .create-content {
+       height: 86vh;
+   }
+
+   .create-title {
+       height: 15%;
+       margin: 0.3em;
+       font-size: 1.8em;
+   }
+   
+   .create-form input {
+       font-size: 1.5em;
+       width: 100%;
+       color: black;
+       border: none;
+       border-bottom: 1px solid grey;
+       background: none;
+   }
+
+   .create-form label {
+       font-weight: bold;
+       font-size: 1.2em;
+       margin: 0;
+       color: grey;
+       transform: translateY(-25px);
+   }
+
+   .create-form .create-button {
+       margin: 0;
+       align-items: center;
+   }
+
+   .create-return {
+       font-size: 1.5em;
+   }
+
+   .create-update-button {
+       height: 60px;
+       font-size: 2em;
+   }
+
+   textarea {
+       font-size: 1.5em;
+   }
+
+}
+
+@media (min-width: 992px) {
+
+   .create-content {
+       height: 86vh;
+   }
+
+   .create-title {
+       height: 15%;
+       margin: 0.3em;
+       font-size: 2.5em;
+   }
+   
+   .create-form input {
+       font-size: 1.8em;
+       width: 100%;
+       color: black;
+       border: none;
+       border-bottom: 1px solid grey;
+       background: none;
+   }
+
+   .create-form label {
+       font-weight: bold;
+       font-size: 1.5em;
+       margin: 0;
+       color: grey;
+       transform: translateY(-30px);
+   }
+
+   .create-form .create-button {
+       margin: 0;
+       align-items: center;
+   }
+
+   .create-return {
+       font-size: 1.8em;
+   }
+
+   .create-update-button {
+       height: 75px;
+       font-size: 2.5em;
+   }
+
+   textarea {
+       font-size: 1.8em;
+   }
+
+}
+
+@media (min-width: 1200px) {
+   .create-title {
+       font-size:0;
+   }
+
+   .create-content {
+       height: 76vh;
+   }
+
+   .create-form input {
+       font-size: 1.3em;
+       width: 100%;
+       color: black;
+       border: none;
+       border-bottom: 1px solid grey;
+       background: none;
+   }
+
+   .create-form label {
+       font-weight: bold;
+       font-size: 1em;
+       margin: 0;
+       color: grey;
+       transform: translateY(-20px);
+   }
+
+   .create-form .create-button {
+       margin-top: 1.2em;
+       align-items: center;
+   }
+
+   .create-return {
+       font-size: 1.7em;
+   }
+
+   .create-update-button {
+       height: 50px;
+       font-size: 2em;
+   }
+
+   textarea {
+       font-size: 1em;
+   }
+
+   .create-form p {
+       font-size: 0.8em;
+   }
+
+}
+
+@media (min-width: 300px) and (max-width: 750px) and (orientation: landscape) {
+
+   .create-content {
+       height: 90%;
+   }
+   
+   .create-title {
+       height: 15%;
+       margin: 0.3em;
+       font-size: 1.5em;
+   }
+
+   .create-form input {
+      background: none;
+  }
+
+   .create-form label {
+       font-weight: bold;
+       font-size: 1em;
+       margin: 0;
+       color: grey;
+   }
+
+   .create-form .row {
+       padding: 1em 0;
+   }
+
+   .create-form>.create-button {
+       padding-top: 0;
+   }
+
+}
+
+@media (min-width: 751px) and (max-width: 1023.9px) and (orientation: landscape) {
+   .create-content {
+       height: 90%;
+   }
+   
+   .create-title {
+       height: 15%;
+       margin: 0.3em;
+       font-size: 2em;
+   }
+
+   .create-form input {
+      background: none;
+  }
+
+   .create-form label {
+       font-weight: bold;
+       font-size: 1.5em;
+       margin: 0;
+       color: grey;
+   }
+
+   .create-form .row {
+       padding: 1em 0;
+   }
+
+   .create-form>.create-button {
+       padding-top: 0;
+   }
+
+}
+
+@media (min-width: 1024px) and (max-width: 1200px) and (orientation: landscape) {
+   .create-content {
+       height: 90%;
+   }
+   
+   .create-title {
+       height: 15%;
+       margin: 0.3em;
+       font-size: 2em;
+   }
+
+   .create-form input {
+       padding-top: 0.3em;
+       margin-top: 0.6em;
+       background: none;
+   }
+
+   .create-form .row {
+       padding: 1em 0;
+   }
+
+   .create-form label {
+       font-weight: bold;
+       font-size: 1.5em;
+       margin: 0;
+       color: grey;
+       transform: translateY(-30px);
+   }
+
+   .create-form>.create-button {
+       padding-top: 0;
+   }
+
+   .create-form p {
+       font-size: 1em;
+   }
+
+}

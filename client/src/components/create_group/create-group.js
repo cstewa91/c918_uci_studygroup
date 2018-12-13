@@ -100,9 +100,9 @@ class CreateGroup extends Component {
                            <Field name="description" label="Description" component={Input} textArea='true'/>
                         </div>
                   </div>
-                  <div className="row justify-content-center align-items-end">
-                        <div className='create-update col-10'>
-                           <button className='btn create-update-button'>Update</button>
+                  <div className="row create-button justify-content-center align-items-end">
+                        <div className='col-5 col-sm-5 col-lg-5'>
+                           <button className='btn create-update-button'>Create</button>
                         </div>  
                   </div>          
                </form>
