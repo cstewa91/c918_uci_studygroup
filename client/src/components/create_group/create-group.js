@@ -60,7 +60,7 @@ class CreateGroup extends Component {
                   <p className='create-title col-9'>Create Group</p>
                   <Link to='/home' className='create-return'>X</Link>
                </div>
-               <form className='create-form justify-content-center container' onSubmit={handleSubmit(this.handleCreateGroup)}>
+               <form className='create-form container' onSubmit={handleSubmit(this.handleCreateGroup)}>
                   <div className="row justify-content-center">
                         <div className='create-groupName col-11'>  
                            <Field name="name" label="Group Name" component={Input} />
@@ -100,7 +100,7 @@ class CreateGroup extends Component {
                            <Field name="description" label="Description" component={Input} textArea='true'/>
                         </div>
                   </div>
-                  <div className="row create-button justify-content-center align-items-end">
+                  <div className="row create-button justify-content-center">
                         <div className='col-5 col-sm-5 col-lg-5'>
                            <button className='btn create-update-button'>Create</button>
                         </div>  
