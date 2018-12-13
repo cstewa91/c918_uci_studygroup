@@ -117,25 +117,25 @@ class Profile extends Component {
                         <p className='profile-title col-10 '>PROFILE</p>
                     </div>
                     <div className="profile-info row justify-content-center">     
-                        <div className='profile-username col-10'>
+                        <div className='profile-username col-10 col-xs-5'>
                             <div className='profile-username-label'><b>Username</b></div>
                             <p>{username}</p>
                         </div>
-                        <div className='profile-firstname col-10'>  
+                        <div className='profile-firstname col-10 col-xs-5'>  
                             <div className='profile-firstName-label'><b>First Name</b></div>                
                             <p>{firstname}</p>
                         </div>
-                        <div className='profile-lastname col-10'> 
+                        <div className='profile-lastname col-10 col-xs-5'> 
                             <div className='profile-lastName-label'><b>Last Name</b></div>                      
                             <p>{lastname}</p>
                         </div>
-                        <div className='profile-email col-10'>        
+                        <div className='profile-email col-10 col-xs-5'>        
                             <div className='profile-email-label'><b>E-mail</b></div>       
                             <p>{email}</p>
                         </div> 
                     </div>
                     <div className='profile-edit row justify-content-center'>
-                        <div onClick={this.handleEditClick} className='profile-edit-button col-10'>EDIT</div>
+                        <div onClick={this.handleEditClick} className='profile-edit-button col-5'>EDIT</div>
                     </div>
                 </main>                
             </div>
