@@ -83,19 +83,19 @@ class Profile extends Component {
                             <div onClick={this.handleConfirm} className='profile-return'>X</div>
                         </div>
                         <form className='profile-form row justify-content-center' onSubmit={handleSubmit(this.handleAddItem)}>
-                            <div className='form-username col-10'>
+                            <div className='form-username col-8'>
                                     <Field name='username' label='Username' component={Input}/>
                             </div>
-                            <div className='form-first col-10'>
+                            <div className='form-first col-8'>
                                     <Field name='firstname' label="First Name" component={Input}/>
                             </div>    
-                            <div className='form-last col-10'>               
+                            <div className='form-last col-8'>               
                                     <Field name='lastname' label="Last Name" component={Input}/>
                             </div>
-                            <div className='form-email col-10'>
+                            <div className='form-email col-8'>
                                     <Field name='email' label="E-mail" component={Input}/>
                             </div>
-                            <div className='profile-confirm col-10'>
+                            <div className='profile-confirm col-6'>
                                     <button className='btn profile-confirm-button'>CONFIRM</button>
                             </div>
                             
@@ -114,28 +114,30 @@ class Profile extends Component {
                 {backdrop} 
                 <main className='profile-content container'>
                     <div className='profile-header row justify-content-center'>
-                        <p className='profile-title col-10 '>PROFILE</p>
+                        <p className='profile-title col-11 '>PROFILE</p>
                     </div>
-                    <div className="profile-info row justify-content-center">     
-                        <div className='profile-username col-10'>
+                    <div className="profile-info row">     
+                        <div className='profile-username col-8'>
                             <div className='profile-username-label'><b>Username</b></div>
                             <p>{username}</p>
                         </div>
-                        <div className='profile-firstname col-10'>  
+                        <div className='profile-firstname col-8'>  
                             <div className='profile-firstName-label'><b>First Name</b></div>                
                             <p>{firstname}</p>
                         </div>
-                        <div className='profile-lastname col-10'> 
+                        <div className='profile-lastname col-8'> 
                             <div className='profile-lastName-label'><b>Last Name</b></div>                      
                             <p>{lastname}</p>
                         </div>
-                        <div className='profile-email col-10'>        
+                        <div className='profile-email col-8'>        
                             <div className='profile-email-label'><b>E-mail</b></div>       
                             <p>{email}</p>
                         </div> 
                     </div>
-                    <div className='profile-edit row justify-content-center'>
-                        <div onClick={this.handleEditClick} className='profile-edit-button col-10'>EDIT</div>
+                    <div className='row profile-edit justify-content-center'>
+                        <div className='col-5'>
+                            <button className='btn profile-edit-button' onClick={this.handleEditClick}>Edit</button>
+                        </div>
                     </div>
                 </main>                
             </div>
