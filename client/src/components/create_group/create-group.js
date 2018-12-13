@@ -58,7 +58,7 @@ class CreateGroup extends Component {
             <main className='create-content'>
                <div className='create-header row justify-content-center'>
                   <p className='create-title col-9'>Create Group</p>
-                  <Link to={`/group-info/${this.props.match.params.group_id}`} className='create-return'>X</Link>
+                  <Link to='/home' className='create-return'>X</Link>
                </div>
                <form className='create-form justify-content-center container' onSubmit={handleSubmit(this.handleCreateGroup)}>
                   <div className="row justify-content-center">
