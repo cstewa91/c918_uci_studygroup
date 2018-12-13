@@ -36,7 +36,6 @@
  .edit-return {
     background: none;
     display: flex;
-    color: #1778BE;
     text-decoration: none;
  }
  
@@ -44,7 +43,6 @@
     height: 90%;
     width: 100%;
     font-size: 1em;
-    /* margin-top: 8%; */
  }
  
  .edit-form .row {
@@ -200,9 +198,7 @@
     }
  
     .edit-title {
-        height: 15%;
-        margin: 0.3em;
-        font-size: 1.8em;
+        font-size:0;
     }
     
     .edit-form input {
@@ -380,9 +376,7 @@
     }
     
     .edit-title {
-        height: 15%;
-        margin: 0.3em;
-        font-size: 2em;
+        font-size:0;
     }
  
     .edit-form input {
@@ -412,9 +406,7 @@
     }
     
     .edit-title {
-        height: 15%;
-        margin: 0.3em;
-        font-size: 2em;
+        font-size:0;
     }
  
     .edit-form input {

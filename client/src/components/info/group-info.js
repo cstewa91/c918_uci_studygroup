@@ -79,6 +79,7 @@ class GroupInfo extends Component{
 
 
     render(){
+        console.log('props', this.props)
 
         let backdrop;
 
