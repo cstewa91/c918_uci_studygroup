@@ -84,10 +84,8 @@ export function createNewGroup(item) {
 export function loginApp(item) {
    return async function (dispatch) {
       const resp = await axios.post(API_LOGIN, item);
-      console.log(resp)
       if (resp.data.success) {
          localStorage.setItem('token', resp.data.success)
-         console.log(resp)
          dispatch({
             type: types.LOGIN_APP,
             payload: resp
@@ -113,7 +111,6 @@ export function getAllGroups() {
 export function getGroupDetails(groupId) {
    return async function (dispatch) {
       const resp = await axios.get(`${API_GET_GROUP_DETAILS}/${groupId}`);
-      console.log('resp', resp)
          dispatch({
             type: types.GET_GROUP_DETAILS,
             payload: resp
@@ -160,7 +157,6 @@ export function createAccount(item) {
 
 export function joinGroup(groupId) {
    const resp = axios.post(API_JOIN_GROUP, { group_id: groupId });
-   console.log(resp);
    return {
       type: types.JOIN_GROUP,
       payload: resp

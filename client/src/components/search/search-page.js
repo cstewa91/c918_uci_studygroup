@@ -106,19 +106,19 @@ class SearchGroups extends Component{
                     <div id="search-results">
                         <div id="search-results-header">
                             <div className="search-results-head-cell">
-                                <u>SUBJECT</u>
+                                <b><u>Subject</u></b>
                             </div>
                             <div className="search-results-head-cell">
-                                <u>NAME</u>
+                                <b><u>Name</u></b>
                             </div>
                             <div className="search-results-head-cell">
-                                <u>DATE</u>
+                                <b><u>Date</u></b>
                             </div>
                             <div className="search-results-head-cell">
-                                <u>TIME</u>
+                                <b><u>Time</u></b>
                             </div>
                             <div className="search-results-head-cell">
-                                <u>SIZE</u>
+                                <b><u>Size</u></b>
                             </div>
                         </div>
                             { this.renderResults() }

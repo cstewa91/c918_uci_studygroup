@@ -18,7 +18,6 @@ class Home extends Component {
    }
    toggleHamburger = () => {
       this.setState((prevState) => {
-         console.log(prevState)
          return {
             hamburgerOpen: !prevState.hamburgerOpen
          }
@@ -44,6 +43,7 @@ class Home extends Component {
       this.props.getJoinedGroups();
       this.props.getUserInfo();
    }
+
    renderCreatedGroups = () => {
       const listCreatedGroups = this.props.created.map(item => {
          const startDateTime = new Date(item.start_time);

@@ -41,13 +41,16 @@
 }
 
 .group-info-description-container {
-    background-color: #FFFFFF;
+    background-color: #E1E1E1;
     border-radius: 10px;
     border: 1px solid grey;
     color: #000000;
     text-shadow: none;
+    font-size: 1.25em;
+    height: 50px;
     padding: 5px;
     margin-bottom: 2%;
+    overflow: scroll;
 }
 
 .group-details {
