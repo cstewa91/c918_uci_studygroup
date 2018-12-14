@@ -21,9 +21,10 @@ module.exports = function(app) {
                     FROM groups AS g
                     LEFT JOIN group_members AS gm 
                     ON g.id = gm.group_id
-                    WHERE end_time >= NOW()
+                    WHERE date >= DATE(NOW())
+                    AND HOUR(end_time) > HOUR(TIME_FORMAT(CURTIME(), '%h:%i:%s'))
                     GROUP BY g.id
-                    ORDER BY start_time ASC`;
+                    ORDER by date ASC`;
 
     sendQuery('get', query, res);
   });
@@ -59,9 +60,10 @@ module.exports = function(app) {
                     ON g.id = gm.group_id
                     WHERE (subject = ${phrase}
                     OR name LIKE "${phrase.replace(/'/g, '%')}")
-                    AND end_time >= NOW()
+                    WHERE date >= DATE(NOW())
+                    AND HOUR(end_time) > HOUR(TIME_FORMAT(CURTIME(), '%h:%i:%s'))
                     GROUP BY g.id
-                    ORDER BY start_time ASC`;
+                    ORDER BY date ASC`;
 
     sendQuery('get', query, res);
   });
@@ -77,9 +79,10 @@ module.exports = function(app) {
                     ON g.id = gm.group_id
                     LEFT JOIN group_members AS j
                     ON g.id = j.group_id
-                    WHERE end_time >= NOW()
+                    WHERE date >= DATE(NOW())
+                    AND HOUR(end_time) > HOUR(TIME_FORMAT(CURTIME(), '%h:%i:%s'))
                     GROUP BY g.id
-                    ORDER BY start_time ASC`;
+                    ORDER by date ASC`;
 
     sendQuery('get', query, res);
   });
@@ -91,9 +94,10 @@ module.exports = function(app) {
                     LEFT JOIN group_members AS gm 
                     ON g.id = gm.group_id
                     WHERE g.user_id = ${req.body.user_id}
-                    AND end_time >= NOW()
+                    AND date >= DATE(NOW())
+                    AND HOUR(end_time) > HOUR(TIME_FORMAT(CURTIME(), '%h:%i:%s'))
                     GROUP BY g.id
-                    ORDER BY start_time ASC`;
+                    ORDER by date ASC`;
 
     sendQuery('get', query, res);
   })
