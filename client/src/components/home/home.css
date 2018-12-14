@@ -69,10 +69,12 @@
    width: 25%;
    overflow: hidden;
    text-overflow: ellipsis;
+   white-space: nowrap;
 }
 
 .home-group-name {
    width: 22%;
+   white-space: nowrap;
    overflow: hidden;
    text-overflow: ellipsis;
 }
@@ -81,18 +83,21 @@
    width: 16%;
    overflow: hidden;
    text-overflow: ellipsis;
+   white-space: nowrap;
 }
 
 .home-group-time {
    width: 21%;
    overflow: hidden;
    text-overflow: ellipsis;
+   white-space: nowrap;
 }
 
 .home-group-size {
    width: 15%;
    overflow: hidden;
    text-overflow: ellipsis;
+   white-space: nowrap;
 }
 
 

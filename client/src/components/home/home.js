@@ -54,24 +54,24 @@ class Home extends Component {
          return (
             <Fragment key={item.id}>
                <div className="home-single-group">
-                     <Link to={`/group-info/${item.id}`}>
-                        <div className="home-group-details home-group-subject">
-                           {item.subject}{item.course}
-                        </div>
-                        <div className="home-group-details home-group-name">
-                           {item.name}
-                        </div>
-                        <div className="home-group-details home-group-date">
-                           {startDate}
-                        </div>
-                        <div className="home-group-details home-group-time">
-                           {startingTime}
-                        </div>
-                        <div className="home-group-details home-group-size">
-                           {<sup>{item.current_group_size}</sup>}&frasl;{<sub>{item.max_group_size}</sub>}
-                        </div>
-                     </Link>
-                  </div>
+                  <Link to={`/group-info/${item.id}`}>
+                     <div className="home-group-details home-group-subject">
+                        {item.subject}{item.course}
+                     </div>
+                     <div className="home-group-details home-group-name">
+                        {item.name}
+                     </div>
+                     <div className="home-group-details home-group-date">
+                        {startDate}
+                     </div>
+                     <div className="home-group-details home-group-time">
+                        {startingTime}
+                     </div>
+                     <div className="home-group-details home-group-size">
+                        {<sup>{item.current_group_size}</sup>}&frasl;{<sub>{item.max_group_size}</sub>}
+                     </div>
+                  </Link>
+               </div>
             </Fragment >
          )
       })
@@ -129,7 +129,7 @@ class Home extends Component {
                      <div className="home-active-tab">Joined</div>
                      <div className="home-not-active-tab" onClick={this.showCreatedGroups}>Created</div>
                   </div>
-                  <div className="home-groups-container">
+                  <div className="home-header-container">
                      <div className="home-groups-header">
                         <div>SUBJECT</div>
                         <div>NAME</div>
@@ -145,7 +145,7 @@ class Home extends Component {
                      <Link to="/create-group"><i className="fas fa-plus fa-2x home-add-button"></i></Link>
                   </div>
                </div>
-            </div >
+            </div>
          )
       }
       return (
@@ -174,7 +174,7 @@ class Home extends Component {
                   <Link to="/create-group"><i className="fas fa-plus fa-2x home-add-button"></i></Link>
                </div>
             </div>
-         </div >
+         </div>
       )
    }
 }
