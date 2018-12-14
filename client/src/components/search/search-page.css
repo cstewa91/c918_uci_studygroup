@@ -59,7 +59,7 @@
 .search-results-head-cell {
     display: table-cell;
     text-align: justify;
-    font-family: "Gochi Hand";
+    font-family: "Roboto", sans-serif;
     padding-left: .5em;
     padding-right: .5em;
 }

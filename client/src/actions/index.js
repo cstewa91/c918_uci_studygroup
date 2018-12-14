@@ -36,6 +36,7 @@ export function getCreatedGroups() {
 
 export function getJoinedGroups() {
    const resp = axios.get(API_GROUPS_JOINED);
+   console.log(resp);
    return {
       type: types.GET_JOINED_GROUPS,
       payload: resp
