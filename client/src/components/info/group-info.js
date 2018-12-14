@@ -79,14 +79,11 @@ class GroupInfo extends Component{
 
 
     render(){
-        console.log('props', this.props)
-
         let backdrop;
 
         if(this.state.hamburgerOpen){
             backdrop = <Backdrop click={this.backdropHandler}/>
         }
-
         
         const {name, subject, course, start_time, end_time, max_group_size, current_group_size, location, description, user_id } = this.props.singleGroup
         const startDateTime = new Date(start_time);

@@ -18,7 +18,6 @@ class Home extends Component {
    }
    toggleHamburger = () => {
       this.setState((prevState) => {
-         console.log(prevState)
          return {
             hamburgerOpen: !prevState.hamburgerOpen
          }
@@ -84,9 +83,6 @@ class Home extends Component {
    }
    renderJoinedGroups = () => {
       const listJoinedGroups = this.props.joined.map(item => {
-         
-         console.log("Userid",this.props.userId)
-         console.log("groud creater",item.user_id)
          const startDateTime = new Date(item.start_time);
          const endDateTime = new Date(item.end_time);
          const startingTime = startDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
