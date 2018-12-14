@@ -90,12 +90,6 @@ class GroupInfo extends Component{
         console.log(this.props.singleGroup);
         const groupDate = new Date(date).toLocaleDateString([], {month: '2-digit', day: '2-digit'});
 
-        const startDateTime = new Date(start_time);
-        const endDateTime = new Date(end_time);
-        const startingTime = startDateTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-        const startDate = startDateTime.toLocaleDateString([], {month: '2-digit', day: '2-digit'});
-        const endingTime = endDateTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-
         if(!{name}){
             return
             <h1>Loading...</h1>
@@ -121,7 +115,7 @@ class GroupInfo extends Component{
                                     <strong>Date:</strong> {groupDate}
                                 </div>
                                 <div className="group-info-time form-group">                 
-                                    <strong>Time:</strong> {`${startingTime} - ${endingTime}`}
+                                    <strong>Time:</strong> {`${start_time} - ${end_time}`}
                                 </div>
                                 <div className="group-info-users form-group">             
                                     <strong>Group Size:</strong> {`${current_group_size}/${max_group_size}`}
