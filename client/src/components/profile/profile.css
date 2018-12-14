@@ -179,7 +179,7 @@
  @media (min-width: 768px) {
 
     .profile-content {
-        height: 85vh;
+        height: 75vh;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
