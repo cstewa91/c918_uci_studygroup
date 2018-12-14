@@ -75,6 +75,7 @@ class GroupInfo extends Component{
     componentDidMount(){
         this.props.getGroupDetails(this.props.match.params.group_id);
         this.props.getUserInfo();
+        console.log(this.props);
     }
 
 
@@ -85,7 +86,11 @@ class GroupInfo extends Component{
             backdrop = <Backdrop click={this.backdropHandler}/>
         }
         
-        const {name, subject, course, start_time, end_time, max_group_size, current_group_size, location, description, user_id } = this.props.singleGroup
+        const {name, subject, course, date, start_time, end_time, max_group_size, current_group_size, location, description, user_id } = this.props.singleGroup
+        console.log(this.props.singleGroup);
+        const groupDate = new Date(date).toLocaleDateString([], {month: '2-digit', day: '2-digit'});
+        console.log(groupDate);
+
         const startDateTime = new Date(start_time);
         const endDateTime = new Date(end_time);
         const startingTime = startDateTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
@@ -114,7 +119,7 @@ class GroupInfo extends Component{
                                     <strong>Subject:</strong> {subject}{course}
                                 </div>
                                 <div className="group-info-date form-group">               
-                                    <strong>Date:</strong> {startDate}
+                                    <strong>Date:</strong> {groupDate}
                                 </div>
                                 <div className="group-info-time form-group">                 
                                     <strong>Time:</strong> {`${startingTime} - ${endingTime}`}
