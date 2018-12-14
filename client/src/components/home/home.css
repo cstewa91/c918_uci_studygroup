@@ -42,7 +42,7 @@
 .home-groups-header {
    display: flex;
    justify-content: space-around;
-   
+
 }
 
 .home-header-container {
@@ -56,8 +56,8 @@
 
 .home-groups-container {
    height: 74%;
+   margin: 0 2% 0 2%;
 }
-
 
 
 .home-group-details {
@@ -69,10 +69,12 @@
    width: 25%;
    overflow: hidden;
    text-overflow: ellipsis;
+   white-space: nowrap;
 }
 
 .home-group-name {
    width: 22%;
+   white-space: nowrap;
    overflow: hidden;
    text-overflow: ellipsis;
 }
@@ -81,20 +83,41 @@
    width: 16%;
    overflow: hidden;
    text-overflow: ellipsis;
+   white-space: nowrap;
 }
 
 .home-group-time {
    width: 21%;
    overflow: hidden;
    text-overflow: ellipsis;
+   white-space: nowrap;
 }
 
 .home-group-size {
    width: 15%;
    overflow: hidden;
    text-overflow: ellipsis;
+   white-space: nowrap;
 }
 
+.home-single-group {
+   border: 1px solid #1778BE;
+   border-radius: 10px 10px 10px 10px;
+   padding: 1% 0;
+   margin-bottom: 2%;
+}
 
+.home-single-group:hover {
+   background-color: #1778BE;
+}
 
+.home-single-group a {
+   color: black;
+   display: flex;
+   align-items: center;
+}
 
+.home-single-group:hover a {
+   color: white;
+   text-decoration: none;
+}

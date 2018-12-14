@@ -3,6 +3,7 @@ import types from '../actions/types';
 const DEFAULT_STATE = {
    joined: [],
    created: [],
+   joinedGroups: true
 }
 
 export default (state = DEFAULT_STATE, action) => {
@@ -11,6 +12,10 @@ export default (state = DEFAULT_STATE, action) => {
          return { ...state, created: action.payload.data }
       case types.GET_JOINED_GROUPS:
          return { ...state, joined: action.payload.data }
+      case types.SHOW_JOINED_GROUPS:
+         return { ...state, joinedGroups: true }
+      case types.SHOW_CREATED_GROUPS:
+         return { ...state, joinedGroups: false }
       default:
          return state;
    }

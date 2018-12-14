@@ -102,6 +102,7 @@ export function loginApp(item) {
 
 export function getAllGroups() {
    const resp = axios.get(API_GROUPS);
+   console.log(resp)
    return {
       type: types.GET_ALL_GROUPS,
       payload: resp
@@ -195,4 +196,16 @@ export function deleteGroup(groupId){
          type: types.DELETE_GROUP,
          payload: resp
       }
+}
+
+export function showJoinedGroups() {
+   return {
+      type: types.SHOW_JOINED_GROUPS
+   }
+}
+
+export function showCreatedGroups() {
+   return {
+      type: types.SHOW_CREATED_GROUPS
+   }
 }

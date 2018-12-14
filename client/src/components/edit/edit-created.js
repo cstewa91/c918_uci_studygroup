@@ -39,10 +39,6 @@ class EditGroup extends Component{
 
 
     handleUpdateItem = async (values) => {
-        const startDateAndTime = values.date + "T" + values.start_time
-        const endDateAndTime = values.date + "T" + values.end_time
-        values.start_time = startDateAndTime
-        values.end_time = endDateAndTime
         await this.props.editGroupInfo(this.props.match.params.group_id, values);
         this.props.history.push('/home');
     }

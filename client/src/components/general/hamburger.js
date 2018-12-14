@@ -37,7 +37,6 @@ class Hamburger extends Component {
 
     render(){
 
-    console.log('stuff', this.props)
     const {username} = this.props.user
 
     let hamburgerClasses = 'hamburger-nav'
