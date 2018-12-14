@@ -21,12 +21,7 @@ module.exports = function(app) {
                     FROM groups AS g
                     LEFT JOIN group_members AS gm 
                     ON g.id = gm.group_id
-                    WHERE date > DATE(NOW())
-                    OR (date = DATE(NOW())
-                    AND TIME_FORMAT(end_time, '%H') > TIME_FORMAT(CURTIME(), '%H'))
-                    OR (date = DATE(NOW())
-                    AND TIME_FORMAT(end_time, '%H') = TIME_FORMAT(CURTIME(), '%H')
-                    AND TIME_FORMAT(end_time, '%i') > TIME_FORMAT(CURTIME(), '%i'))
+                    WHERE ADDTIME(date, end_time) > NOW()
                     GROUP BY g.id
                     ORDER by end_time ASC`;
 
@@ -64,12 +59,7 @@ module.exports = function(app) {
                     ON g.id = gm.group_id
                     WHERE (subject = ${phrase}
                     OR name LIKE "${phrase.replace(/'/g, '%')}")
-                    AND date > DATE(NOW())
-                    OR (date = DATE(NOW())
-                    AND TIME_FORMAT(end_time, '%H') > TIME_FORMAT(CURTIME(), '%H'))
-                    OR (date = DATE(NOW())
-                    AND TIME_FORMAT(end_time, '%H') = TIME_FORMAT(CURTIME(), '%H')
-                    AND TIME_FORMAT(end_time, '%i') > TIME_FORMAT(CURTIME(), '%i'))
+                    AND ADDTIME(date, end_time) > NOW()
                     GROUP BY g.id
                     ORDER BY date ASC`;
 
@@ -87,12 +77,7 @@ module.exports = function(app) {
                     ON g.id = gm.group_id
                     LEFT JOIN group_members AS j
                     ON g.id = j.group_id
-                    WHERE date > DATE(NOW())
-                    OR (date = DATE(NOW())
-                    AND TIME_FORMAT(end_time, '%H') > TIME_FORMAT(CURTIME(), '%H'))
-                    OR (date = DATE(NOW())
-                    AND TIME_FORMAT(end_time, '%H') = TIME_FORMAT(CURTIME(), '%H')
-                    AND TIME_FORMAT(end_time, '%i') > TIME_FORMAT(CURTIME(), '%i'))
+                    WHERE ADDTIME(date, end_time) > NOW()
                     GROUP BY g.id
                     ORDER by date ASC`;
 
@@ -106,12 +91,7 @@ module.exports = function(app) {
                     LEFT JOIN group_members AS gm 
                     ON g.id = gm.group_id
                     WHERE g.user_id = ${req.body.user_id}
-                    AND date > DATE(NOW())
-                    OR (date = DATE(NOW())
-                    AND TIME_FORMAT(end_time, '%H') > TIME_FORMAT(CURTIME(), '%H'))
-                    OR (date = DATE(NOW())
-                    AND TIME_FORMAT(end_time, '%H') = TIME_FORMAT(CURTIME(), '%H')
-                    AND TIME_FORMAT(end_time, '%i') > TIME_FORMAT(CURTIME(), '%i'))
+                    AND ADDTIME(date, end_time) > NOW()
                     GROUP BY g.id
                     ORDER by date ASC`;
 
@@ -204,6 +184,7 @@ module.exports = function(app) {
     });
   });
 
+  // logout
   app.get('/api/logout', (req, res) => {
     res.cookie('token', '', { maxAge: -1, httpOnly: true });
     res.send('You are now logged out');
@@ -341,15 +322,15 @@ module.exports = function(app) {
     const body = req.body;
     const createQuery = `INSERT INTO groups (user_id, name, location, subject, course, date, start_time, end_time, max_group_size, description)
                           VALUES(${body.user_id}, 
-                            ${body['`name`']}, 
-                            ${body['`location`']}, 
-                            ${body['`subject`']}, 
-                            ${body['`course`'] || null}, 
-                            ${body['`date`']}, 
-                            ${body['`start_time`']}, 
-                            ${body['`end_time`']}, 
-                            ${body['`max_group_size`']}, 
-                            ${body['`description`'] || null})`;
+                                  ${body['`name`']}, 
+                                  ${body['`location`']}, 
+                                  ${body['`subject`']}, 
+                                  ${body['`course`'] || null}, 
+                                  ${body['`date`']}, 
+                                  ${body['`start_time`']}, 
+                                  ${body['`end_time`']}, 
+                                  ${body['`max_group_size`']}, 
+                                  ${body['`description`'] || null})`;
 
     sendQuery('post', createQuery, res);
   });
@@ -409,12 +390,12 @@ module.exports = function(app) {
   app.put('/api/users', (req, res) => {
     const body = req.body;
     const query = `UPDATE users SET google_id = ${body['`google_id`']},
-                    username = ${body['`username`']},
-                    firstname = ${body['`firstname`']},
-                    lastname = ${body['`lastname`']},
-                    email = ${body['`email`']},
-                    password = ${body['`password`']}
-                    WHERE id = ${body.user_id}`;
+                                    username = ${body['`username`']},
+                                    firstname = ${body['`firstname`']},
+                                    lastname = ${body['`lastname`']},
+                                    email = ${body['`email`']},
+                                    password = ${body['`password`']}
+                                    WHERE id = ${body.user_id}`;
 
     sendQuery('put', query, res);
   });
@@ -454,16 +435,16 @@ module.exports = function(app) {
         } else {
           const body = req.body;
           const updateQuery = `UPDATE groups SET user_id = ${body.user_id}, 
-                                name = ${body['`name`']}, 
-                                location = ${body['`location`']}, 
-                                subject = ${body['`subject`']}, 
-                                course = ${body['`course`']}, 
-                                date = ${body['`date`']}, 
-                                start_time = ${body['`start_time`']}, 
-                                end_time = ${body['`end_time`']},
-                                max_group_size = ${body['`max_group_size`']}, 
-                                description = ${body['`description`']}
-                                WHERE id = ${group_id}`;
+                                                  name = ${body['`name`']}, 
+                                                  location = ${body['`location`']}, 
+                                                  subject = ${body['`subject`']}, 
+                                                  course = ${body['`course`']}, 
+                                                  date = ${body['`date`']}, 
+                                                  start_time = ${body['`start_time`']}, 
+                                                  end_time = ${body['`end_time`']},
+                                                  max_group_size = ${body['`max_group_size`']}, 
+                                                  description = ${body['`description`']}
+                                                  WHERE id = ${group_id}`;
           
           sendQuery('put', updateQuery, res);
         }
@@ -569,7 +550,7 @@ function validateToken(req, res, next) {
     { route: /\/api\/login/, method: 'POST' },                      // api/login
     { route: /\/api\/users$/, method: 'POST' },                     // api/users
     { route: /\/api\/groups$/, method: 'GET' },                     // api/groups
-    { route: /\/api\/groups\/details\/.+/, method: 'GET' },        // api/groups/details/:group_id_name
+    { route: /\/api\/groups\/details\/.+/, method: 'GET' },         // api/groups/details/:group_id_name
     { route: /\/api\/groups\/filter\/.+/, method: 'GET' },          // api/groups/filter/:phrase
   ]
   const isExcludedRoute = excludedRoutes.some(excludedRoute => {
