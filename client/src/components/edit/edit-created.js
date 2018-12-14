@@ -46,7 +46,7 @@ class EditGroup extends Component{
 
     render(){
         let backdrop;
-
+        console.log(this.props)
         if(this.state.hamburgerOpen){
             backdrop = <Backdrop click={this.backdropHandler}/>
         }
