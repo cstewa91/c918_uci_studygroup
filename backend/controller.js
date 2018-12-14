@@ -594,15 +594,7 @@ function validateToken(req, res, next) {
   }
 } 
 
-// CHANGE LOG
-// split group start_time and end_time from date, start_time, and end_time
-
 // TODO:
 // google auth with passport
 // error handling middleware
-// cleanup code
-
-// CLEANUP:
-// remove cors  
-// remove console.logs
-// lower cookie session time
+// refactor code
