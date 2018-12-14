@@ -1,3 +1,14 @@
+.home-active-tab {
+   background: #308ED2;
+   display: inline-block;
+   color: white;
+   width: 187.5px;
+   height: 58.14px;
+   text-align: center;
+   font-size: 2em;
+   cursor: pointer;
+}
+
 .home-add-button {
    margin-right: 11px;
    background: #1778BE;
@@ -15,38 +26,9 @@
    justify-content: flex-end;
 }
 
-.home-active-tab {
-   background: #308ED2;
-   display: inline-block;
-   color: white;
-   width: 187.5px;
-   height: 58.14px;
-   text-align: center;
-   font-size: 2em;
-}
 
 .home-container {
    height: 91.5vh;
-}
-
-.home-not-active-tab {
-   background: linear-gradient(178.14deg, rgba(255, 255, 255, 0) 45.77%, rgba(255, 255, 255, 0.34) 103.91%), #6FB8ED;
-   color: #1778BE;
-   display: inline-block;
-   width: 187.5px;
-   height: 58.14px;
-   text-align: center;
-   font-size: 2em;
-}
-
-.home-groups-header {
-   display: flex;
-   justify-content: space-around;
-
-}
-
-.home-header-container {
-   height: 4%;
 }
 
 .home-groups {
@@ -59,17 +41,29 @@
    margin: 0 2% 0 2%;
 }
 
+.home-group-date {
+   width: 16%;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   padding-left: 7px;
+}
 
 .home-group-details {
    display: inline-block;
    text-align: center
 }
 
-.home-group-subject {
-   width: 25%;
-   overflow: hidden;
-   text-overflow: ellipsis;
-   white-space: nowrap;
+.home-group-header {
+   height: 10%;
+   display: flex;
+}
+
+.home-groups-header {
+   display: flex;
+   justify-content: space-around;
+   height: 4%;
+   font-weight: bold;
 }
 
 .home-group-name {
@@ -79,8 +73,16 @@
    text-overflow: ellipsis;
 }
 
-.home-group-date {
-   width: 16%;
+.home-group-size {
+   width: 15%;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   padding-left: 16px;
+}
+
+.home-group-subject {
+   width: 25%;
    overflow: hidden;
    text-overflow: ellipsis;
    white-space: nowrap;
@@ -91,24 +93,29 @@
    overflow: hidden;
    text-overflow: ellipsis;
    white-space: nowrap;
+   padding-left: 7px;
 }
 
-.home-group-size {
-   width: 15%;
-   overflow: hidden;
-   text-overflow: ellipsis;
-   white-space: nowrap;
+.home-header-container {
+   height: 4%;
+}
+
+.home-not-active-tab {
+   background: linear-gradient(178.14deg, rgba(255, 255, 255, 0) 45.77%, rgba(255, 255, 255, 0.34) 103.91%), #6FB8ED;
+   color: #1778BE;
+   display: inline-block;
+   width: 187.5px;
+   height: 58.14px;
+   text-align: center;
+   font-size: 2em;
+   cursor: pointer;
 }
 
 .home-single-group {
    border: 1px solid #1778BE;
-   border-radius: 10px 10px 10px 10px;
+   border-radius: 5px;
    padding: 1% 0;
    margin-bottom: 2%;
-}
-
-.home-single-group:hover {
-   background-color: #1778BE;
 }
 
 .home-single-group a {
@@ -117,7 +124,221 @@
    align-items: center;
 }
 
+.home-single-group:hover {
+   background-color: #1778BE;
+}
+
 .home-single-group:hover a {
    color: white;
    text-decoration: none;
 }
+
+
+/****** MEDIA QUERIES *******/
+@media (max-width: 359.98px) {
+   .home-active-tab {
+      width: 50%;
+      height: 100%;
+      font-size: 2em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+   }
+
+   .home-add-button {
+      margin-right: 11px;
+      width: 65px;
+      line-height: 1.75;
+   }
+
+   .home-add-button-container {
+      align-items: center;
+      height: 19.5%;
+      display: flex;
+      justify-content: flex-end;
+   }
+
+   .home-container {
+      height: 88vh;
+   }
+
+   .home-groups-container {
+      height: 63%;
+      margin: 0 2% 0 2%;
+      
+   }
+
+   .home-group-date {
+      width: 17%;
+      padding-left: 7px;
+   }
+
+   .home-group-name {
+      width: 22%;
+   }
+
+   .home-group-header {
+      height: 12%;
+      display: flex;
+   }
+
+   .home-group-size {
+      width: 15%;
+      padding-left: 10px;
+   }
+
+   .home-group-subject {
+      width: 25%;
+   }
+
+   .home-group-time {
+      width: 21%;
+      padding-left: 13px;
+   }
+
+   .home-header-container {
+      height: 4%;
+      margin-bottom: 6px;
+   }
+
+   .home-not-active-tab {
+      width: 50%;
+      height: 100%;
+      font-size: 2em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+   }
+
+   .home-single-group {
+      border-radius: 5px;
+      padding: 1% 0;
+      margin-bottom: 2%;
+   }
+}
+
+@media (min-width: 360px) {
+   .home-active-tab {
+      width: 50%;
+      height: 100%;
+      font-size: 2em;
+      display: flex;
+    align-items: center;
+    justify-content: center;
+   }
+
+   .home-add-button {
+      margin-right: 11px;
+      width: 65px;
+      line-height: 1.75;
+   }
+
+   .home-add-button-container {
+      align-items: center;
+      height: 11.5%;
+      display: flex;
+      justify-content: flex-end;
+   }
+
+   .home-container {
+      height: 91vh;
+   }
+
+   .home-groups-container {
+      height: 72%;
+      margin: 0 2% 0 2%;
+   }
+
+   .home-group-date {
+      width: 17%;
+      padding-left: 7px;
+   }
+
+   .home-group-name {
+      width: 22%;
+   }
+
+   .home-group-header {
+      height: 10%;
+      display: flex;
+   }
+
+   .home-group-size {
+      width: 15%;
+      padding-left: 10px;
+   }
+
+   .home-group-subject {
+      width: 25%;
+   }
+
+   .home-group-time {
+      width: 21%;
+      padding-left: 13px;
+   }
+
+   .home-header-container {
+      height: 4%;
+      margin-bottom: 6px;
+   }
+
+   .home-not-active-tab {
+      width: 50%;
+      height: 100%;
+      font-size: 2em;
+      display: flex;
+    align-items: center;
+    justify-content: center;
+   }
+
+   .home-single-group {
+      border-radius: 5px;
+      padding: 1% 0;
+      margin-bottom: 2%;
+   }
+}
+
+
+@media (min-width: 576px) {}
+
+@media (min-width: 768px) {}
+
+@media (min-width: 992px) {}
+
+@media (min-width: 1200px) {}
+
+@media (min-width: 300px) and (max-width: 750px) and (orientation: landscape) {}
+
+@media (min-width: 751px) and (max-width: 1023.9px) and (orientation: landscape) {}
+
+@media (min-width: 1024px) and (orientation: landscape) {}
+
+@media (min-width: 1400px) and (orientation: landscape) {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/********* MEDIA QUERIES ***********/
