@@ -130,7 +130,7 @@ function validate(values){
         error.subject = 'Enter a study subject'
     }
     if(!course){
-        error.course = 'Enter a course'
+        error.course = 'Enter a course (number)'
     }
     if(!start_time){
         error.start_time = 'Enter a start time'
@@ -142,7 +142,7 @@ function validate(values){
         error.date = 'Enter your study subject'
     }
     if(!max_group_size){
-        error.max_group_size = 'Enter Group Size'
+        error.max_group_size = 'Enter Group Size (number)'
     }
     if(!location){
         error.location = 'Enter study location'

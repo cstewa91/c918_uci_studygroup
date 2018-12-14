@@ -122,6 +122,19 @@ span {
     box-shadow: 0 0 6px #FFFFFF
 }
 
+.hamburger-signout a:hover {
+    box-shadow: 0 0 6px #FFFFFF;
+    color: #FFFFFF;
+}
+
+.hamburger-signout a {
+    font-size: 0.8em;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .hamburger-links li {
     transition-duration: 0.4s;
     transition-property: transform;

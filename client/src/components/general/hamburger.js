@@ -15,14 +15,21 @@ class Hamburger extends Component {
     componentDidMount(){
         this.props.getUserInfo()
     }
-
+    
     SignOutButton(){
         const {auth, userSignOut} = this.props;
 
         if(auth){
             return (
                 <div className='d-flex hamburger-signout justify-content-end'>
-                    <button onClick={userSignOut} className='hamburger-signout-button '>Log Out</button>
+                    <Link to='/home' onClick={userSignOut} className='hamburger-signout-button '>Log Out</Link>
+                </div>
+            )
+        }
+        if(!auth) {
+            return (
+                <div className='d-flex hamburger-signout justify-content-end'>
+                    <Link to='/create-account' className='hamburger-signout-button '>Sign Up</Link>
                 </div>
             )
         }
@@ -30,6 +37,7 @@ class Hamburger extends Component {
 
     render(){
 
+    console.log('stuff', this.props)
     const {username} = this.props.user
 
     let hamburgerClasses = 'hamburger-nav'
