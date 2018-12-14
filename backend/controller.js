@@ -23,7 +23,10 @@ module.exports = function(app) {
                     ON g.id = gm.group_id
                     WHERE date > DATE(NOW())
                     OR (date = DATE(NOW())
-                    AND HOUR(end_time) > HOUR(TIME_FORMAT(CURTIME(), '%h:%i:%s')))
+                    AND TIME_FORMAT(end_time, '%H') > TIME_FORMAT(CURTIME(), '%H'))
+                    OR (date = DATE(NOW())
+                    AND TIME_FORMAT(end_time, '%H') = TIME_FORMAT(CURTIME(), '%H')
+                    AND TIME_FORMAT(end_time, '%i') > TIME_FORMAT(CURTIME(), '%i'))
                     GROUP BY g.id
                     ORDER by end_time ASC`;
 
@@ -63,7 +66,10 @@ module.exports = function(app) {
                     OR name LIKE "${phrase.replace(/'/g, '%')}")
                     AND date > DATE(NOW())
                     OR (date = DATE(NOW())
-                    AND HOUR(end_time) > HOUR(TIME_FORMAT(CURTIME(), '%h:%i:%s')))
+                    AND TIME_FORMAT(end_time, '%H') > TIME_FORMAT(CURTIME(), '%H'))
+                    OR (date = DATE(NOW())
+                    AND TIME_FORMAT(end_time, '%H') = TIME_FORMAT(CURTIME(), '%H')
+                    AND TIME_FORMAT(end_time, '%i') > TIME_FORMAT(CURTIME(), '%i'))
                     GROUP BY g.id
                     ORDER BY date ASC`;
 
@@ -83,7 +89,10 @@ module.exports = function(app) {
                     ON g.id = j.group_id
                     WHERE date > DATE(NOW())
                     OR (date = DATE(NOW())
-                    AND HOUR(end_time) > HOUR(TIME_FORMAT(CURTIME(), '%h:%i:%s')))
+                    AND TIME_FORMAT(end_time, '%H') > TIME_FORMAT(CURTIME(), '%H'))
+                    OR (date = DATE(NOW())
+                    AND TIME_FORMAT(end_time, '%H') = TIME_FORMAT(CURTIME(), '%H')
+                    AND TIME_FORMAT(end_time, '%i') > TIME_FORMAT(CURTIME(), '%i'))
                     GROUP BY g.id
                     ORDER by date ASC`;
 
@@ -99,7 +108,10 @@ module.exports = function(app) {
                     WHERE g.user_id = ${req.body.user_id}
                     AND date > DATE(NOW())
                     OR (date = DATE(NOW())
-                    AND HOUR(end_time) > HOUR(TIME_FORMAT(CURTIME(), '%h:%i:%s')))
+                    AND TIME_FORMAT(end_time, '%H') > TIME_FORMAT(CURTIME(), '%H'))
+                    OR (date = DATE(NOW())
+                    AND TIME_FORMAT(end_time, '%H') = TIME_FORMAT(CURTIME(), '%H')
+                    AND TIME_FORMAT(end_time, '%i') > TIME_FORMAT(CURTIME(), '%i'))
                     GROUP BY g.id
                     ORDER by date ASC`;
 
