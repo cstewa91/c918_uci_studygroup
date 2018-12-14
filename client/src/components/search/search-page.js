@@ -50,19 +50,12 @@ class SearchGroups extends Component{
     
         const results = this.props[resultType].map(item => {
             const newDate = new Date(item.date);
-            console.log('newDate', newDate);
             const sliceStartDate = item.date.slice(0, 11) + item.start_time
-            console.log('sliceStartDate', sliceStartDate);
             const sliceEndDate = item.date.slice(0, 11) + item.end_time
-            console.log('sliceEndDate', sliceEndDate);
             const endTime = new Date(sliceEndDate);
-            console.log(endTime);
             const startTime= new Date(sliceStartDate);
-            console.log(startTime);
             const startingTime = startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
             const endingTime = endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            console.log(startingTime); //this is the formatted start time
-            console.log(endingTime); //this is the formatted end time
             const startDate = newDate.toLocaleDateString([], { month: '2-digit', day: '2-digit' });
     
             return (

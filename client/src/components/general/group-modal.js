@@ -29,14 +29,10 @@ class GroupModal extends Component{
     close = () => this.setState({show: false});
 
     render(){
-        console.log('props of modal render', this.props);
 
         const { children, group, id} = this.props;
         const startDateTime = new Date(group.date);
-        console.log(startDateTime);
         const groupDate = startDateTime.toLocaleDateString([], {month: '2-digit', day: '2-digit'});
-        // const startTime = group.start_time.toLocaleTimeString([], {hour: '2-digit', day: '2-digit'});
-        // console.log(startTime);
 
         const GroupData = (
 
@@ -97,7 +93,6 @@ class GroupModal extends Component{
 }
 
 function mapStateToProps(state) {
-    console.log('state of getdetails', state);
     return {
         group: state.search.selected
     }
