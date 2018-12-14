@@ -122,6 +122,7 @@ class GroupInfo extends Component{
                                 </div>
                                 <div className="group-info-location form-group">                  
                                     <strong>Location:</strong> {location}
+                                        <a className="btn modal-map-button" href="https://map.uci.edu/" target="_blank">Map</a>
                                 </div>
                                 <div className="group-info-description-container">        
                                     {description}
