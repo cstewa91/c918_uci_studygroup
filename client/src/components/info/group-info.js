@@ -89,7 +89,6 @@ class GroupInfo extends Component{
         const {name, subject, course, date, start_time, end_time, max_group_size, current_group_size, location, description, user_id } = this.props.singleGroup
         console.log(this.props.singleGroup);
         const groupDate = new Date(date).toLocaleDateString([], {month: '2-digit', day: '2-digit'});
-        console.log(groupDate);
 
         const startDateTime = new Date(start_time);
         const endDateTime = new Date(end_time);

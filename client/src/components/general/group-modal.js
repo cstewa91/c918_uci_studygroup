@@ -13,7 +13,6 @@ class GroupModal extends Component{
 
     componentDidMount(){
 
-
     }
 
     joinStudyGroup = async () => {
@@ -30,14 +29,14 @@ class GroupModal extends Component{
     close = () => this.setState({show: false});
 
     render(){
+        console.log('props of modal render', this.props);
 
         const { children, group, id} = this.props;
-        const startDateTime = new Date(group.start_time);
-        const endDateTime = new Date(group.end_time);
-
-        const startingTime = startDateTime.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
-        const endingTime = endDateTime.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
-        const startDate = startDateTime.toLocaleDateString([], {month: '2-digit', day: '2-digit'});
+        const startDateTime = new Date(group.date);
+        console.log(startDateTime);
+        const groupDate = startDateTime.toLocaleDateString([], {month: '2-digit', day: '2-digit'});
+        // const startTime = group.start_time.toLocaleTimeString([], {hour: '2-digit', day: '2-digit'});
+        // console.log(startTime);
 
         const GroupData = (
 
@@ -45,8 +44,8 @@ class GroupModal extends Component{
                 <div key={group.id} className="group-modal-details">
                     <h1 className="modal-group-name">{group.name}</h1>
                     <p className="modal-group-info"><strong>Subject/Course:</strong> {group.subject}{group.course}</p>
-                    <p className="modal-group-info"><strong>Date:</strong> {startDate}</p>
-                    <p className="modal-group-info"><strong>Time:</strong> {startingTime} - {endingTime}</p>
+                    <p className="modal-group-info"><strong>Date:</strong> {groupDate}</p>
+                    <p className="modal-group-info"><strong>Time:</strong> {group.start_time} - {group.end_time}</p>
                     <p className="modal-group-info">
                         <strong>Location:</strong> {group.location}
                             <a className="btn modal-map-button" href="https://map.uci.edu/" target="_blank">Map</a>
@@ -98,6 +97,7 @@ class GroupModal extends Component{
 }
 
 function mapStateToProps(state) {
+    console.log('state of getdetails', state);
     return {
         group: state.search.selected
     }

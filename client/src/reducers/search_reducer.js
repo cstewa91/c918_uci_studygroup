@@ -8,6 +8,7 @@ const DEFAULT_STATE = {
 export default (state = DEFAULT_STATE, action) => {
     switch (action.type) {
         case types.GET_GROUP_DETAILS:
+            console.log('data from get group details', action.payload.data);
             return { ...state, selected: action.payload.data};
         case types.GET_ALL_GROUPS:
             return { ...state, all: action.payload.data };
