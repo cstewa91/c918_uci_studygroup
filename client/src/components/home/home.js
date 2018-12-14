@@ -35,7 +35,6 @@ class Home extends Component {
       this.props.getUserInfo();
    }
    switchGroups = () => {
-      console.log(this.props.joinedGroups)
       if (this.props.joinedGroups) {
          this.props.showCreatedGroups()
       } else {
