@@ -83,16 +83,16 @@ class Profile extends Component {
                         </div>
                         <form className='profile-form row justify-content-center' onSubmit={handleSubmit(this.handleAddItem)}>
                             <div className='form-username col-8'>
-                                    <Field name='username' label='Username' component={Input}/>
+                                    <Field name='username' label='Username' maxLength='15' component={Input}/>
                             </div>
                             <div className='form-first col-8'>
-                                    <Field name='firstname' label="First Name" component={Input}/>
+                                    <Field name='firstname' label="First Name" maxLength='15' component={Input}/>
                             </div>    
                             <div className='form-last col-8'>               
-                                    <Field name='lastname' label="Last Name" component={Input}/>
+                                    <Field name='lastname' label="Last Name" maxLength='15' component={Input}/>
                             </div>
                             <div className='form-email col-8'>
-                                    <Field name='email' label="E-mail" component={Input}/>
+                                    <Field name='email' label="E-mail" maxLength='25'component={Input}/>
                             </div>
                             <div className='profile-confirm col-6'>
                                     <button className='btn profile-confirm-button'>CONFIRM</button>
