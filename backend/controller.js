@@ -319,9 +319,17 @@ module.exports = function(app) {
   // create group 
   app.post('/api/groups', (req, res) => {
     const body = req.body;
-    const createQuery = `INSERT INTO groups (user_id, name, location, subject, course, start_time, end_time, max_group_size, description)
-                          VALUES(${body.user_id}, ${body['`name`']}, ${body['`location`']}, ${body['`subject`']}, ${body['`course`'] || null}, 
-                          ${body['`start_time`']}, ${body['`end_time`']}, ${body['`max_group_size`']}, ${body['`description`'] || null})`;
+    const createQuery = `INSERT INTO groups (user_id, name, location, subject, course, date, start_time, end_time, max_group_size, description)
+                          VALUES(${body.user_id}, 
+                            ${body['`name`']}, 
+                            ${body['`location`']}, 
+                            ${body['`subject`']}, 
+                            ${body['`course`'] || null}, 
+                            ${body['`date`']}, 
+                            ${body['`start_time`']}, 
+                            ${body['`end_time`']}, 
+                            ${body['`max_group_size`']}, 
+                            ${body['`description`'] || null})`;
 
     sendQuery('post', createQuery, res);
   });
@@ -381,13 +389,13 @@ module.exports = function(app) {
   app.put('/api/users', (req, res) => {
     const body = req.body;
     const query = `UPDATE users SET google_id = ${body['`google_id`']},
-                                    username = ${body['`username`']},
-                                    firstname = ${body['`firstname`']},
-                                    lastname = ${body['`lastname`']},
-                                    email = ${body['`email`']},
-                                    password = ${body['`password`']}
+                    username = ${body['`username`']},
+                    firstname = ${body['`firstname`']},
+                    lastname = ${body['`lastname`']},
+                    email = ${body['`email`']},
+                    password = ${body['`password`']}
                     WHERE id = ${body.user_id}`;
-    console.log(query);
+
     sendQuery('put', query, res);
   });
 
@@ -426,14 +434,15 @@ module.exports = function(app) {
         } else {
           const body = req.body;
           const updateQuery = `UPDATE groups SET user_id = ${body.user_id}, 
-                                                  name = ${body['`name`']}, 
-                                                  location = ${body['`location`']}, 
-                                                  subject = ${body['`subject`']}, 
-                                                  course = ${body['`course`']}, 
-                                                  start_time = ${body['`start_time`']}, 
-                                                  end_time = ${body['`end_time`']},
-                                                  max_group_size = ${body['`max_group_size`']}, 
-                                                  description = ${body['`description`']}
+                                name = ${body['`name`']}, 
+                                location = ${body['`location`']}, 
+                                subject = ${body['`subject`']}, 
+                                course = ${body['`course`']}, 
+                                date = ${body['`date`']}, 
+                                start_time = ${body['`start_time`']}, 
+                                end_time = ${body['`end_time`']},
+                                max_group_size = ${body['`max_group_size`']}, 
+                                description = ${body['`description`']}
                                 WHERE id = ${group_id}`;
           
           sendQuery('put', updateQuery, res);
@@ -452,6 +461,7 @@ function encryptPassword(req, res, next) {
   const body = req.body;
 
   if (body['`password`']) body['`password`'] = `'${bcrypt.hashSync(body['`password`'], 10)}'`;
+
   next();
 }
 
@@ -564,14 +574,13 @@ function validateToken(req, res, next) {
   }
 } 
 
-// CURRENT
-// /group/details/group_id_name now get group details by group id or name
+// CHANGE LOG
+// split group start_time and end_time from date, start_time, and end_time
 
 // TODO:
-// error handling middleware
 // google auth with passport
-// mail notifications? group delete, group edit, group start_time approaching
-// add google_id to sessions table?
+// error handling middleware
+// cleanup code
 
 // CLEANUP:
 // remove cors  
