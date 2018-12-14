@@ -34,24 +34,24 @@ class CreateNewAccount extends Component {
             </div>
             <h1 className='create-account-header'>CREATE ACCOUNT</h1>
             <form className="account-details-container" onSubmit={handleSubmit(this.handleCreateAccount)}>
-               <div className="create-account-input-padding">
+               <div className="create-account-input-padding col-8 col-lg-5">
                   <Field name="firstname" label="First Name" maxLength='15' component={Input} inputClassName="create-account-user-input" errorClassName="create-account-error" />
                </div>
-               <div className="create-account-input-padding">
+               <div className="create-account-input-padding col-8 col-lg-5">
                   <Field name="lastname" label="Last Name" maxLength='15' component={Input} inputClassName="create-account-user-input" errorClassName="create-account-error" />
                </div>
-               <div className="create-account-input-padding">
+               <div className="create-account-input-padding col-8 col-lg-5">
                   <Field name="username" label="Username" maxLength='15' component={Input} inputClassName="create-account-user-input" errorClassName="create-account-error" />
                </div>
                <p className="create-account-error">{invalidUsername}</p>
-               <div className="create-account-input-padding">
+               <div className="create-account-input-padding col-8 col-lg-5">
                   <Field name="email" label="E-mail" maxLength='25' component={Input} inputClassName="create-account-user-input" errorClassName="create-account-error" />
                </div>
                <p className="create-account-error">{invalidEmail}</p>
-               <div className="create-account-input-padding">
+               <div className="create-account-input-padding col-8 col-lg-5">
                   <Field name="password" label="Password" maxLength='25' component={Input} type="password" inputClassName="create-account-user-input" errorClassName="create-account-error" />
                </div>
-               <div className="create-account-input-padding">
+               <div className="create-account-input-padding col-8 col-lg-5">
                   <Field name="confirmPassword" label="Confirm Password" maxLength='25' component={Input} type="password" inputClassName="create-account-user-input" errorClassName="create-account-error" />
                </div>
                <button className='btn create-account-button'>Create Account</button>
