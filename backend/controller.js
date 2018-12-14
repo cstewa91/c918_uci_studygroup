@@ -171,7 +171,7 @@ module.exports = function(app) {
                 return res.send('Database query error');
               }
 
-              res.cookie('token', token, { maxAge: 60 * 60 * 1000 * 12, httpOnly: true })
+              res.cookie('token', token, { maxAge: 60 * 60 * 1000 * 1, httpOnly: true })
               return res.send({ success: true });
             })
           } else {
