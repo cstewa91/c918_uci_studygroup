@@ -34,8 +34,10 @@ class Login extends Component {
                <div className="login-input-padding ">
                   <Field name="password" label="Password" component={Input} type="password" inputClassName="login-user-input" labelClassName="label-login-color" loginActive="login-active"  errorClassName="login-error" maxLength='25' />
                </div>
-               <button className="btn sign-in-button">Sign In</button>
+               <div>
+               <button className="btn sign-in-button col-3">Sign In</button>
                <p>{signInError}</p>
+               </div>
             </form>
             <div className="create-account-container">
                <Link to='/create-account' className="create-account" >Create Account</Link>
