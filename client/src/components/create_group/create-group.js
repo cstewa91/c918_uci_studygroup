@@ -62,15 +62,15 @@ class CreateGroup extends Component {
                <form className='create-form container' onSubmit={handleSubmit(this.handleCreateGroup)}>
                   <div className="row justify-content-center">
                         <div className='create-groupName col-11'>  
-                           <Field name="name" label="Group Name" component={Input} />
+                           <Field name="name" label="Group Name" maxLength='20' component={Input} />
                         </div>
                   </div>
                   <div className="row justify-content-around">
                         <div className='create-subject col-5'>
-                           <Field name="subject" label="Subject" component={Input} />
+                           <Field name="subject" label="Subject" maxLength='15' component={Input} />
                         </div>
                         <div className='create-course col-5'>
-                           <Field name="course" label="Course Number" component={Input} />
+                           <Field name="course" label="Course Number" maxLength='5' component={Input} />
                         </div>
                   </div>                 
                   <div className="row justify-content-around">
@@ -86,17 +86,17 @@ class CreateGroup extends Component {
                            <Field name='date' type='date'  label="Date" component={Input} />
                         </div>
                         <div className='create-groupSize col-5'>
-                           <Field name="max_group_size" label="Group Size" component={Input} />
+                           <Field name="max_group_size" label="Group Size" maxLength='3' component={Input} />
                         </div>
                   </div>
                   <div className="row justify-content-center">
                         <div className='create-location col-11'>
-                           <Field name="location" label="Location" component={Input} />
+                           <Field name="location" label="Location" maxLength='15' component={Input} />
                         </div>
                   </div>
                   <div className="row justify-content-center">
                         <div className='create-description col-11'>
-                           <Field name="description" label="Description" component={Input} textArea='true'/>
+                           <Field name="description" label="Description" maxLength='100' component={Input} textArea='true'/>
                         </div>
                   </div>
                   <div className="row create-button justify-content-center">

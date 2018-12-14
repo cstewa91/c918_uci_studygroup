@@ -75,10 +75,10 @@ class EditGroup extends Component{
                         </div>
                         <div className="row justify-content-around">
                             <div className='edit-subject col-5'>
-                                <Field name="subject" label="Subject" component={Input} />
+                                <Field name="subject" label="Subject" maxLength='20' component={Input} />
                             </div>
                             <div className='edit-course col-5'>
-                                <Field name="course" label="Course Number" component={Input} />
+                                <Field name="course" label="Course Number" maxLength='4' component={Input} />
                             </div>
                         </div>
                         
@@ -95,18 +95,18 @@ class EditGroup extends Component{
                                 <Field name='date' value='2018-12-12' type='date'  label="Date" component={Input} />
                             </div>
                             <div className='edit-groupSize col-5'>
-                                <Field name="max_group_size" label="Group Size" component={Input} />
+                                <Field name="max_group_size" label="Group Size" maxLength='3' component={Input} />
                             </div>
                         </div>
                         <div className="row justify-content-center">
                             <div className='edit-location col-11'>
-                                <Field name="location" label="Location" component={Input} />
+                                <Field name="location" label="Location" maxLength='15' component={Input} />
                             </div>
                         </div>
 
                         <div className="row justify-content-center">
                             <div className='edit-description col-11'>
-                                <Field name="description" label="Description" component={Input} textArea='true'/>
+                                <Field name="description" label="Description" maxLength='100' component={Input} textArea='true'/>
                                 
                             </div>
                         </div>
@@ -126,7 +126,7 @@ class EditGroup extends Component{
 function validate(values){
     const {name, subject, course, start_time, end_time, date, max_group_size, location, description} = values;
     const error = {}
-
+    const validNumber = /^[0-9]*$/
     if(!name){
         error.name = 'Enter a group name'
     }
@@ -145,7 +145,7 @@ function validate(values){
     if(!date){
         error.date = 'Enter your study subject'
     }
-    if(!max_group_size){
+    if (!max_group_size || !validNumber.test(max_group_size)) {
         error.max_group_size = 'Enter Group Size (number)'
     }
     if(!location){
