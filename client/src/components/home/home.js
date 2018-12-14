@@ -46,6 +46,7 @@ class Home extends Component {
 
    renderCreatedGroups = () => {
       const listCreatedGroups = this.props.created.map(item => {
+         console.log("hello")
          const startDateTime = new Date(item.start_time);
          const endDateTime = new Date(item.end_time);
          const startingTime = startDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -79,6 +80,7 @@ class Home extends Component {
    }
    renderJoinedGroups = () => {
       const listJoinedGroups = this.props.joined.map(item => {
+         console.log(item)
          const startDateTime = new Date(item.start_time);
          const endDateTime = new Date(item.end_time);
          const startingTime = startDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });

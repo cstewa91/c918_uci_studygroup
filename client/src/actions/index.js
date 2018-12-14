@@ -102,6 +102,7 @@ export function loginApp(item) {
 
 export function getAllGroups() {
    const resp = axios.get(API_GROUPS);
+   console.log(resp)
    return {
       type: types.GET_ALL_GROUPS,
       payload: resp

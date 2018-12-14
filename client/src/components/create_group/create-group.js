@@ -30,10 +30,6 @@ class CreateGroup extends Component {
    }
 
    handleCreateGroup = async (values) => {
-      const startDateAndTime = `${values.date}T${values.start_time}`
-      const endDateAndTime = `${values.date}T${values.end_time}`
-      values.start_time = startDateAndTime
-      values.end_time = endDateAndTime
       await this.props.createNewGroup(values);
       await this.pushToHome()
    }
