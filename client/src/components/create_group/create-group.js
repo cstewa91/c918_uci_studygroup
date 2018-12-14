@@ -17,7 +17,6 @@ class CreateGroup extends Component {
 
    toggleHamburger = () => {
       this.setState((prevState) => {
-         console.log(prevState)
          return {
             hamburgerOpen: !prevState.hamburgerOpen
          }

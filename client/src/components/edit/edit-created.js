@@ -49,8 +49,6 @@ class EditGroup extends Component{
 
 
     render(){
-        console.log('date', this.props.date)
-        console.log(this.props.single_group)
         let backdrop;
 
         if(this.state.hamburgerOpen){

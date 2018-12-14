@@ -20,7 +20,6 @@ class Profile extends Component {
 
     toggleHamburger = () =>{
         this.setState((prevState) =>{
-            console.log(prevState)
             return {
                 hamburgerOpen: !prevState.hamburgerOpen
             }
@@ -147,7 +146,6 @@ class Profile extends Component {
 }
 
 function validate(values){
-    console.log('formvalues', values)
     const {username, firstname, lastname, email} = values;
     const error = {}
 

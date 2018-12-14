@@ -18,7 +18,6 @@ class Home extends Component {
    }
    toggleHamburger = () => {
       this.setState((prevState) => {
-         console.log(prevState)
          return {
             hamburgerOpen: !prevState.hamburgerOpen
          }
@@ -44,6 +43,7 @@ class Home extends Component {
       this.props.getJoinedGroups();
       this.props.getUserInfo();
    }
+
    renderCreatedGroups = () => {
       const listCreatedGroups = this.props.created.map(item => {
          const startDateTime = new Date(item.start_time);
@@ -89,47 +89,33 @@ class Home extends Component {
          const endingTime = endDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
          const startDate = startDateTime.toLocaleDateString([], { month: '2-digit', day: '2-digit' });
          if (this.props.userId !== item.user_id) {
+            return (
             <Fragment key={item.id}>
-               <div className="home-groups-body-cell home-groups-body-cell-left">
+               <div className="home-results-body-row-data">
                   <Link to={`/group-info/${item.id}`}>
-                     <div>
-                        {item.subject}{item.course}
+                     <div className="home-groups-body-cell home-groups-body-cell-left">
+                           {item.subject}{item.course}
+                     </div>
+                     <div className="home-groups-body-cell home-groups-body-cell-center">
+                           {item.name}
+                     </div>
+                     <div className="home-groups-body-cell home-groups-body-cell-center">
+                           {startDate}
+                     </div>
+                     <div className="home-groups-body-cell home-groups-body-cell-center">
+                           {startingTime}
+                     </div>
+                     <div className="home-groups-body-cell home-groups-body-cell-right">
+                           {<sup>{item.current_group_size}</sup>}&frasl;{<sub>{item.max_group_size}</sub>}
                      </div>
                   </Link>
                </div>
-               <div className="home-groups-body-cell home-groups-body-cell-center">
-                  <Link to={`/group-info/${item.id}`}>
-                     <div>
-                        {item.name}
-                     </div>
-                  </Link>
-               </div>
-               <div className="home-groups-body-cell home-groups-body-cell-center">
-                  <Link to={`/group-info/${item.id}`}>
-                     <div>
-                        {startDate}
-                     </div>
-                  </Link>
-               </div>
-               <div className="home-groups-body-cell home-groups-body-cell-center">
-                  <Link to={`/group-info/${item.id}`}>
-                     <div>
-                        {startingTime}
-                     </div>
-                  </Link>
-               </div>
-               <div className="home-groups-body-cell home-groups-body-cell-right">
-                  <Link to={`/group-info/${item.id}`}>
-                     <div>
-                        {<sup>{item.current_group_size}</sup>}&frasl;{<sub>{item.max_group_size}</sub>}
-                     </div>
-                  </Link>
-               </div>
-               <div className="home-groups-body-row ">
-                  <div className="home-groups-body-cell">
+               <div className="home-results-body-row search-results-body-row-spacer">
+                  <div className="home-results-body-cell">
                   </div>
                </div>
             </Fragment >
+            )
          }
       })
       return listJoinedGroups;
