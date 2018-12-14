@@ -197,3 +197,15 @@ export function deleteGroup(groupId){
          payload: resp
       }
 }
+
+export function showJoinedGroups() {
+   return {
+      type: types.SHOW_JOINED_GROUPS
+   }
+}
+
+export function showCreatedGroups() {
+   return {
+      type: types.SHOW_CREATED_GROUPS
+   }
+}

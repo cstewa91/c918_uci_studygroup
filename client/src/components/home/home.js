@@ -7,6 +7,8 @@ import Hamburger from '../general/hamburger';
 import { getCreatedGroups } from '../../actions';
 import { getJoinedGroups } from '../../actions';
 import { getUserInfo } from '../../actions';
+import { showJoinedGroups } from '../../actions';
+import { showCreatedGroups } from '../../actions';
 import { connect } from 'react-redux';
 
 
@@ -14,7 +16,6 @@ import { connect } from 'react-redux';
 class Home extends Component {
    state = {
       hamburgerOpen: false,
-      joinedGroups: true,
    }
    toggleHamburger = () => {
       this.setState((prevState) => {
@@ -28,36 +29,32 @@ class Home extends Component {
          hamburgerOpen: false,
       })
    }
-   showJoinedGroups = () => {
-      this.setState({
-         joinedGroups: true,
-      })
-   }
-   showCreatedGroups = () => {
-      this.setState({
-         joinedGroups: false,
-      })
-   }
    componentDidMount() {
       this.props.getCreatedGroups();
       this.props.getJoinedGroups();
       this.props.getUserInfo();
    }
-
+   switchGroups = () => {
+      console.log(this.props.joinedGroups)
+      if (this.props.joinedGroups) {
+         this.props.showCreatedGroups()
+      } else {
+         this.props.showJoinedGroups()
+      }
+   }
    renderCreatedGroups = () => {
       const listCreatedGroups = this.props.created.map(item => {
-         console.log("hello")
-         const startDateTime = new Date(item.start_time);
-         const endDateTime = new Date(item.end_time);
-         const startingTime = startDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-         const endingTime = endDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-         const startDate = startDateTime.toLocaleDateString([], { month: '2-digit', day: '2-digit' });
+         const newDate = new Date(item.date);
+         const sliceDate = item.date.slice(0, 11) + item.start_time
+         const startTime = new Date(sliceDate);
+         const startingTime = startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+         const startDate = newDate.toLocaleDateString([], { month: '2-digit', day: '2-digit' });
          return (
             <Fragment key={item.id}>
                <div className="home-single-group">
                   <Link to={`/group-info/${item.id}`}>
                      <div className="home-group-details home-group-subject">
-                        {item.subject}{item.course}
+                        {item.subject} {item.course}
                      </div>
                      <div className="home-group-details home-group-name">
                         {item.name}
@@ -80,30 +77,29 @@ class Home extends Component {
    }
    renderJoinedGroups = () => {
       const listJoinedGroups = this.props.joined.map(item => {
-         console.log(item)
-         const startDateTime = new Date(item.start_time);
-         const endDateTime = new Date(item.end_time);
-         const startingTime = startDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-         const endingTime = endDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-         const startDate = startDateTime.toLocaleDateString([], { month: '2-digit', day: '2-digit' });
+         const newDate = new Date(item.date);
+         const sliceDate = item.date.slice(0, 11) + item.start_time
+         const startTime = new Date(sliceDate);
+         const startingTime = startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+         const startDate = newDate.toLocaleDateString([], { month: '2-digit', day: '2-digit' });
          if (this.props.userId !== item.user_id) {
             return (
                <Fragment key={item.id}>
                   <div className="home-single-group">
                      <Link to={`/group-info/${item.id}`}>
-                        <div className="home-group-details">
-                           {item.subject}{item.course}
+                        <div className="home-group-details home-group-subject">
+                           {item.subject} {item.course}
                         </div>
-                        <div className="home-group-details">
+                        <div className="home-group-details home-group-name">
                            {item.name}
                         </div>
-                        <div className="home-group-details">
+                        <div className="home-group-details home-group-date">
                            {startDate}
                         </div>
-                        <div className="home-group-details">
+                        <div className="home-group-details home-group-time">
                            {startingTime}
                         </div>
-                        <div className="home-group-details">
+                        <div className="home-group-details home-group-size">
                            {<sup>{item.current_group_size}</sup>}&frasl;{<sub>{item.max_group_size}</sub>}
                         </div>
                      </Link>
@@ -119,7 +115,7 @@ class Home extends Component {
       if (this.state.hamburgerOpen) {
          backdrop = <Backdrop click={this.backdropHandler} />
       }
-      if (this.state.joinedGroups) {
+      if (this.props.joinedGroups) {
          return (
             <div>
                <Header hamburgerClick={this.toggleHamburger} />
@@ -129,7 +125,7 @@ class Home extends Component {
                <div className="home-container">
                   <div>
                      <div className="home-active-tab">Joined</div>
-                     <div className="home-not-active-tab" onClick={this.showCreatedGroups}>Created</div>
+                     <div className="home-not-active-tab" onClick={this.switchGroups}>Created</div>
                   </div>
                   <div className="home-header-container">
                      <div className="home-groups-header">
@@ -157,7 +153,7 @@ class Home extends Component {
             {backdrop}
             <div className="home-container">
                <div>
-                  <div className="home-not-active-tab" onClick={this.showJoinedGroups}>Joined</div>
+                  <div className="home-not-active-tab" onClick={this.switchGroups}>Joined</div>
                   <div className="home-active-tab">Created</div>
                </div>
                <div className="home-header-container">
@@ -182,10 +178,12 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
+
    return {
       created: state.home.created,
       joined: state.home.joined,
-      userId: state.profile.user.id
+      userId: state.profile.user.id,
+      joinedGroups: state.home.joinedGroups
    }
 }
 
@@ -193,4 +191,6 @@ export default connect(mapStateToProps, {
    getJoinedGroups: getJoinedGroups,
    getCreatedGroups: getCreatedGroups,
    getUserInfo: getUserInfo,
+   showJoinedGroups: showJoinedGroups,
+   showCreatedGroups: showCreatedGroups
 })(Home)

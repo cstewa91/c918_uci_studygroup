@@ -21,4 +21,6 @@ export default {
    FILTER_RESULTS: 'filter_results',
    LEAVE_GROUP: 'leave_group',
    DELETE_GROUP: 'delete_group',
+   SHOW_JOINED_GROUPS: 'show_joined_groups',
+   SHOW_CREATED_GROUPS: 'show_created_groups'
 }
