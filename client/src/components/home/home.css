@@ -25,6 +25,10 @@
    font-size: 2em;
 }
 
+.home-container {
+   height: 91.5vh;
+}
+
 .home-not-active-tab {
    background: linear-gradient(178.14deg, rgba(255, 255, 255, 0) 45.77%, rgba(255, 255, 255, 0.34) 103.91%), #6FB8ED;
    color: #1778BE;
@@ -35,100 +39,62 @@
    font-size: 2em;
 }
 
-.home-container {
-   height: 91.5vh;
+.home-groups-header {
+   display: flex;
+   justify-content: space-around;
+   
+}
+
+.home-header-container {
+   height: 4%;
+}
+
+.home-groups {
+   display: flex;
+   justify-content: space-around;
 }
 
 .home-groups-container {
-   height: 78%;
-}
-
-
-#home-results {
-   width: 96%;
-   margin-left: 2%;
-   margin-right: 2%;
-   display: table;
-   font-size: .95em;
-}
-
-#home-groups-header {
-   /* display: table-header-group; */
-   display: flex;
-   justify-content: space-around;
-}
-
-.home-groups-head-cell {
-   display: table-cell;
-   text-align: justify;
-   font-family: "Gochi Hand";
-   padding-left: .5em;
-   padding-right: .5em;
+   height: 74%;
 }
 
 
 
-.home-groups-body-row {
-   display: table-row;
+.home-group-details {
+   display: inline-block;
+   text-align: center
 }
 
-
-
-
-.home-groups-body-cell {
-   /* display: table-cell; */
-   padding-top: .25em;
-   padding-bottom: .25em;
+.home-group-subject {
+   width: 25%;
+   overflow: hidden;
+   text-overflow: ellipsis;
 }
 
-.home-groups-body-cell a {
-   color: black;
-   text-decoration: none;
+.home-group-name {
+   width: 22%;
+   overflow: hidden;
+   text-overflow: ellipsis;
 }
 
-/* .home-groups-body-cell-left {
-   border-top: 1px solid #1778BE;
-   border-left: 1px solid #1778BE;
-   border-bottom: 1px solid #1778BE;
-   border-radius: 10px 0px 0px 10px; */
-   /* padding-left: 8px; */
-/* } */
-
-/* .home-groups-body-cell:hover {
-   background-color: #1778BE;
-   color: #FFFFFF;
-} */
-
-/* .home-groups-body-cell-center {
-   border-top: 1px solid #1778BE;
-   border-bottom: 1px solid #1778BE; */
-   /* padding-left: 8px; */
-/* } */
-
-/* .home-groups-body-cell-right {
-   border-top: 1px solid #1778BE;
-   border-right: 1px solid #1778BE;
-   border-bottom: 1px solid #1778BE;
-   border-radius: 0px 10px 10px 0px; */
-   /* padding-left: 17px; */
-/* } */
-
-.home-results-body-row-data {
-   /* display: table-row; */
-   cursor: pointer;
-   border: 1px solid red;
-   display: flex;
-   justify-content: space-around;
+.home-group-date {
+   width: 16%;
+   overflow: hidden;
+   text-overflow: ellipsis;
 }
 
-.home-results-body-row-data:hover {
-   background-color: #1778BE;
-
+.home-group-time {
+   width: 21%;
+   overflow: hidden;
+   text-overflow: ellipsis;
 }
 
-.home-results-body-row-data:hover a {
-   color: white;
+.home-group-size {
+   width: 15%;
+   overflow: hidden;
+   text-overflow: ellipsis;
 }
+
 
 
 

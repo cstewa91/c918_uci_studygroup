@@ -53,29 +53,25 @@ class Home extends Component {
          const startDate = startDateTime.toLocaleDateString([], { month: '2-digit', day: '2-digit' });
          return (
             <Fragment key={item.id}>
-               <div className="home-results-body-row-data">
-                  <Link to={`/group-info/${item.id}`}>
-                     <div className="home-groups-body-cell home-groups-body-cell-left">
+               <div className="home-single-group">
+                     <Link to={`/group-info/${item.id}`}>
+                        <div className="home-group-details home-group-subject">
                            {item.subject}{item.course}
-                     </div>
-                     <div className="home-groups-body-cell home-groups-body-cell-center">
+                        </div>
+                        <div className="home-group-details home-group-name">
                            {item.name}
-                     </div>
-                     <div className="home-groups-body-cell home-groups-body-cell-center">
+                        </div>
+                        <div className="home-group-details home-group-date">
                            {startDate}
-                     </div>
-                     <div className="home-groups-body-cell home-groups-body-cell-center">
+                        </div>
+                        <div className="home-group-details home-group-time">
                            {startingTime}
-                     </div>
-                     <div className="home-groups-body-cell home-groups-body-cell-right">
+                        </div>
+                        <div className="home-group-details home-group-size">
                            {<sup>{item.current_group_size}</sup>}&frasl;{<sub>{item.max_group_size}</sub>}
-                     </div>
-                  </Link>
-               </div>
-               <div className="home-results-body-row search-results-body-row-spacer">
-                  <div className="home-results-body-cell">
+                        </div>
+                     </Link>
                   </div>
-               </div>
             </Fragment >
          )
       })
@@ -90,31 +86,27 @@ class Home extends Component {
          const startDate = startDateTime.toLocaleDateString([], { month: '2-digit', day: '2-digit' });
          if (this.props.userId !== item.user_id) {
             return (
-            <Fragment key={item.id}>
-               <div className="home-results-body-row-data">
-                  <Link to={`/group-info/${item.id}`}>
-                     <div className="home-groups-body-cell home-groups-body-cell-left">
+               <Fragment key={item.id}>
+                  <div className="home-single-group">
+                     <Link to={`/group-info/${item.id}`}>
+                        <div className="home-group-details">
                            {item.subject}{item.course}
-                     </div>
-                     <div className="home-groups-body-cell home-groups-body-cell-center">
+                        </div>
+                        <div className="home-group-details">
                            {item.name}
-                     </div>
-                     <div className="home-groups-body-cell home-groups-body-cell-center">
+                        </div>
+                        <div className="home-group-details">
                            {startDate}
-                     </div>
-                     <div className="home-groups-body-cell home-groups-body-cell-center">
+                        </div>
+                        <div className="home-group-details">
                            {startingTime}
-                     </div>
-                     <div className="home-groups-body-cell home-groups-body-cell-right">
+                        </div>
+                        <div className="home-group-details">
                            {<sup>{item.current_group_size}</sup>}&frasl;{<sub>{item.max_group_size}</sub>}
-                     </div>
-                  </Link>
-               </div>
-               <div className="home-results-body-row search-results-body-row-spacer">
-                  <div className="home-results-body-cell">
+                        </div>
+                     </Link>
                   </div>
-               </div>
-            </Fragment >
+               </Fragment >
             )
          }
       })
@@ -138,23 +130,15 @@ class Home extends Component {
                      <div className="home-not-active-tab" onClick={this.showCreatedGroups}>Created</div>
                   </div>
                   <div className="home-groups-container">
-                     <div id="home-groups-header">
-                        <div className="home-groups-head-cell">
-                           <u>SUBJECT</u>
-                        </div>
-                        <div className="home-groups-head-cell">
-                           <u>NAME</u>
-                        </div>
-                        <div className="home-groups-head-cell">
-                           <u>DATE</u>
-                        </div>
-                        <div className="home-groups-head-cell">
-                           <u>TIME</u>
-                        </div>
-                        <div className="home-groups-head-cell">
-                           <u>SIZE</u>
-                        </div>
+                     <div className="home-groups-header">
+                        <div>SUBJECT</div>
+                        <div>NAME</div>
+                        <div>DATE</div>
+                        <div>TIME</div>
+                        <div>SIZE</div>
                      </div>
+                  </div>
+                  <div className="home-groups-container">
                      {this.renderJoinedGroups()}
                   </div>
                   <div className="home-add-button-container">
@@ -174,31 +158,23 @@ class Home extends Component {
                   <div className="home-not-active-tab" onClick={this.showJoinedGroups}>Joined</div>
                   <div className="home-active-tab">Created</div>
                </div>
-               <div className="home-groups-container">
-                  <div id="home-groups-header">
-                     <div className="search-results-head-cell">
-                        <u>SUBJECT</u>
-                     </div>
-                     <div className="home-groups-head-cell">
-                        <u>NAME</u>
-                     </div>
-                     <div className="home-groups-head-cell">
-                        <u>DATE</u>
-                     </div>
-                     <div className="home-groups-head-cell">
-                        <u>TIME</u>
-                     </div>
-                     <div className="home-groups-head-cell">
-                        <u>SIZE</u>
-                     </div>
+               <div className="home-header-container">
+                  <div className="home-groups-header">
+                     <div>SUBJECT</div>
+                     <div>NAME</div>
+                     <div>DATE</div>
+                     <div>TIME</div>
+                     <div>SIZE</div>
                   </div>
+               </div>
+               <div className="home-groups-container">
                   {this.renderCreatedGroups()}
                </div>
                <div className="home-add-button-container">
-                  <Link to="/create-group" ><i className="fas fa-plus fa-2x home-add-button"></i></Link>
+                  <Link to="/create-group"><i className="fas fa-plus fa-2x home-add-button"></i></Link>
                </div>
             </div>
-         </div>
+         </div >
       )
    }
 }
