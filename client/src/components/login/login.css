@@ -143,6 +143,8 @@
    .sign-in-button {
       font-size: 25px;
       padding: 5px 65px;
+      flex-direction: column;
+      align-items: center;
    }
 
    .worm-image {
@@ -195,6 +197,8 @@
    .sign-in-button {
       font-size: 25px;
       padding: 5px 65px;
+      flex-direction: column;
+      align-items: center;
    }
 
    .worm-image {
@@ -246,6 +250,8 @@
    .sign-in-button {
       font-size: 25px;
       padding: 5px 65px;
+      flex-direction: column;
+      align-items: center;
    }
 
    .worm-image {
@@ -308,6 +314,8 @@
       font-size: 1.5em;
       width: 30%;
       flex: 0 0 21%;
+      flex-direction: column;
+      align-items: center;
    }
 
    .worm-image {
@@ -338,7 +346,7 @@
    }
 
    .login-form-container {
-      padding-top: 90px;
+      padding-top: 10%;
    }
 
    .login-input-padding {
@@ -370,6 +378,8 @@
       font-size: 2.4em;
       width: 30%;
       flex: 0 0 21%;
+      flex-direction: column;
+      align-items: center;
    }
 
    .worm-image {
@@ -432,6 +442,8 @@
       font-size: 2.4em;
       width: 30%;
       flex: 0 0 21%;
+      flex-direction: column;
+      align-items: center;
    }
 
    .worm-image {
