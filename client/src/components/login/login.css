@@ -87,7 +87,6 @@
    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
    border-radius: 5px;
    padding: 5px 65px;
-   position: static;
    flex: 0 0 66.666667%;
 }
 
@@ -99,8 +98,8 @@
 }
 
 /****** MEDIA QUERIES *******/
+@media (max-width: 359.98px ) {
 
-@media (min-width: 0px) {
    .create-account {
       font-size: 17px;
    }
@@ -130,7 +129,7 @@
    }
 
    .login-padding {
-      padding-top: 39px;
+      padding-top: 15%;
    }
 
    .login-title {
@@ -144,6 +143,62 @@
    .sign-in-button {
       font-size: 25px;
       padding: 5px 65px;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .worm-image {
+      width: 85px;
+   }
+}
+
+
+@media (min-width: 360px) {
+   .create-account {
+      font-size: 17px;
+   }
+
+   .create-account-container {
+      padding-top: 30px;
+   }
+
+   .create-button {
+      font-size: 17px;
+   }
+
+   label.login-active {
+      transform: translateY(-25px);
+   }
+
+   .login-error {
+      margin: 0px 0px 10px 0px;
+   }
+
+   .login-form-container {
+      padding-top: 42px;
+   }
+
+   .login-input-padding {
+      padding: 10px 0px;
+   }
+
+   .login-padding {
+      padding-top: 25%;
+   }
+
+   .login-title {
+      font-size: 1.5rem;
+   }
+
+   .login-user-input {
+      margin-bottom: 15px;
+   }
+
+   .sign-in-button {
+      font-size: 25px;
+      padding: 5px 65px;
+      flex-direction: column;
+      align-items: center;
    }
 
    .worm-image {
@@ -195,6 +250,8 @@
    .sign-in-button {
       font-size: 25px;
       padding: 5px 65px;
+      flex-direction: column;
+      align-items: center;
    }
 
    .worm-image {
@@ -203,8 +260,9 @@
 }
 
 @media (min-width: 768px) {
+
    .create-account {
-      font-size: 17px;
+      font-size: 1.5em;
    }
 
    .create-account-container {
@@ -224,7 +282,7 @@
    }
 
    .login-form-container {
-      padding-top: 90px;
+      padding-top: 10%;
    }
 
    .login-input-padding {
@@ -232,23 +290,32 @@
    }
 
    .login-padding {
-      padding-top: 80px;
+      padding-top: 20%;
       padding-bottom: 46px;
    }
 
    .login-title {
-      font-size: 2.5rem;
+      font-size: 3rem;
    }
 
    .login-user-input {
       margin-bottom: 15px;
-      width: 25%;
+      width: 35%;
+      height: 40px;
+      font-size: 1.5em;
+   }
+
+   .login-form-container label.login-active {
+      font-size: 1.2em;
+      transform: translateY(-30px);
    }
 
    .sign-in-button {
-      font-size: 25px;
-      width: 25%;
+      font-size: 1.5em;
+      width: 30%;
       flex: 0 0 21%;
+      flex-direction: column;
+      align-items: center;
    }
 
    .worm-image {
@@ -258,7 +325,7 @@
 
 @media (min-width: 992px) {
    .create-account {
-      font-size: 17px;
+      font-size: 2em;
    }
 
    .create-account-container {
@@ -279,7 +346,7 @@
    }
 
    .login-form-container {
-      padding-top: 90px;
+      padding-top: 10%;
    }
 
    .login-input-padding {
@@ -287,33 +354,42 @@
    }
 
    .login-padding {
-      padding-top: 80px;
+      padding-top: 20%;
       padding-bottom: 46px;
    }
 
    .login-title {
-      font-size: 2.5rem;
+      font-size: 4rem;
    }
 
    .login-user-input {
       margin-bottom: 15px;
-      width: 25%;
+      width: 35%;
+      height: 50px;
+      font-size: 2em;
+   }
+
+   .login-form-container label.login-active {
+      font-size: 1.8em;
+      transform: translateY(-45px);
    }
 
    .sign-in-button {
-      font-size: 25px;
-      width: 25%;
-      flex: 0 0 15%;
+      font-size: 2.4em;
+      width: 30%;
+      flex: 0 0 21%;
+      flex-direction: column;
+      align-items: center;
    }
 
    .worm-image {
-      width: 110px;
+      width: 150px;
    }
 }
 
 @media (min-width: 1200px) {
    .create-account {
-      font-size: 17px;
+      font-size: 2em;
    }
 
    .create-account-container {
@@ -352,16 +428,252 @@
 
    .login-user-input {
       margin-bottom: 15px;
-      width: 25%;
+      width: 35%;
+      height: 50px;
+      font-size: 2em;
+   }
+
+   .login-form-container label.login-active {
+      font-size: 1.8em;
+      transform: translateY(-45px);
    }
 
    .sign-in-button {
-      font-size: 25px;
-      width: 25%;
-      flex: 0 0 15%;
+      font-size: 2.4em;
+      width: 30%;
+      flex: 0 0 21%;
+      flex-direction: column;
+      align-items: center;
    }
 
    .worm-image {
       width: 110px;
    }
+}
+
+@media (min-width: 300px) and (max-width: 750px) and (orientation: landscape) {
+ 
+   .create-account-container {
+      padding-top: 10px;
+   }
+
+   .login-padding {
+      padding-top: 4%;
+   }
+
+   .login-error {
+      font-size: 0.75em;
+   }
+
+   .login-input-padding {
+      padding: 0;
+   }
+
+   .login-title {
+      font-size: 1.75rem;
+   }
+
+   .login-user-input {
+      margin-bottom: 15px;
+      width: 40%;
+      height: 25px;
+      font-size: 0.85em;
+   }
+
+   .login-form-container {
+      padding-top: 2%;
+   }
+
+   .login-form-container label.login-active {
+      font-size: 0.75em;
+      transform: translateY(-20px);
+   }
+
+   .sign-in-button {
+      font-size: 1em;
+      width: 30%;
+      flex: 0 0 21%;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .worm-image {
+      width: 10%;
+   }
+
+
+}
+
+@media (min-width: 751px) and (max-width: 1023.9px) and (orientation: landscape) {
+
+   .create-account-container {
+      padding-top: 10px;
+      font-size: 0.8em;
+   }
+
+   .login-padding {
+      padding-top: 3%;
+      padding-bottom: 0;
+   }
+
+   .login-error {
+      font-size: 0.75em;
+   }
+
+   .login-input-padding {
+      padding-top: 15px;
+      padding-bottom: 0;
+   }
+
+   .login-title {
+      font-size: 1.8rem;
+   }
+
+   .login-user-input {
+      margin-bottom: 15px;
+      width: 30%;
+      height: 25px;
+      font-size: 0.85em;
+   }
+
+   .login-form-container {
+      padding-top: 0;
+   }
+
+   .login-form-container label.login-active {
+      font-size: 0.75em;
+      transform: translateY(-20px);
+   }
+
+   .sign-in-button {
+      font-size: 1em;
+      width: 25%;
+      flex: 0 0 21%;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .worm-image {
+      width: 8%;
+   }
+
+}
+
+@media (min-width: 1024px) and (orientation: landscape) {
+   
+   .create-account {
+      font-size: 1em;
+   }
+
+   .create-account-container {
+      padding-top: 3%;
+      font-size: 1.75em;
+   }
+
+   .login-padding {
+      padding-top:6%;
+      padding-bottom: 0;
+   }
+
+   .login-error {
+      font-size: 0.75em;
+   }
+
+   .login-input-padding {
+      padding-top: 25px;
+      padding-bottom: 0;
+   }
+
+   .login-title {
+      font-size: 3rem;
+   }
+
+   .login-user-input {
+      margin-bottom: 15px;
+      width: 30%;
+      height: 35px;
+      font-size: 1.2em;
+   }
+
+   .login-form-container {
+      padding-top: 3%;
+   }
+
+   .login-form-container label.login-active {
+      font-size: 1.4em;
+      transform: translateY(-35px);
+   }
+
+   .sign-in-button {
+      margin-top: 3%;
+      font-size: 1.8em;
+      width: 25%;
+      flex: 0 0 21%;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .worm-image {
+      width: 10%;
+   }
+
+}
+
+@media (min-width: 1400px) and (orientation: landscape) {
+   
+   .create-account {
+      font-size: 1em;
+   }
+
+   .create-account-container {
+      padding-top: 3%;
+      font-size: 1.75em;
+   }
+
+   .login-padding {
+      padding-top: 8%;
+      padding-bottom: 0;
+   }
+
+   .login-error {
+      font-size: 0.75em;
+   }
+
+   .login-input-padding {
+      padding-top: 25px;
+      padding-bottom: 0;
+   }
+
+   .login-title {
+      font-size: 3rem;
+   }
+
+   .login-user-input {
+      margin-bottom: 15px;
+      width: 30%;
+      height: 35px;
+      font-size: 1.2em;
+   }
+
+   .login-form-container {
+      padding-top: 3%;
+   }
+
+   .login-form-container label.login-active {
+      font-size: 1.4em;
+      transform: translateY(-35px);
+   }
+
+   .sign-in-button {
+      font-size: 1.8em;
+      width: 25%;
+      flex: 0 0 21%;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .worm-image {
+      width: 10%;
+   }
+
 }
