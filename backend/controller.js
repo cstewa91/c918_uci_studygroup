@@ -21,10 +21,11 @@ module.exports = function(app) {
                     FROM groups AS g
                     LEFT JOIN group_members AS gm 
                     ON g.id = gm.group_id
-                    WHERE date >= DATE(NOW())
-                    AND HOUR(end_time) > HOUR(TIME_FORMAT(CURTIME(), '%h:%i:%s'))
+                    WHERE date > DATE(NOW())
+                    OR (date = DATE(NOW())
+                    AND HOUR(end_time) > HOUR(TIME_FORMAT(CURTIME(), '%h:%i:%s')))
                     GROUP BY g.id
-                    ORDER by date ASC`;
+                    ORDER by end_time ASC`;
 
     sendQuery('get', query, res);
   });
@@ -60,8 +61,9 @@ module.exports = function(app) {
                     ON g.id = gm.group_id
                     WHERE (subject = ${phrase}
                     OR name LIKE "${phrase.replace(/'/g, '%')}")
-                    AND date >= DATE(NOW())
-                    AND HOUR(end_time) > HOUR(TIME_FORMAT(CURTIME(), '%h:%i:%s'))
+                    AND date > DATE(NOW())
+                    OR (date = DATE(NOW())
+                    AND HOUR(end_time) > HOUR(TIME_FORMAT(CURTIME(), '%h:%i:%s')))
                     GROUP BY g.id
                     ORDER BY date ASC`;
 
@@ -79,8 +81,9 @@ module.exports = function(app) {
                     ON g.id = gm.group_id
                     LEFT JOIN group_members AS j
                     ON g.id = j.group_id
-                    WHERE date >= DATE(NOW())
-                    AND HOUR(end_time) > HOUR(TIME_FORMAT(CURTIME(), '%h:%i:%s'))
+                    WHERE date > DATE(NOW())
+                    OR (date = DATE(NOW())
+                    AND HOUR(end_time) > HOUR(TIME_FORMAT(CURTIME(), '%h:%i:%s')))
                     GROUP BY g.id
                     ORDER by date ASC`;
 
@@ -94,8 +97,9 @@ module.exports = function(app) {
                     LEFT JOIN group_members AS gm 
                     ON g.id = gm.group_id
                     WHERE g.user_id = ${req.body.user_id}
-                    AND date >= DATE(NOW())
-                    AND HOUR(end_time) > HOUR(TIME_FORMAT(CURTIME(), '%h:%i:%s'))
+                    AND date > DATE(NOW())
+                    OR (date = DATE(NOW())
+                    AND HOUR(end_time) > HOUR(TIME_FORMAT(CURTIME(), '%h:%i:%s')))
                     GROUP BY g.id
                     ORDER by date ASC`;
 
