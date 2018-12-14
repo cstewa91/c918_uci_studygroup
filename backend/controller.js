@@ -60,7 +60,7 @@ module.exports = function(app) {
                     ON g.id = gm.group_id
                     WHERE (subject = ${phrase}
                     OR name LIKE "${phrase.replace(/'/g, '%')}")
-                    WHERE date >= DATE(NOW())
+                    AND date >= DATE(NOW())
                     AND HOUR(end_time) > HOUR(TIME_FORMAT(CURTIME(), '%h:%i:%s'))
                     GROUP BY g.id
                     ORDER BY date ASC`;
