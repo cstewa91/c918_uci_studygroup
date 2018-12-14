@@ -7,30 +7,6 @@
     position: absolute;
     right: 1%;
     bottom: 1%;
-    /* text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
-    border-radius: 10px;
-    background: 
-    font-family: 'Gochi Hand';
-    font-size: 1.5em;
-    color: #FFFFFF;
-    border: 1px solid rgb(190, 23, 23);
-    box-sizing: border-box;
-    vertical-align: middle;
-    cursor: pointer;
-    display: inline-block;
-
-
-    .modal-map-button {
-        border-radius: 15px;
-        background: #F8F9FA;
-        color: #1778BE;
-        right: 0;
-        margin-left: 1em;
-        font-family: 'Roboto', sans-serif;
-        font-size: 0.75em;
-        border: 0;
-        padding: .5em;
-    } */
 }
 
 .group-details-header {
