@@ -29,12 +29,12 @@ class Login extends Component {
             </div>
             <form className="login-form-container" onSubmit={handleSubmit(this.handleLogin)}>
                <div className="login-input-padding ">
-                  <Field name="email" label="E-mail" component={Input} inputClassName="login-user-input" labelClassName="label-login-color" loginActive="login-active" errorClassName="login-error" maxLength='25'/>
+                  <Field name="email" label="E-mail" component={Input} inputClassName="login-user-input" labelClassName="label-login-color" loginActive="login-active" errorClassName="login-error" maxLength='40'/>
                </div>
                <div className="login-input-padding ">
-                  <Field name="password" label="Password" component={Input} type="password" inputClassName="login-user-input" labelClassName="label-login-color" loginActive="login-active"  errorClassName="login-error" maxLength='25' />
+                  <Field name="password" label="Password" component={Input} type="password" inputClassName="login-user-input" labelClassName="label-login-color" loginActive="login-active"  errorClassName="login-error" maxLength='30' />
                </div>
-               <div>
+               <div className="sign-in">
                <button className="btn sign-in-button col-3">Sign In</button>
                <p>{signInError}</p>
                </div>
