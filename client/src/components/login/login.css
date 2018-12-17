@@ -113,10 +113,11 @@
    }
 
    label.login-active {
-      transform: translateY(-25px);
+      transform: translateY(15px);
    }
 
    .login-error {
+      font-size: 0.8em;
       margin: 0px 0px 10px 0px;
    }
 
@@ -133,22 +134,23 @@
    }
 
    .login-title {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
    }
 
    .login-user-input {
-      margin-bottom: 15px;
+      font-size: 0.85em;
+      margin-bottom: 10px;
    }
 
    .sign-in-button {
-      font-size: 25px;
+      font-size: 1.2em;
       padding: 5px 65px;
       flex-direction: column;
       align-items: center;
    }
 
    .worm-image {
-      width: 85px;
+      width: 20%;
    }
 }
 
@@ -171,6 +173,7 @@
    }
 
    .login-error {
+      font-size: 0.8em;
       margin: 0px 0px 10px 0px;
    }
 
@@ -187,15 +190,21 @@
    }
 
    .login-title {
-      font-size: 1.5rem;
+      font-size: 2.2rem;
    }
 
    .login-user-input {
       margin-bottom: 15px;
+      width: 60%;
+      font-size: 1em;
+}
+
+   .sign-in {
+      padding-top: 5%;
    }
 
    .sign-in-button {
-      font-size: 25px;
+      font-size: 1.35em;
       padding: 5px 65px;
       flex-direction: column;
       align-items: center;
@@ -224,11 +233,12 @@
    }
 
    .login-error {
+      font-size: 1em;
       margin: 0px 0px 10px 0px;
    }
 
    .login-form-container {
-      padding-top: 90px;
+      padding-top: 5%;
    }
 
    .login-input-padding {
@@ -236,7 +246,7 @@
    }
 
    .login-padding {
-      padding-top: 90px;
+      padding-top: 25%;
    }
 
    .login-title {
@@ -245,17 +255,19 @@
 
    .login-user-input {
       margin-bottom: 15px;
+      width: 40%;
+      font-size: 1em;
    }
 
    .sign-in-button {
-      font-size: 25px;
+      font-size: 1.5em;
       padding: 5px 65px;
       flex-direction: column;
       align-items: center;
    }
 
    .worm-image {
-      width: 110px;
+      width: 15%;
    }
 }
 
@@ -278,6 +290,7 @@
    }
 
    .login-error {
+      font-size: 1.25em;
       margin: 0px 0px 10px 0px;
    }
 
@@ -285,10 +298,15 @@
       padding-top: 10%;
    }
 
+   .login-padding {
+      padding-top: 25%;
+   }
+
    .login-input-padding {
       padding: 16px 0px;
    }
 
+   .login-input-padding 
    .login-padding {
       padding-top: 20%;
       padding-bottom: 46px;
@@ -300,18 +318,22 @@
 
    .login-user-input {
       margin-bottom: 15px;
-      width: 35%;
+      width: 40%;
       height: 40px;
-      font-size: 1.5em;
+      font-size: 1.3em;
    }
 
    .login-form-container label.login-active {
-      font-size: 1.2em;
+      font-size: 1.4em;
       transform: translateY(-30px);
    }
 
+   .login-input-padding label {
+      font-size: 1.3em;
+   }
+
    .sign-in-button {
-      font-size: 1.5em;
+      font-size: 1.7em;
       width: 30%;
       flex: 0 0 21%;
       flex-direction: column;
@@ -319,7 +341,7 @@
    }
 
    .worm-image {
-      width: 110px;
+      width: 15%;
    }
 }
 
@@ -354,8 +376,8 @@
    }
 
    .login-padding {
-      padding-top: 20%;
-      padding-bottom: 46px;
+      padding-top: 25%;
+      /* padding-bottom: 46px; */
    }
 
    .login-title {
@@ -364,7 +386,7 @@
 
    .login-user-input {
       margin-bottom: 15px;
-      width: 35%;
+      width: 40%;
       height: 50px;
       font-size: 2em;
    }
@@ -372,6 +394,10 @@
    .login-form-container label.login-active {
       font-size: 1.8em;
       transform: translateY(-45px);
+   }
+
+   .login-input-padding label {
+      font-size: 1.4em;
    }
 
    .sign-in-button {
@@ -383,7 +409,7 @@
    }
 
    .worm-image {
-      width: 150px;
+      width: 12%;
    }
 }
 
@@ -458,7 +484,7 @@
    }
 
    .login-padding {
-      padding-top: 4%;
+      padding-top: 8%;
    }
 
    .login-error {
@@ -489,6 +515,10 @@
       transform: translateY(-20px);
    }
 
+   .sign-in {
+      padding-top: 0;
+   }
+
    .sign-in-button {
       font-size: 1em;
       width: 30%;
@@ -508,11 +538,11 @@
 
    .create-account-container {
       padding-top: 10px;
-      font-size: 0.8em;
+      font-size: 0.65em;
    }
 
    .login-padding {
-      padding-top: 3%;
+      padding-top: 8%;
       padding-bottom: 0;
    }
 
@@ -525,19 +555,23 @@
       padding-bottom: 0;
    }
 
+   .login-input-padding label {
+      font-size: 1em;
+   }
+
    .login-title {
-      font-size: 1.8rem;
+      font-size: 2.25rem;
    }
 
    .login-user-input {
       margin-bottom: 15px;
-      width: 30%;
+      width: 35%;
       height: 25px;
       font-size: 0.85em;
    }
 
    .login-form-container {
-      padding-top: 0;
+      padding-top: 5%;
    }
 
    .login-form-container label.login-active {
@@ -545,8 +579,13 @@
       transform: translateY(-20px);
    }
 
+   .sign-in {
+      padding-top: 0;
+   }
+
    .sign-in-button {
-      font-size: 1em;
+      margin-top: 3%;
+      font-size: 1.4em;
       width: 25%;
       flex: 0 0 21%;
       flex-direction: column;
@@ -554,7 +593,7 @@
    }
 
    .worm-image {
-      width: 8%;
+      width: 10%;
    }
 
 }
@@ -566,17 +605,17 @@
    }
 
    .create-account-container {
-      padding-top: 3%;
-      font-size: 1.75em;
+      padding-top: 2%;
+      font-size: 1.5em;
    }
 
    .login-padding {
-      padding-top:6%;
+      padding-top: 8vh;
       padding-bottom: 0;
    }
 
    .login-error {
-      font-size: 0.75em;
+      font-size: 1em;
    }
 
    .login-input-padding {
@@ -585,23 +624,27 @@
    }
 
    .login-title {
-      font-size: 3rem;
+      font-size: 2.7rem;
    }
 
    .login-user-input {
       margin-bottom: 15px;
-      width: 30%;
+      width: 35%;
       height: 35px;
       font-size: 1.2em;
    }
 
    .login-form-container {
-      padding-top: 3%;
+      padding-top: 6%;
    }
 
    .login-form-container label.login-active {
       font-size: 1.4em;
       transform: translateY(-35px);
+   }
+
+   .sign-in {
+      padding-top: 0;
    }
 
    .sign-in-button {
@@ -626,17 +669,17 @@
    }
 
    .create-account-container {
-      padding-top: 3%;
+      padding-top: 2%;
       font-size: 1.75em;
    }
 
    .login-padding {
-      padding-top: 5%;
+      padding-top: 12vh;
       padding-bottom: 0;
    }
 
    .login-error {
-      font-size: 0.75em;
+      font-size: 1.25em;
    }
 
    .login-input-padding {
@@ -664,6 +707,11 @@
       transform: translateY(-35px);
    }
 
+   .sign-in {
+      padding-top: 0;
+   }
+
+
    .sign-in-button {
       font-size: 1.8em;
       width: 25%;
@@ -673,7 +721,7 @@
    }
 
    .worm-image {
-      width: 10%;
+      width: 8%;
    }
 
 }
