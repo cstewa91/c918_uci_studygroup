@@ -78,13 +78,15 @@
 }
 
 .modal-group-description-container {
-    background-color: white;
+    background-color: #E1E1E1;
     border-radius: 10px;
     border: 1px solid grey;
     color: black;
     text-shadow: none;
+    font-size: 1.25em;
     padding: 5px;
     margin-bottom: 2%;
+    overflow: scroll;
 }
 
 .group-modal-close {

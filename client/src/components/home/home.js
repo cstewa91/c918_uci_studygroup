@@ -122,7 +122,7 @@ class Home extends Component {
                {backdrop}
 
                <div className="home-container">
-                  <div>
+                  <div className="home-group-header">
                      <div className="home-active-tab">Joined</div>
                      <div className="home-not-active-tab" onClick={this.switchGroups}>Created</div>
                   </div>
@@ -151,7 +151,7 @@ class Home extends Component {
             <Hamburger show={this.state.hamburgerOpen} />
             {backdrop}
             <div className="home-container">
-               <div>
+               <div className="home-group-header">
                   <div className="home-not-active-tab" onClick={this.switchGroups}>Joined</div>
                   <div className="home-active-tab">Created</div>
                </div>
