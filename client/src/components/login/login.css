@@ -77,6 +77,10 @@
    width: 100%;
 }
 
+.sign-in p {
+   color: rgb(204, 44, 44);
+}
+
 .sign-in-button {
    font-family: 'Gochi Hand';
    color: #FFFFFF;
@@ -668,6 +672,10 @@
       font-size: 1em;
    }
 
+   .create-account {
+      font-size: 0.85em;
+   }
+
    .create-account-container {
       padding-top: 2%;
       font-size: 1.75em;
@@ -721,7 +729,7 @@
    }
 
    .worm-image {
-      width: 8%;
+      width: 6%;
    }
 
 }
