@@ -134,11 +134,11 @@
    }
 
    .login-padding {
-      padding-top: 15%;
+      padding-top: 15vh;
    }
 
    .login-title {
-      font-size: 1.75rem;
+      font-size: 1.5rem;
    }
 
    .login-user-input {
@@ -190,7 +190,7 @@
    }
 
    .login-padding {
-      padding-top: 25%;
+      padding-top: 15vh;
    }
 
    .login-title {
@@ -250,7 +250,7 @@
    }
 
    .login-padding {
-      padding-top: 25%;
+      padding-top: 15vh;
    }
 
    .login-title {
