@@ -113,7 +113,7 @@
    }
 
    .create-button {
-      font-size: 17px;
+      font-size: 0.8em;
    }
 
    label.login-active {
@@ -161,7 +161,7 @@
 
 @media (min-width: 360px) {
    .create-account {
-      font-size: 17px;
+      font-size: 0.8em;
    }
 
    .create-account-container {
@@ -322,7 +322,7 @@
 
    .login-user-input {
       margin-bottom: 15px;
-      width: 40%;
+      width: 50%;
       height: 40px;
       font-size: 1.3em;
    }
@@ -390,7 +390,7 @@
 
    .login-user-input {
       margin-bottom: 15px;
-      width: 40%;
+      width: 50%;
       height: 50px;
       font-size: 2em;
    }
@@ -488,7 +488,7 @@
    }
 
    .login-padding {
-      padding-top: 8%;
+      padding-top: 8vh;
    }
 
    .login-error {
@@ -546,7 +546,7 @@
    }
 
    .login-padding {
-      padding-top: 8%;
+      padding-top: 8vh;
       padding-bottom: 0;
    }
 
