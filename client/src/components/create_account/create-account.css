@@ -8,6 +8,7 @@
 
 .create-account-button {
    font-family: 'Gochi Hand';
+   width: 30%;
    color: #FFFFFF;
    text-align: center;
    text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
@@ -25,11 +26,11 @@
 
 .create-account-header {
    font-family: 'Gochi Hand';
-   font-size: 1.5em;
+   font-size: 1.2em;
    color: white;
    text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
    text-align: center;
-   padding: 7px 0px  7px 0px;
+   padding: 0;
 }
 
 .create-account-header-container {
@@ -40,9 +41,11 @@
    background-blend-mode: hard-light, normal, normal;
    font-family: 'Gochi Hand';
    overflow: hidden;
-   display: flex;
-   justify-content: center;
-   align-items: center;
+   text-align: center;
+}
+
+.create-account-header-container a {
+   text-decoration: none;
 }
 
 .create-account-input-padding {
@@ -51,14 +54,19 @@
    max-width: 100%;
 }
 
+.create-account-input-padding label {
+   font-size: 0.75em;
+}
+
 .create-account-user-input {
+   font-size: 0.75em;
    padding: 0;
    background: none;
    border: none;
    border-bottom: 1px solid black;
    color: black;
    -webkit-appearance: none !important;
-   width: 66.666667%;
+   width: 60%;
 }
 
 .create-account-header-worm {
@@ -77,12 +85,27 @@ label.field-active {
    font-size: 0.7em;
 }
 
-/****** MEDIA QUERIES *******/
-@media (max-width: 359.98px ) {
-
-
+.create-header {
+   display: flex;
+   justify-content: center;
 }
 
+.create-header a {
+   text-decoration: none;
+   color: #1778BE;
+   transition-duration: 0.2s;
+   transition-property: transform;
+}
+
+.create-header a:hover,
+.create-header a:focus {
+   color: red;
+   -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+/****** MEDIA QUERIES *******/
 
 @media (min-width: 360px) {
 
@@ -94,20 +117,35 @@ label.field-active {
 
    .create-account-button {
       font-size: 1.25em;
-      width: 50%;
+      width: 35%;
    }
    
+   .create-account-error {
+      font-size: 0.8em;
+   }  
 
    .create-account-header {
       padding-top: 5%;
    }
 
-   label.field-active {
-      transform: translateY(-20px);
+   .create-account-header-worm {
+      width: 8%;
+      margin: 0.5em;
+   }
+
+   .create-account-user-input {
       font-size: 1em;
    }
 
+   .create-account-input-padding label {
+      font-size: 1em;
+   }
+   
 
+   label.field-active {
+      transform: translateY(-20px);
+      font-size: 0.8em;
+   }
 
 }
 
@@ -115,36 +153,36 @@ label.field-active {
 
    .account-details-container {
       height: 75vh;
-      padding-top: 5%
+      padding-top: 5vh
 
    }
 
    .create-account-header {
-      padding-top: 5%;
-      font-size: 2.5em;
+      padding-top: 5vh;
+      font-size: 1.4em;
    }
 
    .create-account-button {
-      font-size: 1.8em;
-      width: 40%;
+      font-size: 1.5em;
+      width: 35%;
    }
 
    .create-account-header-worm {
-      width: 10%;
+      width: 8%;
       margin: 0.5em;
    }
    
    .create-account-navbar-text {
-      font-size: 3em;
+      font-size: 2.5em;
    }
 
    label.field-active {
       transform: translateY(-30px);
-      font-size: 1.75em;
+      font-size: 1em;
    }
 
    .create-account-input-padding label {
-      font-size: 1.75em;
+      font-size: 1em;
    }
 
    .create-account-input-padding {
@@ -154,8 +192,7 @@ label.field-active {
    }
 
    .create-account-user-input {
-      margin-top: 15px;
-      font-size: 1.75em;
+      font-size: 1.2em;
    }
 
 }
@@ -164,12 +201,12 @@ label.field-active {
 
    .create-account-header {
       padding-top: 5%;
-      font-size: 2.5em;
+      font-size: 2em;
    }
 
    .create-account-button {
       font-size: 1.8em;
-      width: 40%;
+      width: 35%;
    }
 
    .create-account-header-worm {
@@ -183,17 +220,16 @@ label.field-active {
 
    label.field-active {
       transform: translateY(-30px);
-      font-size: 1.75em;
+      font-size: 1.25em;
 
    }
 
    .create-account-input-padding label {
-      font-size: 1.75em;
+      font-size: 1.25em;
    }
 
    .create-account-user-input {
-      margin-top: 15px;
-      font-size: 1.75em;
+      font-size: 1.5em;
    }
 
    .create-account-error {
@@ -203,7 +239,6 @@ label.field-active {
 
 
 }
-
 @media (min-width: 992px) {
 
    .create-account-header {
@@ -226,7 +261,7 @@ label.field-active {
    }
 
    .create-account-error {
-      font-size: 1.4m;
+      font-size: 1.4em;
 
    }
 
@@ -240,12 +275,12 @@ label.field-active {
 @media (min-width: 300px) and (max-width: 750px) and (orientation: landscape) {
    
    .create-account-header {
-      padding-top: 1%;
-      font-size: 1.5em;
+      padding-top: 5%;
+      font-size: 1.25em;
    }
 
    .account-details-container {
-      padding-top: 0;
+      padding-top: 2%;
 
    }
 
@@ -256,12 +291,12 @@ label.field-active {
    }
 
    .create-account-header-worm {
-      width: 5%;
+      width: 8%;
       margin: 0.5em;
    }
 
    .create-account-button {
-      font-size: 1em;
+      font-size: 1.20em;
       width: 30%;
       margin-bottom: 10px;
    }
@@ -290,12 +325,12 @@ label.field-active {
 
    
    .create-account-header {
-      padding-top: 1%;
-      font-size: 1.5em;
+      padding-top: 5%;
+      font-size: 1.75em;
    }
 
    .account-details-container {
-      padding-top: 0;
+      padding-top: 2%;
 
    }
 
@@ -306,7 +341,7 @@ label.field-active {
    }
 
    .create-account-header-worm {
-      width: 5%;
+      width: 8%;
       margin: 0.5em;
    }
 
@@ -339,17 +374,17 @@ label.field-active {
 @media (min-width: 1024px) and (orientation: landscape) {
    
    .create-account-header {
-      padding-top: 1%;
-      font-size: 2em;
+      padding-top: 3%;
+      font-size: 1.5em;
    }
 
    .account-details-container {
-      padding-top: 0;
+      padding-top: 2%;
 
    }
 
    .create-account-input-padding {
-      height: 15%;
+      height: 14%;
       flex: 0 0 100%;
       max-width: 100%;
    }
@@ -360,17 +395,21 @@ label.field-active {
    }
 
    .create-account-button {
-      font-size: 1.5em;
+      font-size: 1.85em;
       width: 30%;
       margin-bottom: 10px;
    }
+
+   .create-return {
+      font-size: 1.5em;
+   }
    
    .create-account-input-padding label {
-      font-size: 1.25em;
+      font-size: 1.2em;
    }
 
    label.field-active {
-      transform: translateY(-30px);
+      transform: translateY(-25px);
 
    }
 
@@ -388,17 +427,18 @@ label.field-active {
 @media (min-width: 1366px) and (orientation: landscape) {
    
    .create-account-header {
-      padding-top: 1%;
-      font-size: 2em;
+      padding-top: 4vh;
+      font-size: 1.5em;
+      margin: 0;
    }
 
    .account-details-container {
-      padding-top: 0;
+      padding-top: 2vh;
 
    }
 
    .create-account-input-padding {
-      height: 15%;
+      height: 14%;
       flex: 0 0 100%;
       max-width: 100%;
    }
@@ -408,14 +448,18 @@ label.field-active {
       margin: 0.5em;
    }
 
+   .create-account-navbar-text {
+      font-size: 3em;
+   }
+
    .create-account-button {
-      font-size: 1.5em;
-      width: 30%;
+      font-size: 2em;
+      width: 20%;
       margin-bottom: 10px;
    }
    
    .create-account-input-padding label {
-      font-size: 1.25em;
+      font-size: 1.35em;
    }
 
    label.field-active {
@@ -424,7 +468,7 @@ label.field-active {
    }
 
    .create-account-user-input {
-      font-size: 1.25em;
+      font-size: 1.4em;
    }
 
    .create-account-error {

@@ -77,6 +77,10 @@
    width: 100%;
 }
 
+.sign-in p {
+   color: rgb(204, 44, 44);
+}
+
 .sign-in-button {
    font-family: 'Gochi Hand';
    color: #FFFFFF;
@@ -109,7 +113,7 @@
    }
 
    .create-button {
-      font-size: 17px;
+      font-size: 0.8em;
    }
 
    label.login-active {
@@ -130,11 +134,11 @@
    }
 
    .login-padding {
-      padding-top: 15%;
+      padding-top: 15vh;
    }
 
    .login-title {
-      font-size: 1.75rem;
+      font-size: 1.5rem;
    }
 
    .login-user-input {
@@ -157,7 +161,7 @@
 
 @media (min-width: 360px) {
    .create-account {
-      font-size: 17px;
+      font-size: 0.8em;
    }
 
    .create-account-container {
@@ -186,7 +190,7 @@
    }
 
    .login-padding {
-      padding-top: 25%;
+      padding-top: 15vh;
    }
 
    .login-title {
@@ -246,7 +250,7 @@
    }
 
    .login-padding {
-      padding-top: 25%;
+      padding-top: 15vh;
    }
 
    .login-title {
@@ -318,7 +322,7 @@
 
    .login-user-input {
       margin-bottom: 15px;
-      width: 40%;
+      width: 50%;
       height: 40px;
       font-size: 1.3em;
    }
@@ -386,7 +390,7 @@
 
    .login-user-input {
       margin-bottom: 15px;
-      width: 40%;
+      width: 50%;
       height: 50px;
       font-size: 2em;
    }
@@ -484,7 +488,7 @@
    }
 
    .login-padding {
-      padding-top: 8%;
+      padding-top: 8vh;
    }
 
    .login-error {
@@ -542,7 +546,7 @@
    }
 
    .login-padding {
-      padding-top: 8%;
+      padding-top: 8vh;
       padding-bottom: 0;
    }
 
@@ -668,6 +672,10 @@
       font-size: 1em;
    }
 
+   .create-account {
+      font-size: 0.85em;
+   }
+
    .create-account-container {
       padding-top: 2%;
       font-size: 1.75em;
@@ -721,7 +729,7 @@
    }
 
    .worm-image {
-      width: 8%;
+      width: 6%;
    }
 
 }
