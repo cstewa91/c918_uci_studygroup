@@ -3,15 +3,18 @@
 }
 
 .profile-header {
+    padding: 1%;
     font-family: 'Gochi Hand';
+    color: #1778BE;
     font-size: 1.75em;
-    color: white;
     text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
     text-align: center;
+    align-items: center;
 }
 
 .profile-title {
-    margin: 0.3em;
+    align-items: center;
+    margin: 0;
 }
 
 .profile-header div {
@@ -93,8 +96,10 @@
 
 .profile-form {
     height: 78%;
-    padding: 0;
+    padding-top: 5vh;
     font-size: 1em;
+    display: flex;
+    justify-content: center;
 }
 
 .form-username, .form-first, .form-last, .form-email {
@@ -253,6 +258,10 @@
         justify-content: center;
     }
 
+    .profile-header {
+        padding: 1% 0;
+    }
+
     .profile-info>div {
         height: 25vh;
     }
@@ -261,8 +270,40 @@
         margin: 2%;
     }
 
+    .profile-form input {
+        font-size: 1.2em;
+    }
+
+    .profile-form label {
+        font-size: 1em;
+        transform: translateY(-20px);
+    }
+
+    .profile-form p {
+        font-size: 0.8em;
+    }
+
     .profile-form {
-        padding-top: 0;
+        min-height: 60vh;
+        padding-top: 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .profile-form > div {
+        align-items: center;
+        height: 25vh;
+    }
+
+    .profile-confirm {
+        margin: 2%;
+    }
+
+    .profile-confirm-button {
+        height: 55px;
+        width: 80%;
     }
 
  }
@@ -276,6 +317,10 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+    }
+
+    .profile-header {
+        padding: 1% 0;
     }
  
     .profile-info {
@@ -294,12 +339,13 @@
         font-size: 1.2em;
     }
 
-    .profile-info-row {
-        height: 55vh;
+    .profile-edit {
+        margin: 2%;
     }
 
-    .profile-form {
-        padding-top: 0;
+    .profile-edit-button {
+        height: 45px;
+
     }
 
     .profile-form input {
@@ -314,14 +360,28 @@
     .profile-form p {
         font-size: 0.8em;
     }
-    
-    .profile-edit {
+
+    .profile-form {
+        min-height: 60vh;
+        padding-top: 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .profile-form > div {
+        align-items: center;
+        height: 20vh;
+    }
+
+    .profile-confirm {
         margin: 2%;
     }
 
-    .profile-edit-button {
-        height: 45px;
-
+    .profile-confirm-button {
+        height: 55px;
+        width: 80%;
     }
  
  }
@@ -334,6 +394,10 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+    }
+
+    .profile-header {
+        padding: 1% 0;
     }
  
     .profile-info {
@@ -357,7 +421,26 @@
     }
 
     .profile-form {
-        padding-top: 0;
+        min-height: 60vh;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .profile-form > div {
+        align-items: center;
+        height: 20vh;
+    }
+
+    .profile-confirm {
+        margin: 2%;
+    }
+
+    .profile-confirm-button {
+        height: 55px;
+        width: 80%;
     }
 
  }
@@ -372,6 +455,10 @@
         justify-content: space-between;
     }
  
+    .profile-header {
+        padding: 1% 0;
+    }
+
     .profile-info {
         min-height: 60vh;
         padding-top: 10vh;
@@ -379,7 +466,7 @@
         justify-content: center;
     }
 
-    .profile-info>div {
+    .profile-info > div {
         height: 25%;
     }
 
@@ -393,7 +480,26 @@
     }
 
     .profile-form {
-        padding-top: 0;
+        min-height: 60vh;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .profile-form > div {
+        align-items: center;
+        height: 10vh;
+    }
+
+    .profile-confirm {
+        margin: 2%;
+    }
+
+    .profile-confirm-button {
+        height: 55px;
+        width: 80%;
     }
 
  }
