@@ -7,6 +7,7 @@ import Input from '../input';
 import worm from '../../assets/images/bookworm.png';
 import './create-account.css'
 import {Link} from 'react-router-dom'
+import arrow from '../../assets/images/back-arrow.png';
 
 class CreateNewAccount extends Component {
    handleCreateAccount = async (values) => {
@@ -36,28 +37,32 @@ class CreateNewAccount extends Component {
                </Link>
             </div>
             <div className='create-header'>
-               <p className='create-account-header col-11'>CREATE ACCOUNT</p>
-               <Link to='/home' className='create-return'>X</Link>
+               <Link to='/' className='create-return'>
+                  <img className='create-account-return return-button' src={arrow} />
+                  <span>Back</span>
+               </Link>
+               <p className='create-account-header col-10'>CREATE ACCOUNT</p>
+               
             </div> 
-            <form className="account-details-container" onSubmit={handleSubmit(this.handleCreateAccount)}>
-               <div className="create-account-input-padding col-8 col-lg-5">
+            <form className="account-details-container container" onSubmit={handleSubmit(this.handleCreateAccount)}>
+               <div className="create-account-input-padding col-6">
                   <Field name="firstname" label="First Name" maxLength='25' component={Input} inputClassName="create-account-user-input" errorClassName="create-account-error" />
                </div>
-               <div className="create-account-input-padding col-8 col-lg-5">
+               <div className="create-account-input-padding col-6">
                   <Field name="lastname" label="Last Name" maxLength='25' component={Input} inputClassName="create-account-user-input" errorClassName="create-account-error" />
                </div>
-               <div className="create-account-input-padding col-8 col-lg-5">
+               <div className="create-account-input-padding col-6">
                   <Field name="username" label="Username" maxLength='25' component={Input} inputClassName="create-account-user-input" errorClassName="create-account-error" />
                </div>
                <p className="create-account-error">{invalidUsername}</p>
-               <div className="create-account-input-padding col-8 col-lg-5">
+               <div className="create-account-input-padding col-6">
                   <Field name="email" label="E-mail" maxLength='40' component={Input} inputClassName="create-account-user-input" errorClassName="create-account-error" />
                </div>
                <p className="create-account-error">{invalidEmail}</p>
-               <div className="create-account-input-padding col-8 col-lg-5">
+               <div className="create-account-input-padding col-6">
                   <Field name="password" label="Password" maxLength='30' component={Input} type="password" inputClassName="create-account-user-input" errorClassName="create-account-error" />
                </div>
-               <div className="create-account-input-padding col-8 col-lg-5">
+               <div className="create-account-input-padding col-6">
                   <Field name="confirmPassword" label="Confirm Password" maxLength='30' component={Input} type="password" inputClassName="create-account-user-input" errorClassName="create-account-error" />
                </div>
                <button className='btn create-account-button'>CONFIRM</button>
