@@ -40,6 +40,30 @@ class SearchGroups extends Component{
         this.props.getAllGroups();
     }
 
+    adjustTime = (time) => {
+        const splicedTime = time.slice(0,5);
+        const splitTime = splicedTime.split(':');
+        console.log(splitTime);
+        console.log(splitTime[0]);
+        if(splitTime[0] > 12){
+            const hour = splitTime[0] - 12;
+            splitTime[0] = hour;
+            const joinedTime = splitTime.join(':');
+            const pmTime = joinedTime + ' PM';
+            return pmTime;
+        } else if (splitTime[0] === '12') {
+            const joinedTime = splitTime.join(':');
+            const noonTime = joinedTime + ' PM';
+            return noonTime;
+        } else {
+            const hour = splitTime[0];
+            splitTime[0] = hour;
+            const joinedTime = splitTime.join(':');
+            const amTime = joinedTime + ' AM';
+            return amTime;
+        }
+    }
+
     componentDidUpdate() {
 
 
@@ -64,7 +88,7 @@ class SearchGroups extends Component{
                         <div className="search-results-body-cell search-results-body-cell-left">
                             {item.subject}{item.course}
                         </div>
-                        <div className="search-results-body-cell search-results-body-cell-center">
+                        <div className="search-results-body-cell search-results-body-cell-center search-results-subject-data">
                             {item.name}
                         </div>
                         <div className="search-results-body-cell search-results-body-cell-center">
@@ -105,7 +129,7 @@ class SearchGroups extends Component{
                             <Field className="search-field" name="filter" label="Enter group name or subject" type="text" size="30" component={SearchInput}/>
                         </form>
                     </div>
-                    <div id="search-results">
+                    <div className="search-results">
                         <div id="search-results-header">
                             <div className="search-results-head-cell">
                                 <b><u>Subject</u></b>

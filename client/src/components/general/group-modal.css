@@ -110,9 +110,18 @@
 
 .join-group {
     font-family: 'Gochi Hand';
-    background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), #1778BE;
+    background: #1778BE;
     font-size: 1.5em;
     width: 100%;
+    border: 1px solid #006DAA
+}
+
+.join-group a {
+    color: #FFFFFF;
+}
+
+.join-group a:visited {
+    color: #FFFFFF;
 }
 
 .search-filter-button {

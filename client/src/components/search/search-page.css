@@ -44,12 +44,12 @@
     cursor: pointer;
 }
 
-#search-results {
+.search-results {
     width: 96%;
     margin-left: 2%;
     margin-right: 2%;
     display: table;
-    font-size: .95em;
+    font-size: 1.25em;
 }
 
 #search-results-header {
@@ -111,4 +111,17 @@
     border-right: 1px solid #1778BE;
     border-bottom: 1px solid #1778BE;
     border-radius: 0px 10px 10px 0px;
+}
+
+@media only screen and (max-width: 325px){
+    .search-results {
+        font-family: 'Roboto', sans-serif;
+        font-size: 15px;
+    }
+    .search-results-subject-data {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        max-width: 75px;
+    }
 }

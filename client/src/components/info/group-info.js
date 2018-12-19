@@ -67,15 +67,45 @@ class GroupInfo extends Component{
 
     
 
-    formatStartTime = (startTime) => {
-        const formattedStartTime = startTime.toLocaleTimeString();
-        return formattedStartTime;
+    formatStartTime = (date, startTime) => {
+        const splitDate = date.split('');
+        console.log(splitDate);
+        const splitTime = startTime.split('');
+        splitDate[11] = splitTime[0];
+        splitDate[12] = splitTime[1];
+        const joinedDate = splitDate.join('');
+        console.log('joinedDate', joinedDate);
+        return joinedDate;
+    }
+
+    adjustTime = (time) => {
+        const splicedTime = time.slice(0,5);
+        const splitTime = splicedTime.split(':');
+        console.log(splitTime);
+        console.log(splitTime[0]);
+        if(splitTime[0] > 12){
+            const hour = splitTime[0] - 12;
+            splitTime[0] = hour;
+            const joinedTime = splitTime.join(':');
+            const pmTime = joinedTime + ' PM';
+            return pmTime;
+        } else if (splitTime[0] === '12') {
+            const joinedTime = splitTime.join(':');
+            const noonTime = joinedTime + ' PM';
+            return noonTime;
+        } else {
+            const hour = splitTime[0];
+            splitTime[0] = hour;
+            const joinedTime = splitTime.join(':');
+            const amTime = joinedTime + ' AM';
+            return amTime;
+        }
     }
 
     componentDidMount(){
         this.props.getGroupDetails(this.props.match.params.group_id);
         this.props.getUserInfo();
-        console.log(this.props);
+        console.log('component did mount props', this.props);
     }
 
 
@@ -86,15 +116,23 @@ class GroupInfo extends Component{
             backdrop = <Backdrop click={this.backdropHandler}/>
         }
         
-        const {name, subject, course, date, start_time, end_time, max_group_size, current_group_size, location, description, user_id } = this.props.singleGroup
+        const {name, subject, course, date, start_time, end_time, max_group_size, current_group_size, location, description, user_id } = this.props.singleGroup;
+        if(!name){
+            return <h1>Loading...</h1>
+        }
         console.log(this.props.singleGroup);
         const groupDate = new Date(date).toLocaleDateString([], {month: '2-digit', day: '2-digit'});
-
-        if(!{name}){
-            return
-            <h1>Loading...</h1>
-        }
-
+        console.log('start_time', start_time);
+        console.log('date', date);
+        const mergedDate = this.formatStartTime(date, start_time);
+        console.log('mergedDate', mergedDate);
+        
+        const originalDate = new Date(date).toLocaleTimeString();
+        const studyDate = new Date(mergedDate).toLocaleTimeString();
+        console.log('studyDate', studyDate);
+        console.log('originalDate', originalDate);
+        const startingTime = this.adjustTime(start_time);
+        const endingTime = this.adjustTime(end_time);
        
 
         return (
@@ -115,7 +153,7 @@ class GroupInfo extends Component{
                                     <strong>Date:</strong> {groupDate}
                                 </div>
                                 <div className="group-info-time form-group">                 
-                                    <strong>Time:</strong> {`${start_time} - ${end_time}`}
+                                    <strong>Time:</strong> {`${startingTime} - ${endingTime}`}
                                 </div>
                                 <div className="group-info-users form-group">             
                                     <strong>Group Size:</strong> {`${current_group_size}/${max_group_size}`}
