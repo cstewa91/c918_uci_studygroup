@@ -8,6 +8,7 @@ import Hamburger from '../general/hamburger';
 import Backdrop from '../general/backdrop';
 import { createNewGroup } from '../../actions';
 import Input from '../input';
+import arrow from '../../assets/images/back-arrow.png';
 
 
 class CreateGroup extends Component {
@@ -52,8 +53,11 @@ class CreateGroup extends Component {
             {backdrop}
             <main className='create-content'>
                <div className='create-header row justify-content-center'>
+                  <Link to='/home' className='create-return'>
+                     <img className='create-account-return return-button' src={arrow} />
+                     <span>Back</span>
+                  </Link>
                   <p className='create-title col-9'>Create Group</p>
-                  <Link to='/home' className='create-return'>X</Link>
                </div>
                <form className='create-form container' onSubmit={handleSubmit(this.handleCreateGroup)}>
                   <div className="row justify-content-center">

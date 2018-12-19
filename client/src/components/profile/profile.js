@@ -9,7 +9,7 @@ import Header from '../general/header';
 import Backdrop from '../general/backdrop';
 import Hamburger from '../general/hamburger';
 import Input from '../input';
-
+import arrow from '../../assets/images/back-arrow.png';
 
 
 class Profile extends Component {
@@ -78,8 +78,11 @@ class Profile extends Component {
                 {backdrop} 
                 <main className='profile-content container'>
                         <div className='profile-header row justify-content-center'>
+                            <Link to='/profile' className='create-return'>
+                                <img className='create-account-return return-button' src={arrow} />
+                                <span>Back</span>
+                            </Link>
                             <p className='profile-title col-10'>PROFILE</p>
-                            <div onClick={this.handleConfirm} className='profile-return'>X</div>
                         </div>
                         <form className='profile-form row justify-content-center' onSubmit={handleSubmit(this.handleAddItem)}>
                             <div className='form-username col-8'>
