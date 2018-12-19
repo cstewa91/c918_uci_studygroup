@@ -121,16 +121,16 @@ function validate({ name, subject, course, max_group_size, start_time, end_time,
       error.subject = "Please enter the subject"
    }
    if (!course || !validNumber.test(course)) {
-      error.course = "Please enter the course number"
+      error.course = "Please enter a number"
    }
    if (!max_group_size || !validNumber.test(max_group_size)) {
-      error.max_group_size = "Please enter the group size"
+      error.max_group_size = "Please enter a number"
    }
    if (!start_time) {
-      error.start_time = "Please enter the start time"
+      error.start_time = "Please enter start time"
    }
    if (!end_time) {
-      error.end_time = "Please enter the end time"
+      error.end_time = "Please enter end time"
    }
    if (!location) {
       error.location = "Please enter the location"

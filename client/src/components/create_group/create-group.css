@@ -1,5 +1,5 @@
 .create-content {
-   height: 88vh;
+   height: 100%;
    display: flex;
    flex-direction: column;
    justify-content: space-between;
@@ -55,7 +55,8 @@
 }
 
 .create-form .row {
-   height: 14%;
+   height: 15vh;
+   align-items: center;
 }
 
 .create-form .create-button {
@@ -86,6 +87,7 @@
    color: black;
    border: none;
    border-bottom: 1px solid grey;
+   background-color: white;
 }
 
 .create-form textarea {
@@ -132,8 +134,12 @@
    }
    
    .create-form {
-       margin-top: 8%;
+       margin-top: 0;
    }
+
+   .create-form .row {
+    height: 14vh;
+ }
    
    .create-form input {
        font-size: 1em;
@@ -149,7 +155,7 @@
        font-size: 0.75em;
        margin: 0;
        color: grey;
-       transform: translateY(-18px);
+       /* transform: translateY(-18px); */
    }
 
    .create-form .create-button {
@@ -165,10 +171,6 @@
 
 @media (min-width: 600px){
 
-   .create-content {
-       height: 86vh;
-   }
-
    .create-title {
        height: 15%;
        margin: 0.3em;
@@ -183,6 +185,10 @@
        border-bottom: 1px solid grey;
        background: none;
    }
+
+   .create-form {
+    margin-top: 0;
+    }
 
    .create-form label {
        font-weight: bold;
@@ -205,10 +211,6 @@
 }
 
 @media (min-width: 768px) {
-
-   .create-content {
-       height: 86vh;
-   }
 
    .create-title {
       font-size:0;
@@ -261,14 +263,14 @@
 
 @media (min-width: 992px) {
 
-   .create-content {
-       height: 86vh;
-   }
-
    .create-title {
       font-size:0;
   }
    
+  .create-form {
+    margin-top: 0;
+  }
+
    .create-form input {
        font-size: 1.8em;
        width: 100%;
