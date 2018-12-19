@@ -76,7 +76,7 @@ class Profile extends Component {
                 <Header hamburgerClick = {this.toggleHamburger}/>  
                 <Hamburger show={this.state.hamburgerOpen}/>
                 {backdrop} 
-                <main className='profile-content container'>
+                <main className='profile-content container-fluid'>
                         <div className='profile-header row justify-content-center'>
                             <Link to='/profile' className='create-return'>
                                 <img className='create-account-return return-button' src={arrow} />
@@ -84,7 +84,7 @@ class Profile extends Component {
                             </Link>
                             <p className='profile-title col-10'>PROFILE</p>
                         </div>
-                        <form className='profile-form row justify-content-center' onSubmit={handleSubmit(this.handleAddItem)}>
+                        <form className='profile-form container' onSubmit={handleSubmit(this.handleAddItem)}>
                             <div className='form-username col-8'>
                                     <Field name='username' label='Username' maxLength='15' component={Input}/>
                             </div>
@@ -97,7 +97,7 @@ class Profile extends Component {
                             <div className='form-email col-8'>
                                     <Field name='email' label="E-mail" maxLength='25'component={Input}/>
                             </div>
-                            <div className='profile-confirm col-6'>
+                            <div className='profile-confirm col-5'>
                                     <button className='btn profile-confirm-button'>CONFIRM</button>
                             </div>
                             
