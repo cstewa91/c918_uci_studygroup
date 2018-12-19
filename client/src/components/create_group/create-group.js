@@ -100,7 +100,7 @@ class CreateGroup extends Component {
                         </div>
                   </div>
                   <div className="row create-button justify-content-center">
-                        <div className='col-5 col-sm-5 col-lg-5'>
+                        <div className='col-6'>
                            <button className='btn create-update-button'>Create</button>
                         </div>  
                   </div>          
