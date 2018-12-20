@@ -16,6 +16,16 @@
     justify-content: center;
 }
 
+.group-info {
+    font-size: 16px;
+}
+
+.edit-group {
+    color: white;
+    font-family: "Gochi Hand";
+    background-color: #1778BE;
+}
+
 .group-info-description-container {
     background-color: #E1E1E1;
     border-radius: 10px;

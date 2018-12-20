@@ -61,7 +61,7 @@
 .modal-map-button {
     border-radius: 15px;
     border-color: #FFFFFF;
-    background: lightblue;
+    background: rgb(14, 65, 102);
     color: #FFFFFF;
     text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
     right: 0;
