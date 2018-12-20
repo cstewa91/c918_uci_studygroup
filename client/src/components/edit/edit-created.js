@@ -6,10 +6,10 @@ import './edit-created.css';
 import Header from '../general/header'
 import Hamburger from '../general/hamburger';
 import Backdrop from '../general/backdrop';
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm } from 'redux-form';
 import Input from '../input';
-import {Link} from "react-router-dom"
-
+import {Link} from "react-router-dom";
+import arrow from '../../assets/images/back-arrow.png';
 
 
 
@@ -58,9 +58,12 @@ class EditGroup extends Component{
                 <Hamburger show={this.state.hamburgerOpen}/>
                 {backdrop}  
                 <main className='edit-content'>
-                    <div className='edit-header row justify-content-center'>
+                    <div className='create-header row justify-content-center'>
+                        <Link to='/home' className='create-return'>
+                            <img className='create-account-return return-button' src={arrow} />
+                            <span>Back</span>
+                        </Link>
                         <p className='edit-title col-9'>EDIT</p>
-                        <Link to={`/group-info/${this.props.match.params.group_id}`} className='edit-return'>X</Link>
                     </div>
                     <form className='edit-form justify-content-center container' onSubmit={handleSubmit(this.handleUpdateItem)}>
                         <div className="row justify-content-center">
@@ -106,7 +109,7 @@ class EditGroup extends Component{
                             </div>
                         </div>
                         <div className="row edit-button justify-content-center">
-                            <div className='col-5 col-sm-5 col-lg-5'>
+                            <div className='col-6'>
                                 <button className='btn edit-update-button'>Update</button>
                             </div>  
                         </div>

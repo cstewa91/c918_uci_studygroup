@@ -38,7 +38,6 @@ class Profile extends Component {
         this.setState({
             isEditable: false,
         })
-        
 
     }
 
@@ -46,8 +45,11 @@ class Profile extends Component {
         this.props.getUserInfo();
     }
 
+    componentDidUpdate() {
+    }
+
     handleEditClick = (event)=>{
-        
+        this.props.getUserInfo();
         this.setState ({
             isEditable: true,
         })
@@ -58,6 +60,7 @@ class Profile extends Component {
         this.setState ({
             isEditable: false,
         })
+        // this.props.getUserInfo();
     }
 
     render(){
@@ -70,6 +73,7 @@ class Profile extends Component {
 
         const {username, firstname, lastname, email } = this.props.user
         const {handleSubmit} = this.props
+        console.log(this.props)
         if(this.state.isEditable){
             return(
                 <div className="profile">
@@ -78,10 +82,10 @@ class Profile extends Component {
                 {backdrop} 
                 <main className='profile-content container'>
                         <div className='profile-header row justify-content-center'>
-                            <Link to='/profile' className='create-return'>
-                                <img className='create-account-return return-button' src={arrow} />
+                            <div className='create-return' onClick={this.handleConfirm} >
+                                <img className='create-account-return return-button' src={arrow}/>
                                 <span>Back</span>
-                            </Link>
+                            </div>
                             <p className='profile-title col-10'>PROFILE</p>
                         </div>
                         <form className='profile-form row' onSubmit={handleSubmit(this.handleAddItem)}>
@@ -180,6 +184,7 @@ function mapStateToProps(state){
 Profile = reduxForm({
     form: 'profile',
     enableReinitialize: true,
+    keepDirtyOnReinitialize: true,
     validate: validate,
 })(Profile)
 
