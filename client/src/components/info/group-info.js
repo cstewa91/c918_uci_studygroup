@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import { getGroupDetails } from '../../actions';
+import worm from '../../assets/images/bookworm.png';
 import NavButton from '../general/nav-button';
 import './group-info.css';
 import Header from '../general/header';
@@ -118,8 +119,28 @@ class GroupInfo extends Component{
         
         const {name, subject, course, date, start_time, end_time, max_group_size, current_group_size, location, description, user_id } = this.props.singleGroup;
         if(!name){
-            return <h1>Loading...</h1>
+            return (          
+                <div className="edit-created">
+                    <Header hamburgerClick={this.toggleHamburger}/>
+                    <Hamburger show={this.state.hamburgerOpen}/>
+                    {backdrop}
+                    <main className="container group-details-content">
+                        <div className="group-details">
+                            <div className="group-details">
+                                <div className="group-details-name row group-details-header">
+                                    <h1>Loading...</h1>
+                                    <div className="worm">
+                                        <img src={worm}/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+
+            )
         }
+
         console.log(this.props.singleGroup);
         const groupDate = new Date(date).toLocaleDateString([], {month: '2-digit', day: '2-digit'});
         console.log('start_time', start_time);
@@ -142,31 +163,33 @@ class GroupInfo extends Component{
                 {backdrop} 
                 <main className="container group-details-content">                  
                         <div className="group-details">
-                        <div className="group-details-name row group-details-header">
-                            <h1>{name}</h1>
-                        </div>
-                            <form className="group-info">
-                                <div className="group-info-subject form-group">                  
-                                    <strong>Subject:</strong> {subject}{course}
-                                </div>
-                                <div className="group-info-date form-group">               
-                                    <strong>Date:</strong> {groupDate}
-                                </div>
-                                <div className="group-info-time form-group">                 
-                                    <strong>Time:</strong> {`${startingTime} - ${endingTime}`}
-                                </div>
-                                <div className="group-info-users form-group">             
-                                    <strong>Group Size:</strong> {`${current_group_size}/${max_group_size}`}
-                                </div>
-                                <div className="group-info-location form-group">                  
-                                    <strong>Location:</strong> {location}
-                                        <a className="btn modal-map-button" href="https://map.uci.edu/" target="_blank">Map</a>
-                                </div>
-                                <div className="group-info-description-container">        
-                                    {description}
-                                </div>
-                            </form>
-                            {this.renderButton()}
+                            <div className="group-details-name row group-details-header">
+                                <h1>{name}</h1>
+                            </div>
+                                <form className="group-info">
+                                    <div className="group-info-subject form-group">                  
+                                        <strong>Subject:</strong> {subject}{course}
+                                    </div>
+                                    <div className="group-info-date form-group">               
+                                        <strong>Date:</strong> {groupDate}
+                                    </div>
+                                    <div className="group-info-time form-group">                 
+                                        <strong>Time:</strong> {`${startingTime} - ${endingTime}`}
+                                    </div>
+                                    <div className="group-info-users form-group">             
+                                        <strong>Group Size:</strong> {`${current_group_size}/${max_group_size}`}
+                                    </div>
+                                    <div className="group-info-location form-group">                  
+                                        <strong>Location:</strong> {location}
+                                            <a className="btn modal-map-button" href="https://map.uci.edu/" target="_blank">Map</a>
+                                    </div>
+                                    <div className="group-info-description-container">        
+                                        {description}
+                                    </div>
+                                </form>
+                            <div className="group-info-button-container">
+                                {this.renderButton()}
+                            </div>
                         </div>
                 </main>
                 <footer>

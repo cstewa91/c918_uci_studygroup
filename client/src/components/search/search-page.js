@@ -39,30 +39,7 @@ class SearchGroups extends Component{
     componentDidMount() {
         this.props.getAllGroups();
     }
-
-    adjustTime = (time) => {
-        const splicedTime = time.slice(0,5);
-        const splitTime = splicedTime.split(':');
-        console.log(splitTime);
-        console.log(splitTime[0]);
-        if(splitTime[0] > 12){
-            const hour = splitTime[0] - 12;
-            splitTime[0] = hour;
-            const joinedTime = splitTime.join(':');
-            const pmTime = joinedTime + ' PM';
-            return pmTime;
-        } else if (splitTime[0] === '12') {
-            const joinedTime = splitTime.join(':');
-            const noonTime = joinedTime + ' PM';
-            return noonTime;
-        } else {
-            const hour = splitTime[0];
-            splitTime[0] = hour;
-            const joinedTime = splitTime.join(':');
-            const amTime = joinedTime + ' AM';
-            return amTime;
-        }
-    }
+    
 
     componentDidUpdate() {
 

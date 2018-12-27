@@ -1,10 +1,11 @@
 .leave-group-button, .delete-group-button {
     border-radius: 15px;
-    background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), rgb(190, 23, 23); 
+    background: rgb(190, 23, 23); 
+    border-color: #FFFFFF;
     color: #FFFFFF;
     font-family: "Roboto", sans-serif;
     font-size: 0.75em;
-    position: absolute;
+    margin-top: 8%;
     right: 1%;
     bottom: 1%;
 }
@@ -21,9 +22,14 @@
 }
 
 .edit-group {
-    color: white;
+    color: #FFFFFF;
+    border-color: #FFFFFF;
     font-family: "Gochi Hand";
     background-color: #1778BE;
+}
+
+.update a:hover, .update a:focus {
+    color: #FFFFFF;
 }
 
 .group-info-description-container {
@@ -39,13 +45,17 @@
     overflow: scroll;
 }
 
+.worm img {
+    height: 125px;
+}
+
 .group-details {
     background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), #1778BE; 
     color: white;
     font-family: "Roboto", sans-serif;
     text-shadow: -1px 1px 1px black;
     border-radius: 5px;
-    height: 87vh;
+    /* height: 87vh; */
     margin: 4%;
     padding: 15px;
     position: relative;
@@ -56,6 +66,7 @@
 
 .update {
     text-align: center;
+
 }
 
 .delete-group {
