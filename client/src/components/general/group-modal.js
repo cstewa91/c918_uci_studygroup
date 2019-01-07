@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import { Link } from 'react-router-dom';
 import {getGroupDetails} from '../../actions';
 import {joinGroup} from '../../actions';
+import worm from '../../assets/images/bookworm.png';
 
 import './group-modal.css';
 import {connect} from 'react-redux';
@@ -30,12 +31,10 @@ class GroupModal extends Component{
 
     formatStartTime = (date, startTime) => {
         const splitDate = date.split('');
-        console.log(splitDate);
         const splitTime = startTime.split('');
         splitDate[11] = splitTime[0];
         splitDate[12] = splitTime[1];
         const joinedDate = splitDate.join('');
-        console.log('joinedDate', joinedDate);
         return joinedDate;
     }
 
@@ -43,8 +42,6 @@ class GroupModal extends Component{
     adjustTime = (time) => {
         const splicedTime = time.slice(0,5);
         const splitTime = splicedTime.split(':');
-        console.log(splitTime);
-        console.log(splitTime[0]);
         if(splitTime[0] > 12){
             const hour = splitTime[0] - 12;
             splitTime[0] = hour;
@@ -71,28 +68,6 @@ class GroupModal extends Component{
         const startDateTime = new Date(group.date);
         const groupDate = startDateTime.toLocaleDateString([], {month: '2-digit', day: '2-digit'});
 
-        const GroupData = (
-
-            
-            <div key={group.id} className="group-modal-details">
-                <h1 className="modal-group-name">{group.name}</h1>
-                <p className="modal-group-info"><strong>Subject/Course:</strong> {group.subject}{group.course}</p>
-                <p className="modal-group-info"><strong>Date:</strong> {groupDate}</p>
-                <p className="modal-group-info"><strong>Time:</strong> {group.start_time} - {group.end_time}</p>
-                <p className="modal-group-info">
-                    <strong>Location:</strong> {group.location}
-                        <a className="btn modal-map-button" href="https://map.uci.edu/" target="_blank">Map</a>
-                </p>
-                <p className="modal-group-info"><strong>Group Capacity:</strong> {group.current_group_size}/{group.max_group_size}</p>
-                <div className="modal-group-description-container">
-                    <p className="modal-group-description">
-                        {group.description}
-                    </p>
-                </div>
-                    <div onClick={this.joinStudyGroup} className="btn btn-lg join-group">Join</div>
-            </div>
-        )
-
         if(this.state.show) {
             
             if(!group.id){
@@ -106,23 +81,43 @@ class GroupModal extends Component{
                             </Link>
                             <div className="group-modal-details">
                                 <h1>Loading...</h1>
+                                <div className="worm worm-centered">
+                                    <img src={worm}/>
+                                </div>
                             </div>
                         </div>
                     </div>
                 )
             }
 
-            console.log('start_time', group.start_time);
-            console.log('date', group.date);
             const mergedDate = this.formatStartTime(group.date, group.start_time);
-            console.log('mergedDate', mergedDate);
             
             const originalDate = new Date(group.date).toLocaleTimeString();
             const studyDate = new Date(mergedDate).toLocaleTimeString();
-            console.log('studyDate', studyDate);
-            console.log('originalDate', originalDate);
             const startingTime = this.adjustTime(group.start_time);
             const endingTime = this.adjustTime(group.end_time);
+
+            const GroupData = (
+
+            
+                <div key={group.id} className="group-modal-details">
+                    <h1 className="modal-group-name">{group.name}</h1>
+                    <p className="modal-group-info"><strong>Subject/Course:</strong> {group.subject}{group.course}</p>
+                    <p className="modal-group-info"><strong>Date:</strong> {groupDate}</p>
+                    <p className="modal-group-info"><strong>Time:</strong> {startingTime} - {endingTime}</p>
+                    <p className="modal-group-info">
+                        <strong>Location:</strong> {group.location}
+                            <a className="btn modal-map-button" href="https://map.uci.edu/" target="_blank">Map</a>
+                    </p>
+                    <p className="modal-group-info"><strong>Group Capacity:</strong> {group.current_group_size}/{group.max_group_size}</p>
+                    <div className="modal-group-description-container">
+                        <p className="modal-group-description">
+                            {group.description}
+                        </p>
+                    </div>
+                        <div onClick={this.joinStudyGroup} className="btn btn-lg join-group">Join</div>
+                </div>
+            )
 
 
             return (
