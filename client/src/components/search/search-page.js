@@ -48,41 +48,52 @@ class SearchGroups extends Component{
 
     renderResults = () => {
         const resultType = (this.props.results && this.props.results.length) ? "results" : "all";
+
+        console.log(this.props.results);
+        
+        console.log('Result Type:', resultType);
     
-        const results = this.props[resultType].map(item => {
-            const newDate = new Date(item.date);
-            const sliceStartDate = item.date.slice(0, 11) + item.start_time
-            const sliceEndDate = item.date.slice(0, 11) + item.end_time
-            const endTime = new Date(sliceEndDate);
-            const startTime= new Date(sliceStartDate);
-            const startingTime = startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            const endingTime = endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            const startDate = newDate.toLocaleDateString([], { month: '2-digit', day: '2-digit' });
+        let results = this.props[resultType].map(item => {
+            
+        const newDate = new Date(item.date);
+        const sliceStartDate = item.date.slice(0, 11) + item.start_time
+        const sliceEndDate = item.date.slice(0, 11) + item.end_time
+        const endTime = new Date(sliceEndDate);
+        const startTime= new Date(sliceStartDate);
+        const startingTime = startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const endingTime = endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const startDate = newDate.toLocaleDateString([], { month: '2-digit', day: '2-digit' });
+
+        return (
+            <GroupModal key={item.id} history={this.props.history} id={item.id} description={item.description}>
+                <Fragment key={item.id}>
+                    <div className="search-results-body-cell search-results-body-cell-left">
+                        {item.subject}{item.course}
+                    </div>
+                    <div className="search-results-body-cell search-results-body-cell-center search-results-subject-data">
+                        {item.name}
+                    </div>
+                    <div className="search-results-body-cell search-results-body-cell-center">
+                        {startDate}
+                    </div>
+                    <div className="search-results-body-cell search-results-body-cell-center">
+                        {startingTime}
+                    </div>
+                    <div className="search-results-body-cell search-results-body-cell-right">
+                        {<sup>{item.current_group_size}</sup>}&frasl;{<sub>{item.max_group_size}</sub>}
+                    </div>
+                </Fragment>
+            </GroupModal>
+        )
+    });
+
+    // this puts up a message saying no results match but it is showing as default which I don't want.
+    // if(!this.props.results.length){
+    //     results = <p>No results match your search.</p>
+    // }
     
-            return (
-                <GroupModal key={item.id} history={this.props.history} id={item.id} description={item.description}>
-                    <Fragment key={item.id}>
-                        <div className="search-results-body-cell search-results-body-cell-left">
-                            {item.subject}{item.course}
-                        </div>
-                        <div className="search-results-body-cell search-results-body-cell-center search-results-subject-data">
-                            {item.name}
-                        </div>
-                        <div className="search-results-body-cell search-results-body-cell-center">
-                            {startDate}
-                        </div>
-                        <div className="search-results-body-cell search-results-body-cell-center">
-                            {startingTime}
-                        </div>
-                        <div className="search-results-body-cell search-results-body-cell-right">
-                            {<sup>{item.current_group_size}</sup>}&frasl;{<sub>{item.max_group_size}</sub>}
-                        </div>
-                    </Fragment>
-                </GroupModal>
-            )
-        });
-    
-        return results;
+    return results;
+
     }
 
     render() {
