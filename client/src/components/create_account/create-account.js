@@ -42,7 +42,7 @@ class CreateNewAccount extends Component {
                   <span>Back</span>
                </Link>
                <p className='create-account-header col-10'>CREATE ACCOUNT</p>
-               
+               <hr></hr>
             </div> 
             <form className="account-details-container container" onSubmit={handleSubmit(this.handleCreateAccount)}>
                <div className="create-account-input-padding col-6">

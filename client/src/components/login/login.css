@@ -12,6 +12,7 @@
 
 .create-account-container a:hover {
    color: white;
+   text-decoration: none;
 }
 
 .floating-label {

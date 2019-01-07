@@ -247,7 +247,8 @@ span {
 
     .hamburger-nav ul {
         margin: 0;
-        height: 45%;
+        height: 60%;
+        max-height: 50vh;
     }
 
 }
