@@ -315,7 +315,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
     }
 
     .profile-form > div {
@@ -393,7 +392,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
     }
 
     .profile-form > div {
@@ -449,15 +447,15 @@
 
     .profile-form {
         min-height: 60vh;
-        padding: 0;
+        padding-top: 5%;
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
     }
 
     .profile-form > div {
         align-items: center;
+        min-height: 15vh;
         height: 20vh;
     }
 
@@ -509,16 +507,16 @@
 
     .profile-form {
         min-height: 60vh;
-        padding: 0;
+        padding-top: 5%;
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
     }
 
     .profile-form > div {
         align-items: center;
-        height: 10vh;
+        min-height: 15vh;
+        height: 20vh;
     }
 
     .profile-confirm {
