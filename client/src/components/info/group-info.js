@@ -9,6 +9,7 @@ import Backdrop from '../general/backdrop';
 import {getUserInfo} from '../../actions';
 import {deleteGroup} from '../../actions';
 import {leaveGroup} from '../../actions';
+import ConfirmModal from './confirm_modal';
 
 
 class GroupInfo extends Component{
@@ -166,6 +167,7 @@ class GroupInfo extends Component{
                                     {description}
                                 </div>
                             </form>
+                            <ConfirmModal/>
                             {this.renderButton()}
                         </div>
                 </main>
