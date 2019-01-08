@@ -105,3 +105,26 @@
         width: 80%;
     }
 }
+
+@media only screen and (max-width: 315px){
+    .divider-space {
+        display: none;
+    }
+
+    .edit-group-buttons {
+        display: block;
+        text-align: center;
+    }
+
+    .confirm-delete {
+        display: block;
+        width: 100%;
+    }
+    
+    .cancel-delete {
+        display: block;
+        width: 100%;
+        margin-top: 8px;
+    }
+        
+}

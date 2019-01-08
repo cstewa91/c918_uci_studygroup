@@ -25,12 +25,9 @@ class ConfirmModal extends Component {
                             Delete Group
                         </h1>
                         <p>Are you sure?</p>
-                        <div className="btn confirm-delete" onClick={this.deleteCurrentGroup}>
-                            Delete
-                        </div>
-                        <div onClick={this.close} className="btn cancel-delete">
-                            Cancel
-                        </div>
+                        <div className="btn btn-lg confirm-delete" onClick={this.deleteCurrentGroup}>Delete</div>
+                        <span className="divider-space"> </span>
+                        <div onClick={this.close} className="btn btn-lg cancel-delete">Cancel</div>
                     </div>
                 </div>
             )
