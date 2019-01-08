@@ -18,6 +18,7 @@
     width: 40%;
     z-index: 1;
     font-size: 16px;
+    text-align: center;
 }
 
 .confirm-modal-content h1 {
@@ -25,6 +26,7 @@
     font-size: 24px;
     margin-bottom: 20px;
     padding-bottom: 25px;
+    text-align: left;
 }
 
 .basic-modal-close {
@@ -52,7 +54,7 @@
 }
 
 .delete-group-button {
-    background: rgb(190, 23, 23); 
+    background: rgb(190, 23, 23);
     color: #FFFFFF;
     border: 1px solid #FFFFFF;
     font-family: "Gochi Hand";
@@ -61,4 +63,45 @@
 
 .cancel-delete {
     background: rgb(16, 133, 16); 
+}
+
+@media only screen and (min-width: 701px){
+    .confirm-modal-content {
+        max-width: 350px;
+    }
+}
+
+@media only screen and (max-width: 700px){
+    .confirm-modal-content h1 {
+        font-size: 24px;
+    }
+
+    .confirm-modal-content {
+        font-size: 18px;
+        width: auto;
+        width: 50%;
+        max-width: 300px;
+    }
+}
+
+@media only screen and (max-width: 510px){
+    .confirm-modal-content h1 {
+        font-size: 24px;
+    }
+
+    .confirm-modal-content {
+        font-size: 18px;
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .confirm-modal-content h1 {
+        font-size: 24px;
+    }
+
+    .confirm-modal-content {
+        font-size: 18px;
+        width: 80%;
+    }
 }

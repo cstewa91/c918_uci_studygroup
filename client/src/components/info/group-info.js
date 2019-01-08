@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import { getGroupDetails } from '../../actions';
 import worm from '../../assets/images/bookworm.png';
+import map from '../../assets/images/map_icon.png';
 import NavButton from '../general/nav-button';
 import './group-info.css';
 import Header from '../general/header';
@@ -47,12 +48,14 @@ class GroupInfo extends Component{
         const {user_id} = this.props.singleGroup;
         if(id === user_id){
             return(
-                <Fragment>
+                <div className="edit-group-buttons">
                     <div className="update">
                         <NavButton to={`/edit-group/${this.props.match.params.group_id}`} text='EDIT GROUP'/>
                     </div>
-                    <ConfirmModal {...this.props}/>
-                </Fragment>
+                    <div className="delete-btn">
+                        <ConfirmModal {...this.props}/>
+                    </div>
+                </div>
                 
             ) 
         } else {
@@ -69,20 +72,16 @@ class GroupInfo extends Component{
 
     formatStartTime = (date, startTime) => {
         const splitDate = date.split('');
-        console.log(splitDate);
         const splitTime = startTime.split('');
         splitDate[11] = splitTime[0];
         splitDate[12] = splitTime[1];
         const joinedDate = splitDate.join('');
-        console.log('joinedDate', joinedDate);
         return joinedDate;
     }
 
     adjustTime = (time) => {
         const splicedTime = time.slice(0,5);
         const splitTime = splicedTime.split(':');
-        console.log(splitTime);
-        console.log(splitTime[0]);
         if(splitTime[0] > 12){
             const hour = splitTime[0] - 12;
             splitTime[0] = hour;
@@ -105,7 +104,6 @@ class GroupInfo extends Component{
     componentDidMount(){
         this.props.getGroupDetails(this.props.match.params.group_id);
         this.props.getUserInfo();
-        console.log('component did mount props', this.props);
     }
 
 
@@ -140,17 +138,11 @@ class GroupInfo extends Component{
             )
         }
 
-        console.log(this.props.singleGroup);
         const groupDate = new Date(date).toLocaleDateString([], {month: '2-digit', day: '2-digit'});
-        console.log('start_time', start_time);
-        console.log('date', date);
         const mergedDate = this.formatStartTime(date, start_time);
-        console.log('mergedDate', mergedDate);
         
         const originalDate = new Date(date).toLocaleTimeString();
         const studyDate = new Date(mergedDate).toLocaleTimeString();
-        console.log('studyDate', studyDate);
-        console.log('originalDate', originalDate);
         const startingTime = this.adjustTime(start_time);
         const endingTime = this.adjustTime(end_time);
        
@@ -180,7 +172,7 @@ class GroupInfo extends Component{
                                 </div>
                                 <div className="group-info-location form-group">                  
                                     <strong>Location:</strong> {location}
-                                        <a className="btn modal-map-button" href="https://map.uci.edu/" target="_blank">Map</a>
+                                        <a className="map-icon" href="https://map.uci.edu/" target="_blank"><img width="32px" src={map}/></a>
                                 </div>
                                 <div className="group-info-description-container">        
                                     {description}
