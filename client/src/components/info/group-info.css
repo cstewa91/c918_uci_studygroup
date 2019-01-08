@@ -1,13 +1,10 @@
 .leave-group-button, .delete-group-button {
-    border-radius: 15px;
     background: rgb(190, 23, 23); 
     border-color: #FFFFFF;
     color: #FFFFFF;
-    font-family: "Roboto", sans-serif;
-    font-size: 0.75em;
-    margin-top: 8%;
-    right: 1%;
-    bottom: 1%;
+    /* margin-top: 8%; */
+    /* right: 1%;
+    bottom: 1%; */
 }
 
 .group-details-header {
@@ -66,7 +63,6 @@
 
 .update {
     text-align: center;
-
 }
 
 .delete-group {

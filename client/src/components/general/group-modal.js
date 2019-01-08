@@ -74,11 +74,9 @@ class GroupModal extends Component{
                 return (
                     <div id="group-modal" className="basic-modal">
                         <div onClick={e => e.stopPropagation()} className="basic-modal-content">
-                            <Link to="/search-group">
                                 <div className="group-modal-close" onClick={this.close}>
                                     x
                                 </div>
-                            </Link>
                             <div className="group-modal-details">
                                 <h1>Loading...</h1>
                                 <div className="worm worm-centered">

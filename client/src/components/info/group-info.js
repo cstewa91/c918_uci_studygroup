@@ -51,11 +51,11 @@ class GroupInfo extends Component{
                     <div className="update">
                         <NavButton to={`/edit-group/${this.props.match.params.group_id}`} text='EDIT GROUP'/>
                     </div>
-                    <ConfirmModal/>
+                    <ConfirmModal {...this.props}/>
                 </Fragment>
                 
             ) 
-        }else{
+        } else {
             return(
                 <div className="update">
                     <div className="btn leave-group-button" onClick={this.leaveCurrentGroup}>Leave Group</div>
