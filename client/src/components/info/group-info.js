@@ -51,9 +51,7 @@ class GroupInfo extends Component{
                     <div className="update">
                         <NavButton to={`/edit-group/${this.props.match.params.group_id}`} text='EDIT GROUP'/>
                     </div>
-                    <div className="delete-group">
-                        <div className="btn delete-group-button" onClick={this.deleteCurrentGroup}>Delete Group</div>
-                    </div>
+                    <ConfirmModal/>
                 </Fragment>
                 
             ) 
@@ -188,7 +186,6 @@ class GroupInfo extends Component{
                                     {description}
                                 </div>
                             </form>
-                            <ConfirmModal/>
                             {this.renderButton()}
                         </div>
                 </main>

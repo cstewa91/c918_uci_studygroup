@@ -47,9 +47,10 @@
 }
 
 .confirm-delete {
-    background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), rgb(190, 23, 23); 
+    background: rgb(190, 23, 23); 
+    color: #FFFFFF;
 }
 
 .cancel-delete {
-    background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), rgb(16, 133, 16); 
+    background: rgb(16, 133, 16); 
 }

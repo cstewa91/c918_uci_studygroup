@@ -26,7 +26,7 @@ class ConfirmModal extends Component {
         }
 
         return (
-            <button onClick={this.open} className="btn btn-outline-danger">Open Confirm Modal</button>
+            <button onClick={this.open} className="btn confirm-delete">Delete Group</button>
         );
     }
 }
