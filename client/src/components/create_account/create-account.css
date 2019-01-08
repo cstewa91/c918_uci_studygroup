@@ -7,8 +7,8 @@
 }
 
 .create-account-button {
+   width: 100%;
    font-family: 'Gochi Hand';
-   width: 30%;
    color: #FFFFFF;
    text-align: center;
    text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
@@ -21,7 +21,6 @@
       margin: 0;
       color: rgb(204, 44, 44);
       font-size: 0.6em;
-
 }
 
 .create-account-header {
@@ -50,9 +49,9 @@
 }
 
 .create-account-input-padding {
+   text-align: center; 
+   font-family: Roboto; 
    height: 14%;
-   flex: 0 0 100%;
-   max-width: 100%;
 }
 
 .create-account-input-padding label {
@@ -68,7 +67,7 @@
    color: black;
    background-color: #fffbf3;
    -webkit-appearance: none !important;
-   width: 60%;
+   width: 100%;
 }
 
 .create-account-user-input:focus {
@@ -91,7 +90,7 @@
    text-shadow: none;
 }
 
-.create-header p {
+.account-header p {
    margin: 0;
 }
 
@@ -107,32 +106,45 @@
    font-size: 1.5em;
 }
 
-label.field-active {
+/* label.field-active {
    transform: translateY(-15px);
    font-size: 0.65em;
    color: lightslategrey;
-}
+} */
 
-.create-header {
+.account-header {
    margin: 2% 0 0 0;
    display: flex;
    justify-content: center;
    align-items: center;
 }
 
-.create-header a {
+.account-header a {
    text-decoration: none;
    color: #1778BE;
    transition-duration: 0.2s;
    transition-property: transform;
 }
 
-.create-header a:hover,
-.create-header a:focus {
+.account-header a:hover,
+.account-header a:focus {
    color: #1778BE;
    -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
   transform: scale(1.2);
+}
+
+.account-confirm {
+   margin: 2%;
+   text-align: center;
+}
+
+.account-form {
+   height: 78%;
+   padding-top: 5vh;
+   font-size: 1em;
+   display: flex;
+   justify-content: center;
 }
 
 /****** MEDIA QUERIES *******/
@@ -146,7 +158,6 @@ label.field-active {
 
    .create-account-button {
       font-size: 1.25em;
-      width: 35%;
    }
    
    .create-account-error {
@@ -170,21 +181,21 @@ label.field-active {
       font-size: 1em;
    }
 
-   .create-header {
+   .account-header {
       margin: 2% 0 0 0;
       display: flex;
       justify-content: center;
       align-items: center;
    }
 
-   .create-header p {
+   .account-header p {
       margin: 0;
    }
 
-   label.field-active {
+   /* label.field-active {
       transform: translateY(-20px);
       font-size: 0.8em;
-   }
+   } */
 
    .create-account-return {
       height: 25px;
@@ -214,7 +225,6 @@ label.field-active {
 
    .create-account-button {
       font-size: 1.5em;
-      width: 35%;
    }
 
    .create-account-header-worm {
@@ -226,33 +236,33 @@ label.field-active {
       font-size: 2.5em;
    }
 
-   label.field-active {
+   /* label.field-active {
       transform: translateY(-30px);
       font-size: 1em;
-   }
+   } */
 
    .create-account-input-padding label {
       font-size: 1em;
    }
 
-   .create-account-input-padding {
+   /* .create-account-input-padding {
       height: 15%;
       flex: 0 0 100%;
       max-width: 100%;
-   }
+   } */
 
    .create-account-user-input {
       font-size: 1.2em;
    }
 
-   .create-header {
+   .account-header {
       margin: 2% 0 0 0;
       display: flex;
       justify-content: center;
       align-items: center;
    }
 
-   .create-header p {
+   .account-header p {
       margin: 0;
    }
 
@@ -278,7 +288,6 @@ label.field-active {
 
    .create-account-button {
       font-size: 1.8em;
-      width: 35%;
    }
 
    .create-account-header-worm {
@@ -290,10 +299,10 @@ label.field-active {
       font-size: 3em;
    }
 
-   label.field-active {
+   /* label.field-active {
       transform: translateY(-30px);
       font-size: 1.25em;
-   }
+   } */
 
    .create-account-input-padding label {
       font-size: 1.25em;
@@ -307,14 +316,14 @@ label.field-active {
       font-size: 1.2em;
    }
 
-   .create-header {
+   .account-header {
       margin: 2% 0 0 0;
       display: flex;
       justify-content: center;
       align-items: center;
    }
 
-   .create-header p {
+   .account-header p {
       margin: 0;
    }
 
@@ -343,7 +352,6 @@ label.field-active {
 
    .create-account-button {
       font-size: 1.8em;
-      width: 35%;
    }
 
    .create-account-header-worm {
@@ -359,14 +367,14 @@ label.field-active {
       font-size: 1.4em;
    }
 
-   .create-header {
+   .account-header {
       margin: 2% 0 0 0;
       display: flex;
       justify-content: center;
       align-items: center;
    }
 
-   .create-header p {
+   .account-header p {
       margin: 0;
    }
 
@@ -417,8 +425,8 @@ label.field-active {
 
    .create-account-input-padding {
       height: 14vh;
-      flex: 0 0 100%;
-      max-width: 100%;
+      /* flex: 0 0 100%;
+      max-width: 100%; */
    }
 
    .create-account-header-worm {
@@ -433,7 +441,6 @@ label.field-active {
 
    .create-account-button {
       font-size: 1.20em;
-      width: 30%;
       margin: 2% 0;
    }
    
@@ -441,10 +448,10 @@ label.field-active {
       font-size: 0.75em;
    }
 
-   label.field-active {
+   /* label.field-active {
       transform: translateY(-10px);
 
-   }
+   } */
 
    .create-account-user-input {
       font-size: 1em;
@@ -454,14 +461,14 @@ label.field-active {
       font-size: 0.75em;
    }
 
-   .create-header {
+   .account-header {
       margin: 2% 0 0 0;
       display: flex;
       justify-content: center;
       align-items: center;
    }
 
-   .create-header p {
+   .account-header p {
       margin: 0;
    }
 
@@ -494,8 +501,8 @@ label.field-active {
 
    .create-account-input-padding {
       height: 13vh;
-      flex: 0 0 100%;
-      max-width: 100%;
+      /* flex: 0 0 100%;
+      max-width: 100%; */
    }
 
    .create-account-header-worm {
@@ -510,7 +517,6 @@ label.field-active {
 
    .create-account-button {
       font-size: 1.3em;
-      width: 30%;
       margin: 2% 0;
    }
    
@@ -518,10 +524,10 @@ label.field-active {
       font-size: 1em;
    }
 
-   label.field-active {
+   /* label.field-active {
       transform: translateY(-15px);
 
-   }
+   } */
 
    .create-account-user-input {
       font-size: 1.5em;
@@ -531,14 +537,14 @@ label.field-active {
       font-size: 1em;
    }
 
-   .create-header {
+   .account-header {
       margin: 2% 0 0 0;
       display: flex;
       justify-content: center;
       align-items: center;
    }
 
-   .create-header p {
+   .account-header p {
       margin: 0;
    }
 
@@ -572,8 +578,8 @@ label.field-active {
 
    .create-account-input-padding {
       height: 10vh;
-      flex: 0 0 100%;
-      max-width: 100%;
+      /* flex: 0 0 100%;
+      max-width: 100%; */
    }
 
    .create-account-header-worm {
@@ -588,7 +594,6 @@ label.field-active {
 
    .create-account-button {
       font-size: 1.85em;
-      width: 30%;
       margin: 2% 0;
    }
 
@@ -600,10 +605,10 @@ label.field-active {
       font-size: 1.2em;
    }
 
-   label.field-active {
+   /* label.field-active {
       transform: translateY(-25px);
 
-   }
+   } */
 
    .create-account-user-input {
       font-size: 1.25em;
@@ -613,14 +618,14 @@ label.field-active {
       font-size: 1.2em;
    }
 
-   .create-header {
+   .account-header {
       margin: 2% 0 0 0;
       display: flex;
       justify-content: center;
       align-items: center;
    }
 
-   .create-header p {
+   .account-header p {
       margin: 0;
    }
 
@@ -655,8 +660,8 @@ label.field-active {
 
    .create-account-input-padding {
       height: 12vh;
-      flex: 0 0 100%;
-      max-width: 100%;
+      /* flex: 0 0 100%;
+      max-width: 100%; */
    }
 
    .create-account-header-worm {
@@ -670,7 +675,6 @@ label.field-active {
 
    .create-account-button {
       font-size: 2em;
-      width: 20%;
       margin: 2% 0;
    }
    
@@ -678,10 +682,10 @@ label.field-active {
       font-size: 1.35em;
    }
 
-   label.field-active {
+   /* label.field-active {
       transform: translateY(-30px);
 
-   }
+   } */
 
    .create-account-user-input {
       font-size: 1.4em;
@@ -691,14 +695,14 @@ label.field-active {
       font-size: 1.2em;
    }
 
-   .create-header {
+   .account-header {
       margin: 2% 0 0 0;
       display: flex;
       justify-content: center;
       align-items: center;
    }
 
-   .create-header p {
+   .account-header p {
       margin: 0;
    }
 

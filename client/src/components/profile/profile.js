@@ -103,10 +103,8 @@ class Profile extends Component {
                             </div>
                             <div className='profile-confirm col-5'>
                                     <button className='btn profile-confirm-button'>CONFIRM</button>
-                            </div>
-                            
-                        </form>  
-                        
+                            </div>                           
+                        </form>                       
                 </main>               
             </div>
             )
