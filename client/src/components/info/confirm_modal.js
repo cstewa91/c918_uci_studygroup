@@ -16,16 +16,21 @@ class ConfirmModal extends Component {
     close = () => this.setState({show: false});
 
     render(){
-        console.log('props', this.props);
-
         if(this.state.show){
             return (
                 <div className="confirm-modal" onClick={this.close}>
                     <div onClick={e => e.stopPropagation()} className="confirm-modal-content">
                         <div onClick={this.close} className="basic-modal-close">X</div>
-                        <h1 className="basic-modal-content-h1">Delete Group</h1>
+                        <h1 className="basic-modal-content-h1">
+                            Delete Group
+                        </h1>
                         <p>Are you sure?</p>
-                        <div className="btn confirm-delete" onClick={this.deleteCurrentGroup}>Delete</div> <div onClick={this.close} className="btn cancel-delete">Cancel</div>
+                        <div className="btn confirm-delete" onClick={this.deleteCurrentGroup}>
+                            Delete
+                        </div>
+                        <div onClick={this.close} className="btn cancel-delete">
+                            Cancel
+                        </div>
                     </div>
                 </div>
             )

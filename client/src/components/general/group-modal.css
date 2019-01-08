@@ -55,13 +55,14 @@
 
     .basic-modal-content {
         font-size: 1em;
+        width: 80%;
+        max-width: 700px;
     }
 
     .modal-group-info p {
         margin-bottom: 0;
     }
 }
-
 
 .modal-map-button {
     background: rgb(14, 65, 102);

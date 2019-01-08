@@ -43,10 +43,10 @@
     cursor: pointer;
 }
 
-.basic-modal-close:hover {
+/* .basic-modal-close:hover {
     color: #ff0000;
     background-color: #dedede;
-}
+} */
 
 .confirm-delete {
     background: rgb(190, 23, 23); 
