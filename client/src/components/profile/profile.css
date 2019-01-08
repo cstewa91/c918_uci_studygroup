@@ -4,9 +4,9 @@
 
 .profile-header {
     padding: 1%;
-    margin-top: 5%;
+    /* margin-top: 5%; */
     font-family: 'Gochi Hand';
-    color: #1778F7;
+    color: #ffe34c;
     font-size: 1.5em;
     font-weight: bolder;
     text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
@@ -72,7 +72,7 @@
 
 .profile-info p {
     color: #9E9E9E;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid #ffe34c;
     margin: 0;
 }
 
@@ -89,6 +89,10 @@
 .profile-edit {
     height: 10%;
     margin: 0.2em;
+}
+
+.profile-edit {
+    text-align: center;
 }
 
 .profile-edit-button {
@@ -138,10 +142,14 @@
 .profile-form input {
     width: 100%;
     color: black;
-    background-color: #E8F4FF;
+    background-color: #fffbf3;
     border: none;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid #ffe34c;
 }
+
+.profile-form input:focus {
+    border-bottom: 2px solid #ffe34c;
+ }
 
 .profile-form p {
     height: 30px;
@@ -214,9 +222,9 @@
         justify-content: space-around;
     }
 
-    .profile-title {
+    /* .profile-title {
         font-size: 0em;
-    }
+    } */
 
     .profile-header {
         font-size: 2.4em;
@@ -252,7 +260,7 @@
         width: 100%;
         border: none;
         color: black;
-        border-bottom: 1px solid grey;
+        border-bottom: 1px solid #ffe34c;
         font-size: 1.5em;
     }
     
@@ -307,7 +315,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
     }
 
     .profile-form > div {
@@ -317,6 +324,7 @@
 
     .profile-confirm {
         margin: 2%;
+        text-align: center;
     }
 
     .profile-confirm-button {
@@ -385,7 +393,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
     }
 
     .profile-form > div {
@@ -395,6 +402,7 @@
 
     .profile-confirm {
         margin: 2%;
+        text-align: center;
     }
 
     .profile-confirm-button {
@@ -441,20 +449,21 @@
 
     .profile-form {
         min-height: 60vh;
-        padding: 0;
+        padding-top: 5%;
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
     }
 
     .profile-form > div {
         align-items: center;
+        min-height: 15vh;
         height: 20vh;
     }
 
     .profile-confirm {
         margin: 2%;
+        text-align: center;
     }
 
     .profile-confirm-button {
@@ -501,20 +510,21 @@
 
     .profile-form {
         min-height: 60vh;
-        padding: 0;
+        padding-top: 5%;
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
     }
 
     .profile-form > div {
         align-items: center;
-        height: 10vh;
+        min-height: 15vh;
+        height: 20vh;
     }
 
     .profile-confirm {
         margin: 2%;
+        text-align: center;
     }
 
     .profile-confirm-button {
