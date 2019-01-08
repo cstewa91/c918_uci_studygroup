@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import { getGroupDetails } from '../../actions';
+import worm from '../../assets/images/bookworm.png';
 import NavButton from '../general/nav-button';
 import './group-info.css';
 import Header from '../general/header';
@@ -119,8 +120,28 @@ class GroupInfo extends Component{
         
         const {name, subject, course, date, start_time, end_time, max_group_size, current_group_size, location, description, user_id } = this.props.singleGroup;
         if(!name){
-            return <h1>Loading...</h1>
+            return (          
+                <div className="edit-created">
+                    <Header hamburgerClick={this.toggleHamburger}/>
+                    <Hamburger show={this.state.hamburgerOpen}/>
+                    {backdrop}
+                    <main className="container group-details-content">
+                        <div className="group-details">
+                            <div className="group-details">
+                                <div className="group-details-name row group-details-header">
+                                    <h1>Loading...</h1>
+                                    <div className="worm">
+                                        <img src={worm}/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+
+            )
         }
+
         console.log(this.props.singleGroup);
         const groupDate = new Date(date).toLocaleDateString([], {month: '2-digit', day: '2-digit'});
         console.log('start_time', start_time);
