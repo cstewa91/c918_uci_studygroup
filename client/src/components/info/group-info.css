@@ -1,0 +1,74 @@
+.leave-group-button, .delete-group-button {
+    border-radius: 15px;
+    background: rgb(190, 23, 23); 
+    border-color: #FFFFFF;
+    color: #FFFFFF;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.75em;
+    margin-top: 8%;
+    right: 1%;
+    bottom: 1%;
+}
+
+.group-details-header {
+    font-family: "Gochi Hand";
+    font-size: 1.75em;
+    text-align: center;
+    justify-content: center;
+}
+
+.group-info {
+    font-size: 16px;
+}
+
+.edit-group {
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+    font-family: "Gochi Hand";
+    background-color: #1778BE;
+}
+
+.update a:hover, .update a:focus {
+    color: #FFFFFF;
+}
+
+.group-info-description-container {
+    background-color: #E1E1E1;
+    border-radius: 10px;
+    border: 1px solid grey;
+    color: #000000;
+    text-shadow: none;
+    font-size: 1.25em;
+    height: 50px;
+    padding: 5px;
+    margin-bottom: 2%;
+    overflow: scroll;
+}
+
+.worm img {
+    height: 125px;
+}
+
+.group-details {
+    background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), #1778BE; 
+    color: white;
+    font-family: "Roboto", sans-serif;
+    text-shadow: -1px 1px 1px black;
+    border-radius: 5px;
+    /* height: 87vh; */
+    margin: 4%;
+    padding: 15px;
+    position: relative;
+    z-index: 1;
+    font-size: .8em;
+    margin-bottom: 2%;
+}
+
+.update {
+    text-align: center;
+
+}
+
+.delete-group {
+    margin-right: 2%;
+}

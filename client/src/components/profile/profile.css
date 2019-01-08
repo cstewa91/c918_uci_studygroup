@@ -1,0 +1,535 @@
+.profile-content {
+    height: 88vh;
+}
+
+.profile-header {
+    padding: 1%;
+    /* margin-top: 5%; */
+    font-family: 'Gochi Hand';
+    color: #ffe34c;
+    font-size: 1.5em;
+    font-weight: bolder;
+    text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-align: center;
+    align-items: center;
+}
+
+.profile-header a {
+    text-decoration: none;
+    color: #1778BE;
+    transition-duration: 0.2s;
+    transition-property: transform;
+ }
+ 
+ .profile-header a:hover,
+ .profile-header a:focus {
+    color: #1778BE; 
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    transform: scale(1.2);
+ }
+
+.profile-title {
+    align-items: center;
+    margin: 0;
+}
+
+.profile-header div {
+    text-decoration: none;
+    color: #1778BE;
+    transition-duration: 0.2s;
+    transition-property: transform;
+ }
+ 
+ .profile-header div:hover,
+ .profile-header div:focus {
+    color: #1778BE;
+    -webkit-transform: scale(1.2);
+   -moz-transform: scale(1.2);
+   transform: scale(1.2);
+ }
+
+.profile-return {
+    background: none;
+    display: flex;
+    text-decoration: none;
+
+}
+
+.profile-info {
+    height: 70%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-info div {
+    font-family: Roboto;
+    font-size: 1.1em;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-info p {
+    color: #9E9E9E;
+    border-bottom: 1px solid #ffe34c;
+    margin: 0;
+}
+
+.profile-confirm-button, .profile-edit-button {
+    font-family: 'Gochi Hand';
+    color: #FFFFFF;
+    text-align: center;
+    text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
+    background: linear-gradient(178.26deg, rgba(255, 255, 255, 0) 50.39%, rgba(255, 255, 255, 0.34) 114.5%), #1778BE;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+
+.profile-edit {
+    height: 10%;
+    margin: 0.2em;
+}
+
+.profile-edit {
+    text-align: center;
+}
+
+.profile-edit-button {
+    font-family: 'Gochi Hand';
+    color: #FFFFFF;
+    text-align: center;
+    text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
+    background: linear-gradient(178.26deg, rgba(255, 255, 255, 0) 50.39%, rgba(255, 255, 255, 0.34) 114.5%), #1778BE;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    transition-property: transform;
+    padding: 0;
+}
+
+.profile-edit-button:hover {
+    box-shadow: 1px 2px 3px grey;
+    transform: translateY(-2px);
+}
+
+.profile-form {
+    height: 78%;
+    padding-top: 5vh;
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+.form-username, .form-first, .form-last, .form-email {
+    height: 15%;
+    font-family: Roboto;
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-form label {
+    font-weight: bold;
+    color: grey;
+    font-size: 0.75em;
+    margin: 0;
+    transform: translateY(-15px);
+}
+
+.profile-form input {
+    width: 100%;
+    color: black;
+    background-color: #fffbf3;
+    border: none;
+    border-bottom: 1px solid #ffe34c;
+}
+
+.profile-form input:focus {
+    border-bottom: 2px solid #ffe34c;
+ }
+
+.profile-form p {
+    height: 30px;
+    margin: 0;
+    color: red;
+    font-size: 0.75em;
+}
+
+.profile-confirm-button {
+    font-family: 'Gochi Hand';
+    color: #FFFFFF;
+    text-align: center;
+    text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
+    background: linear-gradient(178.26deg, rgba(255, 255, 255, 0) 50.39%, rgba(255, 255, 255, 0.34) 114.5%), #1778BE;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    transition-property: transform;
+    padding: 0;
+}
+
+.profile-confirm-button:hover {
+    box-shadow: 1px 2px 3px grey;
+    transform: translateY(-2px);
+}
+
+
+@media (min-width: 321px) {
+    
+    .profile-info {
+        padding-top: 10%;
+    }
+
+    .profile-form {
+        padding-top: 8%;
+    }
+ }
+ 
+ @media (min-width: 576px){
+    .profile-content {
+        height: 75vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .profile-info {
+        padding-top: 3%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+
+ }
+ 
+ @media (min-width: 768px) {
+
+    .profile-content {
+        height: 75vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .profile-info {
+        padding-top: 3%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    /* .profile-title {
+        font-size: 0em;
+    } */
+
+    .profile-header {
+        font-size: 2.4em;
+    }
+
+    .profile-info div {
+        font-size: 1.3em;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .profile-info p {
+        margin: 0;
+    }
+
+    .profile-form {
+        height: 90%;
+    }
+
+    .profile-form label {
+        font-weight: bold;
+        color: grey;
+        font-size: 1.7em;
+        margin: 0;
+        transform: translateY(-40px);
+    }
+
+    .profile-form p {
+        font-size: 1.5em;
+    }
+    
+    .profile-form input {
+        width: 100%;
+        border: none;
+        color: black;
+        border-bottom: 1px solid #ffe34c;
+        font-size: 1.5em;
+    }
+    
+    .profile-edit-button, .profile-confirm-button {
+        height: 60px;
+        font-size: 2em;
+    }
+ 
+}
+
+@media (min-width:300px) and (max-width: 575.98px) and (orientation: landscape) {
+
+    .profile-content {
+        height: 90%;
+    }
+ 
+    .profile-info {
+        min-height: 70vh;
+        padding-top: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .profile-header {
+        padding: 1% 0;
+    }
+
+    .profile-info>div {
+        height: 25vh;
+    }
+
+    .profile-edit {
+        margin: 2%;
+    }
+
+    .profile-form input {
+        font-size: 1.2em;
+    }
+
+    .profile-form label {
+        font-size: 1em;
+        transform: translateY(-20px);
+    }
+
+    .profile-form p {
+        font-size: 0.8em;
+    }
+
+    .profile-form {
+        min-height: 60vh;
+        padding-top: 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profile-form > div {
+        align-items: center;
+        height: 25vh;
+    }
+
+    .profile-confirm {
+        margin: 2%;
+        text-align: center;
+    }
+
+    .profile-confirm-button {
+        height: 55px;
+        width: 80%;
+    }
+
+ }
+
+
+ 
+ @media (min-width: 576px) and (max-width: 768.98px) and (orientation: landscape) {
+   
+    .profile-content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .profile-header {
+        padding: 1% 0;
+    }
+ 
+    .profile-info {
+        min-height: 70vh;
+        padding-top: 5vh;
+        display: flex;
+        justify-content: center;
+    }
+
+ 
+    .profile-info div{
+        font-size: 1.2em;
+    }
+
+    .profile-info p{
+        font-size: 1.2em;
+    }
+
+    .profile-edit {
+        margin: 2%;
+    }
+
+    .profile-edit-button {
+        height: 45px;
+
+    }
+
+    .profile-form input {
+        font-size: 1.2em;
+    }
+
+    .profile-form label {
+        font-size: 1em;
+        transform: translateY(-20px);
+    }
+
+    .profile-form p {
+        font-size: 0.8em;
+    }
+
+    .profile-form {
+        min-height: 60vh;
+        padding-top: 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profile-form > div {
+        align-items: center;
+        height: 20vh;
+    }
+
+    .profile-confirm {
+        margin: 2%;
+        text-align: center;
+    }
+
+    .profile-confirm-button {
+        height: 55px;
+        width: 80%;
+    }
+ 
+ }
+ 
+ @media (min-width: 769px) and (max-width: 1366.98px) and (orientation: landscape) {
+  
+    .profile-content {
+        min-height: 75vh;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .profile-header {
+        padding: 0;
+        margin: 0;
+    }
+ 
+    .profile-info {
+        min-height: 60vh;
+        padding-top: 10vh;
+        display: flex;
+        justify-content: center;
+    }
+
+    .profile-info>div {
+        height: 25%;
+    }
+
+    .profile-edit {
+        margin: 2%;
+    }
+
+    .profile-edit-button {
+        height: 55px;
+        width: 80%;
+    }
+
+    .profile-form {
+        min-height: 60vh;
+        padding-top: 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profile-form > div {
+        align-items: center;
+        min-height: 15vh;
+        height: 20vh;
+    }
+
+    .profile-confirm {
+        margin: 2%;
+        text-align: center;
+    }
+
+    .profile-confirm-button {
+        height: 55px;
+        width: 80%;
+    }
+
+ }
+
+ @media (min-width: 1367px) and (orientation: landscape) {
+  
+    .profile-content {
+        min-height: 75vh;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+ 
+    .profile-header {
+        padding: 0;
+        margin: 0;
+    }
+
+    .profile-info {
+        min-height: 60vh;
+        padding-top: 10vh;
+        display: flex;
+        justify-content: center;
+    }
+
+    .profile-info > div {
+        height: 25%;
+    }
+
+    .profile-edit {
+        margin: 2%;
+    }
+
+    .profile-edit-button {
+        height: 55px;
+        width: 80%;
+    }
+
+    .profile-form {
+        min-height: 60vh;
+        padding-top: 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profile-form > div {
+        align-items: center;
+        min-height: 15vh;
+        height: 20vh;
+    }
+
+    .profile-confirm {
+        margin: 2%;
+        text-align: center;
+    }
+
+    .profile-confirm-button {
+        height: 55px;
+        width: 80%;
+    }
+
+ }

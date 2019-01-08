@@ -1,0 +1,736 @@
+.create-account {
+   color: white;
+   font-size: 17px;
+}
+
+.create-account-container {
+   padding-top: 30px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.create-account-container a:hover {
+   color: white;
+   text-decoration: none;
+}
+
+.floating-label {
+   -webkit-appearance: none !important;
+}
+
+.login-background {
+   min-height: 100vh;
+   margin: 0;
+   background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), #1778BE;
+   background-blend-mode: hard-light, normal, normal;
+}
+
+.login-error {
+   margin: 0px 0px 10px 0px;
+   line-height: 0;
+   color: rgb(204, 44, 44);
+}
+
+.login-form-container {
+   text-align: center;
+   padding-top: 90px;
+   justify-content: center;
+   align-items: center;
+}
+
+.login-form-container label.login-active {
+   transform: translateY(-25px);
+   font-size: .9em;
+   color: rgba(255, 255, 255, 0.37);
+}
+
+.login-input-padding {
+   padding: 10px 0px;
+   flex: 0 0 100%;
+   max-width: 100%;
+}
+
+.label-login-color {
+   color: white
+}
+
+.login-padding {
+   padding-top: 90px;
+}
+
+.login-title {
+   font-family: 'Gochi Hand';
+   color: #FFFFFF;
+   text-align: center;
+   text-shadow: -1px 4px 4px black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.login-user-input {
+   margin-bottom: 15px;
+   padding: 0px 0px;
+   background: none;
+   border: none;
+   border-bottom: 1px solid white;
+   color: white;
+   -webkit-appearance: none !important;
+   max-width: 66.666667%;
+   width: 100%;
+}
+
+.sign-in p {
+   color: rgb(204, 44, 44);
+}
+
+.sign-in-button {
+   font-family: 'Gochi Hand';
+   color: #FFFFFF;
+   text-align: center;
+   text-shadow: -1px 4px 4px black, 0 1px black, 1px 0 black, 0 -1px black;
+   font-size: 25px;
+   background: linear-gradient(178.26deg, rgba(255, 255, 255, 0) 50.39%, rgba(255, 255, 255, 0.34) 114.5%), #1778BE;
+   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+   border-radius: 5px;
+   padding: 5px 65px;
+   flex: 0 0 66.666667%;
+}
+
+.worm-image {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   width: 110px
+}
+
+/****** MEDIA QUERIES *******/
+@media (max-width: 359.98px ) {
+
+   .create-account {
+      font-size: 17px;
+   }
+
+   .create-account-container {
+      padding-top: 30px;
+   }
+
+   .create-button {
+      font-size: 0.8em;
+   }
+
+   label.login-active {
+      transform: translateY(15px);
+   }
+
+   .login-error {
+      font-size: 0.8em;
+      margin: 0px 0px 10px 0px;
+   }
+
+   .login-form-container {
+      padding-top: 42px;
+   }
+
+   .login-input-padding {
+      padding: 10px 0px;
+   }
+
+   .login-padding {
+      padding-top: 15vh;
+   }
+
+   .login-title {
+      font-size: 1.5rem;
+   }
+
+   .login-user-input {
+      font-size: 0.85em;
+      margin-bottom: 10px;
+   }
+
+   .sign-in-button {
+      font-size: 1.2em;
+      padding: 5px 65px;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .worm-image {
+      width: 20%;
+   }
+}
+
+
+@media (min-width: 360px) {
+   .create-account {
+      font-size: 0.8em;
+   }
+
+   .create-account-container {
+      padding-top: 30px;
+   }
+
+   .create-button {
+      font-size: 17px;
+   }
+
+   label.login-active {
+      transform: translateY(-25px);
+   }
+
+   .login-error {
+      font-size: 0.8em;
+      margin: 0px 0px 10px 0px;
+   }
+
+   .login-form-container {
+      padding-top: 42px;
+   }
+
+   .login-input-padding {
+      padding: 10px 0px;
+   }
+
+   .login-padding {
+      padding-top: 15vh;
+   }
+
+   .login-title {
+      font-size: 2.2rem;
+   }
+
+   .login-user-input {
+      margin-bottom: 15px;
+      width: 60%;
+      font-size: 1em;
+}
+
+   .sign-in {
+      padding-top: 5%;
+   }
+
+   .sign-in-button {
+      font-size: 1.35em;
+      padding: 5px 65px;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .worm-image {
+      width: 85px;
+   }
+}
+
+@media (min-width: 576px) {
+   .create-account {
+      font-size: 17px;
+   }
+
+   .create-account-container {
+      padding-top: 30px;
+   }
+
+   .create-button {
+      font-size: 17px;
+   }
+
+   label.login-active {
+      transform: translateY(-25px);
+   }
+
+   .login-error {
+      font-size: 1em;
+      margin: 0px 0px 10px 0px;
+   }
+
+   .login-form-container {
+      padding-top: 5%;
+   }
+
+   .login-input-padding {
+      padding: 10px 0px;
+   }
+
+   .login-padding {
+      padding-top: 15vh;
+   }
+
+   .login-title {
+      font-size: 2.5rem;
+   }
+
+   .login-user-input {
+      margin-bottom: 15px;
+      width: 40%;
+      font-size: 1em;
+   }
+
+   .sign-in-button {
+      font-size: 1.5em;
+      padding: 5px 65px;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .worm-image {
+      width: 15%;
+   }
+}
+
+@media (min-width: 768px) {
+
+   .create-account {
+      font-size: 1.5em;
+   }
+
+   .create-account-container {
+      padding-top: 30px;
+   }
+
+   .create-button {
+      font-size: 17px;
+   }
+
+   label.login-active {
+      transform: translateY(-25px);
+   }
+
+   .login-error {
+      font-size: 1.25em;
+      margin: 0px 0px 10px 0px;
+   }
+
+   .login-form-container {
+      padding-top: 10%;
+   }
+
+   .login-padding {
+      padding-top: 25%;
+   }
+
+   .login-input-padding {
+      padding: 16px 0px;
+   }
+
+   .login-input-padding 
+   .login-padding {
+      padding-top: 20%;
+      padding-bottom: 46px;
+   }
+
+   .login-title {
+      font-size: 3rem;
+   }
+
+   .login-user-input {
+      margin-bottom: 15px;
+      width: 50%;
+      height: 40px;
+      font-size: 1.3em;
+   }
+
+   .login-form-container label.login-active {
+      font-size: 1.4em;
+      transform: translateY(-30px);
+   }
+
+   .login-input-padding label {
+      font-size: 1.3em;
+   }
+
+   .sign-in-button {
+      font-size: 1.7em;
+      width: 30%;
+      flex: 0 0 21%;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .worm-image {
+      width: 15%;
+   }
+}
+
+@media (min-width: 992px) {
+   .create-account {
+      font-size: 2em;
+   }
+
+   .create-account-container {
+      padding-top: 30px;
+      padding-left: 1%;
+   }
+
+   .create-button {
+      font-size: 17px;
+   }
+
+   label.login-active {
+      transform: translateY(-25px);
+   }
+
+   .login-error {
+      margin: 0px 0px 10px 0px;
+   }
+
+   .login-form-container {
+      padding-top: 10%;
+   }
+
+   .login-input-padding {
+      padding: 25px 0px;
+   }
+
+   .login-padding {
+      padding-top: 25%;
+      /* padding-bottom: 46px; */
+   }
+
+   .login-title {
+      font-size: 4rem;
+   }
+
+   .login-user-input {
+      margin-bottom: 15px;
+      width: 50%;
+      height: 50px;
+      font-size: 2em;
+   }
+
+   .login-form-container label.login-active {
+      font-size: 1.8em;
+      transform: translateY(-45px);
+   }
+
+   .login-input-padding label {
+      font-size: 1.4em;
+   }
+
+   .sign-in-button {
+      font-size: 2.4em;
+      width: 30%;
+      flex: 0 0 21%;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .worm-image {
+      width: 12%;
+   }
+}
+
+@media (min-width: 1200px) {
+   .create-account {
+      font-size: 2em;
+   }
+
+   .create-account-container {
+      padding-top: 30px;
+      padding-left: 0;
+   }
+
+   .create-button {
+      font-size: 17px;
+   }
+
+   label.login-active {
+      transform: translateY(-25px);
+   }
+
+   .login-error {
+      margin: 0px 0px 10px 0px;
+   }
+
+   .login-form-container {
+      padding-top: 90px;
+   }
+
+   .login-input-padding {
+      padding: 25px 0px;
+   }
+
+   .login-padding {
+      padding-top: 80px;
+      padding-bottom: 46px;
+   }
+
+   .login-title {
+      font-size: 2.5rem;
+   }
+
+   .login-user-input {
+      margin-bottom: 15px;
+      width: 35%;
+      height: 50px;
+      font-size: 2em;
+   }
+
+   .login-form-container label.login-active {
+      font-size: 1.8em;
+      transform: translateY(-45px);
+   }
+
+   .sign-in-button {
+      font-size: 2.4em;
+      width: 30%;
+      flex: 0 0 21%;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .worm-image {
+      width: 110px;
+   }
+}
+
+@media (min-width: 300px) and (max-width: 750px) and (orientation: landscape) {
+ 
+   .create-account-container {
+      padding-top: 10px;
+   }
+
+   .login-padding {
+      padding-top: 8vh;
+   }
+
+   .login-error {
+      font-size: 0.75em;
+   }
+
+   .login-input-padding {
+      padding: 0;
+   }
+
+   .login-title {
+      font-size: 1.75rem;
+   }
+
+   .login-user-input {
+      margin-bottom: 15px;
+      width: 40%;
+      height: 25px;
+      font-size: 0.85em;
+   }
+
+   .login-form-container {
+      padding-top: 2%;
+   }
+
+   .login-form-container label.login-active {
+      font-size: 0.75em;
+      transform: translateY(-20px);
+   }
+
+   .sign-in {
+      padding-top: 0;
+   }
+
+   .sign-in-button {
+      font-size: 1em;
+      width: 30%;
+      flex: 0 0 21%;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .worm-image {
+      width: 10%;
+   }
+
+
+}
+
+@media (min-width: 751px) and (max-width: 1023.9px) and (orientation: landscape) {
+
+   .create-account-container {
+      padding-top: 10px;
+      font-size: 0.65em;
+   }
+
+   .login-padding {
+      padding-top: 8vh;
+      padding-bottom: 0;
+   }
+
+   .login-error {
+      font-size: 0.75em;
+   }
+
+   .login-input-padding {
+      padding-top: 15px;
+      padding-bottom: 0;
+   }
+
+   .login-input-padding label {
+      font-size: 1em;
+   }
+
+   .login-title {
+      font-size: 2.25rem;
+   }
+
+   .login-user-input {
+      margin-bottom: 15px;
+      width: 35%;
+      height: 25px;
+      font-size: 0.85em;
+   }
+
+   .login-form-container {
+      padding-top: 5%;
+   }
+
+   .login-form-container label.login-active {
+      font-size: 0.75em;
+      transform: translateY(-20px);
+   }
+
+   .sign-in {
+      padding-top: 0;
+   }
+
+   .sign-in-button {
+      margin-top: 3%;
+      font-size: 1.4em;
+      width: 25%;
+      flex: 0 0 21%;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .worm-image {
+      width: 10%;
+   }
+
+}
+
+@media (min-width: 1024px) and (orientation: landscape) {
+   
+   .create-account {
+      font-size: 1em;
+   }
+
+   .create-account-container {
+      padding-top: 2%;
+      font-size: 1.5em;
+   }
+
+   .login-padding {
+      padding-top: 8vh;
+      padding-bottom: 0;
+   }
+
+   .login-error {
+      font-size: 1em;
+   }
+
+   .login-input-padding {
+      padding-top: 25px;
+      padding-bottom: 0;
+   }
+
+   .login-title {
+      font-size: 2.7rem;
+   }
+
+   .login-user-input {
+      margin-bottom: 15px;
+      width: 35%;
+      height: 35px;
+      font-size: 1.2em;
+   }
+
+   .login-form-container {
+      padding-top: 6%;
+   }
+
+   .login-form-container label.login-active {
+      font-size: 1.4em;
+      transform: translateY(-35px);
+   }
+
+   .sign-in {
+      padding-top: 0;
+   }
+
+   .sign-in-button {
+      margin-top: 3%;
+      font-size: 1.8em;
+      width: 25%;
+      flex: 0 0 21%;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .worm-image {
+      width: 10%;
+   }
+
+}
+
+@media (min-width: 1400px) and (orientation: landscape) {
+   
+   .create-account {
+      font-size: 1em;
+   }
+
+   .create-account {
+      font-size: 0.85em;
+   }
+
+   .create-account-container {
+      padding-top: 2%;
+      font-size: 1.75em;
+   }
+
+   .login-padding {
+      padding-top: 12vh;
+      padding-bottom: 0;
+   }
+
+   .login-error {
+      font-size: 1.25em;
+   }
+
+   .login-input-padding {
+      padding-top: 25px;
+      padding-bottom: 0;
+   }
+
+   .login-title {
+      font-size: 3rem;
+   }
+
+   .login-user-input {
+      margin-bottom: 15px;
+      width: 30%;
+      height: 35px;
+      font-size: 1.2em;
+   }
+
+   .login-form-container {
+      padding-top: 3%;
+   }
+
+   .login-form-container label.login-active {
+      font-size: 1.4em;
+      transform: translateY(-35px);
+   }
+
+   .sign-in {
+      padding-top: 0;
+   }
+
+
+   .sign-in-button {
+      font-size: 1.8em;
+      width: 25%;
+      flex: 0 0 21%;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .worm-image {
+      width: 6%;
+   }
+
+}

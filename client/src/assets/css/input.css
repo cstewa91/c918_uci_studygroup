@@ -1,0 +1,15 @@
+input:focus {
+   outline: none
+}
+
+label {
+   display: inline-block;
+   position: absolute;
+   transition: all 150ms ease-in;
+}
+
+label.field-active {
+   transform: translateY(-25px);
+   font-size: .9em;
+   color: rgba(0, 0, 0);
+}
