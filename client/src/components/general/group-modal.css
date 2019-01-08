@@ -52,9 +52,12 @@
 }
 
 @media only screen and (min-width: 600px) {
+    .basic-modal-content h1 {
+        font-size: 30px;
+    }
 
     .basic-modal-content {
-        font-size: 1em;
+        font-size: 20px;
         width: 80%;
         max-width: 700px;
     }
