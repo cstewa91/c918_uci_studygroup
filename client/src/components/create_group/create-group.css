@@ -36,6 +36,7 @@
 }
 
 .create-title {
+    font-size: 25px;
     height: 100%;
     margin: 0;
     color: #ffe34c;
@@ -49,11 +50,8 @@
 }
 
 .create-form {
-    height: 90%;
-    width: 100%;
-    min-width: 70%;
     font-size: 1em;
-    margin-top: 2%;
+    margin-top: 5%;
     display: flex;
     flex-direction: column;
      justify-content: space-between;
@@ -61,13 +59,9 @@
 
 .create-form .row {
     height: 15vh;
-    align-items: center;
+    
 }
 
-.create-form .create-button {
-    margin-top: 15%;
-    height: 10%;
-}
 
 .create-groupName, .create-subject, .create-course, .create-groupSize,
 .create-startTime, .create-endTime, .create-date, .create-location, .create-description {
@@ -78,20 +72,16 @@
     padding: 5px 0;
 }
 
-.create-update-button {
-    margin: 10% 0;
-}
-
 .create-form label {
     font-weight: bold;
     font-size: 0.75em;
     margin: 0;
     color: grey;
-    transform: translateY(-14px);
+    transform: translateY(-18px);
 }
 
 .create-form input {
-    font-size: 0.75em;
+    font-size: 1em;
     width: 100%;
     color: black;
     background: #FFFBE2;
@@ -143,35 +133,28 @@
 
 
 @media (min-width: 321px) {
-   
+
+
 .create-title {
     margin: 0;
-    font-size: 1.5em;
+    font-size: 30px;
 }
 
 .create-form .row {
-    height: 14vh;
+    height: 80px;
 }
 
 .create-form input {
-    font-size: 1em;
+    font-size: 20px;
 }
 
 .create-form label {
-    font-weight: bold;
-    font-size: 0.75em;
-    margin: 0;
-    color: grey;
-    /* transform: translateY(-18px); */
+    font-size: 16px;
+    transform: translateY(-22px);
 }
 
-.create-form .create-button {
-    margin: 8% 0 0 0;
-}
-
-
-.create-return{
-    font-size: 1.2em;
+.create-update-button {
+    font-size: 24px;
 }
 
 }
@@ -180,69 +163,62 @@
 
 .create-title {
     margin: 0.3em;
-    font-size: 1.5em;
-}
-
-.create-form input {
-    font-size: 1.25em;
+    font-size: 35px;
 }
 
 .create-form .row {
-    height: 12vh;
-    }
+    height: 85px;
+}
+
+.create-form input {
+    font-size: 22px;
+}
 
 .create-form label {
-    font-weight: bold;
-    font-size: 1em;
-    margin: 0;
-    color: grey;
-    transform: translateY(-20px);
+    font-size: 18px;
+    transform: translateY(-24px);
 }
 
-.create-form .create-button {
-    margin: 3% 0;
-    align-items: center;
-}
-
-.create-return {
-    font-size: 1.5em;
+.create-update-button {
+    font-size: 30px;
 }
 
 }
 
 @media (min-width: 768px) {
 
-/* .create-title {
-    font-size:0;
-} */
-   
+.create-form {
+    margin-top: 7%;
+}
+
+.create-title {
+    margin: 0.3em;
+    font-size: 45px;
+}
+
 .create-content .create-header {
     height: 65px;
 }
 
 .create-form .row {
-    height: 10vh;
+    height: 120px;
     }
 
-.create-form input {
-    font-size: 1.5em;
-}
-
 .create-form label {
-    font-weight: bold;
-    font-size: 1.2em;
-    margin: 0;
-    color: grey;
-    transform: translateY(-25px);
+    font-size: 25px;
+    transform: translateY(-35px);
 }
 
-.create-form .create-button {
-    margin: 5% 0 0 0;
-    align-items: center;
+.create-form input {
+    font-size: 30px;
+}
+
+textarea {
+    font-size: 30px;
 }
 
 .create-form p {
-    font-size: 1n  em;
+    font-size: 18px;
 }
 
 .create-return {
@@ -250,95 +226,75 @@
 }
 
 .create-update-button {
-    /* height: 60px; */
-    width: 80%;
-    font-size: 2em;
+    font-size: 35px;
 }
 
 .create-button div {
     text-align: center;
 }
 
-textarea {
-    font-size: 1.5em;
-}
-
 }
 
 @media (min-width: 992px) {
 
-.create-form .row {
-    height: 10vh;
-    }
+.create-form {
+    margin-top: 7%;
+}
 
-.create-form input {
-    font-size: 1.8em;
+.create-title {
+    margin: 0.3em;
+    font-size: 55px;
+}
+
+.create-form .row {
+    height: 140px;
 }
 
 .create-form label {
-    font-weight: bold;
-    font-size: 1.5em;
-    margin: 0;
-    color: grey;
-    transform: translateY(-30px);
+    font-size: 30px;
+    transform: translateY(-40px);
 }
 
-.create-form .create-button {
-    margin: 10% 0 0 0;
-    align-items: center;
-}
-
-.create-form p {
-    font-size: 1.2em;
-}
-
-.create-return {
-    font-size: 1.8em;
-}
-
-.create-update-button {
-    font-size: 2.5em;
+.create-form input {
+    font-size: 35px;
 }
 
 textarea {
-    font-size: 1.8em;
+    font-size: 35px;
+}
+
+.create-form p {
+    font-size: 22px;
+}
+
+.create-update-button {
+    font-size: 45px;
 }
 
 }
 
 @media (min-width: 1200px) {
-/* .create-title {
-    font-size:0;
-} */
 
-.create-content {
-    height: 76vh;
+.create-form {
+    margin-top: 8%;
 }
 
-.create-form input {
-    font-size: 1.3em;
+.create-title {
+    margin: 0.3em;
+    font-size: 60px;
+}
+
+.create-form .row {
+    height: 150px;
 }
 
 .create-form label {
-    font-weight: bold;
-    font-size: 1em;
-    margin: 0;
-    color: grey;
-    transform: translateY(-20px);
+    font-size: 33px;
+    transform: translateY(-45px);
 }
 
-.create-form .create-button {
-    margin-top: 1.2em;
-    align-items: center;
-}
-
-.create-return {
-    font-size: 1.7em;
-}
-
-.create-update-button {
-    height: 50px;
-    font-size: 2em;
+.create-form input {
+    font-size: 40px;
 }
 
 textarea {
@@ -346,50 +302,16 @@ textarea {
 }
 
 .create-form p {
-    font-size: 0.8em;
+    font-size: 22px;
+}
+
+.create-update-button {
+    font-size: 50px;
 }
 
 }
 
-@media (max-width: 299.98px) and (orientation: landscape) {
-
-.create-content {
-    height: 90%;
-}
-
-.create-title {
-    margin: 0.3em;
-    font-size: 1.5em;
-}
-
-.create-form {
-    margin-top: 5%;
-}
-
-.create-form label {
-    font-weight: bold;
-    font-size: 1em;
-    margin: 0;
-    color: grey;
-}
-
-.create-form .row {
-    padding: 1em 0;
-    height: 20%;
-}
-
-.create-form>.create-button {
-    padding-top: 0;
-    margin: 0;
-}
-
-}
-
-@media (min-width: 300px) and (max-width: 750px) and (orientation: landscape) {
-
-.create-content {
-    height: 90%;
-}
+@media (min-width: 300px) and (max-width: 575.98px) and (orientation: landscape) {
 
 .create-form {
     margin-top: 5%;
@@ -397,88 +319,113 @@ textarea {
 
 .create-title {
     margin: 0.3em;
-    font-size: 1.5em;
-}
-
-.create-form label {
-    font-weight: bold;
-    font-size: 1em;
-    margin: 0;
-    color: grey;
+    font-size: 30px;
 }
 
 .create-form .row {
-    padding: 1em 0;
-    height: 20%;
-}
-
-.create-form>.create-button {
-    padding-top: 0;
-    margin: 0;
-}
-
-}
-
-@media (min-width: 751px) and (max-width: 1023.9px) and (orientation: landscape) {
-.create-content {
-    height: 90%;
-}
-
-.create-form {
-    margin-top: 5%;
+    height: 80px;
 }
 
 .create-form label {
-    font-weight: bold;
-    font-size: 1.5em;
-    margin: 0;
-    color: grey;
-}
-
-.create-form .row {
-    padding: 1em 0;
-    height: 20%;
-}
-
-.create-form>.create-button {
-    padding-top: 0;
-}
-
-}
-
-@media (min-width: 1024px) and (orientation: landscape) {
-.create-content {
-    height: 90%;
-}
-
-.create-form {
-    margin-top: 5%;
+    font-size: 16x;
+    transform: translateY(-24px);
 }
 
 .create-form input {
-    padding-top: 0.3em;
-    margin-top: 0.6em;
+    font-size: 20px;
+}
+
+.create-update-button {
+    font-size: 24px;
+}
+
+}
+
+@media (min-width: 576px) and (max-width: 768.98px) and (orientation: landscape) {
+
+.create-form {
+    margin-top: 5%;
+}
+
+.create-title {
+    margin: 0.3em;
+    font-size: 35px;
 }
 
 .create-form .row {
-    padding: 1em 0;
-    height: 20%;
+    height: 90px;
 }
 
 .create-form label {
-    font-weight: bold;
-    font-size: 1.5em;
-    margin: 0;
-    color: grey;
+    font-size: 20x;
+    transform: translateY(-26px);
+}
+
+.create-form input {
+    font-size: 22px;
+}
+
+.create-update-button {
+    font-size: 30px;
+}
+
+}
+
+@media (min-width: 769px) and (max-width: 1366.98px) and (orientation: landscape) {
+
+.create-form {
+    margin-top: 7%;
+}
+
+.create-title {
+    margin: 0.3em;
+    font-size: 40px;
+}
+
+.create-form .row {
+    height: 120px;
+}
+
+.create-form label {
+    font-size: 22px;
     transform: translateY(-30px);
 }
 
-.create-form>.create-button {
-    padding-top: 0;
+.create-form input {
+    font-size: 26px;
 }
 
-.create-form p {
-    font-size: 1em;
+.create-update-button {
+    font-size: 30px;
 }
 
+}
+
+@media (min-width: 1367px) and (orientation: landscape) {
+
+.create-form {
+    margin-top: 5%;
+}
+
+.create-title {
+    margin: 0.3em;
+    font-size: 45px;
+}
+
+.create-form .row {
+    height: 140px;
+}
+
+.create-form label {
+    font-size: 24px;
+    transform: translateY(-30px);
+}
+
+.create-form input {
+    font-size: 30px;
+}
+
+.create-update-button {
+    font-size: 35px;
+}
 }
