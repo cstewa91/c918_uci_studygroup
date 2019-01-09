@@ -56,7 +56,7 @@
 .delete-group-button {
     background: rgb(190, 23, 23);
     color: #FFFFFF;
-    border: 1px solid #FFFFFF;
+    border: 1px solid #000000;
     font-family: "Gochi Hand";
     text-shadow: -1px 1px 1px black;
 }
@@ -104,6 +104,15 @@
         font-size: 18px;
         width: 80%;
     }
+
+    .delete-group-button {
+        font-size: 14px;
+    }
+
+    .edit-group {
+        font-size: 14px;
+    }
+
 }
 
 @media only screen and (max-width: 315px){

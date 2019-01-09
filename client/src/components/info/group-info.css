@@ -1,17 +1,14 @@
 .leave-group-button, .delete-group-button {
     background: rgb(190, 23, 23); 
-    border-color: #FFFFFF;
+    border-color: 1px solid #000000;
     color: #FFFFFF;
-    /* margin-top: 8%; */
-    /* right: 1%;
-    bottom: 1%; */
 }
 
-.group-details-header {
+.group-details-header h1 {
     font-family: "Gochi Hand";
-    font-size: 1.75em;
+    font-size: 36px;
     text-align: center;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .group-info {
@@ -20,9 +17,10 @@
 
 .edit-group {
     color: #FFFFFF;
-    border-color: #FFFFFF;
+    border-color: #000000;
     font-family: "Gochi Hand";
     background-color: #1778BE;
+    text-shadow: -1px 1px 1px black;
 }
 
 .update a:hover, .update a:focus {
@@ -37,9 +35,15 @@
     text-shadow: none;
     font-size: 1.25em;
     height: 50px;
+    width: 80%;
     padding: 5px;
     margin-bottom: 2%;
     overflow: scroll;
+}
+
+.info-description-container {
+    display: flex;
+    justify-content: center;
 }
 
 .map-icon {
@@ -51,11 +55,12 @@
 }
 
 .group-details {
-    background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), #1778BE; 
-    color: white;
+    /* background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), #1778BE;  */
+    color: #000000;
     font-family: "Roboto", sans-serif;
-    text-shadow: -1px 1px 1px black;
+    /* text-shadow: -1px 1px 1px black; */
     border-radius: 5px;
+    border: 1px solid black;
     margin: 4%;
     padding: 15px;
     position: relative;
@@ -70,4 +75,18 @@
 
 .update {
     text-align: center;
+}
+
+@media only screen and (max-width: 450px) {
+    .delete-group-button {
+        font-size: 14px;
+    }
+
+    .edit-group {
+        font-size: 14px;
+    }
+
+    .group-details-header, {
+        font-size: 25px;
+    }
 }

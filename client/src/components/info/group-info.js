@@ -67,9 +67,6 @@ class GroupInfo extends Component{
             )
         }
     }
-    
-
-    
 
     formatStartTime = (date, startTime) => {
         const splitDate = date.split('');
@@ -107,7 +104,6 @@ class GroupInfo extends Component{
         this.props.getUserInfo();
     }
 
-
     render(){
         let backdrop;
 
@@ -124,18 +120,15 @@ class GroupInfo extends Component{
                     {backdrop}
                     <main className="container group-details-content">
                         <div className="group-details">
-                            <div className="group-details">
-                                <div className="group-details-name row group-details-header">
-                                    <h1>Loading...</h1>
-                                    <div className="worm">
-                                        <img src={worm}/>
-                                    </div>
+                            <div className="group-details-name row group-details-header">
+                                <h1>Loading...</h1>
+                                <div className="worm">
+                                    <img src={worm}/>
                                 </div>
                             </div>
                         </div>
                     </main>
                 </div>
-
             )
         }
 
@@ -146,7 +139,6 @@ class GroupInfo extends Component{
         const studyDate = new Date(mergedDate).toLocaleTimeString();
         const startingTime = this.adjustTime(start_time);
         const endingTime = this.adjustTime(end_time);
-       
 
         return (
             <div className="edit-created">
@@ -175,16 +167,15 @@ class GroupInfo extends Component{
                                     <strong>Location:</strong> {location}
                                         <a className="map-icon" href="https://map.uci.edu/" target="_blank"><img width="32px" src={map}/></a>
                                 </div>
-                                <div className="group-info-description-container">        
-                                    {description}
+                                <div className="info-description-container">
+                                    <div className="group-info-description-container">        
+                                        {description}
+                                    </div>
                                 </div>
                             </form>
                             {this.renderButton()}
                         </div>
                 </main>
-                <footer>
-                        
-                </footer>
             </div>
                 )
         }
@@ -203,4 +194,3 @@ export default connect(mapStateToProps, {
     leaveGroup: leaveGroup,
     deleteGroup: deleteGroup
 })(GroupInfo)
-
