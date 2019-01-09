@@ -273,7 +273,7 @@
    
    .create-return span {
       margin: 0;
-      font-size: 20px;
+      font-size: 25px;
       text-shadow: none;
    }
    
@@ -332,13 +332,13 @@
    }
 
    .create-account-return {
-      height: 30px;
-      width: 40px;
+      height: 35px;
+      width: 50px;
    }
    
    .create-return span {
       margin: 0;
-      font-size: 25px;
+      font-size: 30px;
       text-shadow: none;
    }
    
@@ -383,8 +383,8 @@
    }
 
    .create-account-return {
-      height: 35px;
-      width: 45px;
+      height: 40px;
+      width: 55px;
    }
    
    .create-return span {
@@ -405,7 +405,7 @@
    
    .create-return span {
       margin: 0;
-      font-size: 30px;
+      font-size: 40px;
       text-shadow: none;
    }
    
