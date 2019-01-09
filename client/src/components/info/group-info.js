@@ -12,6 +12,7 @@ import {getUserInfo} from '../../actions';
 import {deleteGroup} from '../../actions';
 import {leaveGroup} from '../../actions';
 import ConfirmModal from './confirm_modal';
+import LeaveModal from './leave_modal';
 
 
 class GroupInfo extends Component{
@@ -61,7 +62,7 @@ class GroupInfo extends Component{
         } else {
             return(
                 <div className="update">
-                    <div className="btn leave-group-button" onClick={this.leaveCurrentGroup}>Leave Group</div>
+                    <LeaveModal {...this.props}/>
                 </div>
             )
         }
