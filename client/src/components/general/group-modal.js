@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import {getGroupDetails} from '../../actions';
 import {joinGroup} from '../../actions';
 import worm from '../../assets/images/bookworm.png';
+import map from '../../assets/images/map_icon.png';
 
 import './group-modal.css';
 import {connect} from 'react-redux';
@@ -74,11 +75,9 @@ class GroupModal extends Component{
                 return (
                     <div id="group-modal" className="basic-modal">
                         <div onClick={e => e.stopPropagation()} className="basic-modal-content">
-                            <Link to="/search-group">
                                 <div className="group-modal-close" onClick={this.close}>
                                     x
                                 </div>
-                            </Link>
                             <div className="group-modal-details">
                                 <h1>Loading...</h1>
                                 <div className="worm worm-centered">
@@ -107,7 +106,7 @@ class GroupModal extends Component{
                     <p className="modal-group-info"><strong>Time:</strong> {startingTime} - {endingTime}</p>
                     <p className="modal-group-info">
                         <strong>Location:</strong> {group.location}
-                            <a className="btn modal-map-button" href="https://map.uci.edu/" target="_blank">Map</a>
+                            <a className="map-icon" href="https://map.uci.edu/" target="_blank"><img width="32px" src={map}/></a>
                     </p>
                     <p className="modal-group-info"><strong>Group Capacity:</strong> {group.current_group_size}/{group.max_group_size}</p>
                     <div className="modal-group-description-container">

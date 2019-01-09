@@ -1,0 +1,130 @@
+.confirm-modal {
+    background-color: rgba(0, 0, 0, .7);
+    display: flex;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 1000;
+}
+
+.confirm-modal-content {
+    background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), #1778BE; 
+    border-radius: 20px;
+    margin: auto;
+    padding: 25px;
+    position: relative;
+    width: 40%;
+    z-index: 1;
+    font-size: 16px;
+    text-align: center;
+}
+
+.confirm-modal-content h1 {
+    border-bottom: 1px solid #dedede;
+    font-size: 24px;
+    margin-bottom: 20px;
+    padding-bottom: 25px;
+    text-align: left;
+}
+
+.basic-modal-close {
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 50%;
+    font-weight: bold;
+    color: #dedede;
+    cursor: pointer;
+}
+
+/* .basic-modal-close:hover {
+    color: #ff0000;
+    background-color: #dedede;
+} */
+
+.confirm-delete {
+    background: rgb(190, 23, 23); 
+    color: #FFFFFF;
+}
+
+.delete-group-button {
+    background: rgb(190, 23, 23);
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    font-family: "Gochi Hand";
+    text-shadow: -1px 1px 1px black;
+}
+
+.cancel-delete {
+    background: rgb(16, 133, 16); 
+}
+
+@media only screen and (min-width: 701px){
+    .confirm-modal-content {
+        max-width: 350px;
+    }
+}
+
+@media only screen and (max-width: 700px){
+    .confirm-modal-content h1 {
+        font-size: 24px;
+    }
+
+    .confirm-modal-content {
+        font-size: 18px;
+        width: auto;
+        width: 50%;
+        max-width: 300px;
+    }
+}
+
+@media only screen and (max-width: 510px){
+    .confirm-modal-content h1 {
+        font-size: 24px;
+    }
+
+    .confirm-modal-content {
+        font-size: 18px;
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .confirm-modal-content h1 {
+        font-size: 24px;
+    }
+
+    .confirm-modal-content {
+        font-size: 18px;
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 315px){
+    .divider-space {
+        display: none;
+    }
+
+    .edit-group-buttons {
+        display: block;
+        text-align: center;
+    }
+
+    .confirm-delete {
+        display: block;
+        width: 100%;
+    }
+    
+    .cancel-delete {
+        display: block;
+        width: 100%;
+        margin-top: 8px;
+    }
+        
+}

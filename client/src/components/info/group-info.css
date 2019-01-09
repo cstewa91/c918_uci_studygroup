@@ -1,13 +1,10 @@
 .leave-group-button, .delete-group-button {
-    border-radius: 15px;
     background: rgb(190, 23, 23); 
     border-color: #FFFFFF;
     color: #FFFFFF;
-    font-family: "Roboto", sans-serif;
-    font-size: 0.75em;
-    margin-top: 8%;
-    right: 1%;
-    bottom: 1%;
+    /* margin-top: 8%; */
+    /* right: 1%;
+    bottom: 1%; */
 }
 
 .group-details-header {
@@ -45,6 +42,10 @@
     overflow: scroll;
 }
 
+.map-icon {
+    margin-left: 5px;
+}
+
 .worm img {
     height: 125px;
 }
@@ -55,20 +56,14 @@
     font-family: "Roboto", sans-serif;
     text-shadow: -1px 1px 1px black;
     border-radius: 5px;
-    /* height: 87vh; */
     margin: 4%;
     padding: 15px;
     position: relative;
     z-index: 1;
     font-size: .8em;
-    margin-bottom: 2%;
 }
 
-.update {
-    text-align: center;
-
-}
-
-.delete-group {
-    margin-right: 2%;
+.edit-group-buttons {
+    display: flex;
+    justify-content: space-around;
 }

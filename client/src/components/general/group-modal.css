@@ -29,6 +29,11 @@
     border-bottom: 1px solid #dedede;
     margin-bottom: 20px;
     padding-bottom: 15px;
+    font-size: 18px;
+}
+
+.basic-modal-content p {
+    margin-bottom: .5em;
 }
 
 @media only screen and (max-width: 600px) {
@@ -37,7 +42,7 @@
     }
 
     .basic-modal-content {
-        font-size: 14px;
+        font-size: 15px;
         width: 80%;
     }
 
@@ -47,9 +52,14 @@
 }
 
 @media only screen and (min-width: 600px) {
+    .basic-modal-content h1 {
+        font-size: 30px;
+    }
 
     .basic-modal-content {
-        font-size: 1em;
+        font-size: 20px;
+        width: 80%;
+        max-width: 700px;
     }
 
     .modal-group-info p {
@@ -57,15 +67,14 @@
     }
 }
 
-
 .modal-map-button {
     background: rgb(14, 65, 102);
     color: #FFFFFF;
     text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
     right: 0;
-    margin-left: 1em;
+    margin-left: 5px;
     font-family: 'Roboto', sans-serif;
-    font-size: 0.75em;
+    font-size: 14px;
     padding: .5em;
     border: 1px solid white;
 }
