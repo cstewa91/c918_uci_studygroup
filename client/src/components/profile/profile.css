@@ -142,8 +142,8 @@
 .profile-form input {
     width: 100%;
     color: black;
-    background-color: #fffbf3;
-    border: none;
+    background: #FFFBE2;
+    border: none; 
     border-bottom: 1px solid #ffe34c;
 }
 
@@ -269,9 +269,8 @@
     
     .profile-form input {
         width: 100%;
-        border: none;
         color: black;
-        border-bottom: 1px solid #ffe34c;
+        /* border-bottom: 1px solid #ffe34c; */
         font-size: 30px;
     }
     
@@ -311,9 +310,8 @@
     
     .profile-form input {
         width: 100%;
-        border: none;
         color: black;
-        border-bottom: 1px solid #ffe34c;
+        /* border-bottom: 1px solid #ffe34c; */
         font-size: 35px;
     }
     
@@ -345,7 +343,7 @@
     }
 
     .profile-info > div {
-        height: 25vh;
+        height: 75px;
     }
 
     .profile-info div {
@@ -361,12 +359,12 @@
     }
 
     .profile-form input {
-        font-size: 16px;
+        font-size: 22px;
     }
 
     .profile-form label {
-        font-size: 16px;
-        transform: translateY(-20px);
+        font-size: 20px;
+        transform: translateY(-26px);
     }
 
     .profile-form p {
@@ -383,7 +381,7 @@
 
     .profile-form > div {
         align-items: center;
-        height: 25vh;
+        height: 75px;
     }
 
     .profile-confirm {
@@ -446,7 +444,6 @@
     }
 
     .profile-form {
-        min-height: 60vh;
         padding-top: 5%;
         display: flex;
         justify-content: center;
@@ -455,7 +452,7 @@
 
     .profile-form > div {
         align-items: center;
-        height: 20vh;
+        height: 100px;
     }
 
     .profile-confirm {
@@ -501,7 +498,7 @@
     }
 
     .profile-info>div {
-        height: 15vh;
+        height: 120px;
     }
 
     .profile-edit {
@@ -518,15 +515,15 @@
 
     .profile-form > div {
         align-items: center;
-        height: 15vh;
+        height: 120px;
     }
 
     .profile-form input {
-        font-size: 28px;
+        font-size: 26px;
     }
 
     .profile-form label {
-        font-size: 24px;
+        font-size: 22px;
         transform: translateY(-30px);
     }
 
@@ -551,6 +548,10 @@
         min-height: 75vh;
         height: 100%;
     }
+
+    .profile-title {
+        font-size: 50px;
+    }
  
     .profile-header {
         padding: 0;
@@ -558,23 +559,26 @@
     }
 
     .profile-info {
-        min-height: 60vh;
         padding-top: 5%;
         display: flex;
         justify-content: center;
     }
 
+    
+    .profile-info div{
+        font-size: 30px;
+    }
+
+    .profile-info p{
+        font-size: 26px;
+    }
+
     .profile-info > div {
-        height: 25%;
+        height: 140px;
     }
 
     .profile-edit {
         margin: 2%;
-    }
-
-    .profile-edit-button {
-        height: 55px;
-        width: 80%;
     }
 
     .profile-form {
@@ -587,8 +591,20 @@
 
     .profile-form > div {
         align-items: center;
-        min-height: 15vh;
-        height: 20vh;
+        height: 140px;
+    }
+
+    .profile-form input {
+        font-size: 32px;
+    }
+
+    .profile-form label {
+        font-size: 28px;
+        transform: translateY(-36px);
+    }
+
+    .profile-form p {
+        font-size: 18px;
     }
 
     .profile-confirm {
