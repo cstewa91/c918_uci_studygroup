@@ -27,6 +27,10 @@
     transition-property: transform;
 }
 
+.create-header p {
+    color: #ffe34c;
+}
+
 .create-header a:hover,
 .create-header a:focus {
     color: red;
@@ -95,8 +99,12 @@
     color: black;
     background-color: #fffbf3;
     border: none;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid #ffe34c;
 }
+
+.edit-form input:focus {
+    border-bottom: 2px solid #ffe34c;
+ }
 
 .edit-form textarea {
     width: 100%;
@@ -189,7 +197,6 @@
     font-size: 1.25em;
     width: 100%;
     color: black;
-    border: none;
     border-bottom: 1px solid grey;
     background: none;
 }
@@ -245,7 +252,6 @@
     font-size: 1.5em;
     width: 100%;
     color: black;
-    border: none;
     border-bottom: 1px solid grey;
     background: none;
 }
@@ -305,7 +311,6 @@ textarea {
     font-size: 1.8em;
     width: 100%;
     color: black;
-    border: none;
     border-bottom: 1px solid grey;
     background: none;
 }
@@ -354,7 +359,6 @@ textarea {
     font-size: 1.3em;
     width: 100%;
     color: black;
-    border: none;
     border-bottom: 1px solid grey;
     background: none;
 }
