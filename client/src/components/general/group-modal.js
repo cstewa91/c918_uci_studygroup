@@ -139,16 +139,9 @@ class GroupModal extends Component{
         }
 
         return (
-            <Fragment>
                 <div className="search-results-body-row-data" onClick={this.open}>
                     {children}
                 </div>
-                <div className="search-results-body-row search-results-body-row-spacer">
-                    <div className="search-results-body-cell">
-                           
-                    </div>
-                </div>
-            </Fragment>
         )
     }
 }
