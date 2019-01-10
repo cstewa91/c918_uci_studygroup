@@ -34,7 +34,7 @@ class ConfirmModal extends Component {
         }
 
         return (
-            <button onClick={this.open} className="btn btn-lg delete-group-button">DELETE GROUP</button>
+            <button onClick={this.open} className="btn btn-lg delete-group-button">DELETE</button>
         );
     }
 }
