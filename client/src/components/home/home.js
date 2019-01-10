@@ -36,9 +36,9 @@ class Home extends Component {
    }
    switchGroups = () => {
       if (this.props.joinedGroups) {
-         this.props.showCreatedGroups()
+         this.props.showCreatedGroups();
       } else {
-         this.props.showJoinedGroups()
+         this.props.showJoinedGroups();
       }
    }
    renderCreatedGroups = () => {
