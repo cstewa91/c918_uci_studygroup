@@ -51,6 +51,7 @@
 .confirm-delete {
     background: rgb(190, 23, 23); 
     color: #FFFFFF;
+    border: 1px solid #FFFFFF;
 }
 
 .delete-group-button {
@@ -63,6 +64,8 @@
 
 .cancel-delete {
     background: rgb(16, 133, 16); 
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
 }
 
 @media only screen and (min-width: 701px){

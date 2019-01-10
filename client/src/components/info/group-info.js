@@ -14,7 +14,6 @@ import {leaveGroup} from '../../actions';
 import ConfirmModal from './confirm_modal';
 import LeaveModal from './leave_modal';
 
-
 class GroupInfo extends Component{
     state = {
         hamburgerOpen: false,
@@ -49,14 +48,17 @@ class GroupInfo extends Component{
         const {user_id} = this.props.singleGroup;
         if(id === user_id){
             return(
-                <div className="edit-group-buttons">
-                    <div className="update">
-                        <NavButton to={`/edit-group/${this.props.match.params.group_id}`} text='EDIT GROUP'/>
-                    </div>
-                    <div className="delete-btn">
-                        <ConfirmModal {...this.props}/>
+                <div className="center-buttons">
+                    <div className="edit-group-buttons">
+                        <div className="update">
+                            <NavButton to={`/edit-group/${this.props.match.params.group_id}`} text='EDIT'/>
+                        </div>
+                        <div className="delete-btn">
+                            <ConfirmModal {...this.props}/>
+                        </div>
                     </div>
                 </div>
+                
                 
             ) 
         } else {
@@ -118,7 +120,7 @@ class GroupInfo extends Component{
                     <Header hamburgerClick={this.toggleHamburger}/>
                     <Hamburger show={this.state.hamburgerOpen}/>
                     {backdrop}
-                    <main className="container group-details-content">
+                    <main className="group-details-content">
                         <div className="group-details">
                             <div className="group-details-name row group-details-header">
                                 <h1>Loading...</h1>
@@ -145,11 +147,13 @@ class GroupInfo extends Component{
                 <Header hamburgerClick = {this.toggleHamburger}/>  
                 <Hamburger show={this.state.hamburgerOpen}/>
                 {backdrop} 
-                <main className="container group-details-content">                  
+                <main className="group-details-content">                  
                         <div className="group-details">
-                        <div className="group-details-name row group-details-header">
-                            <h1>{name}</h1>
-                        </div>
+                            <div className="group-info-header-container">
+                                <div className="group-details-name row group-details-header">
+                                    <h1>{name}</h1>
+                                </div>
+                            </div>
                             <form className="group-info">
                                 <div className="group-info-subject form-group">                  
                                     <strong>Subject:</strong> {subject}{course}
@@ -167,10 +171,8 @@ class GroupInfo extends Component{
                                     <strong>Location:</strong> {location}
                                         <a className="map-icon" href="https://map.uci.edu/" target="_blank"><img width="32px" src={map}/></a>
                                 </div>
-                                <div className="info-description-container">
-                                    <div className="group-info-description-container">        
-                                        {description}
-                                    </div>
+                                <div className="group-info-description">        
+                                    <strong>Description:</strong> {description}
                                 </div>
                             </form>
                             {this.renderButton()}

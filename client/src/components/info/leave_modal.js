@@ -34,7 +34,7 @@ class LeaveModal extends Component {
         }
 
         return (
-            <button onClick={this.open} className="btn btn-lg delete-group-button">LEAVE GROUP</button>
+            <button onClick={this.open} className="btn btn-lg delete-group-button">LEAVE</button>
         );
     }
 }

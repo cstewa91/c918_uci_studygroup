@@ -4,15 +4,23 @@
     color: #FFFFFF;
 }
 
+.group-info-header-container {
+    display: flex;
+    justify-content: center;
+}
+
 .group-details-header h1 {
     font-family: "Gochi Hand";
     font-size: 36px;
-    text-align: center;
-    /* justify-content: center; */
 }
 
 .group-info {
     font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.center-buttons {
+    width: 100%;
 }
 
 .edit-group {
@@ -35,15 +43,19 @@
     text-shadow: none;
     font-size: 1.25em;
     height: 50px;
-    width: 80%;
     padding: 5px;
     margin-bottom: 2%;
     overflow: scroll;
 }
 
+.group-info-description {
+    margin-top: 12px;
+    font-size: 16px;
+}
+
 .info-description-container {
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
 }
 
 .map-icon {
@@ -54,27 +66,54 @@
     height: 125px;
 }
 
+.group-details-content {
+    display: flex;
+    justify-content: center;
+}
+
 .group-details {
     /* background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), #1778BE;  */
     color: #000000;
     font-family: "Roboto", sans-serif;
     /* text-shadow: -1px 1px 1px black; */
+    width: 60%;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px solid grey;
     margin: 4%;
     padding: 15px;
     position: relative;
     z-index: 1;
-    font-size: .8em;
+    font-size: 18px;
 }
 
 .edit-group-buttons {
+    width: 40%;
     display: flex;
     justify-content: space-around;
+    margin: auto;
 }
 
 .update {
     text-align: center;
+}
+
+.group-info-subject, .group-info-date, .group-info-location, .group-info-time, .group-info-users {
+    margin-bottom: 6px;
+}
+
+@media only screen and (max-width: 930px) {
+    .edit-group-buttons {
+        width: auto;
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .group-details {
+        width: 80%;
+        margin-bottom: 2%;
+    }
 }
 
 @media only screen and (max-width: 450px) {
@@ -84,6 +123,11 @@
 
     .edit-group {
         font-size: 14px;
+    }
+
+    .group-details {
+        width: 90%;
+        margin-bottom: 2%;
     }
 
     .group-details-header, {
