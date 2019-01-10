@@ -115,18 +115,17 @@ class GroupInfo extends Component{
         
         const {name, subject, course, date, start_time, end_time, max_group_size, current_group_size, location, description, user_id } = this.props.singleGroup;
         if(!name){
-            return (          
+            debugger;
+            return (
                 <div className="edit-created">
                     <Header hamburgerClick={this.toggleHamburger}/>
                     <Hamburger show={this.state.hamburgerOpen}/>
                     {backdrop}
                     <main className="group-details-content">
-                        <div className="group-details">
-                            <div className="group-details-name row group-details-header">
+                        <div className="group-details-loading">
                                 <h1>Loading...</h1>
                                 <div className="worm">
-                                    <img src={worm}/>
-                                </div>
+                                    <p><img src={worm}/></p>
                             </div>
                         </div>
                     </main>
