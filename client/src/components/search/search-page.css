@@ -80,9 +80,18 @@
     display: table-row;
 }
 
+
 .search-results-body-row-data {
     display: table-row;
     cursor: pointer;
+}
+
+.search-results-body-row-data:nth-child(odd){
+    background-color: paleturquoise;
+}
+
+.search-results-body-row-data:nth-child(even){
+    background-color: lightyellow;
 }
 
 .search-results-body-row-data:hover {
@@ -99,22 +108,24 @@
 }
 
 .search-results-body-cell-left {
-    border-top: 1px solid #1778BE;
     border-left: 1px solid #1778BE;
-    border-bottom: 1px solid #1778BE;
-    border-radius: 10px 0px 0px 10px;
+    /* border-radius: 10px 0px 0px 10px; */
+}
+
+.search-results-body-cell-left:first-child {
+    border-top: 1px solid #1778BE;
 }
 
 .search-results-body-cell-center {
-    border-top: 1px solid #1778BE;
-    border-bottom: 1px solid #1778BE;
+    /* border-top: 1px solid #1778BE;
+    border-bottom: 1px solid #1778BE; */
 }
 
 .search-results-body-cell-right {
-    border-top: 1px solid #1778BE;
+    /* border-top: 1px solid #1778BE;
     border-right: 1px solid #1778BE;
     border-bottom: 1px solid #1778BE;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 0px 10px 10px 0px; */
 }
 
 @media only screen and (max-width: 700px){
