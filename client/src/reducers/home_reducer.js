@@ -3,7 +3,7 @@ import types from '../actions/types';
 const DEFAULT_STATE = {
    joined: [],
    created: [],
-   joinedGroups: true
+   joinedGroups: false
 }
 
 export default (state = DEFAULT_STATE, action) => {
