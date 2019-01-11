@@ -17,7 +17,7 @@ class SearchGroups extends Component{
 
     state = {
         hamburgerOpen: false,
-        searched: false
+        searched: false,
     }
 
     toggleHamburger = () => {
@@ -32,6 +32,12 @@ class SearchGroups extends Component{
         this.setState({searched: true});
     }
 
+    resetFilter = (values) => {
+        console.log(this.props);
+        values = '';
+        this.handleFilterSubmit(values);
+    }
+
     backdropHandler = () => {
         this.setState ({
             hamburgerOpen: false,
@@ -39,6 +45,10 @@ class SearchGroups extends Component{
     }
 
     handleFilterSubmit = (values) => {
+        this.haveSearched();
+        if(!values.filter){
+            this.setState({searched: false})
+        }
         this.props.filterResults(values.filter);
     }
 
@@ -53,13 +63,17 @@ class SearchGroups extends Component{
     }
 
     renderResults = () => {
-
-        debugger;
-
-        if(this.state.searched === false){
-            const resultType = (this.props.results && this.props.results.length) ? "results" : "all";
+        
+        if(!this.props.results.length && this.state.searched){
+            return <p>No results match your search.</p>;
         }
-         
+        
+        const resultType = (this.props.results && this.props.results.length) ? "results" : "all";
+
+
+        //working filter
+        //const resultType = (this.props.results && this.props.results.length) ? "results" : "all";
+        
         let results = this.props[resultType].map(item => {
             const newDate = new Date(item.date);
             const sliceStartDate = item.date.slice(0, 11) + item.start_time
@@ -92,20 +106,6 @@ class SearchGroups extends Component{
                 </GroupModal>
             )
         });
-
-        if(!this.props.results.length){
-            results = <p>No results match your search.</p>;
-        }
-
-
-    // this puts up a message saying no results match but it is showing as default which I don't want.
-
-
-    //have a piece of state that says a search is false
-    //if they've done a search, it changes to true
-    // which then will display the message (instead of having it be the default)
-
-    this.toggleSearched();
     
     return results;
 
@@ -129,7 +129,7 @@ class SearchGroups extends Component{
                 <div className="search-main-content">
                     <div className="search-filter-container">
                         <form onSubmit={handleSubmit(this.handleFilterSubmit)}>
-                            <Field className="search-field" name="filter" label="Enter group name or subject" type="text" size="30" component={SearchInput}/>
+                            <Field {...this.props} resetFilter = {this.resetFilter} className="search-field" name="filter" label="Enter group name or subject" type="text" size="30" component={SearchInput}/>
                         </form>
                     </div>
                     <div className="search-results">
