@@ -51,7 +51,7 @@ class CreateGroup extends Component {
             <Header hamburgerClick={this.toggleHamburger} />
             <Hamburger show={this.state.hamburgerOpen} />
             {backdrop}
-            <main className='create-content'>
+            <main className='create-content container'>
                <div className='create-header row justify-content-center align-items-center'>
                   <Link to='/home' className='create-return'>
                      <img className='create-account-return return-button' src={arrow} />

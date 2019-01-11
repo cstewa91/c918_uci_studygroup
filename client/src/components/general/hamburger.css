@@ -213,19 +213,19 @@ span {
 @media (min-width:300px) and (max-width: 575.98px) and (orientation: landscape) {
 
 .hamburger-menu {
-    font-size: 1.5em;
+    font-size: 30px;
 }
 
 .hamburger-nav {
-    width: 80%;
+    width: 85%;
     max-width: 600px;
 
 }
 
 .hamburger-links a {
-    width: 75%;
+    width: 70%;
     text-align: start;
-    font-size: 1.25em;
+    font-size: 25px;
 }
 
 .hamburger-nav ul {
@@ -236,15 +236,16 @@ span {
 
 .hamburger-nav li {
     height: 25%;
+    width: 48%;
 }
 
 }
 
 
-@media (max-width: 767.98px) and (orientation: landscape) {
+@media (min-width: 576px) and (max-width: 767.98px) and (orientation: landscape) {
 
 .hamburger-menu {
-    font-size: 1.5em;
+    font-size: 35px;
 }
 
 .hamburger-nav {
@@ -256,13 +257,18 @@ span {
 .hamburger-links a {
     width: 65%;
     text-align: start;
-    font-size: 1.25em;
+    font-size: 25px;
 }
 
 .hamburger-nav ul {
     margin: 0;
     height: 60%;
     max-height: 50vh;
+}
+
+
+.hamburger-nav li {
+    height: 25%;
 }
 
 }
