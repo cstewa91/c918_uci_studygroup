@@ -134,7 +134,13 @@
         margin-bottom: 2%;
     }
 
-    .group-details-header, {
-        font-size: 25px;
+    .group-details-header h1 {
+        font-size: 32px;
+    }
+}
+
+@media only screen and (max-width: 325px){
+    .group-details-header h1 {
+        font-size: 28px;
     }
 }
