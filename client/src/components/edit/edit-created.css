@@ -6,7 +6,7 @@
 }
 
 .edit-content .create-header {
-    margin: 2% 0 0 0;
+    margin: 3% 0 0 0;
 }
 
 .create-header {
@@ -22,13 +22,9 @@
 
 .create-header a {
     text-decoration: none;
-    color: #1778BE;
+    color: #086DB7;
     transition-duration: 0.3s;
     transition-property: transform;
-}
-
-.create-header p {
-    color: #ffe34c;
 }
 
 .create-header a:hover,
@@ -40,23 +36,22 @@
 }
 
 .edit-title {
-    height: 10%;
+    font-size: 25px;
+    height: 100%;
     margin: 0;
+    color: #ffe34c;
 }
 
 .edit-return {
     background: none;
     display: flex;
-    color: #1778BE;
+    color: #086DB7;
     text-decoration: none;
 }
 
 .edit-form {
-    height: 90%;
-    width: 100%;
-    min-width: 70%;
     font-size: 1em;
-    margin-top: 2%;
+    margin-top: 10%;
     display: flex;
     flex-direction: column;
      justify-content: space-between;
@@ -64,12 +59,6 @@
 
 .edit-form .row {
     height: 15vh;
-    align-items: center;
-}
-
-.edit-form .edit-button {
-    margin-top: 15%;
-    height: 10%;
 }
 
 .edit-groupName, .edit-subject, .edit-course, .edit-groupSize,
@@ -79,10 +68,6 @@
     font-size: 1em;
     margin: 0;
     padding: 5px 0;
-}
-
-.edit-update-button {
-    margin: 10% 0;
 }
 
 .edit-form label {
@@ -97,7 +82,7 @@
     font-size: 0.75em;
     width: 100%;
     color: black;
-    background-color: #fffbf3;
+    background: #FFFBE2;
     border: none;
     border-bottom: 1px solid #ffe34c;
 }
@@ -109,7 +94,8 @@
 .edit-form textarea {
     width: 100%;
     color: black;
-    border-bottom: 1px solid grey;
+    background: #FFFBE2;
+    border: 1px solid #ffe34c;
 }
 
 .edit-form p {
@@ -143,44 +129,25 @@
 @media (min-width: 321px) {
    
 .edit-title {
-    height: 15%;
     margin: 0;
-    font-size: 1.5em;
-}
-
-.edit-form {
-    margin-top: 0;
-    /* max-width: 450px; */
+    font-size: 30px;
 }
 
 .edit-form .row {
-    height: 14vh;
+    height: 80px;
 }
 
 .edit-form input {
-    font-size: 1em;
-    width: 100%;
-    color: black;
-    border: none;
-    border-bottom: 1px solid grey;
-    background: none;
+    font-size: 20px;
 }
 
 .edit-form label {
-    font-weight: bold;
-    font-size: 0.75em;
-    margin: 0;
-    color: grey;
-    /* transform: translateY(-18px); */
+    font-size: 16px;
+    transform: translateY(-22px);
 }
 
-.edit-form .edit-button {
-    margin: 8% 0 0 0;
-}
-
-
-.edit-return{
-    font-size: 1.2em;
+.edit-update-button {
+    font-size: 24px;
 }
 
 }
@@ -188,43 +155,25 @@
 @media (min-width: 576px){
 
 .edit-title {
-    height: 15%;
     margin: 0.3em;
-    font-size: 1.5em;
-}
-
-.edit-form input {
-    font-size: 1.25em;
-    width: 100%;
-    color: black;
-    border-bottom: 1px solid grey;
-    background: none;
-}
-
-.edit-form {
-    margin-top: 0;
-    /* min-width: 475px; */
+    font-size: 35px;
 }
 
 .edit-form .row {
-    height: 12vh;
-    }
+    height: 100px;
+}
+
+.edit-form input {
+    font-size: 22px;
+}
 
 .edit-form label {
-    font-weight: bold;
-    font-size: 1em;
-    margin: 0;
-    color: grey;
-    transform: translateY(-20px);
+    font-size: 18px;
+    transform: translateY(-24px);
 }
 
-.edit-form .edit-button {
-    margin: 3% 0;
-    align-items: center;
-}
-
-.edit-return {
-    font-size: 1.5em;
+.edit-update-button {
+    font-size: 30px;
 }
 
 }
@@ -232,45 +181,33 @@
 @media (min-width: 768px) {
 
 .edit-title {
-    font-size:0;
+    margin: 0.3em;
+    font-size: 45px;
 }
-   
+
 .edit-content .create-header {
     height: 65px;
 }
 
-.edit-form {
-    margin-top: 0;
-    /* min-width: 650px;*/
-} 
-
 .edit-form .row {
-    height: 10vh;
+    height: 120px;
     }
 
-.edit-form input {
-    font-size: 1.5em;
-    width: 100%;
-    color: black;
-    border-bottom: 1px solid grey;
-    background: none;
-}
-
 .edit-form label {
-    font-weight: bold;
-    font-size: 1.2em;
-    margin: 0;
-    color: grey;
-    transform: translateY(-25px);
+    font-size: 25px;
+    transform: translateY(-35px);
 }
 
-.edit-form .edit-button {
-    margin: 5% 0 0 0;
-    align-items: center;
+.edit-form input {
+    font-size: 30px;
+}
+
+textarea {
+    font-size: 30px;
 }
 
 .edit-form p {
-    font-size: 1n  em;
+    font-size: 18px;
 }
 
 .edit-return {
@@ -278,17 +215,11 @@
 }
 
 .edit-update-button {
-    /* height: 60px; */
-    width: 80%;
-    font-size: 2em;
+    font-size: 35px;
 }
 
 .edit-button div {
     text-align: center;
-}
-
-textarea {
-    font-size: 1.5em;
 }
 
 }
@@ -296,256 +227,196 @@ textarea {
 @media (min-width: 992px) {
 
 .edit-title {
-    font-size:0;
-}
-
-.edit-form {
-    margin-top: 0;
+    margin: 0.3em;
+    font-size: 55px;
 }
 
 .edit-form .row {
-    height: 10vh;
-    }
-
-.edit-form input {
-    font-size: 1.8em;
-    width: 100%;
-    color: black;
-    border-bottom: 1px solid grey;
-    background: none;
+    height: 140px;
 }
 
 .edit-form label {
-    font-weight: bold;
-    font-size: 1.5em;
-    margin: 0;
-    color: grey;
-    transform: translateY(-30px);
+    font-size: 30px;
+    transform: translateY(-40px);
 }
 
-.edit-form .edit-button {
-    margin: 10% 0 0 0;
-    align-items: center;
-}
-
-.edit-form p {
-    font-size: 1.2em;
-}
-
-.edit-return {
-    font-size: 1.8em;
-}
-
-.edit-update-button {
-    font-size: 2.5em;
+.edit-form input {
+    font-size: 35px;
 }
 
 textarea {
-    font-size: 1.8em;
+    font-size: 35px;
+}
+
+.edit-form p {
+    font-size: 22px;
+}
+
+.edit-update-button {
+    font-size: 45px;
 }
 
 }
 
 @media (min-width: 1200px) {
+
 .edit-title {
-    font-size:0;
+    margin: 0.3em;
+    font-size: 60px;
 }
 
-.edit-content {
-    height: 76vh;
-}
-
-.edit-form input {
-    font-size: 1.3em;
-    width: 100%;
-    color: black;
-    border-bottom: 1px solid grey;
-    background: none;
+.edit-form .row {
+    height: 150px;
 }
 
 .edit-form label {
-    font-weight: bold;
-    font-size: 1em;
-    margin: 0;
-    color: grey;
-    transform: translateY(-20px);
+    font-size: 33px;
+    transform: translateY(-45px);
 }
 
-.edit-form .edit-button {
-    margin-top: 1.2em;
-    align-items: center;
-}
-
-.edit-return {
-    font-size: 1.7em;
-}
-
-.edit-update-button {
-    height: 50px;
-    font-size: 2em;
+.edit-form input {
+    font-size: 40px;
 }
 
 textarea {
-    font-size: 1em;
+    font-size: 40px;
 }
 
 .edit-form p {
-    font-size: 0.8em;
+    font-size: 22px;
+}
+
+.edit-update-button {
+    font-size: 50px;
 }
 
 }
 
-@media (max-width: 299.98px) and (orientation: landscape) {
-
-.edit-content {
-    height: 90%;
-}
+@media (min-width: 300px) and (max-width: 575.98px) and (orientation: landscape) {
 
 .edit-title {
-    height: 15%;
     margin: 0.3em;
-    font-size: 1.5em;
-}
-
-.edit-form {
-    margin-top: 5%;
-}
-
-.edit-form input {
-    background: none;
-}
-
-.edit-form label {
-    font-weight: bold;
-    font-size: 1em;
-    margin: 0;
-    color: grey;
+    font-size: 30px;
 }
 
 .edit-form .row {
-    padding: 1em 0;
-    height: 20%;
+    height: 80px;
 }
 
-.edit-form>.edit-button {
-    padding-top: 0;
-    margin: 0;
+.edit-form label {
+    font-size: 16x;
+    transform: translateY(-24px);
+}
+
+.edit-form input {
+    font-size: 20px;
+}
+
+textarea {
+    font-size: 20px;
+}
+
+.edit-update-button {
+    font-size: 24px;
 }
 
 }
 
-@media (min-width: 300px) and (max-width: 750px) and (orientation: landscape) {
-
-.edit-content {
-    height: 90%;
-}
-
-.edit-form {
-    margin-top: 5%;
-}
+@media (min-width: 576px) and (max-width: 768.98px) and (orientation: landscape) {
 
 .edit-title {
-    height: 15%;
     margin: 0.3em;
-    font-size: 1.5em;
-}
-
-.edit-form input {
-    background: none;
-}
-
-.edit-form label {
-    font-weight: bold;
-    font-size: 1em;
-    margin: 0;
-    color: grey;
+    font-size: 35px;
 }
 
 .edit-form .row {
-    padding: 1em 0;
-    height: 20%;
+    height: 90px;
 }
 
-.edit-form>.edit-button {
-    padding-top: 0;
-    margin: 0;
+.edit-form label {
+    font-size: 20x;
+    transform: translateY(-26px);
+}
+
+.edit-form input {
+    font-size: 22px;
+}
+
+textarea {
+    font-size: 26px;
+}
+
+.edit-update-button {
+    font-size: 30px;
 }
 
 }
 
-@media (min-width: 751px) and (max-width: 1023.9px) and (orientation: landscape) {
-.edit-content {
-    height: 90%;
-}
+@media (min-width: 769px) and (max-width: 1366.98px) and (orientation: landscape) {
 
 .edit-form {
-    margin-top: 5%;
+    margin-top: 8%;
 }
 
 .edit-title {
-    font-size:0;
-}
-
-.edit-form input {
-    background: none;
-}
-
-.edit-form label {
-    font-weight: bold;
-    font-size: 1.5em;
-    margin: 0;
-    color: grey;
+    margin: 0.3em;
+    font-size: 40px;
 }
 
 .edit-form .row {
-    padding: 1em 0;
-    height: 20%;
-}
-
-.edit-form>.edit-button {
-    padding-top: 0;
-}
-
-}
-
-@media (min-width: 1024px) and (orientation: landscape) {
-.edit-content {
-    height: 90%;
-}
-
-.edit-form {
-    margin-top: 5%;
-}
-
-.edit-title {
-    font-size:0;
-}
-
-.edit-form input {
-    padding-top: 0.3em;
-    margin-top: 0.6em;
-    background: none;
-}
-
-.edit-form .row {
-    padding: 1em 0;
-    height: 20%;
+    height: 110px;
 }
 
 .edit-form label {
-    font-weight: bold;
-    font-size: 1.5em;
-    margin: 0;
-    color: grey;
+    font-size: 22px;
     transform: translateY(-30px);
 }
 
-.edit-form>.edit-button {
-    padding-top: 0;
+.edit-form input {
+    font-size: 26px;
 }
 
-.edit-form p {
-    font-size: 1em;
+textarea {
+    font-size: 26px;
 }
+
+.edit-update-button {
+    font-size: 30px;
+}
+
+}
+
+@media (min-width: 1367px) and (orientation: landscape) {
+
+.edit-form {
+    margin-top: 5%;
+}
+
+.edit-title {
+    margin: 0.3em;
+    font-size: 45px;
+}
+
+.edit-form .row {
+    height: 130px;
+}
+
+.edit-form label {
+    font-size: 24px;
+    transform: translateY(-30px);
+}
+
+.edit-form input {
+    font-size: 30px;
+}
+
+textarea {
+    font-size: 30px;
+}
+
+.edit-update-button {
+    font-size: 35px;
+}
+
 
 }

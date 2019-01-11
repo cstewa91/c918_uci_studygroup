@@ -9,7 +9,7 @@ import Header from '../general/header';
 import Backdrop from '../general/backdrop';
 import Hamburger from '../general/hamburger';
 import Input from '../input';
-import arrow from '../../assets/images/back-arrow.png';
+import arrow from '../../assets/images/left-arrow.png';
 
 
 class Profile extends Component {
