@@ -10,7 +10,7 @@ import { Field, reduxForm } from 'redux-form';
 import Input from '../input';
 import {Link} from "react-router-dom";
 import arrow from '../../assets/images/left-arrow.png';
-
+import magnifier from '../../assets/images/magnifier.png';
 
 
 class EditGroup extends Component{
@@ -54,7 +54,7 @@ class EditGroup extends Component{
 
         return (
             <div className="edit-created">
-                <Header hamburgerClick = {this.toggleHamburger}/>  
+                <Header src={magnifier} href={'/search-group'} hamburgerClick = {this.toggleHamburger}/>  
                 <Hamburger show={this.state.hamburgerOpen}/>
                 {backdrop}  
                 <main className='edit-content container'>
