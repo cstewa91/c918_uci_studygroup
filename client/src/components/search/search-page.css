@@ -3,8 +3,7 @@
     border: 2px solid grey;
     height: 40px;
     padding: 0px 10px;
-    margin-top: 1%;
-    margin-left: 1%;
+    /* margin-left: 1%; */
     margin-bottom: 1%;
     width: 40%;
     font-size: 20px;
@@ -33,6 +32,7 @@
 
 .search-filter-container {
     text-align: center;
+    margin-top: 1%;
 }
 
 .search-filter-button {
@@ -40,12 +40,12 @@
     border-radius: 10px;
     background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), #1778BE; 
     font-family: 'Gochi Hand';
-    font-size: 1.5em;
     color: #FFFFFF;
     border: 1px solid #1778BE;
     box-sizing: border-box;
     vertical-align: middle;
     cursor: pointer;
+    font-size: 24px;
 }
 
 .reset-search-button {
@@ -58,7 +58,7 @@
     vertical-align: middle;
     cursor: pointer;
     color: #FFFFFF;
-    font-size: 1.5em;
+    font-size: 24px;
 }
 
 .search-results {
@@ -123,14 +123,16 @@
 }
 
 @media only screen and (max-width: 700px){
+
     .search-field {
         font-size: 16px;
     }
 }
 
 @media only screen and (max-width: 575.98px) {
+    
     .search-field {
-        width: 75%;
+        width: 60%;
     }
     
     .search-results {
@@ -146,7 +148,18 @@
     }
 }
 
-@media only screen and (max-width: 343px){
+@media only screen and (max-width: 411px){
+
+    .reset-search-button {
+        font-size: 20px;
+    }
+
+    .search-filter-button {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 380px){
     
     .search-results {
         font-family: 'Roboto', sans-serif;
@@ -154,8 +167,17 @@
     }
 
     .search-field {
-        width: 70%;
+        width: 60%;
+        font-size: 13px;
     }
+
+    .search-filter-button {
+        font-size: 16px;
+    }
+
+    .reset-search-button {
+        font-size: 16px;
+    } 
 
     .search-results-subject-data {
         text-overflow: ellipsis;
