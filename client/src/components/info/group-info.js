@@ -115,7 +115,6 @@ class GroupInfo extends Component{
         
         const {name, subject, course, date, start_time, end_time, max_group_size, current_group_size, location, description, user_id } = this.props.singleGroup;
         if(!name){
-            debugger;
             return (
                 <div className="edit-created">
                     <Header hamburgerClick={this.toggleHamburger}/>
