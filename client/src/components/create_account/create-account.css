@@ -97,7 +97,7 @@ label.field-active {
 
 .create-account-return {
    height: 20px;
-   width: 25px;
+   width: 20px;
 }
 
 .create-return span {
@@ -108,10 +108,6 @@ label.field-active {
 
 .account-header p {
    margin: 0;
-}
-
-.create-return {
-   flex-direction: column
 }
 
 .create-account-navbar-text {
@@ -165,8 +161,8 @@ label.field-active {
 }  
 
 .create-account-return {
-   height: 25px;
-   width: 30px;
+   height: 20px;
+   width: 20px;
 }
 
 .create-return span {

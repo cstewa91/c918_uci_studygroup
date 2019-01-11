@@ -8,7 +8,7 @@ import Hamburger from '../general/hamburger';
 import Backdrop from '../general/backdrop';
 import { createNewGroup } from '../../actions';
 import Input from '../input';
-import arrow from '../../assets/images/back-arrow.png';
+import arrow from '../../assets/images/left-arrow.png';
 
 
 class CreateGroup extends Component {

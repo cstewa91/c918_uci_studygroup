@@ -7,7 +7,7 @@ import Input from '../input';
 import worm from '../../assets/images/bookworm.png';
 import './create-account.css'
 import {Link} from 'react-router-dom'
-import arrow from '../../assets/images/back-arrow.png';
+import arrow from '../../assets/images/left-arrow.png';
 
 class CreateNewAccount extends Component {
    handleCreateAccount = async (values) => {
