@@ -10,7 +10,7 @@ import { getUserInfo } from '../../actions';
 import { showJoinedGroups } from '../../actions';
 import { showCreatedGroups } from '../../actions';
 import { connect } from 'react-redux';
-
+import magnifier from '../../assets/images/magnifier.png';
 
 
 class Home extends Component {
@@ -117,7 +117,7 @@ class Home extends Component {
       if (this.props.joinedGroups) {
          return (
             <div>
-               <Header hamburgerClick={this.toggleHamburger} />
+               <Header src={magnifier} href={'/search-group'} hamburgerClick={this.toggleHamburger} />
                <Hamburger show={this.state.hamburgerOpen} />
                {backdrop}
 
@@ -147,7 +147,7 @@ class Home extends Component {
       }
       return (
          <div>
-            <Header hamburgerClick={this.toggleHamburger} />
+            <Header src={magnifier} href={'/search-group'} hamburgerClick={this.toggleHamburger} />
             <Hamburger show={this.state.hamburgerOpen} />
             {backdrop}
             <div className="home-container">

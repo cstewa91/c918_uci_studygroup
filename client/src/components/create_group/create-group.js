@@ -9,7 +9,7 @@ import Backdrop from '../general/backdrop';
 import { createNewGroup } from '../../actions';
 import Input from '../input';
 import arrow from '../../assets/images/left-arrow.png';
-
+import magnifier from '../../assets/images/magnifier.png';
 
 class CreateGroup extends Component {
    state = {
@@ -48,7 +48,7 @@ class CreateGroup extends Component {
       const { handleSubmit, invalidName } = this.props
       return (
          <div className="blue">
-            <Header hamburgerClick={this.toggleHamburger} />
+            <Header src={magnifier} href={'/search-group'} hamburgerClick={this.toggleHamburger} />
             <Hamburger show={this.state.hamburgerOpen} />
             {backdrop}
             <main className='create-content container'>

@@ -9,6 +9,8 @@ import SearchInput from './search-input';
 import {getAllGroups} from '../../actions';
 import {filterResults} from '../../actions';
 import { connect } from 'react-redux';
+import home from '../../assets/images/home.png';
+
 
 class SearchGroups extends Component{
     constructor(props){
@@ -123,7 +125,7 @@ class SearchGroups extends Component{
 
         return (
             <div>
-                <Header hamburgerClick = {this.toggleHamburger}/>  
+                <Header src={home} href={'/home'} hamburgerClick = {this.toggleHamburger}/>  
                 <Hamburger show={this.state.hamburgerOpen}/>
                 {backdrop} 
                 <div className="search-main-content">

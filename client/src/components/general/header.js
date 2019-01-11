@@ -29,6 +29,7 @@ class Header extends Component {
     }
 
     render(){
+        const {src, href} = this.props
         return (
             <div className='header-container container-fluid '>
                 <div className='header-section row  align-items-center'>
@@ -43,9 +44,9 @@ class Header extends Component {
                     </div>
                     {this.SignOutButton()}  
                     <div className="nav-search col-2 d-flex justify-content-center">
-                        <Link to='/search-group'>
-                            <img src={magnifier} className="search-icon"></img>
-                        </Link>
+                        <a href={href}>
+                            <img src={src} className="search-icon"></img>
+                        </a>
                     </div>
                     <nav className="nav-links col-12">
                         <ul className='d-flex link-group'>

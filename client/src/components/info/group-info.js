@@ -13,6 +13,7 @@ import {deleteGroup} from '../../actions';
 import {leaveGroup} from '../../actions';
 import ConfirmModal from './confirm_modal';
 import LeaveModal from './leave_modal';
+import magnifier from '../../assets/images/magnifier.png';
 
 class GroupInfo extends Component{
     state = {
@@ -117,7 +118,7 @@ class GroupInfo extends Component{
         if(!name){
             return (
                 <div className="edit-created">
-                    <Header hamburgerClick={this.toggleHamburger}/>
+                    <Header src={magnifier} href={'/search-group'} hamburgerClick={this.toggleHamburger}/>
                     <Hamburger show={this.state.hamburgerOpen}/>
                     {backdrop}
                     <main className="group-details-content">
