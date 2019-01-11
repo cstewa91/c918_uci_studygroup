@@ -64,7 +64,6 @@ class Header extends Component {
                         </ul>             
                     </nav>   
                 </div>
-                {/* <nav className='header-navbar row justify-content-between align-items-center'> */}
         </div>
         )
 

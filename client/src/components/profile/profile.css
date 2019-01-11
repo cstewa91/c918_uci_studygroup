@@ -6,7 +6,7 @@
 }
 
 .profile-header {
-    padding: 1%;
+    padding: 2%;
     font-family: 'Gochi Hand';
     color: #ffe34c;
     font-weight: bolder;
@@ -182,143 +182,142 @@
 
 @media (min-width: 321px) {
 
-    .profile-form label {
-        font-size: 14px
-    }
+.profile-title {
+    font-size: 30px;
+}
+.profile-form label {
+    font-size: 14px
+}
 
-    .profile-title {
-        font-size: 30px;
-    }
+.profile-info div {
+    font-size: 18px;
+}
 
-    .profile-info div {
-        font-size: 18px;
-    }
+.profile-info p {
+    font-size: 16px;
+}
 
-    .profile-info p {
-        font-size: 16px;
-    }
-    
-    .profile-form p {
-        font-size: 13px;
-    }
+.profile-form p {
+    font-size: 13px;
+}
 
-    .profile-edit-button, .profile-confirm-button {
-        font-size: 24px;
-    }
+.profile-edit-button, .profile-confirm-button {
+    font-size: 24px;
+}
 
  }
  
  @media (min-width: 576px){
 
-    .profile-form input {
-        font-size: 24px;
-    }
-    .profile-form label {
-        font-size: 20px;
-        transform: translateY(-25px)
-    }
+.profile-title {
+    font-size: 40px;
+}
 
-    .profile-title {
-        font-size: 40px;
-    }
+.profile-form input {
+    font-size: 24px;
+}
+.profile-form label {
+    font-size: 20px;
+    transform: translateY(-25px)
+}
 
-    .profile-info div {
-        font-size: 24px;
-    }
+.profile-info div {
+    font-size: 24px;
+}
 
-    .profile-info p {
-        font-size: 20px;
-    }
-    
-    .profile-form p {
-        font-size: 16px;
-    }
+.profile-info p {
+    font-size: 20px;
+}
 
-    .profile-edit-button, .profile-confirm-button {
-        font-size: 30px;
-    }
+.profile-form p {
+    font-size: 16px;
+}
+
+.profile-edit-button, .profile-confirm-button {
+    font-size: 30px;
+}
 
  }
  
  @media (min-width: 768px) {
 
-    .profile-title {
-        font-size: 50px;
-    }
+.profile-title {
+    font-size: 50px;
+}
 
-    .profile-info div {
-        font-size: 30px;
-        margin: 0;
-        padding: 0;
-    }
+.profile-info div {
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+}
 
-    .profile-form label {
-        font-weight: bold;
-        color: grey;
-        font-size: 26px;
-        margin: 0;
-        transform: translateY(-40px);
-    }
+.profile-form label {
+    font-weight: bold;
+    color: grey;
+    font-size: 26px;
+    margin: 0;
+    transform: translateY(-40px);
+}
 
-    .profile-form p {
-        font-size: 22px;
-    }
+.profile-form p {
+    font-size: 22px;
+}
 
-    .profile-info p {
-        font-size: 26px;
-    }
-    
-    .profile-form input {
-        width: 100%;
-        color: black;
-        /* border-bottom: 1px solid #ffe34c; */
-        font-size: 30px;
-    }
-    
-    .profile-edit-button, .profile-confirm-button {
-        font-size: 35px;
-    }
+.profile-info p {
+    font-size: 26px;
+}
+
+.profile-form input {
+    width: 100%;
+    color: black;
+    /* border-bottom: 1px solid #ffe34c; */
+    font-size: 30px;
+}
+
+.profile-edit-button, .profile-confirm-button {
+    font-size: 35px;
+}
 
 }
 
 @media (min-width: 992px) {
 
-    .profile-title {
-        font-size: 55px;
-    }
+.profile-title {
+    font-size: 55px;
+}
 
-    .profile-info div {
-        font-size: 40px;
-        margin: 0;
-        padding: 0;
-    }
+.profile-info div {
+    font-size: 40px;
+    margin: 0;
+    padding: 0;
+}
 
-    .profile-form label {
-        font-weight: bold;
-        color: grey;
-        font-size: 30px;
-        margin: 0;
-        transform: translateY(-40px);
-    }
+.profile-form label {
+    font-weight: bold;
+    color: grey;
+    font-size: 30px;
+    margin: 0;
+    transform: translateY(-40px);
+}
 
-    .profile-form p {
-        font-size: 22px;
-    }
+.profile-form p {
+    font-size: 22px;
+}
 
-    .profile-info p {
-        font-size: 35px;
-    }
-    
-    .profile-form input {
-        width: 100%;
-        color: black;
-        /* border-bottom: 1px solid #ffe34c; */
-        font-size: 35px;
-    }
-    
-    .profile-edit-button, .profile-confirm-button {
-        font-size: 45px;
-    }
+.profile-info p {
+    font-size: 35px;
+}
+
+.profile-form input {
+    width: 100%;
+    color: black;
+    /* border-bottom: 1px solid #ffe34c; */
+    font-size: 35px;
+}
+
+.profile-edit-button, .profile-confirm-button {
+    font-size: 45px;
+}
 
 }
 
@@ -337,10 +336,6 @@
         padding-top: 0;
         display: flex;
         justify-content: center;
-    }
-
-    .profile-header {
-        padding: 1% 0;
     }
 
     .profile-info > div {
@@ -407,14 +402,10 @@
     .profile-title {
         font-size: 35px;
     }
-
-    .profile-header {
-        padding: 1% 0;
-    }
  
     .profile-info {
         min-height: 70vh;
-        padding-top: 5vh;
+        padding-top: 0;
         display: flex;
         justify-content: center;
     }
@@ -476,11 +467,6 @@
 
     .profile-title {
         font-size: 45px;
-    }
-
-    .profile-header {
-        padding: 0;
-        margin: 0;
     }
  
     .profile-info {
@@ -552,11 +538,6 @@
 
     .profile-title {
         font-size: 50px;
-    }
- 
-    .profile-header {
-        padding: 0;
-        margin: 0;
     }
 
     .profile-info {
