@@ -6,7 +6,7 @@
 }
 
 .create-content .create-header {
-    margin: 2% 0 0 0;
+    margin: 5% 0 0 0;
 }
 
 .create-header {
@@ -51,7 +51,7 @@
 
 .create-form {
     font-size: 1em;
-    margin-top: 5%;
+    margin-top: 10%;
     display: flex;
     flex-direction: column;
      justify-content: space-between;
@@ -167,7 +167,7 @@
 }
 
 .create-form .row {
-    height: 85px;
+    height: 100px;
 }
 
 .create-form input {
@@ -186,10 +186,6 @@
 }
 
 @media (min-width: 768px) {
-
-.create-form {
-    margin-top: 7%;
-}
 
 .create-title {
     margin: 0.3em;
@@ -237,10 +233,6 @@ textarea {
 
 @media (min-width: 992px) {
 
-.create-form {
-    margin-top: 7%;
-}
-
 .create-title {
     margin: 0.3em;
     font-size: 55px;
@@ -274,10 +266,6 @@ textarea {
 }
 
 @media (min-width: 1200px) {
-
-.create-form {
-    margin-top: 8%;
-}
 
 .create-title {
     margin: 0.3em;
@@ -313,10 +301,6 @@ textarea {
 
 @media (min-width: 300px) and (max-width: 575.98px) and (orientation: landscape) {
 
-.create-form {
-    margin-top: 5%;
-}
-
 .create-title {
     margin: 0.3em;
     font-size: 30px;
@@ -342,10 +326,6 @@ textarea {
 }
 
 @media (min-width: 576px) and (max-width: 768.98px) and (orientation: landscape) {
-
-.create-form {
-    margin-top: 5%;
-}
 
 .create-title {
     margin: 0.3em;
@@ -374,7 +354,7 @@ textarea {
 @media (min-width: 769px) and (max-width: 1366.98px) and (orientation: landscape) {
 
 .create-form {
-    margin-top: 7%;
+    margin-top: 8%;
 }
 
 .create-title {
@@ -383,7 +363,7 @@ textarea {
 }
 
 .create-form .row {
-    height: 120px;
+    height: 110px;
 }
 
 .create-form label {
@@ -413,7 +393,7 @@ textarea {
 }
 
 .create-form .row {
-    height: 140px;
+    height: 130px;
 }
 
 .create-form label {
