@@ -22,6 +22,7 @@
 }
 
 .home-add-button-container {
+   border-top: 1px solid black;
    display: flex;
    justify-content: flex-end;
 }
@@ -29,6 +30,13 @@
 
 .home-container {
    height: 91.5vh;
+}
+
+.home-card-container {
+   justify-content: center;
+   display: flex;
+   flex-flow: column;
+   width: 100%;
 }
 
 .home-groups {
@@ -39,6 +47,11 @@
 .home-groups-container {
    height: 74%;
    margin: 0 2% 0 2%;
+   flex-flow: wrap;
+   display: flex;
+   margin: 1%;
+   overflow-x: hidden;
+   overflow-y: scroll;
 }
 
 .home-group-date {
@@ -52,6 +65,10 @@
 .home-group-details {
    display: inline-block;
    text-align: center
+}
+
+.home-group-details-container{
+   height: 100%;
 }
 
 .home-group-header {
@@ -112,16 +129,16 @@
 }
 
 .home-single-group {
-   border: 1px solid #1778BE;
+   background: linear-gradient(178.14deg, rgba(255, 255, 255, 0) 45.77%, rgba(255, 255, 255, 0.34) 103.91%), #6FB8ED;
    border-radius: 5px;
-   padding: 1% 0;
-   margin-bottom: 2%;
+   margin: 2%;
+   text-align: center;
+   width: 46%;
 }
 
 .home-single-group a {
    color: black;
-   display: flex;
-   align-items: center;
+   height: 100%;
 }
 
 .home-single-group:hover {
@@ -131,6 +148,18 @@
 .home-single-group:hover a {
    color: white;
    text-decoration: none;
+}
+
+.card-title {
+   margin: 0% 0.5%;
+}
+
+.card-header {
+   background: rgb(216, 216, 216);
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   margin-bottom: 8%;
 }
 
 
@@ -163,9 +192,8 @@
    }
 
    .home-groups-container {
-      height: 63%;
-      margin: 0 2% 0 2%;
-      
+      height: 71%;
+      margin: 1%;
    }
 
    .home-group-date {
@@ -212,8 +240,8 @@
 
    .home-single-group {
       border-radius: 5px;
-      padding: 1% 0;
-      margin-bottom: 2%;
+      margin: 1%;
+      width: 48%;
    }
 }
 
@@ -240,22 +268,29 @@
       justify-content: flex-end;
    }
 
+   .home-card-container {
+      justify-content: center;
+      display: flex;
+      flex-flow: column;
+      width: 100%;
+   }
+
    .home-container {
       height: 91vh;
    }
 
    .home-groups-container {
-      height: 72%;
+      height: 80%;
       margin: 0 2% 0 2%;
    }
 
    .home-group-date {
-      width: 17%;
+      width: 16%;
       padding-left: 7px;
    }
 
    .home-group-name {
-      width: 22%;
+      width: 25%;
    }
 
    .home-group-header {
@@ -264,16 +299,16 @@
    }
 
    .home-group-size {
-      width: 15%;
+      width: 16%;
       padding-left: 10px;
    }
 
    .home-group-subject {
-      width: 25%;
+      width: 18%;
    }
 
    .home-group-time {
-      width: 21%;
+      width: 25%;
       padding-left: 13px;
    }
 
@@ -293,8 +328,10 @@
 
    .home-single-group {
       border-radius: 5px;
-      padding: 1% 0;
-      margin-bottom: 2%;
+      margin: 2%;
+      text-align: center;
+      width: 46%;
+      height: 37%;
    }
 }
 
