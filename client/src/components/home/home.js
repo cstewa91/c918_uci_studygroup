@@ -56,17 +56,19 @@ class Home extends Component {
                         <div className="card-header">
                            {item.name}
                         </div>
-                        <div className="card-text">
-                           {item.subject} {item.course}
-                        </div>
-                        <div className="card-text">
-                           {startDate}
-                        </div>
-                        <div className="card-text">
-                           {startingTime}
-                        </div>
-                        <div className="card-text">
-                           <sup>{item.current_group_size}</sup>&frasl;{<sub>{item.max_group_size}</sub>}
+                        <div className="card-text-container">
+                           <div className="card-text">
+                              {item.subject} {item.course}
+                           </div>
+                           <div className="card-text">
+                              {startDate}
+                           </div>
+                           <div className="card-text">
+                              {startingTime}
+                           </div>
+                           <div className="card-text">
+                              <sup>{item.current_group_size}</sup>&frasl;{<sub>{item.max_group_size}</sub>}
+                           </div>
                         </div>
                      </div>
                   </Link>
@@ -86,22 +88,26 @@ class Home extends Component {
          if (this.props.userId !== item.user_id) {
             return (
                <Fragment key={item.id}>
-                  <div className="home-single-group">
+                  <div className="card home-single-group">
                      <Link to={`/group-info/${item.id}`}>
-                        <div className="home-group-details home-group-subject">
-                           {item.subject} {item.course}
-                        </div>
-                        <div className="home-group-details home-group-name">
-                           {item.name}
-                        </div>
-                        <div className="home-group-details home-group-date">
-                           {startDate}
-                        </div>
-                        <div className="home-group-details home-group-time">
-                           {startingTime}
-                        </div>
-                        <div className="home-group-details home-group-size">
-                           {<sup>{item.current_group_size}</sup>}&frasl;{<sub>{item.max_group_size}</sub>}
+                        <div className="home-card-container">
+                           <div className="card-header">
+                              {item.name}
+                           </div>
+                           <div className="card-text-container">
+                              <div className="card-text">
+                                 {item.subject} {item.course}
+                              </div>
+                              <div className="card-text">
+                                 {startDate}
+                              </div>
+                              <div className="card-text">
+                                 {startingTime}
+                              </div>
+                              <div className="card-text">
+                                 <sup>{item.current_group_size}</sup>&frasl;{<sub>{item.max_group_size}</sub>}
+                              </div>
+                           </div>
                         </div>
                      </Link>
                   </div>
@@ -122,20 +128,10 @@ class Home extends Component {
                <Header src={magnifier} href={'/search-group'} hamburgerClick={this.toggleHamburger} />
                <Hamburger show={this.state.hamburgerOpen} />
                {backdrop}
-
                <div className="home-container">
                   <div className="home-group-header">
                      <div className="home-active-tab">Joined</div>
                      <div className="home-not-active-tab" onClick={this.switchGroups}>Created</div>
-                  </div>
-                  <div className="home-header-container">
-                     <div className="home-groups-header">
-                        <div>SUBJECT</div>
-                        <div>NAME</div>
-                        <div>DATE</div>
-                        <div>TIME</div>
-                        <div>SIZE</div>
-                     </div>
                   </div>
                   <div className="home-groups-container">
                      {this.renderJoinedGroups()}
