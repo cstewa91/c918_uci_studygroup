@@ -6,7 +6,7 @@
 }
 
 .create-content .create-header {
-    margin: 2% 0 0 0;
+    margin: 5% 0 0 0;
 }
 
 .create-header {
@@ -22,7 +22,7 @@
 
 .create-header a {
     text-decoration: none;
-    color: #1778BE;
+    color: #086DB7;
     transition-duration: 0.3s;
     transition-property: transform;
 }
@@ -36,6 +36,7 @@
 }
 
 .create-title {
+    font-size: 25px;
     height: 100%;
     margin: 0;
     color: #ffe34c;
@@ -46,14 +47,13 @@
     display: flex;
     color: #1778BE;
     text-decoration: none;
+    align-items: center;
+    flex-direction: column;
 }
 
 .create-form {
-    height: 90%;
-    width: 100%;
-    min-width: 70%;
     font-size: 1em;
-    margin-top: 2%;
+    margin-top: 10%;
     display: flex;
     flex-direction: column;
      justify-content: space-between;
@@ -61,12 +61,7 @@
 
 .create-form .row {
     height: 15vh;
-    align-items: center;
-}
-
-.create-form .create-button {
-    margin-top: 15%;
-    height: 10%;
+    
 }
 
 .create-groupName, .create-subject, .create-course, .create-groupSize,
@@ -78,24 +73,20 @@
     padding: 5px 0;
 }
 
-.create-update-button {
-    margin: 10% 0;
-}
-
 .create-form label {
     font-weight: bold;
     font-size: 0.75em;
     margin: 0;
     color: grey;
-    transform: translateY(-14px);
+    transform: translateY(-18px);
 }
 
 .create-form input {
-    font-size: 0.75em;
+    font-size: 1em;
     width: 100%;
     color: black;
-    background-color: #fffbf3;
-    border: none;
+    background: #FFFBE2;
+    border: none; 
     border-bottom: 1px solid #ffe34c;
 }
 
@@ -106,8 +97,13 @@
 .create-form textarea {
     width: 100%;
     color: black;
-    border-bottom: 1px solid grey;
+    background: #FFFBE2;
+    border: 1px solid #ffe34c;
 }
+
+.create-form textarea:focus {
+    border: 2px solid #ffe34c;
+ }
 
 .create-form p {
     height: 10px;
@@ -138,45 +134,28 @@
 
 
 @media (min-width: 321px) {
-   
+
+
 .create-title {
     margin: 0;
-    font-size: 1.5em;
-}
-
-.create-form {
-    margin-top: 0;
-    /* max-width: 450px; */
+    font-size: 30px;
 }
 
 .create-form .row {
-    height: 14vh;
+    height: 80px;
 }
 
 .create-form input {
-    font-size: 1em;
-    width: 100%;
-    color: black;
-    border: none;
-    border-bottom: 1px solid grey;
-    background: none;
+    font-size: 20px;
 }
 
 .create-form label {
-    font-weight: bold;
-    font-size: 0.75em;
-    margin: 0;
-    color: grey;
-    /* transform: translateY(-18px); */
+    font-size: 16px;
+    transform: translateY(-22px);
 }
 
-.create-form .create-button {
-    margin: 8% 0 0 0;
-}
-
-
-.create-return{
-    font-size: 1.2em;
+.create-update-button {
+    font-size: 24px;
 }
 
 }
@@ -185,89 +164,58 @@
 
 .create-title {
     margin: 0.3em;
-    font-size: 1.5em;
-}
-
-.create-form input {
-    font-size: 1.25em;
-    width: 100%;
-    color: black;
-    border: none;
-    border-bottom: 1px solid grey;
-    background: none;
-}
-
-.create-form {
-    margin-top: 0;
-    /* min-width: 475px; */
+    font-size: 35px;
 }
 
 .create-form .row {
-    height: 12vh;
-    }
+    height: 100px;
+}
+
+.create-form input {
+    font-size: 22px;
+}
 
 .create-form label {
-    font-weight: bold;
-    font-size: 1em;
-    margin: 0;
-    color: grey;
-    transform: translateY(-20px);
+    font-size: 18px;
+    transform: translateY(-24px);
 }
 
-.create-form .create-button {
-    margin: 3% 0;
-    align-items: center;
-}
-
-.create-return {
-    font-size: 1.5em;
+.create-update-button {
+    font-size: 30px;
 }
 
 }
 
 @media (min-width: 768px) {
 
-/* .create-title {
-    font-size:0;
-} */
-   
+.create-title {
+    margin: 0.3em;
+    font-size: 45px;
+}
+
 .create-content .create-header {
     height: 65px;
 }
 
-.create-form {
-    margin-top: 0;
-    /* min-width: 650px;*/
-} 
-
 .create-form .row {
-    height: 10vh;
+    height: 120px;
     }
 
-.create-form input {
-    font-size: 1.5em;
-    width: 100%;
-    color: black;
-    border: none;
-    border-bottom: 1px solid grey;
-    background: none;
-}
-
 .create-form label {
-    font-weight: bold;
-    font-size: 1.2em;
-    margin: 0;
-    color: grey;
-    transform: translateY(-25px);
+    font-size: 25px;
+    transform: translateY(-35px);
 }
 
-.create-form .create-button {
-    margin: 5% 0 0 0;
-    align-items: center;
+.create-form input {
+    font-size: 30px;
+}
+
+textarea {
+    font-size: 30px;
 }
 
 .create-form p {
-    font-size: 1n  em;
+    font-size: 18px;
 }
 
 .create-return {
@@ -275,274 +223,210 @@
 }
 
 .create-update-button {
-    /* height: 60px; */
-    width: 80%;
-    font-size: 2em;
+    font-size: 35px;
 }
 
 .create-button div {
     text-align: center;
 }
 
-textarea {
-    font-size: 1.5em;
-}
-
 }
 
 @media (min-width: 992px) {
 
-/* .create-title {
-    font-size:0;
-} */
-
-.create-form {
-    margin-top: 0;
+.create-title {
+    margin: 0.3em;
+    font-size: 55px;
 }
 
 .create-form .row {
-    height: 10vh;
-    }
-
-.create-form input {
-    font-size: 1.8em;
-    width: 100%;
-    color: black;
-    border: none;
-    border-bottom: 1px solid grey;
-    background: none;
+    height: 140px;
 }
 
 .create-form label {
-    font-weight: bold;
-    font-size: 1.5em;
-    margin: 0;
-    color: grey;
-    transform: translateY(-30px);
+    font-size: 30px;
+    transform: translateY(-40px);
 }
 
-.create-form .create-button {
-    margin: 10% 0 0 0;
-    align-items: center;
-}
-
-.create-form p {
-    font-size: 1.2em;
-}
-
-.create-return {
-    font-size: 1.8em;
-}
-
-.create-update-button {
-    font-size: 2.5em;
+.create-form input {
+    font-size: 35px;
 }
 
 textarea {
-    font-size: 1.8em;
+    font-size: 35px;
+}
+
+.create-form p {
+    font-size: 22px;
+}
+
+.create-update-button {
+    font-size: 45px;
 }
 
 }
 
 @media (min-width: 1200px) {
-/* .create-title {
-    font-size:0;
-} */
 
-.create-content {
-    height: 76vh;
+.create-title {
+    margin: 0.3em;
+    font-size: 60px;
 }
 
-.create-form input {
-    font-size: 1.3em;
-    width: 100%;
-    color: black;
-    border: none;
-    border-bottom: 1px solid grey;
-    background: none;
+.create-form .row {
+    height: 150px;
 }
 
 .create-form label {
-    font-weight: bold;
-    font-size: 1em;
-    margin: 0;
-    color: grey;
-    transform: translateY(-20px);
+    font-size: 33px;
+    transform: translateY(-45px);
 }
 
-.create-form .create-button {
-    margin-top: 1.2em;
-    align-items: center;
-}
-
-.create-return {
-    font-size: 1.7em;
-}
-
-.create-update-button {
-    height: 50px;
-    font-size: 2em;
+.create-form input {
+    font-size: 40px;
 }
 
 textarea {
-    font-size: 1em;
+    font-size: 40px;
 }
 
 .create-form p {
-    font-size: 0.8em;
+    font-size: 22px;
+}
+
+.create-update-button {
+    font-size: 50px;
 }
 
 }
 
-@media (max-width: 299.98px) and (orientation: landscape) {
+@media (min-width: 300px) and (max-width: 575.98px) and (orientation: landscape) {
 
-.create-content {
-    height: 90%;
+.create-title {
+    margin: 0.3em;
+    font-size: 30px;
+}
+
+.create-form .row {
+    height: 80px;
+}
+
+.create-form label {
+    font-size: 16x;
+    transform: translateY(-24px);
+}
+
+.create-form input {
+    font-size: 20px;
+}
+
+textarea {
+    font-size: 20px;
+}
+
+
+.create-update-button {
+    font-size: 24px;
+}
+
+}
+
+@media (min-width: 576px) and (max-width: 768.98px) and (orientation: landscape) {
+
+.create-title {
+    margin: 0.3em;
+    font-size: 35px;
+}
+
+.create-form .row {
+    height: 90px;
+}
+
+.create-form label {
+    font-size: 20x;
+    transform: translateY(-26px);
+}
+
+.create-form input {
+    font-size: 22px;
+}
+
+textarea {
+    font-size: 22px;
+}
+
+
+.create-update-button {
+    font-size: 30px;
+}
+
+}
+
+@media (min-width: 769px) and (max-width: 1366.98px) and (orientation: landscape) {
+
+.create-form {
+    margin-top: 8%;
 }
 
 .create-title {
     margin: 0.3em;
-    font-size: 1.5em;
-}
-
-.create-form {
-    margin-top: 5%;
-}
-
-.create-form input {
-    background: none;
-}
-
-.create-form label {
-    font-weight: bold;
-    font-size: 1em;
-    margin: 0;
-    color: grey;
+    font-size: 40px;
 }
 
 .create-form .row {
-    padding: 1em 0;
-    height: 20%;
-}
-
-.create-form>.create-button {
-    padding-top: 0;
-    margin: 0;
-}
-
-}
-
-@media (min-width: 300px) and (max-width: 750px) and (orientation: landscape) {
-
-.create-content {
-    height: 90%;
-}
-
-.create-form {
-    margin-top: 5%;
-}
-
-.create-title {
-    margin: 0.3em;
-    font-size: 1.5em;
-}
-
-.create-form input {
-    background: none;
+    height: 110px;
 }
 
 .create-form label {
-    font-weight: bold;
-    font-size: 1em;
-    margin: 0;
-    color: grey;
-}
-
-.create-form .row {
-    padding: 1em 0;
-    height: 20%;
-}
-
-.create-form>.create-button {
-    padding-top: 0;
-    margin: 0;
-}
-
-}
-
-@media (min-width: 751px) and (max-width: 1023.9px) and (orientation: landscape) {
-.create-content {
-    height: 90%;
-}
-
-.create-form {
-    margin-top: 5%;
-}
-
-/* .create-title {
-    font-size:0;
-} */
-
-.create-form input {
-    background: none;
-}
-
-.create-form label {
-    font-weight: bold;
-    font-size: 1.5em;
-    margin: 0;
-    color: grey;
-}
-
-.create-form .row {
-    padding: 1em 0;
-    height: 20%;
-}
-
-.create-form>.create-button {
-    padding-top: 0;
-}
-
-}
-
-@media (min-width: 1024px) and (orientation: landscape) {
-.create-content {
-    height: 90%;
-}
-
-.create-form {
-    margin-top: 5%;
-}
-
-/* .create-title {
-    font-size:0;
-} */
-
-.create-form input {
-    padding-top: 0.3em;
-    margin-top: 0.6em;
-    background: none;
-}
-
-.create-form .row {
-    padding: 1em 0;
-    height: 20%;
-}
-
-.create-form label {
-    font-weight: bold;
-    font-size: 1.5em;
-    margin: 0;
-    color: grey;
+    font-size: 22px;
     transform: translateY(-30px);
 }
 
-.create-form>.create-button {
-    padding-top: 0;
+.create-form input {
+    font-size: 26px;
 }
 
-.create-form p {
-    font-size: 1em;
+textarea {
+    font-size: 26px;
 }
 
+
+.create-update-button {
+    font-size: 30px;
+}
+
+}
+
+@media (min-width: 1367px) and (orientation: landscape) {
+
+.create-form {
+    margin-top: 5%;
+}
+
+.create-title {
+    margin: 0.3em;
+    font-size: 45px;
+}
+
+.create-form .row {
+    height: 130px;
+}
+
+.create-form label {
+    font-size: 24px;
+    transform: translateY(-30px);
+}
+
+.create-form input {
+    font-size: 30px;
+}
+
+textarea {
+    font-size: 30px;
+}
+
+
+.create-update-button {
+    font-size: 35px;
+}
 }

@@ -9,8 +9,8 @@ import Header from '../general/header';
 import Backdrop from '../general/backdrop';
 import Hamburger from '../general/hamburger';
 import Input from '../input';
-import arrow from '../../assets/images/back-arrow.png';
-
+import arrow from '../../assets/images/left-arrow.png';
+import magnifier from '../../assets/images/magnifier.png';
 
 class Profile extends Component {
     state = {
@@ -77,7 +77,7 @@ class Profile extends Component {
         if(this.state.isEditable){
             return(
                 <div className="profile">
-                <Header hamburgerClick = {this.toggleHamburger}/>  
+                <Header src={magnifier} href={'/search-group'} hamburgerClick = {this.toggleHamburger}/>  
                 <Hamburger show={this.state.hamburgerOpen}/>
                 {backdrop} 
                 <main className='profile-content container'>
@@ -113,7 +113,7 @@ class Profile extends Component {
 
         return (
             <div className="profile">
-                <Header hamburgerClick = {this.toggleHamburger}/>  
+                <Header src={magnifier} href={'/search-group'} hamburgerClick = {this.toggleHamburger}/>  
                 <Hamburger show={this.state.hamburgerOpen}/>
                 {backdrop} 
                 <main className='profile-content container'>

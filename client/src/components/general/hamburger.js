@@ -5,6 +5,7 @@ import user from '../../assets/images/user.png';
 import groupAdd from '../../assets/images/group-create.png';
 import home from '../../assets/images/home.png';
 import magnifier from '../../assets/images/magnifier.png';
+import logout from '../../assets/images/logout.png';
 import {connect} from 'react-redux';
 import {userSignOut} from '../../actions/';
 import {getUserInfo} from '../../actions';
@@ -21,16 +22,17 @@ class Hamburger extends Component {
 
         if(auth){
             return (
-                <div className='d-flex hamburger-signout justify-content-end'>
-                    <Link to='/home' onClick={userSignOut} className='hamburger-signout-button '>Log Out</Link>
-                </div>
+                <li className='hamburger-profile rounded'>
+                    <img src={logout} /> 
+                    <Link to='/home' onClick={userSignOut} className='btn'>Log Out</Link>
+                </li>
             )
         }
         if(!auth) {
             return (
-                <div className='d-flex hamburger-signout justify-content-end'>
-                    <Link to='/create-account' className='hamburger-signout-button '>Sign Up</Link>
-                </div>
+                <li className='hamburger-profile rounded'>
+                    <Link to='/create-account' className='btn '>Sign Up</Link>
+                </li>
             )
         }
     }
@@ -70,8 +72,8 @@ class Hamburger extends Component {
                         <img src={user} /> 
                         <Link to='/profile' className='btn'>Profile</Link>
                     </li>  
+                    {this.SignOutButton()}
                 </ul>
-                {this.SignOutButton()}
             </nav>
                 
         )

@@ -41,6 +41,11 @@ body {
     padding: 0;
 }
 
+.search-icon {
+    height: 25px;
+    width: 30px;
+}
+
 .navbar-text {
     color: #FFFFFF;
     text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
@@ -65,7 +70,6 @@ body {
 }
 
 .nav-links li {
-    padding: 0 0.5rem;
     font-size: 2.5vw;
 }
 
@@ -78,8 +82,7 @@ body {
     height: 30px;
     border-radius: 10px;
     background: none;
-    border: 1px solid #FFFFFF;
-    text-shadow: 0px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;    
+    border: 1px solid #FFFFFF; 
     color: #FFFFFF;
     right: 0;
     margin: 1em;
@@ -129,185 +132,201 @@ body {
 }
 
 @media (max-width: 575.98px) {
-    .nav-links {
-        display: none;
-    }
+.nav-links {
+    display: none;
+}
 
-    .header-signout-button { 
-        display: none;
-    }
+.header-signout-button { 
+    display: none;
+}
 
-    .header-worm {
-        height: 40px;
-        width: 45px;
-    }
+.header-worm {
+    height: 40px;
+    width: 45px;
+}
 
-    .header-section {
-        display: flex;
-        justify-content: space-between;    
-    }
-    
-    .search-icon {
-        height: 25px;
-        width: 30px;
-    }
-    
-    .nav-title {
-        display: flex;
-        justify-content: center;
-    }
+.header-section {
+    display: flex;
+    justify-content: space-between;    
+}
+
+.search-icon {
+    height: 25px;
+    width: 30px;
+}
+
+.nav-title {
+    display: flex;
+    justify-content: center;
+}
 
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
-    .nav-links {
-        display: none;
-    }
 
-    .header-signout-button { 
-        display: none;
-    }
+.nav-links {
+    display: none;
+}
 
-    .header-section {
-        display: flex;
-        justify-content: space-between;    
-    }
+.header-signout-button { 
+    display: none;
+}
 
-    .header-worm {
-        height: 40px;
-        width: 45px;
-    }
+.header-section {
+    display: flex;
+    justify-content: space-between;    
+}
 
-    .nav-title {
-        display: flex;
-        justify-content: center;
-    }
+.search-icon {
+    height: 35px;
+    width: 35px;
+}
+
+.header-worm {
+    height: 50px;
+    width: 60px;
+}
+
+.nav-title {
+    display: flex;
+    justify-content: center;
+}
 
 }
 
-@media (min-width: 768px) and (max-width: 991.98px) {
-    .nav-hamburger-button, .search-icon {
-        display: none;
-    }
+@media (min-width: 768px) {
+.nav-hamburger-button, .search-icon {
+    display: none;
+}
 
-    .nav-title {
-        display: flex;
-        justify-content: center;
-    }
+.nav-title {
+    display: flex;
+    justify-content: center;
+}
 
-    .nav-search {
-        display: flex;
-        align-self: start;
-    }
+.header-worm {
+    height: 60px;
+    width: 70px;
+    margin: 0.5em;
+}
 
-    .nav-links ul {
-        display: flex;
-        justify-content: space-around;
-    }
+.navbar-text {
+    font-size: 40px;
+}
 
-    .nav-links li {
-        padding: 0 0.5rem;
-        font-size: 2.5vw;
-    }
+.nav-search {
+    display: flex;
+    align-self: start;
+}
 
-    .header-button {  
-        width: 55px;
-        height: 25px;
-        font-size: 0.65em;
-    }
+.nav-links ul {
+    display: flex;
+    justify-content: space-around;
+}
 
-    .header-signout-button {
-        display: flex;
-        justify-content: flex-end;
-        align-self: end;
-    }
+.nav-links li {
+    font-size: 25px;
+}
 
-    .navbar-text {
-        padding: 0;
-        margin: 0;
-    }
+.header-button {  
+    width: 55px;
+    height: 25px;
+    font-size: 12px;
+}
+
+.header-signout-button {
+    display: flex;
+    justify-content: flex-end;
+    align-self: end;
+}
+
+.navbar-text {
+    padding-left: 10px;
+    margin: 0;
+}
 
 }
 
-@media (min-width: 992px) and (max-width: 1199.98px) {
-    .nav-hamburger-button, .search-icon {
-        display: none;
-    }
+@media (min-width: 992px) {
+.nav-hamburger-button, .search-icon {
+    display: none;
+}
 
-    .nav-links ul {
-        display: flex;
-        justify-content: space-around;
-    }
+.nav-links ul {
+    display: flex;
+    justify-content: space-around;
+}
 
-    .nav-links li {
-        padding: 0 0.5rem;
-        font-size: 2.5vw;
-    }
+.nav-links li {
+    padding: 0 0.5rem;
+    font-size: 30px;
+}
 
-    .header-button {  
-        width: 60px;
-        height: 25px;
-        font-size: 0.7em;
-    }
+.header-button {  
+    width: 60px;
+    height: 25px;
+    font-size: 14px;
+}
 
-    .header-signout-button {
-        display: flex;
-        justify-content: flex-end;
-        align-self: end;
-    }
+.header-signout-button {
+    display: flex;
+    justify-content: flex-end;
+    align-self: end;
+}
 
-    .nav-title {
-        display: flex;
-        justify-content: center;
-    }
+.nav-title {
+    display: flex;
+    justify-content: center;
+}
 
-    .navbar-text {
-        padding: 0;
-        margin: 0;
-    }
+.navbar-text {
+    padding-left: 10px;
+    margin: 0;
+}
 
 }
 
 @media (min-width: 1200px) {
-    .nav-hamburger-button, .search-icon {
-        display: none;
-    }
 
-    .nav-links {
-        padding: 0 8px;
-    }
+.nav-hamburger-button, .search-icon {
+    display: none;
+}
 
-    .nav-links ul {
-        display: flex;
-        justify-content: space-around;
-    }
+.nav-links {
+    padding: 0 8px;
+}
 
-    .nav-links li {
-        padding: 0 0.5rem;
-        font-size: 2vw;
-    }
+.nav-links ul {
+    display: flex;
+    justify-content: space-around;
+}
 
-    .header-button {  
-        width: 65px;
-        height: 30px;
-        font-size: 0.75em;
-    }
+.nav-links li {
+    padding: 0 0.5rem;
+    font-size: 35px;
+}
 
-    .header-signout-button {
-        display: flex;
-        justify-content: flex-end;
-        align-self: end;
-    }
+.header-button {  
+    width: 65px;
+    height: 30px;
+    font-size: 0.75em;
+}
 
-    .nav-title {
-        display: flex;
-        justify-content: center;
-    }
+.header-signout-button {
+    display: flex;
+    justify-content: flex-end;
+    align-self: end;
+}
 
-    .navbar-text {
-        font-size: 4.5vw;
-        padding: 0;
-        margin: 0;
-    }
+.nav-title {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-text {
+    font-size: 45px;
+    padding-left: 10px;
+    margin: 0;
+}
 
 }

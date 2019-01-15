@@ -9,8 +9,8 @@ import Backdrop from '../general/backdrop';
 import { Field, reduxForm } from 'redux-form';
 import Input from '../input';
 import {Link} from "react-router-dom";
-import arrow from '../../assets/images/back-arrow.png';
-
+import arrow from '../../assets/images/left-arrow.png';
+import magnifier from '../../assets/images/magnifier.png';
 
 
 class EditGroup extends Component{
@@ -54,16 +54,16 @@ class EditGroup extends Component{
 
         return (
             <div className="edit-created">
-                <Header hamburgerClick = {this.toggleHamburger}/>  
+                <Header src={magnifier} href={'/search-group'} hamburgerClick = {this.toggleHamburger}/>  
                 <Hamburger show={this.state.hamburgerOpen}/>
                 {backdrop}  
-                <main className='edit-content'>
+                <main className='edit-content container'>
                     <div className='create-header row justify-content-center'>
                         <Link to='/home' className='create-return'>
                             <img className='create-account-return return-button' src={arrow} />
                             <span>Back</span>
                         </Link>
-                        <p className='edit-title col-9'>EDIT</p>
+                        <p className='edit-title col-9'>EDIT GROUP</p>
                     </div>
                     <form className='edit-form justify-content-center container' onSubmit={handleSubmit(this.handleUpdateItem)}>
                         <div className="row justify-content-center">

@@ -8,8 +8,8 @@ import Hamburger from '../general/hamburger';
 import Backdrop from '../general/backdrop';
 import { createNewGroup } from '../../actions';
 import Input from '../input';
-import arrow from '../../assets/images/back-arrow.png';
-
+import arrow from '../../assets/images/left-arrow.png';
+import magnifier from '../../assets/images/magnifier.png';
 
 class CreateGroup extends Component {
    state = {
@@ -48,26 +48,26 @@ class CreateGroup extends Component {
       const { handleSubmit, invalidName } = this.props
       return (
          <div className="blue">
-            <Header hamburgerClick={this.toggleHamburger} />
+            <Header src={magnifier} href={'/search-group'} hamburgerClick={this.toggleHamburger} />
             <Hamburger show={this.state.hamburgerOpen} />
             {backdrop}
-            <main className='create-content'>
-               <div className='create-header row justify-content-center'>
+            <main className='create-content container'>
+               <div className='create-header row justify-content-center align-items-center'>
                   <Link to='/home' className='create-return'>
                      <img className='create-account-return return-button' src={arrow} />
                      <span>Back</span>
                   </Link>
-                  <p className='create-title col-9'>Create Group</p>
+                  <p className='create-title col-9'>CREATE GROUP</p>
                </div>
                <form className='create-form container' onSubmit={handleSubmit(this.handleCreateGroup)}>
                   <div className="row justify-content-center">
                         <div className='create-groupName col-11'>  
-                           <Field name="name" label="Group Name" maxLength='20' component={Input} />
+                           <Field name="name" label="Group Name" maxLength='40' component={Input} />
                         </div>
                   </div>
                   <div className="row justify-content-around">
                         <div className='create-subject col-5'>
-                           <Field name="subject" label="Subject" maxLength='15' component={Input} />
+                           <Field name="subject" label="Subject" maxLength='20' component={Input} />
                         </div>
                         <div className='create-course col-5'>
                            <Field name="course" label="Course Number" maxLength='5' component={Input} />
@@ -91,7 +91,7 @@ class CreateGroup extends Component {
                   </div>
                   <div className="row justify-content-center">
                         <div className='create-location col-11'>
-                           <Field name="location" label="Location" maxLength='15' component={Input} />
+                           <Field name="location" label="Location" maxLength='25' component={Input} />
                         </div>
                   </div>
                   <div className="row justify-content-center">
@@ -99,7 +99,7 @@ class CreateGroup extends Component {
                            <Field name="description" label="Description" maxLength='100' component={Input} textArea='true'/>
                         </div>
                   </div>
-                  <div className="row create-button justify-content-center">
+                  <div className="row create-button justify-content-center align-items-center">
                         <div className='col-6'>
                            <button className='btn create-update-button'>Create</button>
                         </div>  
