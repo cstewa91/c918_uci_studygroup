@@ -3,11 +3,12 @@
    display: inline-block;
    color: white;
    width: 187.5px;
-   height: 58.14px;
+   height: 100%;
    text-align: center;
    font-size: 2em;
    cursor: pointer;
    width: 50%;
+   font-size: 6vmin;
 }
 
 .home-add-button {
@@ -30,7 +31,7 @@
 
 
 .home-container {
-   height: 91.5vh;
+   height: 85vh;
 }
 
 .home-card-container {
@@ -39,7 +40,8 @@
 }
 
 .card-text-container {
-   height: 72%
+   height: 72%;
+   font-size: 4vmin;
 }
 
 .home-groups {
@@ -56,6 +58,7 @@
    overflow-x: hidden;
    overflow-y: scroll;
    justify-content: space-evenly;
+   height: 74%;
 }
 
 .home-group-date {
@@ -85,6 +88,7 @@
    justify-content: space-around;
    height: 4%;
    font-weight: bold;
+   height: 12%;
 }
 
 .home-group-name {
@@ -126,11 +130,12 @@
    color: #1778BE;
    display: inline-block;
    width: 187.5px;
-   height: 58.14px;
+   height: 100%;
    text-align: center;
    font-size: 2em;
    cursor: pointer;
    width: 50%;
+   font-size: 6vmin;
 }
 
 .home-single-group {
@@ -138,6 +143,8 @@
    border-radius: 5px;
    margin: 2%;
    text-align: center;
+   width: 29%;
+   height: 70%;
 }
 
 .home-single-group a {
@@ -164,28 +171,209 @@
    overflow: hidden;
    text-overflow: ellipsis;
    margin-bottom: 8%;
+   font-size: 5vmin;
 }
 
 
 /********* MEDIA QUERIES ***********/
-@media (min-width: 1800px) and (max-width: 2000px) {}
+@media (min-width: 1800px) and (max-width: 2000px) {
+   .home-group-header {
+      height: 12%;
+  }
+   .home-container {
+      height: 85vh;
+   }
+
+   .home-groups-container {
+      height: 74%;
+   }
+
+   .home-active-tab {
+      font-size: 6vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 6vmin;
+   }
+
+   .home-single-group {
+      width: 29%;
+      height: 70%;
+   }
+
+   .card-text-container {
+      font-size: 4vmin;
+   }
+
+   .card-header {
+      font-size: 5vmin;
+   }
+}
 
 /* Desktops */
-@media (min-width: 1281px) and (max-width: 1650px) {}
+@media (min-width: 1281px) and (max-width: 1650px) {
+   .home-group-header {
+      height: 12%;
+  }
+   .home-container {
+      height: 85vh;
+   }
+
+   .home-groups-container {
+      height: 74%;
+   }
+
+   .home-active-tab {
+      font-size: 6vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 6vmin;
+   }
+
+   .home-single-group {
+      width: 29%;
+      height: 70%;
+   }
+
+   .card-text-container {
+      font-size: 4vmin;
+   }
+
+   .card-header {
+      font-size: 5vmin;
+   }
+}
 
 /* Laptops/Desktops */
-@media (min-width: 1025px) and (max-width: 1280px) {}
+@media (min-width: 1025px) and (max-width: 1280px) {
+   .home-container {
+      height: 84vh;
+   }
+
+   .home-groups-container {
+      height: 78%;
+   }
+
+   .home-active-tab {
+      font-size: 6vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 6vmin;
+   }
+
+   .home-single-group {
+      width: 46%;
+      height: 60%;
+   }
+
+   .card-text-container {
+      font-size: 3vmin;
+      line-height: 180%;
+   }
+
+   .card-header {
+      font-size: 4vmin;
+   }
+}
 
 /* Tablets, Ipads, Portrait */
-@media (min-width: 768px) and (max-width: 1024px) {}
+@media (min-width: 768px) and (max-width: 1024px) {
+   .home-container {
+      height: 84vh;
+   }
 
-@media (min-width: 651px) and (max-width: 767px) {}
+   .home-groups-container {
+      height: 78%;
+   }
+
+   .home-active-tab {
+      font-size: 6vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 6vmin;
+   }
+
+   .home-single-group {
+      width: 46%;
+      height: 60%;
+   }
+
+   .card-text-container {
+      font-size: 3vmin;
+      line-height: 180%;
+   }
+
+   .card-header {
+      font-size: 4vmin;
+   }
+}
 
 /* Low Res Tablets, Mobile Phones (Landscape) */
-@media (min-width: 481px) and (max-width: 767px) {}
+@media (min-width: 481px) and (max-width: 767px) {
+   .home-container {
+      height: 92vh;
+   }
+
+   .home-groups-container {
+      height: 80%;
+   }
+
+   .home-active-tab {
+      font-size: 6vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 6vmin;
+   }
+
+   .home-single-group {
+      width: 46%;
+      height: 47%;
+   }
+
+   .card-text-container {
+      font-size: 4vmin;
+   }
+
+   .card-header {
+      font-size: 4vmin;
+   }
+}
 
 /*Small Screen Sizes*/
-@media (max-width: 481px) {}
+@media (max-width: 481px) {
+   .home-container {
+      height: 92vh;
+   }
+
+   .home-groups-container {
+      height: 80%;
+   }
+
+   .home-active-tab {
+      font-size: 6vmax;
+   }
+
+   .home-not-active-tab {
+      font-size: 6vmax;
+   }
+
+   .home-single-group {
+      width: 46%;
+      height: 47%;
+   }
+
+   .card-text-container {
+      font-size: 3vmax;
+   }
+
+   .card-header {
+      font-size: 4vmax;
+   }
+}
 
 /* iPhone 4 Portrait----------- */
 @media only screen and (device-height : 480px) and (device-width : 320px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2) {
@@ -208,6 +396,21 @@
 
    .card-text-container {
       line-height: 26px;
+   }
+   .home-active-tab {
+      font-size: 11vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 11vmin;
+   }
+
+   .card-text-container {
+      font-size: 4vmin;
+   }
+
+   .card-header {
+      font-size: 5vmin;
    }
 }
 
@@ -233,6 +436,21 @@
    .card-text-container {
       line-height: 26px;
    }
+   .home-active-tab {
+      font-size: 11vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 11vmin;
+   }
+
+   .card-text-container {
+      font-size: 4vmin;
+   }
+
+   .card-header {
+      font-size: 5vmin;
+   }
 }
 
 /* iPhone 5 Portrait */
@@ -256,6 +474,21 @@
 
    .card-text-container {
       line-height: 27px;
+   }
+   .home-active-tab {
+      font-size: 11vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 11vmin;
+   }
+
+   .card-text-container {
+      font-size: 5vmin;
+   }
+
+   .card-header {
+      font-size: 5vmin;
    }
 }
 
@@ -281,6 +514,21 @@
    .card-text-container {
       line-height: 26px;
    }
+   .home-active-tab {
+      font-size: 11vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 11vmin;
+   }
+
+   .card-text-container {
+      font-size: 5vmin;
+   }
+
+   .card-header {
+      font-size: 5vmin;
+   }
 }
 
 /* iPhone 6/7/8 Portrait */
@@ -305,6 +553,22 @@
    .card-text-container {
       line-height: 35px;
    }
+
+   .home-active-tab {
+      font-size: 10vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 10vmin;
+   }
+
+   .card-text-container {
+      font-size: 5vmin;
+   }
+
+   .card-header {
+      font-size: 5vmin;
+   }
 }
 
 /* iPhone 6/7/8 Landscape */
@@ -328,6 +592,22 @@
 
    .card-text-container {
       line-height: 26px;
+   }
+
+   .home-active-tab {
+      font-size: 10vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 10vmin;
+   }
+
+   .card-text-container {
+      font-size: 5vmin;
+   }
+
+   .card-header {
+      font-size: 5vmin;
    }
 
 }
@@ -359,6 +639,22 @@
    .card-header {
       font-size: 21px;
    }
+
+   .home-active-tab {
+      font-size: 9vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 9vmin;
+   }
+
+   .card-text-container {
+      font-size: 5vmin;
+   }
+
+   .card-header {
+      font-size: 5vmin;
+   }
 }
 
 /* iPhone 6+/7+/8+ Landscape */
@@ -387,6 +683,22 @@
 
    .card-header {
       font-size: 21px;
+   }
+
+   .home-active-tab {
+      font-size: 9vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 9vmin;
+   }
+
+   .card-text-container {
+      font-size: 5vmin;
+   }
+
+   .card-header {
+      font-size: 5vmin;
    }
 }
 
@@ -417,6 +729,22 @@
    .card-header {
       font-size: 21px;
    }
+
+   .home-active-tab {
+      font-size: 10vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 10vmin;
+   }
+
+   .card-text-container {
+      font-size: 5vmin;
+   }
+
+   .card-header {
+      font-size: 5vmin;
+   }
 }
 
 /* iPhone X Landscape */
@@ -445,6 +773,22 @@
 
    .card-header {
       font-size: 21px;
+   }
+
+   .home-active-tab {
+      font-size: 10vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 10vmin;
+   }
+
+   .card-text-container {
+      font-size: 5vmin;
+   }
+
+   .card-header {
+      font-size: 5vmin;
    }
 }
 
@@ -475,6 +819,14 @@
    .card-header {
       font-size: 35px;
    }
+
+   .home-active-tab {
+      font-size: 5vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 5vmin;
+   }
 }
 
 /* iPad Landscape */
@@ -503,6 +855,14 @@
 
    .card-header {
       font-size: 35px;
+   }
+
+   .home-active-tab {
+      font-size: 5vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 5vmin;
    }
 }
 
@@ -626,6 +986,22 @@
    .card-header {
       font-size: 21px;
    }
+   
+   .home-active-tab {
+      font-size: 9vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 9vmin;
+   }
+
+   .card-text-container {
+      font-size: 5vmin;
+   }
+
+   .card-header {
+      font-size: 5vmin;
+   }
 }
 
 /* Pixel 2 Landscape*/
@@ -654,6 +1030,22 @@
 
    .card-header {
       font-size: 21px;
+   }
+   
+   .home-active-tab {
+      font-size: 9vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 9vmin;
+   }
+
+   .card-text-container {
+      font-size: 5vmin;
+   }
+
+   .card-header {
+      font-size: 5vmin;
    }
 }
 
@@ -684,6 +1076,22 @@
    .card-header {
       font-size: 21px;
    }
+   
+   .home-active-tab {
+      font-size: 9vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 9vmin;
+   }
+
+   .card-text-container {
+      font-size: 5vmin;
+   }
+
+   .card-header {
+      font-size: 5vmin;
+   }
 }
 
 /* Pixel 2 XL Landscape*/
@@ -713,6 +1121,22 @@
    .card-header {
       font-size: 21px;
    }
+
+   .home-active-tab {
+      font-size: 9vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 9vmin;
+   }
+
+   .card-text-container {
+      font-size: 5vmin;
+   }
+
+   .card-header {
+      font-size: 5vmin;
+   }
 }
 
 /* Samsung Galaxy S5 portrait*/
@@ -722,11 +1146,11 @@
    }
 
    .home-group-header {
-      height: 13%;
+      height: 10%;
    }
 
    .home-groups-container {
-      height: 73%;
+      height: 76%;
    }
 
    .home-single-group {
@@ -736,6 +1160,21 @@
 
    .card-text-container {
       line-height: 29px;
+   }
+   .home-active-tab {
+      font-size: 10vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 10vmin;
+   }
+
+   .card-text-container {
+      font-size: 4vmin;
+   }
+
+   .card-header {
+      font-size: 5vmin;
    }
 }
 
@@ -760,5 +1199,20 @@
 
    .card-text-container {
       line-height: 26px;
+   }
+      .home-active-tab {
+      font-size: 10vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 10vmin;
+   }
+
+   .card-text-container {
+      font-size: 4vmin;
+   }
+
+   .card-header {
+      font-size: 5vmin;
    }
 }
