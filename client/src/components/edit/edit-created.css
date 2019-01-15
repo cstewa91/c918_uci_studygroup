@@ -29,7 +29,7 @@
 
 .create-header a:hover,
 .create-header a:focus {
-    color: red;
+    color: #1778BE;
     -webkit-transform: scale(1.2);
     -moz-transform: scale(1.2);
     transform: scale(1.2);
