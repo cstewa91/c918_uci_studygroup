@@ -58,7 +58,7 @@ class EditGroup extends Component{
                 <Hamburger show={this.state.hamburgerOpen}/>
                 {backdrop}  
                 <main className='edit-content container'>
-                    <div className='create-header row justify-content-center'>
+                    <div className='create-header row justify-content-center align-items-center'>
                         <Link to='/home' className='create-return'>
                             <img className='create-account-return return-button' src={arrow} />
                             <span>Back</span>
