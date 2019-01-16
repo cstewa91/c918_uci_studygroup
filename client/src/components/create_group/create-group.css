@@ -104,6 +104,7 @@
 
 .create-form textarea:focus {
     border: 2px solid #ffe34c;
+    outline: none;
  }
 
 .create-form p {
