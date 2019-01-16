@@ -143,7 +143,7 @@ class GroupInfo extends Component{
 
         return (
             <div className="edit-created">
-                <Header hamburgerClick = {this.toggleHamburger}/>  
+                <Header src={magnifier} hamburgerClick = {this.toggleHamburger}/>  
                 <Hamburger show={this.state.hamburgerOpen}/>
                 {backdrop} 
                 <main className="group-details-content">                  
