@@ -76,7 +76,7 @@ class GroupModal extends Component{
                     <div id="group-modal" className="basic-modal">
                         <div onClick={e => e.stopPropagation()} className="basic-modal-content">
                                 <div className="group-modal-close" onClick={this.close}>
-                                    x
+                                    &times;
                                 </div>
                             <div className="group-modal-details">
                                 <h1>Loading...</h1>
@@ -125,7 +125,7 @@ class GroupModal extends Component{
                     <div id="group-modal" className="basic-modal" onClick={this.close}>
                         <div onClick={e => e.stopPropagation()} className="basic-modal-content">
                                 <div className="group-modal-close" onClick={this.close}>
-                                    x
+                                    &times;
                                 </div>
                             <div className="group-modal-details">
                                 {GroupData }
