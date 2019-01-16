@@ -124,7 +124,7 @@ class Home extends Component {
       }
       if (this.props.joinedGroups) {
          return (
-            <div>
+            <div className="home-page-container">
                <Header src={magnifier} href={'/search-group'} hamburgerClick={this.toggleHamburger} />
                <Hamburger show={this.state.hamburgerOpen} />
                {backdrop}
@@ -144,7 +144,7 @@ class Home extends Component {
          )
       }
       return (
-         <div>
+         <div className="home-page-container">
             <Header src={magnifier} href={'/search-group'} hamburgerClick={this.toggleHamburger} />
             <Hamburger show={this.state.hamburgerOpen} />
             {backdrop}
