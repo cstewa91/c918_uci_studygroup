@@ -30,7 +30,7 @@
     text-align: left;
 }
 
-.basic-modal-close {
+.confirm-modal-close {
     height: 30px;
     width: 30px;
     line-height: 30px;
@@ -40,6 +40,7 @@
     right: 10px;
     border-radius: 50%;
     font-weight: bold;
+    font-size: 25px;
     color: #dedede;
     cursor: pointer;
 }
