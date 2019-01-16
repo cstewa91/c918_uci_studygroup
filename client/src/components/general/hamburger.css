@@ -78,11 +78,6 @@ span {
     
 }
 
-.hamburger-nav li:hover {
-    box-shadow: 0 0 6px #FFFFFF;
-    background-color: #006DAA;
-}
-
 .hamburger-nav a {
     cursor: pointer;
     color: #FFFFFF;

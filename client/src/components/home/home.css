@@ -145,6 +145,8 @@
    text-align: center;
    width: 29%;
    height: 70%;
+   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+   border: 1px solid #007bff;
 }
 
 .home-single-group a {
@@ -166,7 +168,7 @@
 }
 
 .card-header {
-   background: rgb(216, 216, 216);
+   background: rgb(213, 213, 213);
    white-space: nowrap;
    overflow: hidden;
    text-overflow: ellipsis;
@@ -331,11 +333,11 @@
 
    .home-single-group {
       width: 46%;
-      height: 47%;
+      height: 50%;
    }
 
    .card-text-container {
-      font-size: 4vmin;
+      font-size: 3.5vmin;
    }
 
    .card-header {

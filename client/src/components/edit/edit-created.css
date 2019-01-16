@@ -98,6 +98,11 @@
     border: 1px solid #ffe34c;
 }
 
+.edit-form textarea:focus {
+    border: 2px solid #ffe34c;
+    outline: none;
+ }
+
 .edit-form p {
     height: 10px;
     margin: 0;
@@ -183,10 +188,6 @@
 .edit-title {
     margin: 0.3em;
     font-size: 45px;
-}
-
-.edit-content .create-header {
-    height: 65px;
 }
 
 .edit-form .row {
