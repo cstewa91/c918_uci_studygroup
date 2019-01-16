@@ -20,7 +20,7 @@ class ConfirmModal extends Component {
             return (
                 <div className="confirm-modal" onClick={this.close}>
                     <div onClick={e => e.stopPropagation()} className="confirm-modal-content">
-                        <div onClick={this.close} className="basic-modal-close">X</div>
+                        <div onClick={this.close} className="confirm-modal-close">&times;</div>
                         <h1 className="basic-modal-content-h1">
                             Delete Group
                         </h1>
