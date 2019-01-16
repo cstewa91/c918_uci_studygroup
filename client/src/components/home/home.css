@@ -1,3 +1,7 @@
+.header-container {
+   height: 15%;
+}
+
 .home-active-tab {
    background: #308ED2;
    display: inline-block;
@@ -12,13 +16,12 @@
 }
 
 .home-add-button {
-   margin-right: 11px;
    background: #1778BE;
    border: 3px solid #FFFFFF;
    color: white;
    border-radius: 50%;
-   width: 65px;
-   height: 64px;
+   width: 13vmin;
+   height: 13vmin;
    text-align: center;
    line-height: 1.75;
 }
@@ -29,9 +32,18 @@
    justify-content: flex-end;
 }
 
+.home-add-button-container a {
+   align-items: center;
+   display: flex;
+   justify-content: center;
+}
+
+.fa-2x {
+   font-size: 7vmin;
+}
 
 .home-container {
-   height: 85vh;
+   height: 85%;
 }
 
 .home-card-container {
@@ -138,6 +150,11 @@
    font-size: 6vmin;
 }
 
+.home-page-container {
+   height: 100vh;
+   width: 100vw;
+}
+
 .home-single-group {
    background: linear-gradient(178.14deg, rgba(255, 255, 255, 0) 45.77%, rgba(255, 255, 255, 0.34) 103.91%), #6FB8ED;
    border-radius: 5px;
@@ -145,7 +162,7 @@
    text-align: center;
    width: 29%;
    height: 70%;
-   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
    border: 1px solid #007bff;
 }
 
@@ -180,10 +197,11 @@
 /********* MEDIA QUERIES ***********/
 @media (min-width: 1800px) and (max-width: 2000px) {
    .home-group-header {
-      height: 12%;
-  }
+      height: 10%;
+   }
+
    .home-container {
-      height: 85vh;
+      height: 85%;
    }
 
    .home-groups-container {
@@ -199,8 +217,8 @@
    }
 
    .home-single-group {
-      width: 29%;
-      height: 70%;
+      width: 21%;
+      height: 69%;
    }
 
    .card-text-container {
@@ -208,6 +226,23 @@
    }
 
    .card-header {
+      font-size: 5vmin;
+   }
+
+   .header-container {
+      height: 15%;
+   }
+
+   .home-add-button-container {
+      height: 11%;
+   }
+
+   .home-add-button {
+      width: 9vmin;
+      height: 9vmin;
+   }
+
+   .fa-2x {
       font-size: 5vmin;
    }
 }
@@ -216,9 +251,168 @@
 @media (min-width: 1281px) and (max-width: 1650px) {
    .home-group-header {
       height: 12%;
-  }
+   }
+
    .home-container {
-      height: 85vh;
+      height: 74%;
+   }
+
+   .home-groups-container {
+      height: 74%;
+   }
+
+   .home-active-tab {
+      font-size: 6vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 6vmin;
+   }
+
+   .home-single-group {
+      width: 21%;
+      height: 75%;
+   }
+
+   .card-text-container {
+      font-size: 4vmin;
+   }
+
+   .card-header {
+      font-size: 5vmin;
+   }
+
+   .header-container {
+      height: 21%;
+   }
+
+   .home-add-button-container {
+      height: 15%;
+   }
+
+   .home-add-button {
+      width: 9vmin;
+      height: 9vmin;
+   }
+
+   .fa-2x {
+      font-size: 5vmin;
+   }
+}
+
+/* Laptops/Desktops */
+@media (min-width: 1025px) and (max-width: 1280px) {
+   .home-container {
+      height: 77%;
+   }
+
+   .home-groups-container {
+      height: 68%;
+   }
+
+   .home-active-tab {
+      font-size: 6vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 6vmin;
+   }
+
+   .home-group-header {
+      height: 11%;
+  }
+  
+
+   .home-single-group {
+      width: 21%;
+      height: 77%;
+   }
+
+   .card-text-container {
+      font-size: 3vmin;
+      line-height: 180%;
+   }
+
+   .card-header {
+      font-size: 4vmin;
+   }
+
+   .header-container {
+      height: 23%;
+   }
+
+   .home-add-button-container {
+      height: 15%;
+   }
+
+   .home-add-button {
+      width: 11vmin;
+      height: 11vmin;
+   }
+
+   .fa-2x {
+      font-size: 6vmin;
+   }
+}
+
+/* Tablets, Ipads, Portrait */
+@media (min-width: 768px) and (max-width: 1024px) {
+   .home-container {
+      height: 77%;
+   }
+
+   .home-groups-container {
+      height: 68%;
+   }
+
+   .home-group-header {
+      height: 12%;
+  }
+
+   .home-active-tab {
+      font-size: 6vmin;
+   }
+
+   .home-not-active-tab {
+      font-size: 6vmin;
+   }
+
+   .home-single-group {
+      width: 29%;
+      height: 74%;
+   }
+
+   .card-text-container {
+      font-size: 3vmin;
+      line-height: 180%;
+   }
+
+   .card-header {
+      font-size: 4vmin;
+   }
+
+   .header-container {
+      height: 23%;
+   }
+
+   .home-add-button-container {
+      height: 15%;
+   }
+
+   .home-add-button {
+      width: 11vmin;
+      height: 11vmin;
+   }
+
+   .fa-2x {
+      font-size: 6vmin;
+   }
+}
+
+/* Low Res Tablets, Mobile Phones */
+@media (min-width: 481px) and (max-width: 767px) {
+   .home-container {
+      height: 85%;
    }
 
    .home-groups-container {
@@ -235,105 +429,7 @@
 
    .home-single-group {
       width: 29%;
-      height: 70%;
-   }
-
-   .card-text-container {
-      font-size: 4vmin;
-   }
-
-   .card-header {
-      font-size: 5vmin;
-   }
-}
-
-/* Laptops/Desktops */
-@media (min-width: 1025px) and (max-width: 1280px) {
-   .home-container {
-      height: 84vh;
-   }
-
-   .home-groups-container {
-      height: 78%;
-   }
-
-   .home-active-tab {
-      font-size: 6vmin;
-   }
-
-   .home-not-active-tab {
-      font-size: 6vmin;
-   }
-
-   .home-single-group {
-      width: 46%;
-      height: 60%;
-   }
-
-   .card-text-container {
-      font-size: 3vmin;
-      line-height: 180%;
-   }
-
-   .card-header {
-      font-size: 4vmin;
-   }
-}
-
-/* Tablets, Ipads, Portrait */
-@media (min-width: 768px) and (max-width: 1024px) {
-   .home-container {
-      height: 84vh;
-   }
-
-   .home-groups-container {
-      height: 78%;
-   }
-
-   .home-active-tab {
-      font-size: 6vmin;
-   }
-
-   .home-not-active-tab {
-      font-size: 6vmin;
-   }
-
-   .home-single-group {
-      width: 46%;
-      height: 60%;
-   }
-
-   .card-text-container {
-      font-size: 3vmin;
-      line-height: 180%;
-   }
-
-   .card-header {
-      font-size: 4vmin;
-   }
-}
-
-/* Low Res Tablets, Mobile Phones (Landscape) */
-@media (min-width: 481px) and (max-width: 767px) {
-   .home-container {
-      height: 92vh;
-   }
-
-   .home-groups-container {
-      height: 80%;
-   }
-
-   .home-active-tab {
-      font-size: 6vmin;
-   }
-
-   .home-not-active-tab {
-      font-size: 6vmin;
-   }
-
-   .home-single-group {
-      width: 46%;
-      height: 50%;
+      height: 57%;
    }
 
    .card-text-container {
@@ -343,16 +439,33 @@
    .card-header {
       font-size: 4vmin;
    }
+
+   .header-container {
+      height: 15%;
+   }
+
+   .home-add-button-container {
+      height: 13%;
+   }
+
+   .home-add-button {
+      width: 9vmin;
+      height: 9vmin;
+   }
+
+   .fa-2x {
+      font-size: 5vmin;
+   }
 }
 
 /*Small Screen Sizes*/
 @media (max-width: 481px) {
    .home-container {
-      height: 92vh;
+      height: 89%;
    }
 
    .home-groups-container {
-      height: 80%;
+      height: 77%;
    }
 
    .home-active-tab {
@@ -375,12 +488,29 @@
    .card-header {
       font-size: 4vmax;
    }
+
+   .header-container {
+      height: 11%;
+   }
+
+   .home-add-button-container {
+      height: 11%;
+   }
+
+   .home-add-button {
+      width: 9vmax;
+      height: 9vmax;
+   }
+
+   .fa-2x {
+      font-size: 4.5vmax;
+   }
 }
 
 /* iPhone 4 Portrait----------- */
 @media only screen and (device-height : 480px) and (device-width : 320px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2) {
    .home-container {
-      height: 88vh;
+      height: 89%;
    }
 
    .home-group-header {
@@ -399,6 +529,7 @@
    .card-text-container {
       line-height: 26px;
    }
+
    .home-active-tab {
       font-size: 11vmin;
    }
@@ -414,12 +545,29 @@
    .card-header {
       font-size: 5vmin;
    }
+
+   .header-container {
+      height: 11%;
+   }
+
+   .home-add-button-container {
+      height: 15.5%;
+   }
+
+   .home-add-button {
+      width: 17vmin;
+      height: 17vmin;
+   }
+
+   .fa-2x {
+      font-size: 9vmin;
+   }
 }
 
 /* iPhone 4 Landscape----------- */
 @media only screen and (device-width : 480px) and (device-height : 320px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
    .home-container {
-      height: 79vh;
+      height: 81.5%;
    }
 
    .home-group-header {
@@ -432,12 +580,13 @@
    }
 
    .home-groups-container {
-      height: 48%;
+      height: 53%;
    }
 
    .card-text-container {
       line-height: 26px;
    }
+
    .home-active-tab {
       font-size: 11vmin;
    }
@@ -453,12 +602,29 @@
    .card-header {
       font-size: 5vmin;
    }
+
+   .header-container {
+      height: 18%;
+   }
+
+   .home-add-button-container {
+      height: 22%;
+   }
+
+   .home-add-button {
+      width: 17vmin;
+      height: 17vmin;
+   }
+
+   .fa-2x {
+      font-size: 9vmin;
+   }
 }
 
 /* iPhone 5 Portrait */
 @media only screen and (device-height : 568px) and (device-width : 320px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2) {
    .home-container {
-      height: 90vh;
+      height: 89%;
    }
 
    .home-group-header {
@@ -466,7 +632,7 @@
    }
 
    .home-groups-container {
-      height: 75%;
+      height: 76%;
    }
 
    .home-single-group {
@@ -477,6 +643,7 @@
    .card-text-container {
       line-height: 27px;
    }
+
    .home-active-tab {
       font-size: 11vmin;
    }
@@ -492,16 +659,33 @@
    .card-header {
       font-size: 5vmin;
    }
+
+   .header-container {
+      height: 10%;
+   }
+
+   .home-add-button-container {
+      height: 12.5%;
+   }
+
+   .home-add-button {
+      width: 17vmin;
+      height: 17vmin;
+   }
+
+   .fa-2x {
+      font-size: 9vmin;
+   }
 }
 
 /* iPhone 5 Landscape----------- */
 @media only screen and (device-width: 568px) and (device-height: 320px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2) {
    .home-container {
-      height: 76vh;
+      height: 79%;
    }
 
    .home-group-header {
-      height: 24%;
+      height: 22%;
    }
 
    .home-single-group {
@@ -510,12 +694,13 @@
    }
 
    .home-groups-container {
-      height: 45%;
+      height: 51%;
    }
 
    .card-text-container {
       line-height: 26px;
    }
+
    .home-active-tab {
       font-size: 11vmin;
    }
@@ -531,12 +716,29 @@
    .card-header {
       font-size: 5vmin;
    }
+
+   .header-container {
+      height: 21%;
+   }
+
+   .home-add-button-container {
+      height: 22%;
+   }
+
+   .home-add-button {
+      width: 17vmin;
+      height: 17vmin;
+   }
+
+   .fa-2x {
+      font-size: 9vmin;
+   }
 }
 
 /* iPhone 6/7/8 Portrait */
 @media only screen and (device-height : 667px) and (device-width : 375px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2) {
    .home-container {
-      height: 91.5vh;
+      height: 90.5%;
    }
 
    .home-group-header {
@@ -571,6 +773,23 @@
    .card-header {
       font-size: 5vmin;
    }
+
+   .header-container {
+      height: 9%;
+   }
+
+   .home-add-button-container {
+      height: 11.5%;
+   }
+
+   .home-add-button {
+      width: 17vmin;
+      height: 17vmin;
+   }
+
+   .fa-2x {
+      font-size: 9vmin;
+   }
 }
 
 /* iPhone 6/7/8 Landscape */
@@ -589,7 +808,7 @@
    }
 
    .home-container {
-      height: 77vh;
+      height: 79%;
    }
 
    .card-text-container {
@@ -612,12 +831,28 @@
       font-size: 5vmin;
    }
 
+   .header-container {
+      height: 21%;
+   }
+
+   .home-add-button-container {
+      height: 22%;
+   }
+
+   .home-add-button {
+      width: 17vmin;
+      height: 17vmin;
+   }
+
+   .fa-2x {
+      font-size: 9vmin;
+   }
 }
 
 /* iPhone 6+, 7+, 8+ Portrait ----------- */
 @media only screen and (device-width: 414px) and (device-height: 736px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3) {
    .home-container {
-      height: 91.5vh;
+      height: 89.5%;
    }
 
    .home-group-header {
@@ -657,6 +892,23 @@
    .card-header {
       font-size: 5vmin;
    }
+
+   .header-container {
+      height: 9%;
+   }
+
+   .home-add-button-container {
+      height: 11.5%;
+   }
+
+   .home-add-button {
+      width: 17vmin;
+      height: 17vmin;
+   }
+
+   .fa-2x {
+      font-size: 9vmin;
+   }
 }
 
 /* iPhone 6+/7+/8+ Landscape */
@@ -675,7 +927,7 @@
    }
 
    .home-container {
-      height: 77vh;
+      height: 79%;
    }
 
    .card-text-container {
@@ -702,12 +954,29 @@
    .card-header {
       font-size: 5vmin;
    }
+
+   .header-container {
+      height: 21%;
+   }
+
+   .home-add-button-container {
+      height: 22%;
+   }
+
+   .home-add-button {
+      width: 17vmin;
+      height: 17vmin;
+   }
+
+   .fa-2x {
+      font-size: 9vmin;
+   }
 }
 
 /* iPhone X Portrait */
 @media only screen and (device-width: 375px) and (device-height: 812px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3) {
    .home-container {
-      height: 91.5vh;
+      height: 93%;
    }
 
    .home-group-header {
@@ -715,7 +984,7 @@
    }
 
    .home-groups-container {
-      height: 84%;
+      height: 81%;
    }
 
    .home-single-group {
@@ -747,6 +1016,24 @@
    .card-header {
       font-size: 5vmin;
    }
+
+   .header-container {
+      height: 7%;
+   }
+
+   .home-add-button-container {
+      height: 9.5%;
+   }
+
+   .home-add-button {
+      width: 17vmin;
+      height: 17vmin;
+   }
+
+   .fa-2x {
+      font-size: 9vmin;
+   }
+   
 }
 
 /* iPhone X Landscape */
@@ -761,11 +1048,11 @@
    }
 
    .home-groups-container {
-      height: 53%;
+      height: 55%;
    }
 
    .home-container {
-      height: 77vh;
+      height: 79%;
    }
 
    .card-text-container {
@@ -792,12 +1079,29 @@
    .card-header {
       font-size: 5vmin;
    }
+
+   .header-container {
+      height: 21%;
+   }
+
+   .home-add-button-container {
+      height: 19%;
+   }
+
+   .home-add-button {
+      width: 13vmin;
+      height: 13vmin;
+   }
+
+   .fa-2x {
+      font-size: 7vmin;
+   }
 }
 
 /* iPad Portrait ----------- */
 @media only screen and (device-width : 768px) and (device-height : 1024px) and (orientation : portrait) {
    .home-container {
-      height: 86.5vh;
+      height: 87%;
    }
 
    .home-group-header {
@@ -805,7 +1109,7 @@
    }
 
    .home-groups-container {
-      height: 84%;
+      height: 78%;
    }
 
    .home-single-group {
@@ -829,12 +1133,29 @@
    .home-not-active-tab {
       font-size: 5vmin;
    }
+
+   .header-container {
+      height: 13%;
+   }
+
+   .home-add-button-container {
+      height: 13%;
+   }
+
+   .home-add-button {
+      width: 13vmin;
+      height: 13vmin;
+   }
+
+   .fa-2x {
+      font-size: 7vmin;
+   }
 }
 
 /* iPad Landscape */
 @media only screen and (device-width: 1024px) and (device-height: 768px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2) {
    .home-container {
-      height: 81.5vh;
+      height: 88%;
    }
 
    .home-group-header {
@@ -842,7 +1163,7 @@
    }
 
    .home-groups-container {
-      height: 76%;
+      height: 73%;
    }
 
    .home-single-group {
@@ -866,12 +1187,29 @@
    .home-not-active-tab {
       font-size: 5vmin;
    }
+
+   .header-container {
+      height: 12%;
+   }
+
+   .home-add-button-container {
+      height: 15%;
+   }
+
+   .home-add-button {
+      width: 11vmin;
+      height: 11vmin;
+   }
+
+   .fa-2x {
+      font-size: 6vmin;
+   }
 }
 
 /* iPad Pro Portrait----------- */
 @media only screen and (device-height : 1366px) and (device-width : 1024px) and (orientation : portrait) {
    .home-container {
-      height: 86.5vh;
+      height: 89%;
    }
 
    .home-group-header {
@@ -879,7 +1217,7 @@
    }
 
    .home-groups-container {
-      height: 84%;
+      height: 78.5%;
    }
 
    .home-single-group {
@@ -911,6 +1249,23 @@
    .home-active-tab {
       height: 99.14px;
       font-size: 4em;
+   }
+
+   .header-container {
+      height: 11%;
+   }
+
+   .home-add-button-container {
+      height: 11%;
+   }
+
+   .home-add-button {
+      width: 12vmin;
+      height: 12vmin;
+   }
+
+   .fa-2x {
+      font-size: 6vmin;
    }
 
 }
@@ -918,7 +1273,7 @@
 /* iPad Pro Landscape----------- */
 @media only screen and (device-height : 1024px) and (device-width : 1366px) and (orientation : landscape) {
    .home-container {
-      height: 86.5vh;
+      height: 85.5%;
    }
 
    .home-group-header {
@@ -926,7 +1281,7 @@
    }
 
    .home-groups-container {
-      height: 73%;
+      height: 72%;
    }
 
    .home-single-group {
@@ -959,12 +1314,29 @@
       height: 99.14px;
       font-size: 4em;
    }
+
+   .header-container {
+      height: 14%;
+   }
+
+   .home-add-button-container {
+      height: 13%;
+   }
+
+   .home-add-button {
+      width: 8vmax;
+      height: 8vmax;
+   }
+
+   .fa-2x {
+      font-size: 4vmax;
+   }
 }
 
 /* Pixel 2 Portrait*/
 @media only screen and (device-width: 411px) and (device-height: 731px) and (orientation : portrait) {
    .home-container {
-      height: 91.5vh;
+      height: 90.5%;
    }
 
    .home-group-header {
@@ -972,7 +1344,7 @@
    }
 
    .home-groups-container {
-      height: 80%;
+      height: 78%;
    }
 
    .home-single-group {
@@ -988,7 +1360,7 @@
    .card-header {
       font-size: 21px;
    }
-   
+
    .home-active-tab {
       font-size: 9vmin;
    }
@@ -1003,6 +1375,23 @@
 
    .card-header {
       font-size: 5vmin;
+   }
+
+   .header-container {
+      height: 9%;
+   }
+
+   .home-add-button-container {
+      height: 12%;
+   }
+
+   .home-add-button {
+      width: 17vmin;
+      height: 17vmin;
+   }
+
+   .fa-2x {
+      font-size: 9vmin;
    }
 }
 
@@ -1022,7 +1411,7 @@
    }
 
    .home-container {
-      height: 77vh;
+      height: 80%;
    }
 
    .card-text-container {
@@ -1033,7 +1422,7 @@
    .card-header {
       font-size: 21px;
    }
-   
+
    .home-active-tab {
       font-size: 9vmin;
    }
@@ -1049,12 +1438,29 @@
    .card-header {
       font-size: 5vmin;
    }
+
+   .header-container {
+      height: 20%;
+   }
+
+   .home-add-button-container {
+      height: 22%;
+   }
+
+   .home-add-button {
+      width: 17vmin;
+      height: 17vmin;
+   }
+
+   .fa-2x {
+      font-size: 9vmin;
+   }
 }
 
 /* Pixel 2 XL Portrait*/
 @media only screen and (device-width: 411px) and (device-height: 823px) and (orientation : portrait) {
    .home-container {
-      height: 92.5vh;
+      height: 93%;
    }
 
    .home-group-header {
@@ -1062,7 +1468,7 @@
    }
 
    .home-groups-container {
-      height: 82%;
+      height: 81%;
    }
 
    .home-single-group {
@@ -1078,7 +1484,7 @@
    .card-header {
       font-size: 21px;
    }
-   
+
    .home-active-tab {
       font-size: 9vmin;
    }
@@ -1093,6 +1499,23 @@
 
    .card-header {
       font-size: 5vmin;
+   }
+
+   .header-container {
+      height: 7%;
+   }
+
+   .home-add-button-container {
+      height: 10%;
+   }
+
+   .home-add-button {
+      width: 17vmin;
+      height: 17vmin;
+   }
+
+   .fa-2x {
+      font-size: 9vmin;
    }
 }
 
@@ -1112,7 +1535,7 @@
    }
 
    .home-container {
-      height: 63vh;
+      height: 69%;
    }
 
    .card-text-container {
@@ -1139,12 +1562,29 @@
    .card-header {
       font-size: 5vmin;
    }
+
+   .header-container {
+      height: 30%;
+   }
+
+   .home-add-button-container {
+      height: 20%;
+   }
+
+   .home-add-button {
+      width: 13vmin;
+      height: 13vmin;
+   }
+
+   .fa-2x {
+      font-size: 7vmin;
+   }
 }
 
 /* Samsung Galaxy S5 portrait*/
 @media screen and (device-width: 360px) and (device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3) {
    .home-container {
-      height: 91vh;
+      height: 91%;
    }
 
    .home-group-header {
@@ -1152,7 +1592,7 @@
    }
 
    .home-groups-container {
-      height: 76%;
+      height: 75%;
    }
 
    .home-single-group {
@@ -1163,6 +1603,7 @@
    .card-text-container {
       line-height: 29px;
    }
+
    .home-active-tab {
       font-size: 10vmin;
    }
@@ -1178,12 +1619,29 @@
    .card-header {
       font-size: 5vmin;
    }
+
+   .header-container {
+      height: 9%;
+   }
+
+   .home-add-button-container {
+      height: 13%;
+   }
+
+   .home-add-button {
+      width: 17vmin;
+      height: 17vmin;
+   }
+
+   .fa-2x {
+      font-size: 9vmin;
+   }
 }
 
 /* Samsung Galaxy S5 landscape*/
 @media screen and (device-width: 640px) and (device-height: 360px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3) {
    .home-container {
-      height: 77vh;
+      height: 77%;
    }
 
    .home-group-header {
@@ -1196,13 +1654,14 @@
    }
 
    .home-groups-container {
-      height: 48%;
+      height: 54%;
    }
 
    .card-text-container {
       line-height: 26px;
    }
-      .home-active-tab {
+
+   .home-active-tab {
       font-size: 10vmin;
    }
 
@@ -1216,5 +1675,22 @@
 
    .card-header {
       font-size: 5vmin;
+   }
+
+   .header-container {
+      height: 21%;
+   }
+
+   .home-add-button-container {
+      height: 23%;
+   }
+
+   .home-add-button {
+      width: 17vmin;
+      height: 17vmin;
+   }
+
+   .fa-2x {
+      font-size: 9vmin;
    }
 }
