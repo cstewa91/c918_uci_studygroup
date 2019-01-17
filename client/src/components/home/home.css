@@ -24,15 +24,14 @@
 
 .home-add-button-container {
    border-top: 1px solid black;
-   display: flex;
-   justify-content: flex-end;
    height: 105px;
+   width: 100%;
 }
 
 .home-add-button-container a {
    align-items: center;
    display: flex;
-   justify-content: center;
+   justify-content: flex-end;
 }
 
 .fa-2x {
