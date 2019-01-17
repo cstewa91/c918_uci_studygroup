@@ -1,14 +1,13 @@
 .home-active-tab {
    background: #308ED2;
    color: white;
-   width: 187.5px;
    height: 100%;
    cursor: pointer;
    width: 50%;
-   font-size: 6vmin;
+   font-size: 34px;
    display: flex;
-    justify-content: center;
-    align-items: center;
+   justify-content: center;
+   align-items: center;
 
 }
 
@@ -17,8 +16,8 @@
    border: 3px solid #FFFFFF;
    color: white;
    border-radius: 50%;
-   width: 13vmin;
-   height: 13vmin;
+   width: 68px;
+   height: 68px;
    text-align: center;
    line-height: 1.75;
 }
@@ -27,6 +26,7 @@
    border-top: 1px solid black;
    display: flex;
    justify-content: flex-end;
+   height: 105px;
 }
 
 .home-add-button-container a {
@@ -36,7 +36,7 @@
 }
 
 .fa-2x {
-   font-size: 7vmin;
+   font-size: 36px;
 }
 
 .home-container {
@@ -49,8 +49,8 @@
 }
 
 .card-text-container {
-   height: 72%;
-   font-size: 4vmin;
+   line-height: 36px;
+   font-size: 22px;
 }
 
 .home-groups {
@@ -67,7 +67,6 @@
    overflow-x: hidden;
    overflow-y: scroll;
    justify-content: space-evenly;
-   height: 74%;
 }
 
 .home-group-date {
@@ -132,14 +131,14 @@
    height: 100%;
    cursor: pointer;
    width: 50%;
-   font-size: 6vmin;
+   font-size: 34px;
    display: flex;
-    justify-content: center;
-    align-items: center;
+   justify-content: center;
+   align-items: center;
 }
 
 .home-page-container {
-   height: 88.4vh;
+   height: 85vh;
    width: 100vw;
 }
 
@@ -148,8 +147,8 @@
    border-radius: 5px;
    margin: 2%;
    text-align: center;
-   width: 29%;
-   height: 70%;
+   width: 221px;
+   height: 247px;
    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
    border: 1px solid #007bff;
 }
@@ -178,126 +177,186 @@
    overflow: hidden;
    text-overflow: ellipsis;
    margin-bottom: 8%;
-   font-size: 5vmin;
+   font-size: 28px;
 }
 
 
 /********* MEDIA QUERIES ***********/
 @media (min-width: 1800px) and (max-width: 2000px) {
+   .home-page-container {
+      height: 72vh;
+   }
+
    .home-group-header {
-      height: 67px;
-  }
+      height: 79px;
+   }
 
    .home-groups-container {
-      height: 74%;
-   }
-
-   .home-active-tab {
-      font-size: 6vmin;
-   }
-
-   .home-not-active-tab {
-      font-size: 6vmin;
+      height: 81%;
    }
 
    .home-single-group {
-      width: 21%;
-      height: 69%;
+      width: 314px;
+      height: 310px;
+  
    }
 
    .card-text-container {
-      font-size: 4vmin;
+      line-height: 44px;
+      font-size: 27px;
    }
 
    .card-header {
-      font-size: 5vmin;
+      font-size: 35px;
+   }
+
+   .home-active-tab {
+      font-size: 48px;
+   }
+
+   .home-not-active-tab {
+      font-size: 48px;
    }
 
    .home-add-button-container {
-      height: 11%;
+      height: 110px;
    }
 
    .home-add-button {
-      width: 9vmin;
-      height: 9vmin;
+      width: 88px;
+      height: 88px;
    }
 
    .fa-2x {
-      font-size: 5vmin;
+      font-size: 50px;
+   }
+}
+
+@media (min-width: 1651px) and (max-width: 1799px) {
+   .home-page-container {
+      height: 84vh;
+   }
+
+   .home-group-header {
+      height: 67px;
+   }
+
+   .home-groups-container {
+      height: 71%;
+   }
+
+   .home-single-group {
+      width: 221px;
+      height: 247px;
+   }
+
+   .card-text-container {
+      line-height: 36px;
+      font-size: 22px;
+   }
+
+   .card-header {
+      font-size: 28px;
+   }
+
+   .home-active-tab {
+      font-size: 34px;
+   }
+
+   .home-not-active-tab {
+      font-size: 34px;
+   }
+
+   .home-add-button-container {
+      height: 103px;
+   }
+
+   .home-add-button {
+      width: 88px;
+      height: 88px;
+   }
+
+   .fa-2x {
+      font-size: 50px;
    }
 }
 
 /* Desktops */
 @media (min-width: 1281px) and (max-width: 1650px) {
+   .home-page-container {
+      height: 81vh;
+   }
+
    .home-group-header {
       height: 67px;
-  }
+   }
 
    .home-groups-container {
-      height: 74%;
-   }
-
-   .home-active-tab {
-      font-size: 6vmin;
-   }
-
-   .home-not-active-tab {
-      font-size: 6vmin;
+      height: 66%;
    }
 
    .home-single-group {
-      width: 21%;
-      height: 75%;
+      width: 221px;
+      height: 247px;
    }
 
    .card-text-container {
-      font-size: 4vmin;
+      line-height: 36px;
+      font-size: 22px;
    }
 
    .card-header {
-      font-size: 5vmin;
+      font-size: 28px;
+   }
+
+   .home-active-tab {
+      font-size: 34px;
+   }
+
+   .home-not-active-tab {
+      font-size: 34px;
    }
 
    .home-add-button-container {
-      height: 15%;
+      height: 103px;
    }
 
    .home-add-button {
-      width: 9vmin;
-      height: 9vmin;
+      width: 88px;
+      height: 88px;
    }
 
    .fa-2x {
-      font-size: 5vmin;
+      font-size: 50px;
    }
 }
 
 /* Laptops/Desktops */
 @media (min-width: 1025px) and (max-width: 1280px) {
    .home-page-container {
-      height: 81vh;
+      height: 75vh;
    }
 
    .home-group-header {
       height: 67px;
-  }
+   }
 
    .home-groups-container {
-      height: 77%;
+      height: 65%;
    }
 
    .home-single-group {
-      width: 231px;
-      height: 329px;
+      width: 221px;
+      height: 247px;
    }
 
    .card-text-container {
-      line-height: 52px;
-      font-size: 30px;
+      line-height: 36px;
+      font-size: 22px;
    }
 
    .card-header {
-      font-size: 35px;
+      font-size: 28px;
    }
 
    .home-active-tab {
@@ -308,54 +367,46 @@
       font-size: 34px;
    }
 
-   .card-text-container {
-      font-size: 26px;
-   }
-
-   .card-header {
-      font-size: 28px;
-   }
-
    .home-add-button-container {
-      height: 13%;
-   }
-
-   .home-add-button {
-      width: 70px;
       height: 70px;
    }
 
+   .home-add-button {
+      width: 62px;
+      height: 62px;
+   }
+
    .fa-2x {
-      font-size: 39px;
+      font-size: 33px;
    }
 }
 
 /* Tablets, Ipads, Portrait */
 @media (min-width: 768px) and (max-width: 1024px) {
    .home-page-container {
-      height: 81vh;
+      height: 75vh;
    }
 
    .home-group-header {
       height: 67px;
-  }
+   }
 
    .home-groups-container {
-      height: 77%;
+      height: 65%;
    }
 
    .home-single-group {
-      width: 231px;
-      height: 329px;
+      width: 199px;
+      height: 242px;
    }
 
    .card-text-container {
-      line-height: 52px;
-      font-size: 30px;
+      line-height: 38px;
+      font-size: 20px;
    }
 
    .card-header {
-      font-size: 35px;
+      font-size: 23px;
    }
 
    .home-active-tab {
@@ -366,41 +417,33 @@
       font-size: 34px;
    }
 
-   .card-text-container {
-      font-size: 26px;
-   }
-
-   .card-header {
-      font-size: 28px;
-   }
-
    .home-add-button-container {
-      height: 13%;
-   }
-
-   .home-add-button {
-      width: 70px;
       height: 70px;
    }
 
+   .home-add-button {
+      width: 62px;
+      height: 62px;
+   }
+
    .fa-2x {
-      font-size: 39px;
+      font-size: 33px;
    }
 }
 
 /* Low Res Tablets, Mobile Phones */
 @media (min-width: 482px) and (max-width: 767px) {
    .home-page-container {
-      height: 79vh;
+      height: 86vh;
    }
 
    .home-groups-container {
-      height: 87%;
+      height: 77%;
    }
 
    .home-group-header {
-      height: 67px;
-  }
+      height: 59px;
+   }
 
    .home-active-tab {
       font-size: 34px;
@@ -416,15 +459,16 @@
    }
 
    .card-text-container {
-      font-size: 18px;
+      font-size: 20px;
+      line-height: 30px;
    }
 
    .card-header {
-      font-size: 21px;
+      font-size: 24px;
    }
 
    .home-add-button-container {
-      height: 12%;
+      height: 59px;
    }
 
    .home-add-button {
@@ -440,16 +484,16 @@
 /*Small Screen Sizes*/
 @media (max-width: 481px) {
    .home-page-container {
-      height: 84vh;
+      height: 76vh;
    }
 
    .home-groups-container {
-      height: 87%;
+      height: 86%;
    }
 
    .home-group-header {
       height: 67px;
-  }
+   }
 
    .home-active-tab {
       font-size: 34px;
@@ -466,6 +510,7 @@
 
    .card-text-container {
       font-size: 16px;
+      line-height: 30px;
    }
 
    .card-header {
@@ -473,7 +518,7 @@
    }
 
    .home-add-button-container {
-      height: 12%;
+      height: 60px;
    }
 
    .home-add-button {
@@ -488,6 +533,10 @@
 
 /* iPhone 4 & 5 Portrait----------- */
 @media only screen and (device-width : 320px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2) {
+   .home-page-container {
+      height: 85vh;
+  }
+
    .home-group-header {
       height: 13%;
    }
@@ -513,16 +562,8 @@
       font-size: 34px;
    }
 
-   .card-text-container {
-      font-size: 15px;
-   }
-
-   .card-header {
-      font-size: 18px;
-   }
-
    .home-add-button-container {
-      height: 12.5%;
+      height: 65px;
    }
 
    .home-add-button {
@@ -540,6 +581,7 @@
    .home-page-container {
       height: 79vh;
    }
+
    .home-group-header {
       height: 18%;
    }
@@ -565,14 +607,6 @@
       font-size: 34px;
    }
 
-   .card-text-container {
-      font-size: 15px;
-   }
-
-   .card-header {
-      font-size: 18px;
-   }
-
    .home-add-button-container {
       height: 21%;
    }
@@ -592,6 +626,7 @@
    .home-page-container {
       height: 76.5vh;
    }
+
    .home-group-header {
       height: 20%;
    }
@@ -617,14 +652,6 @@
       font-size: 34px;
    }
 
-   .card-text-container {
-      font-size: 15px;
-   }
-
-   .card-header {
-      font-size: 18px;
-   }
-
    .home-add-button-container {
       height: 22%;
    }
@@ -640,10 +667,11 @@
 }
 
 /* iPhone 6/7/8 Portrait */
-@media only screen  and (device-width : 375px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2) {
+@media only screen and (device-width : 375px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2) {
    .home-page-container {
       height: 91vh;
    }
+
    .home-group-header {
       height: 9.5%;
    }
@@ -667,14 +695,6 @@
 
    .home-not-active-tab {
       font-size: 34px;
-   }
-
-   .card-text-container {
-      font-size: 15px;
-   }
-
-   .card-header {
-      font-size: 18px;
    }
 
    .home-add-button-container {
@@ -720,14 +740,6 @@
 
    .home-not-active-tab {
       font-size: 34px;
-   }
-
-   .card-text-container {
-      font-size: 15px;
-   }
-
-   .card-header {
-      font-size: 18px;
    }
 
    .home-add-button-container {
@@ -780,14 +792,6 @@
       font-size: 34px;
    }
 
-   .card-text-container {
-      font-size: 18px;
-   }
-
-   .card-header {
-      font-size: 20px;
-   }
-
    .home-add-button-container {
       height: 10%;
    }
@@ -836,14 +840,6 @@
 
    .home-not-active-tab {
       font-size: 34px;
-   }
-
-   .card-text-container {
-      font-size: 15px;
-   }
-
-   .card-header {
-      font-size: 18px;
    }
 
    .home-add-button-container {
@@ -896,14 +892,6 @@
       font-size: 34px;
    }
 
-   .card-text-container {
-      font-size: 18px;
-   }
-
-   .card-header {
-      font-size: 20px;
-   }
-
    .home-add-button-container {
       height: 8%;
    }
@@ -916,7 +904,7 @@
    .fa-2x {
       font-size: 32px;
    }
-   
+
 }
 
 /* iPhone X Landscape */
@@ -953,14 +941,6 @@
 
    .home-not-active-tab {
       font-size: 34px;
-   }
-
-   .card-text-container {
-      font-size: 15px;
-   }
-
-   .card-header {
-      font-size: 18px;
    }
 
    .home-add-button-container {
@@ -1013,14 +993,6 @@
       font-size: 34px;
    }
 
-   .card-text-container {
-      font-size: 26px;
-   }
-
-   .card-header {
-      font-size: 28px;
-   }
-
    .home-add-button-container {
       height: 8%;
    }
@@ -1042,7 +1014,7 @@
    }
 
    .home-group-header {
-      height: 9%;
+      height: 54px;
    }
 
    .home-groups-container {
@@ -1069,14 +1041,6 @@
 
    .home-not-active-tab {
       font-size: 34px;
-   }
-
-   .card-text-container {
-      font-size: 26px;
-   }
-
-   .card-header {
-      font-size: 28px;
    }
 
    .home-add-button-container {
@@ -1127,14 +1091,6 @@
 
    .home-not-active-tab {
       font-size: 50px;
-   }
-
-   .card-text-container {
-      font-size: 38px;
-   }
-
-   .card-header {
-      font-size: 43px;
    }
 
    .home-add-button-container {
@@ -1188,14 +1144,6 @@
       font-size: 50px;
    }
 
-   .card-text-container {
-      font-size: 38px;
-   }
-
-   .card-header {
-      font-size: 43px;
-   }
-
    .home-add-button-container {
       height: 13%;
    }
@@ -1246,14 +1194,6 @@
       font-size: 34px;
    }
 
-   .card-text-container {
-      font-size: 18px;
-   }
-
-   .card-header {
-      font-size: 20px;
-   }
-
    .home-add-button-container {
       height: 10%;
    }
@@ -1302,14 +1242,6 @@
 
    .home-not-active-tab {
       font-size: 34px;
-   }
-
-   .card-text-container {
-      font-size: 18px;
-   }
-
-   .card-header {
-      font-size: 20px;
    }
 
    .home-add-button-container {
@@ -1363,14 +1295,6 @@
       font-size: 34px;
    }
 
-   .card-text-container {
-      font-size: 18px;
-   }
-
-   .card-header {
-      font-size: 20px;
-   }
-
    .home-add-button-container {
       height: 21%;
    }
@@ -1416,14 +1340,6 @@
       font-size: 34px;
    }
 
-   .card-text-container {
-      font-size: 15px;
-   }
-
-   .card-header {
-      font-size: 18px;
-   }
-
    .home-add-button-container {
       height: 12.5%;
    }
@@ -1467,14 +1383,6 @@
 
    .home-not-active-tab {
       font-size: 34px;
-   }
-
-   .card-text-container {
-      font-size: 15px;
-   }
-
-   .card-header {
-      font-size: 18px;
    }
 
    .home-add-button-container {
