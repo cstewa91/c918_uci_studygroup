@@ -44,9 +44,12 @@ class Home extends Component {
    renderCreatedGroups = () => {
       const listCreatedGroups = this.props.created.map(item => {
          const newDate = new Date(item.date);
-         const sliceDate = item.date.slice(0, 11) + item.start_time
-         const startTime = new Date(sliceDate);
+         const sliceDateStart = item.date.slice(0, 11) + item.start_time
+         const sliceDateEnd = item.date.slice(0, 11) + item.end_time
+         const startTime = new Date(sliceDateStart);
+         const endTime = new Date(sliceDateEnd);
          const startingTime = startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+         const endingTime = endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
          const startDate = newDate.toLocaleDateString([], { month: '2-digit', day: '2-digit' });
          return (
             <Fragment key={item.id}>
@@ -64,10 +67,10 @@ class Home extends Component {
                               {startDate}
                            </div>
                            <div className="card-text">
-                              {startingTime}
+                              {startingTime} - {endingTime}
                            </div>
                            <div className="card-text">
-                              <sup>{item.current_group_size}</sup>&frasl;{<sub>{item.max_group_size}</sub>}
+                              <sup>{item.current_group_size}</sup>&frasl;{<sub>{item.max_group_size}</sub>} Members
                            </div>
                         </div>
                      </div>
@@ -102,10 +105,10 @@ class Home extends Component {
                                  {startDate}
                               </div>
                               <div className="card-text">
-                                 {startingTime}
+                                 {startingTime} - {endingTime}
                               </div>
                               <div className="card-text">
-                                 <sup>{item.current_group_size}</sup>&frasl;{<sub>{item.max_group_size}</sub>}
+                                 <sup>{item.current_group_size}</sup>&frasl;{<sub>{item.max_group_size}</sub>} Members
                               </div>
                            </div>
                         </div>

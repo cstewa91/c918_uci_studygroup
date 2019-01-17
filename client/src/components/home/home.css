@@ -201,8 +201,8 @@
    }
 
    .card-text-container {
-      line-height: 44px;
-      font-size: 27px;
+      line-height: 43px;
+      font-size: 26px;
    }
 
    .card-header {
@@ -250,8 +250,8 @@
    }
 
    .card-text-container {
-      line-height: 36px;
-      font-size: 22px;
+      line-height: 35px;
+      font-size: 21px;
    }
 
    .card-header {
@@ -300,8 +300,8 @@
    }
 
    .card-text-container {
-      line-height: 36px;
-      font-size: 22px;
+      line-height: 35px;
+      font-size: 21px;
    }
 
    .card-header {
@@ -350,8 +350,8 @@
    }
 
    .card-text-container {
-      line-height: 36px;
-      font-size: 22px;
+      line-height: 35px;
+      font-size: 21px;
    }
 
    .card-header {
@@ -400,8 +400,8 @@
    }
 
    .card-text-container {
-      line-height: 38px;
-      font-size: 20px;
+      line-height: 37px;
+      font-size: 19px;
    }
 
    .card-header {
@@ -458,8 +458,8 @@
    }
 
    .card-text-container {
-      font-size: 20px;
-      line-height: 30px;
+      font-size: 19px;
+      line-height: 29px;
    }
 
    .card-header {
@@ -508,8 +508,8 @@
    }
 
    .card-text-container {
-      font-size: 16px;
-      line-height: 30px;
+      font-size: 15px;
+      line-height: 29px;
    }
 
    .card-header {
@@ -551,6 +551,7 @@
 
    .card-text-container {
       line-height: 26px;
+      font-size: 14px;
    }
 
    .home-active-tab {
@@ -595,7 +596,12 @@
    }
 
    .card-text-container {
-      line-height: 26px;
+      line-height: 23px;
+      font-size: 12px;
+   }
+
+   .card-header {
+      font-size: 18px;
    }
 
    .home-active-tab {
@@ -640,8 +646,14 @@
    }
 
    .card-text-container {
-      line-height: 26px;
+      line-height: 23px;
+      font-size: 12px;
    }
+
+   .card-header {
+      font-size: 18px;
+   }
+
 
    .home-active-tab {
       font-size: 34px;
@@ -685,7 +697,8 @@
    }
 
    .card-text-container {
-      line-height: 35px;
+      line-height: 32px;
+      font-size: 16px;
    }
 
    .home-active-tab {
@@ -722,7 +735,7 @@
 
    .home-single-group {
       width: 155px;
-      height: 178px;
+      height: 184px;
    }
 
    .home-groups-container {
@@ -730,7 +743,12 @@
    }
 
    .card-text-container {
-      line-height: 26px;
+      line-height: 22px;
+      font-size: 15px;
+   }
+
+   .card-header {
+      font-size: 21px;
    }
 
    .home-active-tab {
@@ -775,8 +793,8 @@
    }
 
    .card-text-container {
-      line-height: 40px;
-      font-size: 21px;
+      line-height: 38px;
+      font-size: 17px;  
    }
 
    .card-header {
@@ -825,8 +843,8 @@
    }
 
    .card-text-container {
-      line-height: 40px;
-      font-size: 21px;
+      line-height: 38px;
+      font-size: 17px;  
    }
 
    .card-header {
@@ -875,8 +893,8 @@
    }
 
    .card-text-container {
-      line-height: 40px;
-      font-size: 21px;
+      line-height: 43px;
+      font-size: 16px;
    }
 
    .card-header {
@@ -926,8 +944,8 @@
    }
 
    .card-text-container {
-      line-height: 40px;
-      font-size: 21px;
+      line-height: 39px;
+      font-size: 18px;
    }
 
    .card-header {
@@ -977,7 +995,7 @@
 
    .card-text-container {
       line-height: 52px;
-      font-size: 30px;
+      font-size: 27px;
    }
 
    .card-header {
@@ -1027,7 +1045,7 @@
 
    .card-text-container {
       line-height: 52px;
-      font-size: 30px;
+      font-size: 28px;
    }
 
    .card-header {
@@ -1178,7 +1196,7 @@
 
    .card-text-container {
       line-height: 40px;
-      font-size: 21px;
+      font-size: 18px;
    }
 
    .card-header {
@@ -1228,7 +1246,7 @@
 
    .card-text-container {
       line-height: 40px;
-      font-size: 21px;
+      font-size: 18px;
    }
 
    .card-header {
@@ -1279,7 +1297,7 @@
 
    .card-text-container {
       line-height: 40px;
-      font-size: 21px;
+      font-size: 18px;
    }
 
    .card-header {
@@ -1324,12 +1342,17 @@
 
    .home-single-group {
       width: 144px;
-      height: 178px;
+      height: 183px;
    }
 
    .card-text-container {
       line-height: 26px;
+      font-size: 13px;
    }
+
+   .card-header {
+      font-size: 17px;
+  }
 
    .home-active-tab {
       font-size: 34px;
@@ -1365,7 +1388,7 @@
 
    .home-single-group {
       width: 137px;
-      height: 178px;
+      height: 183px;
    }
 
    .home-groups-container {
@@ -1374,8 +1397,12 @@
 
    .card-text-container {
       line-height: 26px;
+      font-size: 13px;
    }
-
+   
+   .card-header {
+      font-size: 18px;
+  }
    .home-active-tab {
       font-size: 34px;
    }
