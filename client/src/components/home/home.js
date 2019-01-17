@@ -124,40 +124,44 @@ class Home extends Component {
       }
       if (this.props.joinedGroups) {
          return (
-            <div className="home-page-container">
+            <div>
                <Header src={magnifier} href={'/search-group'} hamburgerClick={this.toggleHamburger} />
                <Hamburger show={this.state.hamburgerOpen} />
                {backdrop}
-               <div className="home-container">
-                  <div className="home-group-header">
-                     <div className="home-active-tab">Joined</div>
-                     <div className="home-not-active-tab" onClick={this.switchGroups}>Created</div>
-                  </div>
-                  <div className="home-groups-container">
-                     {this.renderJoinedGroups()}
-                  </div>
-                  <div className="home-add-button-container">
-                     <Link to="/create-group"><i className="fas fa-plus fa-2x home-add-button"></i></Link>
+               <div className="home-page-container">
+                  <div className="home-container">
+                     <div className="home-group-header">
+                        <div className="home-active-tab">Joined</div>
+                        <div className="home-not-active-tab" onClick={this.switchGroups}>Created</div>
+                     </div>
+                     <div className="home-groups-container">
+                        {this.renderJoinedGroups()}
+                     </div>
+                     <div className="home-add-button-container">
+                        <Link to="/create-group"><i className="fas fa-plus fa-2x home-add-button"></i></Link>
+                     </div>
                   </div>
                </div>
             </div>
          )
       }
       return (
-         <div className="home-page-container">
+         <div>
             <Header src={magnifier} href={'/search-group'} hamburgerClick={this.toggleHamburger} />
             <Hamburger show={this.state.hamburgerOpen} />
             {backdrop}
-            <div className="home-container">
-               <div className="home-group-header">
-                  <div className="home-not-active-tab" onClick={this.switchGroups}>Joined</div>
-                  <div className="home-active-tab">Created</div>
-               </div>
-               <div className="home-groups-container">
-                  {this.renderCreatedGroups()}
-               </div>
-               <div className="home-add-button-container">
-                  <Link to="/create-group"><i className="fas fa-plus fa-2x home-add-button"></i></Link>
+            <div className="home-page-container">
+               <div className="home-container">
+                  <div className="home-group-header">
+                     <div className="home-not-active-tab" onClick={this.switchGroups}>Joined</div>
+                     <div className="home-active-tab">Created</div>
+                  </div>
+                  <div className="home-groups-container">
+                     {this.renderCreatedGroups()}
+                  </div>
+                  <div className="home-add-button-container">
+                     <Link to="/create-group"><i className="fas fa-plus fa-2x home-add-button"></i></Link>
+                  </div>
                </div>
             </div>
          </div>
