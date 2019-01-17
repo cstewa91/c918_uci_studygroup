@@ -1,3 +1,7 @@
+.parent-container {
+   height: 100vh;
+}
+
 .home-active-tab {
    background: #308ED2;
    color: white;
@@ -23,19 +27,20 @@
 }
 
 .home-add-button-container {
-   border-top: 1px solid black;
-   height: 105px;
+   height: 10%;
+   position: fixed;
+   bottom: 0;
    width: 100%;
+   border-top: 1px solid black;
+   background-color:#fffbf3
 }
 
 .home-add-button-container a {
+   height: 100%;
+   padding: 0.5% 0.5%;
    align-items: center;
    display: flex;
    justify-content: flex-end;
-}
-
-.fa-2x {
-   font-size: 36px;
 }
 
 .home-container {
@@ -138,7 +143,6 @@
 
 .home-page-container {
    height: 85vh;
-   width: 100vw;
 }
 
 .home-single-group {
@@ -175,15 +179,19 @@
    white-space: nowrap;
    overflow: hidden;
    text-overflow: ellipsis;
-   margin-bottom: 8%;
+   /* margin-bottom: 8%; */
    font-size: 28px;
+}
+
+.add-btn {
+   height:100%;
 }
 
 
 /********* MEDIA QUERIES ***********/
-@media (min-width: 1800px) and (max-width: 2000px) {
+@media (min-width: 1800px) and (orientation: landscape) {
    .home-page-container {
-      height: 72vh;
+      height: calc(100vh - 139px);
    }
 
    .home-group-header {
@@ -217,23 +225,16 @@
       font-size: 48px;
    }
 
-   .home-add-button-container {
-      height: 110px;
-   }
-
    .home-add-button {
       width: 88px;
       height: 88px;
    }
 
-   .fa-2x {
-      font-size: 50px;
-   }
 }
 
-@media (min-width: 1651px) and (max-width: 1799px) {
+@media (min-width: 1651px) and (max-width: 1799px) and (orientation: landscape) {
    .home-page-container {
-      height: 84vh;
+      height: calc(100vh - 139px);
    }
 
    .home-group-header {
@@ -266,32 +267,26 @@
       font-size: 34px;
    }
 
-   .home-add-button-container {
-      height: 103px;
-   }
 
    .home-add-button {
       width: 88px;
       height: 88px;
    }
 
-   .fa-2x {
-      font-size: 50px;
-   }
 }
 
 /* Desktops */
-@media (min-width: 1281px) and (max-width: 1650px) {
+@media (min-width: 1281px) and (max-width: 1650px) and (orientation: landscape) {
    .home-page-container {
-      height: 81vh;
+      height: calc(100vh - 139px);
    }
 
    .home-group-header {
-      height: 67px;
+      height: 70px;
    }
 
    .home-groups-container {
-      height: 66%;
+      height: 80%;
    }
 
    .home-single-group {
@@ -316,22 +311,14 @@
       font-size: 34px;
    }
 
-   .home-add-button-container {
-      height: 103px;
-   }
-
    .home-add-button {
       width: 88px;
       height: 88px;
    }
-
-   .fa-2x {
-      font-size: 50px;
-   }
 }
 
 /* Laptops/Desktops */
-@media (min-width: 1025px) and (max-width: 1280px) {
+@media (min-width: 1025px) and (max-width: 1280px)  {
    .home-page-container {
       height: 75vh;
    }
@@ -366,18 +353,11 @@
       font-size: 34px;
    }
 
-   .home-add-button-container {
-      height: 70px;
-   }
-
    .home-add-button {
       width: 62px;
       height: 62px;
    }
 
-   .fa-2x {
-      font-size: 33px;
-   }
 }
 
 /* Tablets, Ipads, Portrait */
@@ -416,18 +396,11 @@
       font-size: 34px;
    }
 
-   .home-add-button-container {
-      height: 70px;
-   }
-
    .home-add-button {
       width: 62px;
       height: 62px;
    }
 
-   .fa-2x {
-      font-size: 33px;
-   }
 }
 
 /* Low Res Tablets, Mobile Phones */
@@ -466,17 +439,9 @@
       font-size: 24px;
    }
 
-   .home-add-button-container {
-      height: 59px;
-   }
-
    .home-add-button {
       width: 52px;
       height: 52px;
-   }
-
-   .fa-2x {
-      font-size: 28px;
    }
 }
 
@@ -516,32 +481,25 @@
       font-size: 19px;
    }
 
-   .home-add-button-container {
-      height: 60px;
-   }
-
    .home-add-button {
       width: 52px;
       height: 52px;
    }
 
-   .fa-2x {
-      font-size: 28px;
-   }
 }
 
 /* iPhone 4 & 5 Portrait----------- */
-@media only screen and (device-width : 320px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2) {
+@media screen and (min-width : 320px) {
    .home-page-container {
-      height: 85vh;
-  }
+      height: calc(100vh - 56px);
+   }
 
    .home-group-header {
       height: 13%;
    }
 
    .home-groups-container {
-      height: 73%;
+      height: 75%;
    }
 
    .home-single-group {
@@ -561,112 +519,16 @@
       font-size: 34px;
    }
 
-   .home-add-button-container {
-      height: 65px;
-   }
-
    .home-add-button {
       width: 52px;
       height: 52px;
    }
 
-   .fa-2x {
-      font-size: 28px;
-   }
 }
 
-/* iPhone 4 Landscape----------- */
-@media only screen and (device-width : 480px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
-   .home-page-container {
-      height: 79vh;
-   }
-
-   .home-group-header {
-      height: 18%;
-   }
-
-   .home-single-group {
-      width: 137px;
-      height: 178px;
-   }
-
-   .home-groups-container {
-      height: 57%;
-   }
-
-   .card-text-container {
-      line-height: 26px;
-   }
-
-   .home-active-tab {
-      font-size: 34px;
-   }
-
-   .home-not-active-tab {
-      font-size: 34px;
-   }
-
-   .home-add-button-container {
-      height: 21%;
-   }
-
-   .home-add-button {
-      width: 52px;
-      height: 52px;
-   }
-
-   .fa-2x {
-      font-size: 28px;
-   }
-}
-
-/* iPhone 5 Landscape----------- */
-@media only screen and (device-width: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2) {
-   .home-page-container {
-      height: 76.5vh;
-   }
-
-   .home-group-header {
-      height: 20%;
-   }
-
-   .home-single-group {
-      width: 137px;
-      height: 178px;
-   }
-
-   .home-groups-container {
-      height: 53%;
-   }
-
-   .card-text-container {
-      line-height: 26px;
-   }
-
-   .home-active-tab {
-      font-size: 34px;
-   }
-
-   .home-not-active-tab {
-      font-size: 34px;
-   }
-
-   .home-add-button-container {
-      height: 22%;
-   }
-
-   .home-add-button {
-      width: 52px;
-      height: 52px;
-   }
-
-   .fa-2x {
-      font-size: 28px;
-   }
-}
 
 /* iPhone 6/7/8 Portrait */
-@media only screen and (device-width : 375px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2) {
+@media only screen and (min-width : 375px) and (orientation : portrait) {
    .home-page-container {
       height: 91vh;
    }
@@ -696,67 +558,16 @@
       font-size: 34px;
    }
 
-   .home-add-button-container {
-      height: 10%;
-   }
-
    .home-add-button {
       width: 52px;
       height: 52px;
    }
 
-   .fa-2x {
-      font-size: 28px;
-   }
 }
 
-/* iPhone 6/7/8 Landscape */
-@media only screen and (device-width: 667px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2) {
-   .home-page-container {
-      height: 77vh;
-   }
-
-   .home-group-header {
-      height: 20%;
-   }
-
-   .home-single-group {
-      width: 155px;
-      height: 178px;
-   }
-
-   .home-groups-container {
-      height: 53%;
-   }
-
-   .card-text-container {
-      line-height: 26px;
-   }
-
-   .home-active-tab {
-      font-size: 34px;
-   }
-
-   .home-not-active-tab {
-      font-size: 34px;
-   }
-
-   .home-add-button-container {
-      height: 22%;
-   }
-
-   .home-add-button {
-      width: 52px;
-      height: 52px;
-   }
-
-   .fa-2x {
-      font-size: 28px;
-   }
-}
 
 /* iPhone 6+, 7+, 8+ Portrait ----------- */
-@media only screen and (device-width: 414px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3) {
+@media only screen and (min-width: 414px) and (orientation : portrait) {
    .home-page-container {
       height: 91vh;
    }
@@ -791,22 +602,14 @@
       font-size: 34px;
    }
 
-   .home-add-button-container {
-      height: 10%;
-   }
-
    .home-add-button {
       width: 52px;
       height: 52px;
    }
-
-   .fa-2x {
-      font-size: 28px;
-   }
 }
 
 /* iPhone 6+/7+/8+ Landscape */
-@media only screen and (device-width: 736px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3) {
+@media only screen and (min-width: 736px) and (orientation : landscape) {
    .home-page-container {
       height: 77vh;
    }
@@ -841,22 +644,15 @@
       font-size: 34px;
    }
 
-   .home-add-button-container {
-      height: 18%;
-   }
-
    .home-add-button {
       width: 52px;
       height: 52px;
    }
 
-   .fa-2x {
-      font-size: 28px;
-   }
 }
 
 /* iPhone X Portrait */
-@media only screen and (device-width: 375px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3) {
+@media only screen and (min-width: 375px) and (orientation : portrait) {
    .home-page-container {
       height: 93vh;
    }
@@ -891,47 +687,35 @@
       font-size: 34px;
    }
 
-   .home-add-button-container {
-      height: 8%;
-   }
-
    .home-add-button {
       width: 56px;
       height: 58px;
    }
 
-   .fa-2x {
-      font-size: 32px;
-   }
 
 }
 
-/* iPhone X Landscape */
-@media only screen and (device-width: 812px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3) {
+/* Samsung Galaxy S5 portrait*/
+@media screen and (min-width: 360px) and (orientation : portrait) {
    .home-page-container {
-      height: 64vh;
+      height: calc(100vh - 56px);
    }
 
    .home-group-header {
-      height: 17%;
-   }
-
-   .home-single-group {
-      width: 186px;
-      height: 252px;
+      height: 50px;
    }
 
    .home-groups-container {
-      height: 53%;
+      height: 80%;
+   }
+
+   .home-single-group {
+      width: 144px;
+      height: 178px;
    }
 
    .card-text-container {
-      line-height: 40px;
-      font-size: 21px;
-   }
-
-   .card-header {
-      font-size: 21px;
+      line-height: 26px;
    }
 
    .home-active-tab {
@@ -940,10 +724,6 @@
 
    .home-not-active-tab {
       font-size: 34px;
-   }
-
-   .home-add-button-container {
-      height: 23%;
    }
 
    .home-add-button {
@@ -951,216 +731,12 @@
       height: 52px;
    }
 
-   .fa-2x {
-      font-size: 28px;
-   }
-}
-
-/* iPad Portrait ----------- */
-@media only screen and (device-width : 768px) and (orientation : portrait) {
-   .home-page-container {
-      height: 86vh;
-   }
-
-   .home-group-header {
-      height: 6.5%;
-   }
-
-   .home-groups-container {
-      height: 84%;
-   }
-
-   .home-single-group {
-      width: 297px;
-      height: 342px;
-   }
-
-   .card-text-container {
-      line-height: 52px;
-      font-size: 30px;
-   }
-
-   .card-header {
-      font-size: 35px;
-   }
-
-   .home-active-tab {
-      font-size: 34px;
-   }
-
-   .home-not-active-tab {
-      font-size: 34px;
-   }
-
-   .home-add-button-container {
-      height: 8%;
-   }
-
-   .home-add-button {
-      width: 70px;
-      height: 70px;
-   }
-
-   .fa-2x {
-      font-size: 39px;
-   }
-}
-
-/* iPad Landscape */
-@media only screen and (device-width: 1024px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2) {
-   .home-page-container {
-      height: 81vh;
-   }
-
-   .home-group-header {
-      height: 54px;
-   }
-
-   .home-groups-container {
-      height: 75%;
-   }
-
-   .home-single-group {
-      width: 294px;
-      height: 342px;
-   }
-
-   .card-text-container {
-      line-height: 52px;
-      font-size: 30px;
-   }
-
-   .card-header {
-      font-size: 35px;
-   }
-
-   .home-active-tab {
-      font-size: 34px;
-   }
-
-   .home-not-active-tab {
-      font-size: 34px;
-   }
-
-   .home-add-button-container {
-      height: 13%;
-   }
-
-   .home-add-button {
-      width: 70px;
-      height: 70px;
-   }
-
-   .fa-2x {
-      font-size: 39px;
-   }
-}
-
-/* iPad Pro Portrait----------- */
-@media only screen and (device-width : 1024px) and (orientation : portrait) {
-   .home-page-container {
-      height: 89.5vh;
-   }
-
-   .home-group-header {
-      height: 7.5%;
-   }
-
-   .home-groups-container {
-      height: 81.5%;
-   }
-
-   .home-single-group {
-      width: 461px;
-      height: 453px;
-   }
-
-   .card-text-container {
-      line-height: 71px;
-      font-size: 42px;
-   }
-
-   .card-header {
-      font-size: 48px;
-   }
-
-   .home-active-tab {
-      font-size: 50px;
-   }
-
-   .home-not-active-tab {
-      font-size: 50px;
-   }
-
-   .home-add-button-container {
-      height: 9%;
-   }
-
-   .home-add-button {
-      width: 90px;
-      height: 90px;
-   }
-
-   .fa-2x {
-      font-size: 51px;
-   }
-
-}
-
-/* iPad Pro Landscape----------- */
-@media only screen and (device-width : 1366px) and (orientation : landscape) {
-   .home-page-container {
-      height: 86.5vh;
-   }
-
-   .home-group-header {
-      height: 10%;
-   }
-
-   .home-groups-container {
-      height: 74%;
-   }
-
-   .home-single-group {
-      width: 461px;
-      height: 453px;
-   }
-
-   .card-text-container {
-      line-height: 71px;
-      font-size: 42px;
-   }
-
-   .card-header {
-      font-size: 48px;
-   }
-
-   .home-active-tab {
-      font-size: 50px;
-   }
-
-   .home-not-active-tab {
-      font-size: 50px;
-   }
-
-   .home-add-button-container {
-      height: 13%;
-   }
-
-   .home-add-button {
-      width: 90px;
-      height: 90px;
-   }
-
-   .fa-2x {
-      font-size: 51px;
-   }
 }
 
 /* Pixel 2 & XL Portrait*/
-@media only screen and (device-width: 411px) and (orientation : portrait) {
+@media screen and (min-width: 411px) and (orientation : portrait) {
    .home-page-container {
-      height: 92vh;
+      height: calc(100vh - 59px);
    }
 
    .home-group-header {
@@ -1193,46 +769,39 @@
       font-size: 34px;
    }
 
-   .home-add-button-container {
-      height: 10%;
-   }
-
    .home-add-button {
       width: 52px;
       height: 52px;
    }
 
-   .fa-2x {
-      font-size: 28px;
-   }
 }
 
-/* Pixel 2 Landscape*/
-@media only screen and (device-width: 731px) and (orientation : landscape) {
+/* iPad Portrait ----------- */
+@media only screen and (min-width : 768px) and (orientation : portrait) {
    .home-page-container {
-      height: 77vh;
+      height: calc(100vh - 135px);
    }
 
    .home-group-header {
-      height: 18%;
-   }
-
-   .home-single-group {
-      width: 186px;
-      height: 252px;
+      height: 6.5%;
    }
 
    .home-groups-container {
-      height: 60%;
+      height: 81%;
+   }
+
+   .home-single-group {
+      width: 297px;
+      height: 342px;
    }
 
    .card-text-container {
-      line-height: 40px;
-      font-size: 21px;
+      line-height: 52px;
+      font-size: 30px;
    }
 
    .card-header {
-      font-size: 21px;
+      font-size: 35px;
    }
 
    .home-active-tab {
@@ -1243,124 +812,65 @@
       font-size: 34px;
    }
 
-   .home-add-button-container {
-      height: 18%;
-   }
-
    .home-add-button {
-      width: 52px;
-      height: 52px;
+      width: 70px;
+      height: 70px;
    }
 
-   .fa-2x {
-      font-size: 28px;
-   }
 }
 
-
-/* Pixel 2 XL Landscape*/
-@media only screen and (device-width: 823px) and (orientation : landscape) {
+/* iPad Pro Portrait----------- */
+@media only screen and (min-width : 1024px) and (orientation : portrait) {
    .home-page-container {
-      height: 67vh;
+      height: calc(100vh - 143px);
    }
 
    .home-group-header {
-      height: 17%;
-   }
-
-   .home-single-group {
-      width: 186px;
-      height: 252px;
+      height: 7.5%;
    }
 
    .home-groups-container {
-      height: 56%;
+      height: 80%;
+   }
+
+   .home-single-group {
+      width: 400px;
+      height: 425px;
    }
 
    .card-text-container {
-      line-height: 40px;
-      font-size: 21px;
+      line-height: 71px;
+      font-size: 42px;
    }
 
    .card-header {
-      font-size: 21px;
+      font-size: 48px;
    }
 
    .home-active-tab {
-      font-size: 34px;
+      font-size: 50px;
    }
 
    .home-not-active-tab {
-      font-size: 34px;
-   }
-
-   .home-add-button-container {
-      height: 21%;
+      font-size: 50px;
    }
 
    .home-add-button {
-      width: 52px;
-      height: 52px;
+      width: 90px;
+      height: 90px;
    }
 
-   .fa-2x {
-      font-size: 28px;
-   }
+
 }
 
-/* Samsung Galaxy S5 portrait*/
-@media screen and (device-width: 360px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3) {
+/* iPhone 4 Landscape----------- */
+@media only screen and (min-width : 480px) and (orientation : landscape) {
    .home-page-container {
-      height: 91vh;
+      height: calc(100vh - 67px);
    }
 
    .home-group-header {
-      height: 13%;
-   }
-
-   .home-groups-container {
-      height: 73%;
-   }
-
-   .home-single-group {
-      width: 144px;
-      height: 178px;
-   }
-
-   .card-text-container {
-      line-height: 26px;
-   }
-
-   .home-active-tab {
-      font-size: 34px;
-   }
-
-   .home-not-active-tab {
-      font-size: 34px;
-   }
-
-   .home-add-button-container {
-      height: 12.5%;
-   }
-
-   .home-add-button {
-      width: 52px;
-      height: 52px;
-   }
-
-   .fa-2x {
-      font-size: 28px;
-   }
-}
-
-/* Samsung Galaxy S5 landscape*/
-@media screen and (device-width: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3) {
-   .home-page-container {
-      height: 75vh;
-   }
-
-   .home-group-header {
-      height: 19%;
+      height: 40px;
    }
 
    .home-single-group {
@@ -1369,7 +879,7 @@
    }
 
    .home-groups-container {
-      height: 56%;
+      height: 71%;
    }
 
    .card-text-container {
@@ -1384,8 +894,42 @@
       font-size: 34px;
    }
 
-   .home-add-button-container {
-      height: 22%;
+   .home-add-button {
+      width: 52px;
+      height: 52px;
+   }
+
+}
+
+/* iPhone 5 Landscape----------- */
+@media only screen and (min-width: 568px) and (orientation : landscape) {
+   .home-page-container {
+      height: calc(100vh - 76px);
+   }
+
+   .home-group-header {
+      height: 40px;
+   }
+
+   .home-single-group {
+      width: 137px;
+      height: 178px;
+   }
+
+   .home-groups-container {
+      height: 69%;
+   }
+
+   .card-text-container {
+      line-height: 26px;
+   }
+
+   .home-active-tab {
+      font-size: 34px;
+   }
+
+   .home-not-active-tab {
+      font-size: 34px;
    }
 
    .home-add-button {
@@ -1393,7 +937,298 @@
       height: 52px;
    }
 
-   .fa-2x {
-      font-size: 28px;
+}
+
+/* Samsung Galaxy S5 landscape*/
+@media screen and (min-width: 640px) and (orientation : landscape) {
+   .home-page-container {
+      height: calc(100vh - 84px);
    }
+
+   .home-group-header {
+      height: 45px;
+   }
+
+   .home-single-group {
+      width: 137px;
+      height: 178px;
+   }
+
+   .home-groups-container {
+      height: 69%;
+   }
+
+   .card-text-container {
+      line-height: 26px;
+   }
+
+   .home-active-tab {
+      font-size: 34px;
+   }
+
+   .home-not-active-tab {
+      font-size: 34px;
+   }
+
+   .home-add-button {
+      width: 52px;
+      height: 52px;
+   }
+
+}
+
+/* iPhone 6/7/8 Landscape */
+@media only screen and (min-width: 667px) and (orientation : landscape) {
+   .home-page-container {
+      height: calc(100vh - 86px);
+   }
+
+   .home-group-header {
+      height: 45px;
+   }
+
+   .home-single-group {
+      width: 155px;
+      height: 178px;
+   }
+
+   .home-groups-container {
+      height: 70%;
+   }
+
+   .card-text-container {
+      line-height: 26px;
+   }
+
+   .home-active-tab {
+      font-size: 34px;
+   }
+
+   .home-not-active-tab {
+      font-size: 34px;
+   }
+
+   .home-add-button {
+      width: 52px;
+      height: 52px;
+   }
+
+}
+
+/* Pixel 2 Landscape*/
+@media only screen and (min-width: 731px) and (orientation : landscape) {
+   .home-page-container {
+      height: calc(100vh - 92px);
+   }
+
+   .home-group-header {
+      height: 50px;
+   }
+
+   .home-single-group {
+      width: 186px;
+      height: 252px;
+   }
+
+   .home-groups-container {
+      height: 70%;
+   }
+
+   .card-text-container {
+      line-height: 40px;
+      font-size: 21px;
+   }
+
+   .card-header {
+      font-size: 21px;
+   }
+
+   .home-active-tab {
+      font-size: 34px;
+   }
+
+   .home-not-active-tab {
+      font-size: 34px;
+   }
+
+   .home-add-button {
+      width: 52px;
+      height: 52px;
+   }
+
+}
+
+/* Pixel 2 XL Landscape*/
+@media only screen and (min-width: 823px) and (orientation : landscape) {
+   .home-page-container {
+      height: calc(100vh - 135px);
+   }
+
+   .home-group-header {
+      height: 55px;
+   }
+
+   .home-single-group {
+      width: 186px;
+      height: 252px;
+   }
+
+   .home-groups-container {
+      height: 71%;
+   }
+
+   .card-text-container {
+      line-height: 40px;
+      font-size: 21px;
+   }
+
+   .card-header {
+      font-size: 21px;
+   }
+
+   .home-active-tab {
+      font-size: 34px;
+   }
+
+   .home-not-active-tab {
+      font-size: 34px;
+   }
+
+   .home-add-button {
+      width: 52px;
+      height: 52px;
+   }
+
+}
+
+
+/* iPhone X Landscape */
+@media only screen and (min-width: 812px) and (orientation : landscape) {
+   .home-page-container {
+      height: calc(100vh - 135px);
+   }
+
+   .home-group-header {
+      height: 50px;
+   }
+
+   .home-single-group {
+      width: 186px;
+      height: 252px;
+   }
+
+   .home-groups-container {
+      height: 65%;
+   }
+
+   .card-text-container {
+      line-height: 40px;
+      font-size: 21px;
+   }
+
+   .card-header {
+      font-size: 21px;
+   }
+
+   .home-active-tab {
+      font-size: 34px;
+   }
+
+   .home-not-active-tab {
+      font-size: 34px;
+   }
+
+   .home-add-button {
+      width: 52px;
+      height: 52px;
+   }
+
+}
+
+/* iPad Landscape */
+@media only screen and (min-width: 1024px) and (orientation : landscape) {
+   .home-page-container {
+      height: calc(100vh - 143px);
+   }
+
+   .home-group-header {
+      height: 60px;
+   }
+
+   .home-groups-container {
+      height: 78%;
+   }
+
+   .home-single-group {
+      width: 250px;
+      height: 270px;
+   }
+
+   .card-text-container {
+      padding: 5%;
+      line-height: 40px;
+      font-size: 23px;
+   }
+
+   .card-header {
+      font-size: 35px;
+   }
+
+   .home-active-tab {
+      font-size: 34px;
+   }
+
+   .home-not-active-tab {
+      font-size: 34px;
+   }
+
+   .home-add-button {
+      width: 70px;
+      height: 70px;
+   }
+
+}
+
+/* iPad Pro Landscape----------- */
+@media only screen and (min-width : 1366px) and (orientation : landscape) {
+   .home-page-container {
+      height: calc(100vh - 139px);
+   }
+
+   .home-group-header {
+      height: 70px;
+   }
+
+   .home-groups-container {
+      height: 79%;
+   }
+
+   .home-single-group {
+      width: 270px;
+      height: 300px;
+   }
+
+   .card-text-container {
+      padding: 5%;
+      line-height: 45px;
+      font-size: 25px;
+   }
+
+   .card-header {
+      font-size: 40px;
+   }
+
+   .home-active-tab {
+      font-size: 50px;
+   }
+
+   .home-not-active-tab {
+      font-size: 40px;
+   }
+
+   .home-add-button {
+      width: 90px;
+      height: 90px;
+   }
+
 }

@@ -11,7 +11,7 @@ import { showJoinedGroups } from '../../actions';
 import { showCreatedGroups } from '../../actions';
 import { connect } from 'react-redux';
 import magnifier from '../../assets/images/magnifier.png';
-
+import addBtn from '../../assets/images/add.png';
 
 class Home extends Component {
    state = {
@@ -124,7 +124,7 @@ class Home extends Component {
       }
       if (this.props.joinedGroups) {
          return (
-            <div>
+            <div className='parent-container'>
                <Header src={magnifier} href={'/search-group'} hamburgerClick={this.toggleHamburger} />
                <Hamburger show={this.state.hamburgerOpen} />
                {backdrop}
@@ -138,7 +138,7 @@ class Home extends Component {
                         {this.renderJoinedGroups()}
                      </div>
                      <div className="home-add-button-container">
-                        <Link to="/create-group"><i className="fas fa-plus fa-2x home-add-button"></i></Link>
+                        <Link to="/create-group"><img src={addBtn} className="add-btn"></img></Link>
                      </div>
                   </div>
                </div>
@@ -146,7 +146,7 @@ class Home extends Component {
          )
       }
       return (
-         <div>
+         <div className='parent-container'>
             <Header src={magnifier} href={'/search-group'} hamburgerClick={this.toggleHamburger} />
             <Hamburger show={this.state.hamburgerOpen} />
             {backdrop}
@@ -160,7 +160,7 @@ class Home extends Component {
                      {this.renderCreatedGroups()}
                   </div>
                   <div className="home-add-button-container">
-                     <Link to="/create-group"><i className="fas fa-plus fa-2x home-add-button"></i></Link>
+                     <Link to="/create-group"><img  src={addBtn} className="add-btn"></img></Link>
                   </div>
                </div>
             </div>
