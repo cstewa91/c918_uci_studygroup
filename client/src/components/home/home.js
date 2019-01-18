@@ -6,9 +6,11 @@ import Backdrop from '../general/backdrop';
 import Hamburger from '../general/hamburger';
 import { getCreatedGroups } from '../../actions';
 import { getJoinedGroups } from '../../actions';
+import { getCreatedAndJoinedGroups } from '../../actions'
 import { getUserInfo } from '../../actions';
 import { showJoinedGroups } from '../../actions';
 import { showCreatedGroups } from '../../actions';
+import { showAllGroups } from '../../actions'
 import { connect } from 'react-redux';
 import magnifier from '../../assets/images/magnifier.png';
 import addBtn from '../../assets/images/add.png';
@@ -34,19 +36,24 @@ class Home extends Component {
       this.props.getJoinedGroups();
       this.props.getUserInfo();
    }
-   switchGroups = () => {
-      if (this.props.joinedGroups) {
-         this.props.showCreatedGroups();
-      } else {
-         this.props.showJoinedGroups();
-      }
+   joinedGroups = () => {
+      this.props.showJoinedGroups();
+   }
+   createdGroups = () => {
+      this.props.showCreatedGroups();
+   }
+   allGroups = () => {
+      this.props.showAllGroups();
    }
    renderCreatedGroups = () => {
       const listCreatedGroups = this.props.created.map(item => {
          const newDate = new Date(item.date);
-         const sliceDate = item.date.slice(0, 11) + item.start_time
-         const startTime = new Date(sliceDate);
+         const sliceDateStart = item.date.slice(0, 11) + item.start_time
+         const sliceDateEnd = item.date.slice(0, 11) + item.end_time
+         const startTime = new Date(sliceDateStart);
+         const endTime = new Date(sliceDateEnd);
          const startingTime = startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+         const endingTime = endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
          const startDate = newDate.toLocaleDateString([], { month: '2-digit', day: '2-digit' });
          return (
             <Fragment key={item.id}>
@@ -64,7 +71,7 @@ class Home extends Component {
                               {startDate}
                            </div>
                            <div className="card-text">
-                              {startingTime}
+                              {startingTime} - {endingTime}
                            </div>
                            <div className="card-text">
                               <sup>{item.current_group_size}</sup>&frasl;{<sub>{item.max_group_size}</sub>}
@@ -81,9 +88,12 @@ class Home extends Component {
    renderJoinedGroups = () => {
       const listJoinedGroups = this.props.joined.map(item => {
          const newDate = new Date(item.date);
-         const sliceDate = item.date.slice(0, 11) + item.start_time
-         const startTime = new Date(sliceDate);
+         const sliceDateStart = item.date.slice(0, 11) + item.start_time
+         const sliceDateEnd = item.date.slice(0, 11) + item.end_time
+         const startTime = new Date(sliceDateStart);
+         const endTime = new Date(sliceDateEnd);
          const startingTime = startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+         const endingTime = endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
          const startDate = newDate.toLocaleDateString([], { month: '2-digit', day: '2-digit' });
          if (this.props.userId !== item.user_id) {
             return (
@@ -102,10 +112,10 @@ class Home extends Component {
                                  {startDate}
                               </div>
                               <div className="card-text">
-                                 {startingTime}
+                                 {startingTime} - {endingTime}
                               </div>
                               <div className="card-text">
-                                 <sup>{item.current_group_size}</sup>&frasl;{<sub>{item.max_group_size}</sub>}
+                                 <sup>{item.current_group_size}</sup>&frasl;{<sub>{item.max_group_size}</sub>} Members
                               </div>
                            </div>
                         </div>
@@ -118,11 +128,12 @@ class Home extends Component {
       return listJoinedGroups;
    }
    render() {
+      console.log(this.props.groups)
       let backdrop;
       if (this.state.hamburgerOpen) {
          backdrop = <Backdrop click={this.backdropHandler} />
       }
-      if (this.props.joinedGroups) {
+      if (this.props.groups === 'joined') {
          return (
             <div className='parent-container'>
                <Header src={magnifier} href={'/search-group'} hamburgerClick={this.toggleHamburger} />
@@ -131,14 +142,39 @@ class Home extends Component {
                <div className="home-page-container">
                   <div className="home-container">
                      <div className="home-group-header">
+                     <div className="home-not-active-tab" onClick={this.allGroups}>All</div>
                         <div className="home-active-tab">Joined</div>
-                        <div className="home-not-active-tab" onClick={this.switchGroups}>Created</div>
+                        <div className="home-not-active-tab" onClick={this.createdGroups}>Created</div>
                      </div>
                      <div className="home-groups-container">
                         {this.renderJoinedGroups()}
                      </div>
                      <div className="home-add-button-container">
                         <Link to="/create-group"><img src={addBtn} className="add-btn"></img></Link>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         )
+      }
+      else if (this.props.groups === 'created') {
+         return (
+            <div className='parent-container'>
+               <Header src={magnifier} href={'/search-group'} hamburgerClick={this.toggleHamburger} />
+               <Hamburger show={this.state.hamburgerOpen} />
+               {backdrop}
+               <div className="home-page-container">
+                  <div className="home-container">
+                     <div className="home-group-header">
+                     <div className="home-not-active-tab" onClick={this.allGroups}>All</div>
+                        <div className="home-not-active-tab home-joined-tab" onClick={this.joinedGroups}>Joined</div>
+                        <div className="home-active-tab">Created</div>
+                     </div>
+                     <div className="home-groups-container">
+                        {this.renderCreatedGroups()}
+                     </div>
+                     <div className="home-add-button-container">
+                        <Link to="/create-group"><img  src={addBtn} className="add-btn"></img></Link>
                      </div>
                   </div>
                </div>
@@ -153,11 +189,13 @@ class Home extends Component {
             <div className="home-page-container">
                <div className="home-container">
                   <div className="home-group-header">
-                     <div className="home-not-active-tab" onClick={this.switchGroups}>Joined</div>
-                     <div className="home-active-tab">Created</div>
+                  <div className="home-active-tab">All</div>
+                     <div className="home-not-active-tab home-joined-tab" onClick={this.joinedGroups}>Joined</div>
+                     <div className="home-not-active-tab" onClick={this.createdGroups}>Created</div>
                   </div>
                   <div className="home-groups-container">
                      {this.renderCreatedGroups()}
+                     {this.renderJoinedGroups()}
                   </div>
                   <div className="home-add-button-container">
                      <Link to="/create-group"><img  src={addBtn} className="add-btn"></img></Link>
@@ -175,14 +213,16 @@ function mapStateToProps(state) {
       created: state.home.created,
       joined: state.home.joined,
       userId: state.profile.user.id,
-      joinedGroups: state.home.joinedGroups
+      groups: state.home.groups
    }
 }
 
 export default connect(mapStateToProps, {
    getJoinedGroups: getJoinedGroups,
    getCreatedGroups: getCreatedGroups,
+   getCreatedAndJoinedGroups: getCreatedAndJoinedGroups,
    getUserInfo: getUserInfo,
    showJoinedGroups: showJoinedGroups,
-   showCreatedGroups: showCreatedGroups
+   showCreatedGroups: showCreatedGroups,
+   showAllGroups: showAllGroups
 })(Home)

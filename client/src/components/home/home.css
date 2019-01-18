@@ -12,7 +12,20 @@
    display: flex;
    justify-content: center;
    align-items: center;
+   border: solid 1px #308ED2;
+}
 
+.home-not-active-tab {
+   background: linear-gradient(178.14deg, rgba(255, 255, 255, 0) 45.77%, rgba(255, 255, 255, 0.34) 103.91%), #6FB8ED;
+   color: #1778BE;
+   height: 100%;
+   cursor: pointer;
+   width: 50%;
+   font-size: 34px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: solid 1px #308ED2;
 }
 
 .home-add-button {
@@ -127,18 +140,6 @@
 
 .home-header-container {
    height: 4%;
-}
-
-.home-not-active-tab {
-   background: linear-gradient(178.14deg, rgba(255, 255, 255, 0) 45.77%, rgba(255, 255, 255, 0.34) 103.91%), #6FB8ED;
-   color: #1778BE;
-   height: 100%;
-   cursor: pointer;
-   width: 50%;
-   font-size: 34px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
 }
 
 .home-page-container {
@@ -473,7 +474,7 @@
    }
 
    .card-text-container {
-      font-size: 16px;
+      font-size: 14px;
       line-height: 30px;
    }
 

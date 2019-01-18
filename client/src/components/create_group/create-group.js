@@ -7,9 +7,11 @@ import Header from '../general/header';
 import Hamburger from '../general/hamburger';
 import Backdrop from '../general/backdrop';
 import { createNewGroup } from '../../actions';
+import { showCreatedGroups } from '../../actions';
 import Input from '../input';
 import arrow from '../../assets/images/left-arrow.png';
 import magnifier from '../../assets/images/magnifier.png';
+
 
 class CreateGroup extends Component {
    state = {
@@ -38,6 +40,7 @@ class CreateGroup extends Component {
       const { validName } = this.props
       if (validName) {
          this.props.history.push('/home')
+         this.props.showCreatedGroups();
       }
    }
    render() {
@@ -86,7 +89,7 @@ class CreateGroup extends Component {
                            <Field name='date' type='date'  label="Date" component={Input} />
                         </div>
                         <div className='create-groupSize col-5'>
-                           <Field name="max_group_size" label="Group Size" maxLength='3' component={Input} />
+                           <Field name="max_group_size" label="Group Size" maxLength='3' type='number' component={Input} />
                         </div>
                   </div>
                   <div className="row justify-content-center">
@@ -154,5 +157,6 @@ CreateGroup = reduxForm({
 })(CreateGroup);
 
 export default connect(mapStateToProps, {
-   createNewGroup: createNewGroup
+   createNewGroup: createNewGroup,
+   showCreatedGroups: showCreatedGroups,
 })(CreateGroup);

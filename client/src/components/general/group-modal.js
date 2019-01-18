@@ -4,7 +4,7 @@ import {getGroupDetails} from '../../actions';
 import {joinGroup} from '../../actions';
 import worm from '../../assets/images/bookworm.png';
 import map from '../../assets/images/map_icon.png';
-
+import { showJoinedGroups } from '../../actions';
 import './group-modal.css';
 import {connect} from 'react-redux';
 
@@ -20,6 +20,7 @@ class GroupModal extends Component{
     joinStudyGroup = async () => {
         await this.props.joinGroup(this.props.id);
         this.props.history.push('/home');
+        this.props.showJoinedGroups();
     }
 
     open = () => {
@@ -152,5 +153,6 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps,{
     getGroupDetails: getGroupDetails,
-    joinGroup: joinGroup
+    joinGroup: joinGroup,
+    showJoinedGroups: showJoinedGroups
 })(GroupModal);
