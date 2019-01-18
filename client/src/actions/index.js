@@ -208,3 +208,9 @@ export function showCreatedGroups() {
       type: types.SHOW_CREATED_GROUPS
    }
 }
+
+export function showAllGroups() {
+   return {
+      type: types.SHOW_CREATED_JOINED_GROUPS
+   }
+}
