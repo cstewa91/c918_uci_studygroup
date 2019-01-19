@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import { loginApp } from '../../actions'
+import { showAllGroups } from '../../actions'
 import Input from '../input';
 import worm from '../../assets/images/bookworm.png'
 import './login.css';
@@ -11,6 +12,7 @@ import './login.css';
 class Login extends Component {
    handleLogin = async (values) => {
       await this.props.loginApp(values)
+      await this.props.showAllGroups();
       await this.pushToHome()
    }
    pushToHome = () => {
@@ -72,4 +74,5 @@ Login = reduxForm({
 
 export default connect(mapStateToProps, {
    loginApp: loginApp,
+   showAllGroups: showAllGroups
 })(Login);

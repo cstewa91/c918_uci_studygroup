@@ -6,7 +6,6 @@ import Backdrop from '../general/backdrop';
 import Hamburger from '../general/hamburger';
 import { getCreatedGroups } from '../../actions';
 import { getJoinedGroups } from '../../actions';
-import { getCreatedAndJoinedGroups } from '../../actions'
 import { getUserInfo } from '../../actions';
 import { showJoinedGroups } from '../../actions';
 import { showCreatedGroups } from '../../actions';
@@ -46,56 +45,66 @@ class Home extends Component {
       this.props.showAllGroups();
    }
    renderCreatedGroups = () => {
-      const listCreatedGroups = this.props.created.map(item => {
-         const newDate = new Date(item.date);
-         const sliceDateStart = item.date.slice(0, 11) + item.start_time
-         const sliceDateEnd = item.date.slice(0, 11) + item.end_time
-         const startTime = new Date(sliceDateStart);
-         const endTime = new Date(sliceDateEnd);
-         const startingTime = startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-         const endingTime = endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-         const startDate = newDate.toLocaleDateString([], { month: '2-digit', day: '2-digit' });
+      if(this.props.createdGroup){
+            const listCreatedGroups = this.props.created.map(item => {
+            const newDate = new Date(item.date);
+            const sliceDateStart = item.date.slice(0, 11) + item.start_time
+            const sliceDateEnd = item.date.slice(0, 11) + item.end_time
+            const startTime = new Date(sliceDateStart);
+            const endTime = new Date(sliceDateEnd);
+            const startingTime = startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const endingTime = endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const startDate = newDate.toLocaleDateString([], { month: '2-digit', day: '2-digit' });
+            return (
+               <Fragment key={item.id}>
+                  <div className="card home-single-group">
+                     <Link to={`/group-info/${item.id}`}>
+                        <div className="home-card-container">
+                           <div className="card-header">
+                              {item.name}
+                           </div>
+                           <div className="card-text-container">
+                              <div className="card-text">
+                                 {item.subject} {item.course}
+                              </div>
+                              <div className="card-text">
+                                 {startDate}
+                              </div>
+                              <div className="card-text">
+                                 {startingTime} - {endingTime}
+                              </div>
+                              <div className="card-text">
+                                 <sup>{item.current_group_size}</sup>&frasl;{<sub>{item.max_group_size}</sub>}
+                              </div>
+                           </div>
+                        </div>
+                     </Link>
+                  </div>
+               </Fragment >
+            )
+         })
+         return listCreatedGroups;
+      } else if (!this.props.createdGroup && this.props.groups === 'created'){
          return (
-            <Fragment key={item.id}>
-               <div className="card home-single-group">
-                  <Link to={`/group-info/${item.id}`}>
-                     <div className="home-card-container">
-                        <div className="card-header">
-                           {item.name}
-                        </div>
-                        <div className="card-text-container">
-                           <div className="card-text">
-                              {item.subject} {item.course}
-                           </div>
-                           <div className="card-text">
-                              {startDate}
-                           </div>
-                           <div className="card-text">
-                              {startingTime} - {endingTime}
-                           </div>
-                           <div className="card-text">
-                              <sup>{item.current_group_size}</sup>&frasl;{<sub>{item.max_group_size}</sub>}
-                           </div>
-                        </div>
-                     </div>
-                  </Link>
+            <Fragment>
+               <div> 
+                  Hello
                </div>
             </Fragment >
          )
-      })
-      return listCreatedGroups;
+      }
    }
    renderJoinedGroups = () => {
-      const listJoinedGroups = this.props.joined.map(item => {
-         const newDate = new Date(item.date);
-         const sliceDateStart = item.date.slice(0, 11) + item.start_time
-         const sliceDateEnd = item.date.slice(0, 11) + item.end_time
-         const startTime = new Date(sliceDateStart);
-         const endTime = new Date(sliceDateEnd);
-         const startingTime = startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-         const endingTime = endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-         const startDate = newDate.toLocaleDateString([], { month: '2-digit', day: '2-digit' });
-         if (this.props.userId !== item.user_id) {
+      if(this.props.joinedGroup){
+         const listJoinedGroups = this.props.joined.map(item => {
+            const newDate = new Date(item.date);
+            const sliceDateStart = item.date.slice(0, 11) + item.start_time
+            const sliceDateEnd = item.date.slice(0, 11) + item.end_time
+            const startTime = new Date(sliceDateStart);
+            const endTime = new Date(sliceDateEnd);
+            const startingTime = startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const endingTime = endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const startDate = newDate.toLocaleDateString([], { month: '2-digit', day: '2-digit' });
             return (
                <Fragment key={item.id}>
                   <div className="card home-single-group">
@@ -123,12 +132,19 @@ class Home extends Component {
                   </div>
                </Fragment >
             )
-         }
-      })
-      return listJoinedGroups;
+         })
+         return listJoinedGroups;
+      } else if (!this.props.joinedGroup && this.props.groups === 'joined'){
+         return (
+            <Fragment>
+               <div> 
+                  Hello
+               </div>
+            </Fragment >
+         )
+      }
    }
    render() {
-      console.log(this.props.groups)
       let backdrop;
       if (this.state.hamburgerOpen) {
          backdrop = <Backdrop click={this.backdropHandler} />
@@ -156,8 +172,7 @@ class Home extends Component {
                </div>
             </div>
          )
-      }
-      else if (this.props.groups === 'created') {
+      } else if (this.props.groups === 'created') {
          return (
             <div className='parent-container'>
                <Header src={magnifier} href={'/search-group'} hamburgerClick={this.toggleHamburger} />
@@ -213,14 +228,15 @@ function mapStateToProps(state) {
       created: state.home.created,
       joined: state.home.joined,
       userId: state.profile.user.id,
-      groups: state.home.groups
+      groups: state.home.groups,
+      joinedGroup: state.home.joinedGroup,
+      createdGroup: state.home.createdGroup
    }
 }
 
 export default connect(mapStateToProps, {
    getJoinedGroups: getJoinedGroups,
    getCreatedGroups: getCreatedGroups,
-   getCreatedAndJoinedGroups: getCreatedAndJoinedGroups,
    getUserInfo: getUserInfo,
    showJoinedGroups: showJoinedGroups,
    showCreatedGroups: showCreatedGroups,
