@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { getCreatedGroups } from '../../actions';
+import { connect } from 'react-redux';
 import './confirm_modal.css';
 
 class ConfirmModal extends Component {
@@ -8,6 +10,7 @@ class ConfirmModal extends Component {
 
     deleteCurrentGroup = async () => {
         await this.props.deleteGroup(this.props.match.params.group_id)
+        await this.props.getCreatedGroups();
         await this.props.history.push('/home')
     }
 
@@ -39,4 +42,6 @@ class ConfirmModal extends Component {
     }
 }
 
-export default ConfirmModal;
+export default connect( null, {
+    getCreatedGroups: getCreatedGroups
+})(ConfirmModal);

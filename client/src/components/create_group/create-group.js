@@ -8,6 +8,7 @@ import Hamburger from '../general/hamburger';
 import Backdrop from '../general/backdrop';
 import { createNewGroup } from '../../actions';
 import { showCreatedGroups } from '../../actions';
+import { getCreatedGroups } from '../../actions';
 import Input from '../input';
 import arrow from '../../assets/images/left-arrow.png';
 import magnifier from '../../assets/images/magnifier.png';
@@ -34,13 +35,14 @@ class CreateGroup extends Component {
 
    handleCreateGroup = async (values) => {
       await this.props.createNewGroup(values);
-      await this.pushToHome()
+      await this.props.getCreatedGroups();
+      await this.props.showCreatedGroups();
+      await this.pushToHome();
    }
    pushToHome = () => {
       const { validName } = this.props
       if (validName) {
          this.props.history.push('/home')
-         this.props.showCreatedGroups();
       }
    }
    render() {
@@ -73,7 +75,7 @@ class CreateGroup extends Component {
                            <Field name="subject" label="Subject" maxLength='20' component={Input} />
                         </div>
                         <div className='create-course col-5'>
-                           <Field name="course" label="Course Number" maxLength='5' component={Input} />
+                           <Field name="course" label="Course Number" maxLength='5'component={Input} />
                         </div>
                   </div>                 
                   <div className="row justify-content-around">
@@ -89,7 +91,7 @@ class CreateGroup extends Component {
                            <Field name='date' type='date'  label="Date" component={Input} />
                         </div>
                         <div className='create-groupSize col-5'>
-                           <Field name="max_group_size" label="Group Size" maxLength='3' type='number' component={Input} />
+                           <Field name="max_group_size" label="Group Size" maxLength='3' type='number' min='1' component={Input} />
                         </div>
                   </div>
                   <div className="row justify-content-center">
@@ -123,7 +125,7 @@ function validate({ name, subject, course, max_group_size, start_time, end_time,
    if (!subject) {
       error.subject = "Please enter the subject"
    }
-   if (!course || !validNumber.test(course)) {
+   if (!course) {
       error.course = "Please enter a number"
    }
    if (!max_group_size || !validNumber.test(max_group_size)) {
@@ -159,4 +161,5 @@ CreateGroup = reduxForm({
 export default connect(mapStateToProps, {
    createNewGroup: createNewGroup,
    showCreatedGroups: showCreatedGroups,
+   getCreatedGroups: getCreatedGroups
 })(CreateGroup);
