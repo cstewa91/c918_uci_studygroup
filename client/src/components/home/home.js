@@ -88,7 +88,17 @@ class Home extends Component {
          return (
             <Fragment>
                <div> 
-                  Hello
+                  You haven’t created any groups.                 
+                  <Link to="/create-group" className="btn btn-primary"> Create Group </Link>
+               </div>
+            </Fragment >
+         )
+      } else if (!this.props.createdGroup && this.props.groups === 'all' && !this.props.joinedGroup) {
+         return (
+            <Fragment>
+               <div> 
+                  You haven’t created any groups.                 
+                  <Link to="/create-group" className="btn btn-danger"> Create Group </Link>
                </div>
             </Fragment >
          )
@@ -138,7 +148,17 @@ class Home extends Component {
          return (
             <Fragment>
                <div> 
-                  Hello
+                  You have no joined groups.                
+                  <Link to="/search-group" className="btn btn-primary"> Search Groups </Link>
+               </div>
+            </Fragment >
+         )
+      } else if (!this.props.createdGroup && this.props.groups === 'all' && !this.props.joinedGroup) {
+         return (
+            <Fragment>
+               <div> 
+               You have no joined groups.                   
+                  <Link to="/search-group" className="btn btn-danger"> Search Groups </Link>
                </div>
             </Fragment >
          )
