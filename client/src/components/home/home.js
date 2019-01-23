@@ -74,7 +74,7 @@ class Home extends Component {
                                  {startingTime} - {endingTime}
                               </div>
                               <div className="card-text">
-                                 <sup>{item.current_group_size}</sup>&frasl;{<sub>{item.max_group_size}</sub>}
+                                 <sup>{item.current_group_size}</sup>&frasl;{<sub>{item.max_group_size}</sub>} Members
                               </div>
                            </div>
                         </div>

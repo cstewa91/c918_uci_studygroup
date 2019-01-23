@@ -45,7 +45,7 @@
    bottom: 0;
    width: 100%;
    border-top: 1px solid black;
-   background-color:#fffbf3
+   background-color: #fffbf3
 }
 
 .home-add-button-container a {
@@ -68,6 +68,7 @@
 .card-text-container {
    line-height: 36px;
    font-size: 22px;
+   margin-top: 7px;
 }
 
 .home-groups {
@@ -80,6 +81,7 @@
    margin: 0 2% 0 2%;
    flex-flow: wrap;
    display: flex;
+   justify-content: space-evenly;
    margin: 1%;
    overflow-x: hidden;
    overflow-y: scroll;
@@ -184,7 +186,7 @@
 }
 
 .add-btn {
-   height:100%;
+   height: 100%;
 }
 
 
@@ -205,7 +207,7 @@
    .home-single-group {
       width: 314px;
       height: 310px;
-  
+
    }
 
    .card-text-container {
@@ -318,7 +320,7 @@
 }
 
 /* Laptops/Desktops */
-@media (min-width: 1025px) and (max-width: 1280px)  {
+@media (min-width: 1025px) and (max-width: 1280px) {
    .home-page-container {
       height: 75vh;
    }
@@ -403,36 +405,37 @@
 
 }
 
-/* Low Res Tablets, Mobile Phones */
-@media (min-width: 482px) and (max-width: 767px) {
+
+/*Small Screen Sizes*/
+@media (max-width: 481px) {
    .home-page-container {
-      height: 86vh;
+      height: 76vh;
    }
 
    .home-groups-container {
-      height: 77%;
+      height: 95%;
    }
 
    .home-group-header {
-      height: 59px;
+      height: 67px;
    }
 
    .home-active-tab {
-      font-size: 34px;
+      font-size: 27px;
    }
 
    .home-single-group {
-      width: 209px;
-      height: 220px;
+      width: 216px;
+      height: 286px;
    }
 
    .home-not-active-tab {
-      font-size: 34px;
+      font-size: 27px;
    }
 
    .card-text-container {
       font-size: 20px;
-      line-height: 30px;
+      line-height: 51px;
    }
 
    .card-header {
@@ -443,50 +446,9 @@
       width: 52px;
       height: 52px;
    }
-}
-
-/*Small Screen Sizes*/
-@media (max-width: 481px) {
-   .home-page-container {
-      height: 76vh;
-   }
-
-   .home-groups-container {
-      height: 86%;
-   }
-
-   .home-group-header {
-      height: 67px;
-   }
-
-   .home-active-tab {
-      font-size: 34px;
-   }
-
-   .home-single-group {
-      width: 180px;
-      height: 201px;
-   }
-
-   .home-not-active-tab {
-      font-size: 34px;
-   }
-
-   .card-text-container {
-      font-size: 14px;
-      line-height: 30px;
-   }
-
-   .card-header {
-      font-size: 19px;
-   }
-
-   .home-add-button {
-      width: 52px;
-      height: 52px;
-   }
 
 }
+
 
 /* iPhone 4 & 5 Portrait----------- */
 @media screen and (min-width : 320px) {
@@ -508,15 +470,61 @@
    }
 
    .card-text-container {
+      font-size: 14px;
       line-height: 26px;
+
    }
 
    .home-active-tab {
-      font-size: 34px;
+      font-size: 27px;
    }
 
    .home-not-active-tab {
-      font-size: 34px;
+      font-size: 27px;
+   }
+
+   .home-add-button {
+      width: 52px;
+      height: 52px;
+   }
+
+   .card-header {
+      font-size: 20px;
+
+   }
+
+}
+
+/* Samsung Galaxy S5 portrait*/
+@media screen and (min-width: 360px) and (orientation : portrait) {
+   .home-page-container {
+      height: calc(100vh - 56px);
+   }
+
+   .home-group-header {
+      height: 50px;
+   }
+
+   .home-groups-container {
+      height: 80%;
+   }
+
+   .home-single-group {
+      width: 162px;
+      height: 217px;
+   }
+
+   .card-text-container {
+      line-height: 35px;
+      font-size: 16px;
+   }
+
+   .home-active-tab {
+      font-size: 27px;
+   }
+
+   .home-not-active-tab {
+      font-size: 27px;
    }
 
    .home-add-button {
@@ -538,16 +546,60 @@
    }
 
    .home-groups-container {
-      height: 80%;
+      height: 82%;
    }
 
    .home-single-group {
       width: 169px;
-      height: 220px;
+      height: 226px;
    }
 
    .card-text-container {
-      line-height: 35px;
+      line-height: 39px;
+      font-size: 16px;
+   }
+
+   .home-active-tab {
+      font-size: 27px;
+   }
+
+   .home-not-active-tab {
+      font-size: 27px;
+   }
+
+   .home-add-button {
+      width: 52px;
+      height: 52px;
+   }
+
+}
+
+/* Pixel 2 & XL Portrait*/
+@media screen and (min-width: 411px) and (orientation : portrait) {
+   .home-page-container {
+      height: calc(100vh - 59px);
+   }
+
+   .home-group-header {
+      height: 9.5%;
+   }
+
+   .home-groups-container {
+      height: 79%;
+   }
+
+   .home-single-group {
+      width: 185px;
+      height: 252px;
+   }
+
+   .card-text-container {
+      line-height: 43px;
+      font-size: 17px;
+   }
+
+   .card-header {
+      font-size: 21px;
    }
 
    .home-active-tab {
@@ -586,8 +638,8 @@
    }
 
    .card-text-container {
-      line-height: 40px;
-      font-size: 21px;
+      line-height: 44px;
+      font-size: 18px;
    }
 
    .card-header {
@@ -595,272 +647,17 @@
    }
 
    .home-active-tab {
-      font-size: 34px;
+      font-size: 27px;
    }
 
    .home-not-active-tab {
-      font-size: 34px;
+      font-size: 27px;
    }
 
    .home-add-button {
       width: 52px;
       height: 52px;
    }
-}
-
-/* iPhone 6+/7+/8+ Landscape */
-@media only screen and (min-width: 736px) and (orientation : landscape) {
-   .home-page-container {
-      height: 77vh;
-   }
-
-   .home-group-header {
-      height: 20%;
-   }
-
-   .home-single-group {
-      width: 186px;
-      height: 252px;
-   }
-
-   .home-groups-container {
-      height: 58%;
-   }
-
-   .card-text-container {
-      line-height: 40px;
-      font-size: 21px;
-   }
-
-   .card-header {
-      font-size: 21px;
-   }
-
-   .home-active-tab {
-      font-size: 34px;
-   }
-
-   .home-not-active-tab {
-      font-size: 34px;
-   }
-
-   .home-add-button {
-      width: 52px;
-      height: 52px;
-   }
-
-}
-
-/* iPhone X Portrait */
-@media only screen and (min-width: 375px) and (orientation : portrait) {
-   .home-page-container {
-      height: 93vh;
-   }
-
-   .home-group-header {
-      height: 7.5%;
-   }
-
-   .home-groups-container {
-      height: 83%;
-   }
-
-   .home-single-group {
-      width: 169px;
-      height: 269px;
-   }
-
-   .card-text-container {
-      line-height: 40px;
-      font-size: 21px;
-   }
-
-   .card-header {
-      font-size: 21px;
-   }
-
-   .home-active-tab {
-      font-size: 34px;
-   }
-
-   .home-not-active-tab {
-      font-size: 34px;
-   }
-
-   .home-add-button {
-      width: 56px;
-      height: 58px;
-   }
-
-
-}
-
-/* Samsung Galaxy S5 portrait*/
-@media screen and (min-width: 360px) and (orientation : portrait) {
-   .home-page-container {
-      height: calc(100vh - 56px);
-   }
-
-   .home-group-header {
-      height: 50px;
-   }
-
-   .home-groups-container {
-      height: 80%;
-   }
-
-   .home-single-group {
-      width: 144px;
-      height: 178px;
-   }
-
-   .card-text-container {
-      line-height: 26px;
-   }
-
-   .home-active-tab {
-      font-size: 34px;
-   }
-
-   .home-not-active-tab {
-      font-size: 34px;
-   }
-
-   .home-add-button {
-      width: 52px;
-      height: 52px;
-   }
-
-}
-
-/* Pixel 2 & XL Portrait*/
-@media screen and (min-width: 411px) and (orientation : portrait) {
-   .home-page-container {
-      height: calc(100vh - 59px);
-   }
-
-   .home-group-header {
-      height: 9.5%;
-   }
-
-   .home-groups-container {
-      height: 79%;
-   }
-
-   .home-single-group {
-      width: 185px;
-      height: 252px;
-   }
-
-   .card-text-container {
-      line-height: 40px;
-      font-size: 21px;
-   }
-
-   .card-header {
-      font-size: 21px;
-   }
-
-   .home-active-tab {
-      font-size: 34px;
-   }
-
-   .home-not-active-tab {
-      font-size: 34px;
-   }
-
-   .home-add-button {
-      width: 52px;
-      height: 52px;
-   }
-
-}
-
-/* iPad Portrait ----------- */
-@media only screen and (min-width : 768px) and (orientation : portrait) {
-   .home-page-container {
-      height: calc(100vh - 135px);
-   }
-
-   .home-group-header {
-      height: 6.5%;
-   }
-
-   .home-groups-container {
-      height: 81%;
-   }
-
-   .home-single-group {
-      width: 297px;
-      height: 342px;
-   }
-
-   .card-text-container {
-      line-height: 52px;
-      font-size: 30px;
-   }
-
-   .card-header {
-      font-size: 35px;
-   }
-
-   .home-active-tab {
-      font-size: 34px;
-   }
-
-   .home-not-active-tab {
-      font-size: 34px;
-   }
-
-   .home-add-button {
-      width: 70px;
-      height: 70px;
-   }
-
-}
-
-/* iPad Pro Portrait----------- */
-@media only screen and (min-width : 1024px) and (orientation : portrait) {
-   .home-page-container {
-      height: calc(100vh - 143px);
-   }
-
-   .home-group-header {
-      height: 7.5%;
-   }
-
-   .home-groups-container {
-      height: 80%;
-   }
-
-   .home-single-group {
-      width: 400px;
-      height: 425px;
-   }
-
-   .card-text-container {
-      line-height: 71px;
-      font-size: 42px;
-   }
-
-   .card-header {
-      font-size: 48px;
-   }
-
-   .home-active-tab {
-      font-size: 50px;
-   }
-
-   .home-not-active-tab {
-      font-size: 50px;
-   }
-
-   .home-add-button {
-      width: 90px;
-      height: 90px;
-   }
-
-
 }
 
 /* iPhone 4 Landscape----------- */
@@ -887,11 +684,11 @@
    }
 
    .home-active-tab {
-      font-size: 34px;
+      font-size: 27px;
    }
 
    .home-not-active-tab {
-      font-size: 34px;
+      font-size: 27px;
    }
 
    .home-add-button {
@@ -912,8 +709,8 @@
    }
 
    .home-single-group {
-      width: 137px;
-      height: 178px;
+      width: 163px;
+      height: 215px;
    }
 
    .home-groups-container {
@@ -921,20 +718,25 @@
    }
 
    .card-text-container {
-      line-height: 26px;
+      line-height: 33px;
+      font-size: 16px;
    }
 
    .home-active-tab {
-      font-size: 34px;
+      font-size: 27px;
    }
 
    .home-not-active-tab {
-      font-size: 34px;
+      font-size: 27px;
    }
 
    .home-add-button {
       width: 52px;
       height: 52px;
+   }
+
+   .card-header {
+      font-size: 21px;
    }
 
 }
@@ -950,8 +752,8 @@
    }
 
    .home-single-group {
-      width: 137px;
-      height: 178px;
+      width: 184px;
+      height: 220px;
    }
 
    .home-groups-container {
@@ -959,15 +761,16 @@
    }
 
    .card-text-container {
-      line-height: 26px;
+      line-height: 34px;
+      font-size: 18px
    }
 
    .home-active-tab {
-      font-size: 34px;
+      font-size: 27px;
    }
 
    .home-not-active-tab {
-      font-size: 34px;
+      font-size: 27px;
    }
 
    .home-add-button {
@@ -988,8 +791,8 @@
    }
 
    .home-single-group {
-      width: 155px;
-      height: 178px;
+      width: 191px;
+      height: 200px;
    }
 
    .home-groups-container {
@@ -997,15 +800,15 @@
    }
 
    .card-text-container {
-      line-height: 26px;
+      line-height: 30px;
    }
 
    .home-active-tab {
-      font-size: 34px;
+      font-size: 27px;
    }
 
    .home-not-active-tab {
-      font-size: 34px;
+      font-size: 27px;
    }
 
    .home-add-button {
@@ -1026,7 +829,7 @@
    }
 
    .home-single-group {
-      width: 186px;
+      width: 210px;
       height: 252px;
    }
 
@@ -1035,12 +838,98 @@
    }
 
    .card-text-container {
-      line-height: 40px;
+      line-height: 41px;
       font-size: 21px;
    }
 
    .card-header {
+      font-size: 24px;
+   }
+
+   .home-active-tab {
+      font-size: 27px;
+   }
+
+   .home-not-active-tab {
+      font-size: 27px;
+   }
+
+   .home-add-button {
+      width: 52px;
+      height: 52px;
+   }
+
+}
+
+/* iPhone 6+/7+/8+ Landscape */
+@media only screen and (min-width: 736px) and (orientation : landscape) {
+   .home-page-container {
+      height: 77vh;
+   }
+
+   .home-group-header {
+      height: 20%;
+   }
+
+   .home-single-group {
+      width: 186px;
+      height: 252px;
+   }
+
+   .home-groups-container {
+      height: 64%;
+   }
+
+   .card-text-container {
+      line-height: 42px;
+      font-size: 18px;
+   }
+
+   .card-header {
       font-size: 21px;
+   }
+
+   .home-active-tab {
+      font-size: 27px;
+   }
+
+   .home-not-active-tab {
+      font-size: 27px;
+   }
+
+   .home-add-button {
+      width: 52px;
+      height: 52px;
+   }
+
+}
+
+/* iPad Portrait ----------- */
+@media only screen and (min-width : 768px) and (orientation : portrait) {
+   .home-page-container {
+      height: calc(100vh - 135px);
+   }
+
+   .home-group-header {
+      height: 6.5%;
+   }
+
+   .home-groups-container {
+      height: 81%;
+   }
+
+   .home-single-group {
+      width: 241px;
+      height: 310px;
+   }
+
+   .card-text-container {
+      line-height: 55px;
+      font-size: 23px;
+   }
+
+   .card-header {
+      font-size: 30px;
    }
 
    .home-active-tab {
@@ -1049,6 +938,49 @@
 
    .home-not-active-tab {
       font-size: 34px;
+   }
+
+   .home-add-button {
+      width: 70px;
+      height: 70px;
+   }
+
+}
+
+/* iPhone X Landscape */
+@media only screen and (min-width: 812px) and (orientation : landscape) {
+   .home-page-container {
+      height: calc(100vh - 135px);
+   }
+
+   .home-group-header {
+      height: 50px;
+   }
+
+   .home-single-group {
+      width: 232px;
+      height: 252px;
+   }
+
+   .home-groups-container {
+      height: 65%;
+   }
+
+   .card-text-container {
+      line-height: 40px;
+      font-size: 19px;
+   }
+
+   .card-header {
+      font-size: 21px;
+   }
+
+   .home-active-tab {
+      font-size: 27px;
+   }
+
+   .home-not-active-tab {
+      font-size: 27px;
    }
 
    .home-add-button {
@@ -1069,16 +1001,16 @@
    }
 
    .home-single-group {
-      width: 186px;
+      width: 236px;
       height: 252px;
    }
 
    .home-groups-container {
-      height: 71%;
+      height: 79%;
    }
 
    .card-text-container {
-      line-height: 40px;
+      line-height: 44px;
       font-size: 21px;
    }
 
@@ -1087,11 +1019,11 @@
    }
 
    .home-active-tab {
-      font-size: 34px;
+      font-size: 27px;
    }
 
    .home-not-active-tab {
-      font-size: 34px;
+      font-size: 27px;
    }
 
    .home-add-button {
@@ -1101,49 +1033,51 @@
 
 }
 
-
-/* iPhone X Landscape */
-@media only screen and (min-width: 812px) and (orientation : landscape) {
+/* iPad Pro Portrait----------- */
+@media only screen and (min-width : 1024px) and (orientation : portrait) {
    .home-page-container {
-      height: calc(100vh - 135px);
+      height: calc(100vh - 143px);
    }
 
    .home-group-header {
-      height: 50px;
-   }
-
-   .home-single-group {
-      width: 186px;
-      height: 252px;
+      height: 7.5%;
    }
 
    .home-groups-container {
-      height: 65%;
+      height: 80%;
+   }
+
+   .home-single-group {
+      width: 294px;
+      height: 355px;
+  
    }
 
    .card-text-container {
-      line-height: 40px;
-      font-size: 21px;
+      line-height: 59px;
+      font-size: 28px;
    }
 
    .card-header {
-      font-size: 21px;
+      font-size: 48px;
    }
 
    .home-active-tab {
-      font-size: 34px;
+      font-size: 50px;
    }
 
    .home-not-active-tab {
-      font-size: 34px;
+      font-size: 50px;
    }
 
    .home-add-button {
-      width: 52px;
-      height: 52px;
+      width: 90px;
+      height: 90px;
    }
 
+
 }
+
 
 /* iPad Landscape */
 @media only screen and (min-width: 1024px) and (orientation : landscape) {
@@ -1160,14 +1094,14 @@
    }
 
    .home-single-group {
-      width: 250px;
-      height: 270px;
+      width: 294px;
+      height: 325px;
    }
 
    .card-text-container {
       padding: 5%;
-      line-height: 40px;
-      font-size: 23px;
+      line-height: 50px;
+      font-size: 27px;
    }
 
    .card-header {
