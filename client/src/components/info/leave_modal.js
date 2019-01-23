@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getJoinedGroups } from '../../actions';
 import './confirm_modal.css';
 
 class LeaveModal extends Component {
@@ -8,6 +10,7 @@ class LeaveModal extends Component {
 
     leaveCurrentGroup = async () => {
         await this.props.leaveGroup(this.props.match.params.group_id);
+        await this.props.getJoinedGroups();
         this.props.history.push('/home');
     }
 
@@ -39,4 +42,6 @@ class LeaveModal extends Component {
     }
 }
 
-export default LeaveModal;
+export default connect( null, {
+    getJoinedGroups: getJoinedGroups
+})(LeaveModal);

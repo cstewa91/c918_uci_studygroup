@@ -189,6 +189,11 @@
    height: 100%;
 }
 
+.add-btn2 {
+   height: 30px;
+   width: 30px;
+}
+
 
 /********* MEDIA QUERIES ***********/
 @media (min-width: 1800px) and (orientation: landscape) {
