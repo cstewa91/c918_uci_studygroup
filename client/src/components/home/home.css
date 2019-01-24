@@ -71,6 +71,36 @@
    margin-top: 7px;
 }
 
+.home-default-page-container {
+   display: flex;
+   text-align: center;
+   font-family: 'Gochi Hand';
+   justify-content: center;
+   align-items: center;
+   flex-flow: column;
+}
+
+.home-default-page {
+   font-size: 48px;
+}
+
+.home-default-page-search-button-container {
+   width: 80%;
+   display: flex;
+   justify-content: space-evenly;
+}
+
+.home-default-page-search-button {
+   background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), #1778BE;
+   text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
+   font-size: 30px;
+}
+
+.home-default-page-search-button a {
+   color: white;
+   text-decoration: none;
+}
+
 .home-groups {
    display: flex;
    justify-content: space-around;
@@ -408,6 +438,22 @@
       height: 62px;
    }
 
+   .home-default-page {
+      font-size: 71px;
+   }
+
+   .home-default-page-search-button {
+      font-size: 54px;
+   }
+
+   .home-default-page {
+      font-size: 26px;
+   }
+
+   .home-default-page-search-button {
+      font-size: 20px;
+   }
+
 }
 
 
@@ -450,6 +496,14 @@
    .home-add-button {
       width: 52px;
       height: 52px;
+   }
+
+   .home-default-page {
+      font-size: 26px;
+   }
+
+   .home-default-page-search-button {
+      font-size: 20px;
    }
 
 }
@@ -498,6 +552,18 @@
 
    }
 
+   .home-default-page {
+      font-size: 32px;
+   }
+
+   .home-default-page-search-button {
+      font-size: 20px;
+   }
+
+   .home-default-page-search-button-container {
+      width: 100%;
+   }
+
 }
 
 /* Samsung Galaxy S5 portrait*/
@@ -535,6 +601,14 @@
    .home-add-button {
       width: 52px;
       height: 52px;
+   }
+
+   .home-default-page {
+      font-size: 36px;
+   }
+
+   .home-default-page-search-button {
+      font-size: 20px;
    }
 
 }
@@ -575,6 +649,14 @@
    .home-add-button {
       width: 52px;
       height: 52px;
+   }
+
+   .home-default-page {
+      font-size: 41px;
+   }
+
+   .home-default-page-search-button {
+      font-size: 25px;
    }
 
 }
@@ -620,6 +702,14 @@
       height: 52px;
    }
 
+   .home-default-page {
+      font-size: 41px;
+   }
+
+   .home-default-page-search-button {
+      font-size: 25px;
+   }
+
 }
 
 
@@ -663,6 +753,14 @@
       width: 52px;
       height: 52px;
    }
+
+   .home-default-page {
+      font-size: 41px;
+   }
+
+   .home-default-page-search-button {
+      font-size: 25px;
+   }
 }
 
 /* iPhone 4 Landscape----------- */
@@ -699,6 +797,14 @@
    .home-add-button {
       width: 52px;
       height: 52px;
+   }
+
+   .home-default-page {
+      font-size: 26px;
+   }
+
+   .home-default-page-search-button {
+      font-size: 20px;
    }
 
 }
@@ -744,6 +850,14 @@
       font-size: 21px;
    }
 
+   .home-default-page {
+      font-size: 29px;
+   }
+
+   .home-default-page-search-button {
+      font-size: 20px;
+   }
+
 }
 
 /* Samsung Galaxy S5 landscape*/
@@ -783,6 +897,14 @@
       height: 52px;
    }
 
+   .home-default-page {
+      font-size: 29px;
+   }
+
+   .home-default-page-search-button {
+      font-size: 20px;
+   }
+
 }
 
 /* iPhone 6/7/8 Landscape */
@@ -819,6 +941,14 @@
    .home-add-button {
       width: 52px;
       height: 52px;
+   }
+
+   .home-default-page {
+      font-size: 36px;
+   }
+
+   .home-default-page-search-button {
+      font-size: 23px;
    }
 
 }
@@ -950,6 +1080,14 @@
       height: 70px;
    }
 
+   .home-default-page {
+      font-size: 42px;
+   }
+
+   .home-default-page-search-button {
+      font-size: 31px;
+   }
+
 }
 
 /* iPhone X Landscape */
@@ -1055,7 +1193,7 @@
    .home-single-group {
       width: 294px;
       height: 355px;
-  
+
    }
 
    .card-text-container {
@@ -1080,6 +1218,13 @@
       height: 90px;
    }
 
+   .home-default-page {
+      font-size: 55px;
+   }
+
+   .home-default-page-search-button {
+      font-size: 44px;
+   }
 
 }
 
@@ -1126,6 +1271,14 @@
       height: 70px;
    }
 
+   .home-default-page {
+      font-size: 52px;
+   }
+
+   .home-default-page-search-button {
+      font-size: 37px;
+   }
+
 }
 
 /* iPad Pro Landscape----------- */
@@ -1168,6 +1321,14 @@
    .home-add-button {
       width: 90px;
       height: 90px;
+   }
+
+   .home-default-page {
+      font-size: 61px;
+   }
+
+   .home-default-page-search-button {
+      font-size: 42px;
    }
 
 }
