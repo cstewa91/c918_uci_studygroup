@@ -87,23 +87,37 @@ class Home extends Component {
       } else if (!this.props.createdGroup && this.props.groups === 'created'){
          return (
             <Fragment>
-               <div> 
-                  You haven’t created any groups.                 
-                  <Link to="/create-group" className="btn btn-primary"> Create Group </Link>
+               <div className="home-default-page-container">
+                  <div className="home-default-page"> 
+                     You have not created any groups               
+                  </div>
+                  <div className="btn home-default-page-search-button">
+                     <Link to="/create-group" > Create Group </Link>
+                  </div>
                </div>
             </Fragment >
          )
       } else if (!this.props.createdGroup && this.props.groups === 'all' && !this.props.joinedGroup) {
          return (
             <Fragment>
-               <div> 
-                  You haven’t created any groups.                 
-                  <Link to="/create-group" className="btn btn-danger"> Create Group </Link>
+               <div className="home-default-page-container">
+                  <div className="home-default-page"> 
+                     You have not created or joined any groups               
+                  </div>
+                  <div className="home-default-page-search-button-container">
+                     <div className="btn home-default-page-search-button">
+                        <Link to="/create-group" > Create Group </Link>
+                     </div>
+                     <div className="btn home-default-page-search-button">
+                        <Link to="/search-group" > Search Groups </Link>
+                     </div>
+                  </div>
                </div>
             </Fragment >
          )
       }
    }
+   
    renderJoinedGroups = () => {
       if(this.props.joinedGroup){
          const listJoinedGroups = this.props.joined.map(item => {
@@ -147,18 +161,13 @@ class Home extends Component {
       } else if (!this.props.joinedGroup && this.props.groups === 'joined'){
          return (
             <Fragment>
-               <div> 
-                  You have no joined groups.                
-                  <Link to="/search-group" className="btn btn-primary"> Search Groups </Link>
-               </div>
-            </Fragment >
-         )
-      } else if (!this.props.createdGroup && this.props.groups === 'all' && !this.props.joinedGroup) {
-         return (
-            <Fragment>
-               <div> 
-               You have no joined groups.                   
-                  <Link to="/search-group" className="btn btn-danger"> Search Groups </Link>
+               <div className="home-default-page-container">
+                  <div className="home-default-page"> 
+                     You have not joined any groups               
+                  </div>
+                  <div className="btn home-default-page-search-button">
+                     <Link to="/search-group" > Search Groups </Link>
+                  </div>
                </div>
             </Fragment >
          )
