@@ -185,15 +185,23 @@
         white-space: nowrap;
         max-width: 75px;
     }
+
+    .search-filter-container {
+        margin: 1%;
+    }
 }
 
 @media only screen and (max-width: 330px){
+    .search-field {
+        width: 59%;
+    }
+
     .search-filter-button {
-        font-size: 16px;
+        font-size: 15px;
     }
     
     .reset-search-button {
-        font-size: 16px;
+        font-size: 15px;
     }
 }
 

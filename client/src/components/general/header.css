@@ -9,6 +9,10 @@ body {
     box-sizing: border-box;
 }
 
+*:focus {
+    outline: none;
+}
+
 .header-container {
     width: 100vw;
     /* height: 20vh; */
@@ -90,6 +94,7 @@ body {
     font-size: 0.75em;
     /* border: 0; */
     padding: 0;  
+    cursor: pointer;
 }
 
 .header-button:hover {

@@ -4,7 +4,8 @@ import {getGroupDetails} from '../../actions';
 import {joinGroup} from '../../actions';
 import worm from '../../assets/images/bookworm.png';
 import map from '../../assets/images/map_icon.png';
-
+import { showJoinedGroups } from '../../actions';
+import { getJoinedGroups } from '../../actions';
 import './group-modal.css';
 import {connect} from 'react-redux';
 
@@ -19,6 +20,8 @@ class GroupModal extends Component{
 
     joinStudyGroup = async () => {
         await this.props.joinGroup(this.props.id);
+        await this.props.showJoinedGroups();
+        await this.props.getJoinedGroups();
         this.props.history.push('/home');
     }
 
@@ -76,7 +79,7 @@ class GroupModal extends Component{
                     <div id="group-modal" className="basic-modal">
                         <div onClick={e => e.stopPropagation()} className="basic-modal-content">
                                 <div className="group-modal-close" onClick={this.close}>
-                                    x
+                                    &times;
                                 </div>
                             <div className="group-modal-details">
                                 <h1>Loading...</h1>
@@ -122,13 +125,11 @@ class GroupModal extends Component{
             return (
                 <Fragment>
                     {children}
-                    <div id="group-modal" className="basic-modal">
+                    <div id="group-modal" className="basic-modal" onClick={this.close}>
                         <div onClick={e => e.stopPropagation()} className="basic-modal-content">
-                            <Link to="/search-group">
                                 <div className="group-modal-close" onClick={this.close}>
-                                    x
+                                    &times;
                                 </div>
-                            </Link>
                             <div className="group-modal-details">
                                 {GroupData }
                             </div>
@@ -154,5 +155,7 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps,{
     getGroupDetails: getGroupDetails,
-    joinGroup: joinGroup
+    joinGroup: joinGroup,
+    showJoinedGroups: showJoinedGroups,
+    getJoinedGroups: getJoinedGroups
 })(GroupModal);

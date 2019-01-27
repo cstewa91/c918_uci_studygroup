@@ -6,7 +6,7 @@
 }
 
 .profile-header {
-    margin-top: 5%;
+    /* margin-top: 5%; */
     font-family: 'Gochi Hand';
     color: #ffe34c;
     font-weight: bolder;
@@ -466,7 +466,7 @@
     }
 
     .profile-title {
-        font-size: 45px;
+        font-size: 40px;
     }
  
     .profile-info {
@@ -537,7 +537,7 @@
     }
 
     .profile-title {
-        font-size: 50px;
+        font-size: 45px;
     }
 
     .profile-info {

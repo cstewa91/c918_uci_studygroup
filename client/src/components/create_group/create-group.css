@@ -6,7 +6,7 @@
 }
 
 .create-content .create-header {
-    margin: 5% 0 0 0;
+    margin-top: 2%;
 }
 
 .create-header {
@@ -29,7 +29,7 @@
 
 .create-header a:hover,
 .create-header a:focus {
-    color: red;
+    color: #1778BE;
     -webkit-transform: scale(1.2);
     -moz-transform: scale(1.2);
     transform: scale(1.2);
@@ -43,6 +43,7 @@
 }
 
 .create-return {
+    margin-top: 10px;
     background: none;
     display: flex;
     color: #1778BE;
@@ -103,6 +104,7 @@
 
 .create-form textarea:focus {
     border: 2px solid #ffe34c;
+    outline: none;
  }
 
 .create-form p {
@@ -163,7 +165,6 @@
 @media (min-width: 576px){
 
 .create-title {
-    margin: 0.3em;
     font-size: 35px;
 }
 
@@ -189,12 +190,7 @@
 @media (min-width: 768px) {
 
 .create-title {
-    margin: 0.3em;
     font-size: 45px;
-}
-
-.create-content .create-header {
-    height: 65px;
 }
 
 .create-form .row {
@@ -235,7 +231,6 @@ textarea {
 @media (min-width: 992px) {
 
 .create-title {
-    margin: 0.3em;
     font-size: 55px;
 }
 
@@ -269,7 +264,6 @@ textarea {
 @media (min-width: 1200px) {
 
 .create-title {
-    margin: 0.3em;
     font-size: 60px;
 }
 
@@ -303,7 +297,6 @@ textarea {
 @media (min-width: 300px) and (max-width: 575.98px) and (orientation: landscape) {
 
 .create-title {
-    margin: 0.3em;
     font-size: 30px;
 }
 
@@ -334,7 +327,6 @@ textarea {
 @media (min-width: 576px) and (max-width: 768.98px) and (orientation: landscape) {
 
 .create-title {
-    margin: 0.3em;
     font-size: 35px;
 }
 
@@ -369,7 +361,6 @@ textarea {
 }
 
 .create-title {
-    margin: 0.3em;
     font-size: 40px;
 }
 
@@ -404,7 +395,6 @@ textarea {
 }
 
 .create-title {
-    margin: 0.3em;
     font-size: 45px;
 }
 

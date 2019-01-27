@@ -27,18 +27,40 @@ export function filterResults(value){
 }
 
 export function getCreatedGroups() {
-   const resp = axios.get(API_GROUPS_CREATED);
-   return {
+   return async function (dispatch) {
+   const resp = await axios.get(API_GROUPS_CREATED);
+   if(resp.data.length > 0) {
+      dispatch({
       type: types.GET_CREATED_GROUPS,
       payload: resp
+      })
+   } else {
+      dispatch({
+         type: types.NO_CREATED_GROUPS,
+         })
+      }
    }
 }
 
 export function getJoinedGroups() {
-   const resp = axios.get(API_GROUPS_JOINED);
-   return {
-      type: types.GET_JOINED_GROUPS,
-      payload: resp
+   return async function (dispatch) {
+      const resp = await axios.get(API_GROUPS_JOINED);
+      const userInfo = await axios.get(API_USER);
+      for(let index = 0; index < resp.data.length; index++){
+         if (userInfo.data.id === resp.data[index].user_id) {
+            resp.data.splice(index)
+         }
+      }
+      if(resp.data.length > 0) {
+         dispatch({
+         type: types.GET_JOINED_GROUPS,
+         payload: resp
+         })
+      } else {
+         dispatch({
+            type: types.NO_JOINED_GROUPS,
+            })
+      }
    }
 }
 
@@ -206,5 +228,11 @@ export function showJoinedGroups() {
 export function showCreatedGroups() {
    return {
       type: types.SHOW_CREATED_GROUPS
+   }
+}
+
+export function showAllGroups() {
+   return {
+      type: types.SHOW_CREATED_JOINED_GROUPS
    }
 }

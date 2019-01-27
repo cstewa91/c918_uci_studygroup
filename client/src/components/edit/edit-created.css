@@ -29,7 +29,7 @@
 
 .create-header a:hover,
 .create-header a:focus {
-    color: red;
+    color: #1778BE;
     -webkit-transform: scale(1.2);
     -moz-transform: scale(1.2);
     transform: scale(1.2);
@@ -97,6 +97,11 @@
     background: #FFFBE2;
     border: 1px solid #ffe34c;
 }
+
+.edit-form textarea:focus {
+    border: 2px solid #ffe34c;
+    outline: none;
+ }
 
 .edit-form p {
     height: 10px;
@@ -183,10 +188,6 @@
 .edit-title {
     margin: 0.3em;
     font-size: 45px;
-}
-
-.edit-content .create-header {
-    height: 65px;
 }
 
 .edit-form .row {

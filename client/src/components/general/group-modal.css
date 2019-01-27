@@ -19,8 +19,10 @@
     padding: 25px;
     position: relative;
     width: 40%;
+    max-height: 80vh;
     z-index: 1;
     font-size: 16px;
+    overflow: scroll;
 }
 
 
@@ -34,37 +36,6 @@
 
 .basic-modal-content p {
     margin-bottom: .5em;
-}
-
-@media only screen and (max-width: 600px) {
-    .basic-modal-content h1 {
-        font-size: 20px;
-    }
-
-    .basic-modal-content {
-        font-size: 15px;
-        width: 80%;
-    }
-
-    .modal-group-info p {
-        margin-bottom: 0;
-    }
-}
-
-@media only screen and (min-width: 600px) {
-    .basic-modal-content h1 {
-        font-size: 30px;
-    }
-
-    .basic-modal-content {
-        font-size: 20px;
-        width: 80%;
-        max-width: 700px;
-    }
-
-    .modal-group-info p {
-        margin-bottom: 0;
-    }
 }
 
 .modal-map-button {
@@ -104,6 +75,7 @@
     position: absolute;
     top: 10px;
     right: 10px;
+    font-size: 25px;
     border-radius: 50%;
     font-weight: bold;
     color: #dedede;
@@ -136,22 +108,39 @@
     justify-content: space-around;
 }
 
-/* .search-filter-button {
-    text-shadow: -1px 2px 2px black, 0 1px black, 1px 0 black, 0 -1px black;
-    border-radius: 10px;
-    background: linear-gradient(177.37deg, rgba(255, 255, 255, 0) 48.81%, rgba(255, 255, 255, 0.39) 91.37%), #1778BE; 
-    font-family: 'Gochi Hand';
-    font-size: 1.5em;
-    color: #FFFFFF;
-    border: 1px solid #1778BE;
-    box-sizing: border-box;
-    vertical-align: middle;
-    cursor: pointer;
-} */
+@media only screen and (max-width: 600px) {
+    .basic-modal-content h1 {
+        font-size: 20px;
+    }
 
+    .basic-modal-content {
+        font-size: 15px;
+        width: 80%;
+    }
 
+    .modal-group-info p {
+        margin-bottom: 0;
+    }
+}
 
-/* .group-modal-close:hover {
-    color: #ff0000;
-    background-color: #dedede;
-} */
+@media only screen and (min-width: 600px) {
+    .basic-modal-content h1 {
+        font-size: 30px;
+    }
+
+    .basic-modal-content {
+        font-size: 20px;
+        width: 80%;
+        max-width: 700px;
+    }
+
+    .modal-group-info p {
+        margin-bottom: 0;
+    }
+}
+
+@media only screen and (max-width: 330px){
+    .group-modal-close {
+        font-size: 20px;
+    }
+}

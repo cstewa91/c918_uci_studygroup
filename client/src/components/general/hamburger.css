@@ -78,11 +78,6 @@ span {
     
 }
 
-.hamburger-nav li:hover {
-    box-shadow: 0 0 6px #FFFFFF;
-    background-color: #006DAA;
-}
-
 .hamburger-nav a {
     cursor: pointer;
     color: #FFFFFF;
@@ -239,6 +234,14 @@ span {
     width: 48%;
 }
 
+/* Reordering hamburger link order on horizontal layout */
+
+ul :nth-child(1) { order:1; }
+ul :nth-child(2) { order:2; }
+ul :nth-child(3) { order:4; }
+ul :nth-child(4) { order:5; }
+ul :nth-child(5) { order:3; }
+
 }
 
 
@@ -271,18 +274,17 @@ span {
     height: 25%;
 }
 
+/* Reordering hamburger link order on horizontal layout */
+
+ul :nth-child(1) { order:1; }
+ul :nth-child(2) { order:2; }
+ul :nth-child(3) { order:4; }
+ul :nth-child(4) { order:5; }
+ul :nth-child(5) { order:3; }
+
+
 }
 
-@media (min-width: 768px) {
-    
-.hamburger-nav {
-    display: none;
-}
-
-.backdrop {
-    display: none;
-}
-}
 
 @media (min-width: 768px) and (orientation: landscape) {
 
@@ -293,29 +295,6 @@ span {
 .backdrop {
     display: none;
 }
+
+
 }
-
-/* @media (max-width: 767.98px) and (orientation: landscape) {
-
-    .hamburger-menu {
-        font-size: 1.75em;
-    }
-
-    .hamburger-nav {
-        width: 70%;
-        max-width: 600px;
-
-    }
-
-    .hamburger-links a {
-        width: 65%;
-        text-align: start;
-        font-size: 1.25em;
-    }
-
-    .hamburger-nav ul {
-        margin: 0;
-        height: 50%;
-    }
-
-} */
