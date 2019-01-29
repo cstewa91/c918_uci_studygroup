@@ -122,6 +122,21 @@
     padding-right: .25em;
 }
 
+.search-results-body-cell-all {
+    padding-top: .25em;
+    padding-bottom: .25em;
+    padding-left: .25em;
+    padding-right: .25em;
+    column-span: 5;
+}
+
+.no-results {
+    font-family: "Roboto", sans-serif;
+    margin: 1%;
+    -webkit-column-span: all;
+    column-span: all;
+}
+
 @media only screen and (max-width: 700px){
 
     .search-field {
