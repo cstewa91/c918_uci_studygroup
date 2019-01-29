@@ -22,7 +22,6 @@ class GroupModal extends Component{
 
     componentDidMount(){
         document.addEventListener("keydown", this.escKeyClose, false);
-        console.log(this.props);
     }
 
     componentWillUnmount(){
