@@ -66,6 +66,11 @@ class GroupModal extends Component{
             const joinedTime = splitTime.join(':');
             const noonTime = joinedTime + ' PM';
             return noonTime;
+        } else if(splitTime[0] === '00'){
+            splitTime[0] = 12;
+            const joinedTime = splitTime.join(':');
+            const midnightTime = joinedTime + ' AM';
+            return midnightTime;
         } else {
             const hour = splitTime[0];
             splitTime[0] = hour;
