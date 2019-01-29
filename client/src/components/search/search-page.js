@@ -20,6 +20,7 @@ class SearchGroups extends Component{
     state = {
         hamburgerOpen: false,
         searched: false,
+        searchValue: ''
     }
 
     toggleHamburger = () => {
@@ -51,6 +52,10 @@ class SearchGroups extends Component{
         if(!values.filter){
             this.setState({searched: false})
         }
+        this.setState({
+            searchValue: values
+        });
+        console.log(this.state);
         this.props.filterResults(values.filter);
     }
 
@@ -67,14 +72,12 @@ class SearchGroups extends Component{
     renderResults = () => {
         
         if(!this.props.results.length && this.state.searched){
-            return <p>No results match your search.</p>;
+            return (
+                <div className="no-results">No results match the search term "{this.state.searchValue.filter}."</div>
+            );
         }
         
         const resultType = (this.props.results && this.props.results.length) ? "results" : "all";
-
-
-        //working filter
-        //const resultType = (this.props.results && this.props.results.length) ? "results" : "all";
         
         let results = this.props[resultType].map(item => {
             const newDate = new Date(item.date);
