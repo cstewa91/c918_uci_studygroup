@@ -14,8 +14,18 @@ class GroupModal extends Component{
         show: false
     };
 
-    componentDidMount(){
+    escKeyClose = (event) => {
+        if(event.keyCode === 27){
+            this.setState({show: false});
+        }
+    }
 
+    componentDidMount(){
+        document.addEventListener("keydown", this.escKeyClose, false);
+    }
+
+    componentWillUnmount(){
+        document.removeEventListener("keydown", this.escKeyClose, false);
     }
 
     joinStudyGroup = async () => {
@@ -125,7 +135,7 @@ class GroupModal extends Component{
             return (
                 <Fragment>
                     {children}
-                    <div id="group-modal" className="basic-modal" onClick={this.close}>
+                    <div id="group-modal" tabIndex="-1" className="basic-modal" onClick={this.close}>
                         <div onClick={e => e.stopPropagation()} className="basic-modal-content">
                                 <div className="group-modal-close" onClick={this.close}>
                                     &times;
