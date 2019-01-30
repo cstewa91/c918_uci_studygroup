@@ -13,7 +13,7 @@ connection.connect(err => {
 
 module.exports = function(app) {
   app.use(sanitizeBody);
-  app.use(validateToken);
+  app.use(authorizeRoute);
 
   // search groups 
   app.get('/api/groups', (req, res) => {
@@ -623,7 +623,9 @@ function validateToken(req, res, next) {
   const query = `SELECT user_id FROM sessions WHERE token = '${token}'`;
 
   if (token) {
+    console.log(token);
     connection.query(query, (err, results) => {
+      console.log(results);
       if (!err && results[0].user_id) {
         req.body.user_id = results[0].user_id;
       } 
@@ -646,9 +648,9 @@ function authorizeRoute(req, res, next) {
     { route: /\/api\/groups\/name\/.+/, method: 'GET' },            // api/groups/name/:name
     { route: /\/api\/login/, method: 'POST' },                      // api/login
     { route: /\/api\/users$/, method: 'POST' },                     // api/users
-    { route: /\/api\/groups$/, method: 'GET' },                     // api/groups
+    // { route: /\/api\/groups$/, method: 'GET' },                     // api/groups
     { route: /\/api\/groups\/details\/.+/, method: 'GET' },         // api/groups/details/:group_id_name
-    { route: /\/api\/groups\/filter\/.+/, method: 'GET' },          // api/groups/filter/:phrase
+    // { route: /\/api\/groups\/filter\/.+/, method: 'GET' },          // api/groups/filter/:phrase
   ]
   const isExcludedRoute = excludedRoutes.some(excludedRoute => {
     return excludedRoute.route.test(route) && excludedRoute.method === req.method;

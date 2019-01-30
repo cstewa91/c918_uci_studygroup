@@ -43,6 +43,7 @@ export function getCreatedGroups() {
 }
 
 export function getJoinedGroups() {
+   console.log('get joined groups', this.props);
    return async function (dispatch) {
       const resp = await axios.get(API_GROUPS_JOINED);
       const userInfo = await axios.get(API_USER);
