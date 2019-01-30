@@ -1,7 +1,7 @@
 import types from './types';
 import axios from 'axios';
 
-const API_GROUPS_JOINED = '/api/groups/joined/';
+const API_GROUPS_JOINED = '/api/groups/joined';
 const API_GROUPS_CREATED = '/api/groups/created/';
 const API_GROUPS = '/api/groups';
 const API_LOGIN = '/api/login';
@@ -29,6 +29,7 @@ export function filterResults(value){
 export function getCreatedGroups() {
    return async function (dispatch) {
    const resp = await axios.get(API_GROUPS_CREATED);
+   console.log(resp)
    if(resp.data.length > 0) {
       dispatch({
       type: types.GET_CREATED_GROUPS,
@@ -43,13 +44,12 @@ export function getCreatedGroups() {
 }
 
 export function getJoinedGroups() {
-   console.log('get joined groups', this.props);
    return async function (dispatch) {
       const resp = await axios.get(API_GROUPS_JOINED);
       const userInfo = await axios.get(API_USER);
       for(let index = 0; index < resp.data.length; index++){
          if (userInfo.data.id === resp.data[index].user_id) {
-            resp.data.splice(index)
+            resp.data.splice(index, 1)
          }
       }
       if(resp.data.length > 0) {
