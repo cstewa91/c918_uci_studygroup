@@ -374,11 +374,63 @@ module.exports = function(app) {
 
   // leave group  
   app.delete('/api/groups/leave', (req, res) => {
-    const query = `DELETE FROM group_members
-                    WHERE user_id = ${req.body.user_id}
-                    AND group_id = ${req.body['`group_id`']}`;
+    const user_id = req.body.user_id
+    const group_id = req.body['`group_id`'];
 
-    sendQuery('delete', query, res);
+    // remove user from group
+    const leaveQuery = `DELETE FROM group_members
+                        WHERE user_id = ${user_id}
+                        AND group_id = ${group_id}`;
+
+    connection.query(leaveQuery, (err, results) => {
+      if (err) {
+        console.log(err);
+        return res.send('Database query error');
+      }
+
+      // find host_id by group_id
+      const hostQuery = `SELECT user_id 
+                          FROM groups
+                          WHERE group_id = ${group_id}`;
+
+      connection.query(hostQuery, (err, results) => {
+        if (err) {
+          console.log(err);
+          return res.send('Database query error');
+        }
+
+        // if host_id = user_id, get earliest timestamp member
+        if (user_id === results[0].user_id) {
+          const nextHostQuery = `SELECT user_id, MIN(timestamp) FROM group_members
+                                  WHERE group_id = ${group_id}`
+
+          connection.query(nextHostQuery, (err, results) => {
+            if (err) {
+              console.log(err);
+              return res.send('Database query error');
+            }
+
+            // delete group if no other members
+            if (results.length === 0) {
+              const deleteGroupQuery = `DELETE from groups
+                                        WHERE group_id = ${group_id}`;
+
+              sendQuery('delete', deleteGroupQuery, res);    
+
+            // else, replace host_id with earliest member
+            } else {
+              const nextHostId = results[0].user_id;
+
+              const replaceHostQuery = `UPDATE groups 
+                                        SET user_id = ${nextHostId}
+                                        WHERE group_id = ${group_id}`;
+              
+              sendQuery('put', replaceHostQuery, res);                        
+            }
+          });
+        } 
+      });
+    });
   });
 
   // kick from group  
