@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 14, 2018 at 05:50 AM
+-- Generation Time: Jan 30, 2019 at 08:27 AM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.0.13
 
@@ -49,9 +49,8 @@ CREATE TABLE IF NOT EXISTS `groups` (
 --
 
 INSERT INTO `groups` (`id`, `user_id`, `name`, `location`, `subject`, `course`, `date`, `start_time`, `end_time`, `max_group_size`, `description`) VALUES
-(1, 1, 'the awesome group', 'conference room 202', 'ENG', '202', NULL, '06:00:00', '07:00:00', 4, 'Preparing for upcoming exam.'),
-(2, 1, 'the best group', 'conference room 201', 'BIO', '101', NULL, '06:00:00', '07:00:00', 10, 'Preparing to become a doctor.'),
-(3, 1, 'the second best group', 'Random Hall 104', 'ECON', '101', NULL, '06:00:00', '08:00:00', 15, 'Preparing for economic depression.'),
+(2, 34, 'the best group', 'conference room 201', 'BIO', '101', NULL, '06:00:00', '07:00:00', 10, 'Preparing to become a doctor.'),
+(3, 89, 'the second best group', 'Random Hall 104', 'ECON', '101', NULL, '06:00:00', '08:00:00', 15, 'Preparing for economic depression.'),
 (13, 0, 'We Study Long Time', 'Starbucks', 'coffee', '101', NULL, '00:00:00', '00:00:00', 10, 'we love coffee'),
 (14, 89, 'the divines', 'heaven', 'theology', '9000', '0000-00-00', '06:00:00', '08:00:00', 1000, 'repent for you sins'),
 (15, 89, 'the divines b', 'heaven', 'theology', '9000', '0000-00-00', '06:00:00', '08:00:00', 1000, 'repent for you sins'),
@@ -67,19 +66,16 @@ INSERT INTO `groups` (`id`, `user_id`, `name`, `location`, `subject`, `course`, 
 CREATE TABLE IF NOT EXISTS `group_members` (
   `id` int(11) NOT NULL,
   `group_id` int(11) unsigned NOT NULL,
-  `user_id` int(11) unsigned NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+  `user_id` int(11) unsigned NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `group_members`
 --
 
-INSERT INTO `group_members` (`id`, `group_id`, `user_id`) VALUES
-(1, 1, 1),
-(2, 2, 1),
-(7, 3, 1),
-(33, 3, 38),
-(34, 3, 90);
+INSERT INTO `group_members` (`id`, `group_id`, `user_id`, `timestamp`) VALUES
+(54, 2, 34, '2019-01-30 08:22:35');
 
 -- --------------------------------------------------------
 
@@ -200,7 +196,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `group_members`
 --
 ALTER TABLE `group_members`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=55;
 --
 -- AUTO_INCREMENT for table `sessions`
 --
