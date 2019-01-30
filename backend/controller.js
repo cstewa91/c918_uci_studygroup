@@ -13,7 +13,7 @@ connection.connect(err => {
 
 module.exports = function(app) {
   app.use(sanitizeBody);
-  // app.use(validateToken);
+  app.use(validateToken);
 
   // search groups 
   app.get('/api/groups', (req, res) => {
