@@ -17,13 +17,49 @@ module.exports = function(app) {
 
   // search groups 
   app.get('/api/groups', (req, res) => {
-    const query = `SELECT g.*, COUNT(gm.group_id) AS current_group_size 
+    const query = `  SELECT g.*,
+                      COUNT(gm.group_id) AS current_group_size,
+                      CASE
+                        WHEN j.group_id IS NULL THEN 'False'
+                        ELSE 'True' end AS joined
+                      FROM groups AS g
+                      LEFT JOIN group_members AS gm
+                      ON g.id = gm.group_id
+                      LEFT JOIN (
+                        SELECT group_id
+                        FROM group_members 
+                        WHERE user_id = ${req.body.user_id}
+                      ) AS j
+                      ON g.id = j.group_id
+                      WHERE ADDTIME(date, end_time) > NOW()
+                      GROUP BY g.id
+                      ORDER by end_time ASC`;
+
+    sendQuery('get', query, res);
+  });
+
+  // filter groups
+  app.get('/api/groups/filter/:phrase', sanitizeParams, (req, res) => {
+    const phrase = req.params['`phrase`'];
+    const query = `SELECT g.*,
+                    COUNT(gm.group_id) AS current_group_size,
+                    CASE
+                      WHEN j.group_id IS NULL THEN 'False'
+                      ELSE 'True' end AS joined
                     FROM groups AS g
-                    LEFT JOIN group_members AS gm 
+                    LEFT JOIN group_members AS gm
                     ON g.id = gm.group_id
-                    WHERE ADDTIME(date, end_time) > NOW()
+                    LEFT JOIN (
+                      SELECT group_id
+                      FROM group_members 
+                      WHERE user_id = ${req.body.user_id}
+                    ) AS j
+                    ON g.id = j.group_id
+                    WHERE(subject = ${ phrase}
+                    OR name LIKE "${phrase.replace(/'/g, '%')}")
+                    AND ADDTIME(date, end_time) > NOW()
                     GROUP BY g.id
-                    ORDER by end_time ASC`;
+                    ORDER BY date ASC`;
 
     sendQuery('get', query, res);
   });
@@ -48,22 +84,6 @@ module.exports = function(app) {
 
       return res.send(results[0]);
     });
-  });
-
-  // filter groups
-  app.get('/api/groups/filter/:phrase', sanitizeParams, (req, res) => {
-    const phrase = req.params['`phrase`'];
-    const query = `SELECT g.*, COUNT(gm.group_id) AS current_group_size 
-                    FROM groups AS g
-                    LEFT JOIN group_members AS gm 
-                    ON g.id = gm.group_id
-                    WHERE (subject = ${phrase}
-                    OR name LIKE "${phrase.replace(/'/g, '%')}")
-                    AND ADDTIME(date, end_time) > NOW()
-                    GROUP BY g.id
-                    ORDER BY date ASC`;
-
-    sendQuery('get', query, res);
   });
 
   // joined groups  
@@ -537,12 +557,33 @@ function sanitizeBody(req, res, next) {
 }
 
 /**
- * Middleware - Validates user token and if validated, adds authenticated_user_id to body for requests
+ * Middleware - adds user_id to body if cookie contains valid token
  * @param {object} req 
  * @param {object} res 
  * @param {function} next 
  */
 function validateToken(req, res, next) {
+  const token = req.cookies.token;
+  const query = `SELECT user_id FROM sessions WHERE token = '${token}'`;
+
+  if (token) {
+    connection.query(query, (err, results) => {
+      if (!err && results[0].user_id) {
+        req.body.user_id = results[0].user_id;
+      } 
+
+      return next();
+    });
+  } 
+} 
+
+/**
+ * REPLACED WITH validateToken: Middleware - Authorizes users for certain API routes only if logged in
+ * @param {object} req
+ * @param {object} res
+ * @param {function} next
+ */
+function authorizeRoute(req, res, next) {
   const route = req.url;
   const excludedRoutes = [
     { route: /\/api\/users\/.+/, method: 'GET' },                   // api/users/username/:username, api/users/email/:email 
