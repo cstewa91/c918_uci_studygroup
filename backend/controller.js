@@ -13,7 +13,7 @@ connection.connect(err => {
 
 module.exports = function(app) {
   app.use(sanitizeBody);
-  app.use(validateToken);
+  // app.use(validateToken);
 
   // search groups 
   app.get('/api/groups', (req, res) => {
@@ -374,7 +374,7 @@ module.exports = function(app) {
 
   // leave group  
   app.delete('/api/groups/leave', (req, res) => {
-    const user_id = req.body.user_id
+    const user_id = req.body['`user_id`'].replace(/'/g, '');
     const group_id = req.body['`group_id`'];
 
     // remove user from group
@@ -391,7 +391,7 @@ module.exports = function(app) {
       // find host_id by group_id
       const hostQuery = `SELECT user_id 
                           FROM groups
-                          WHERE group_id = ${group_id}`;
+                          WHERE id = ${group_id}`;
 
       connection.query(hostQuery, (err, results) => {
         if (err) {
@@ -400,9 +400,11 @@ module.exports = function(app) {
         }
 
         // if host_id = user_id, get earliest timestamp member
-        if (user_id === results[0].user_id) {
-          const nextHostQuery = `SELECT user_id, MIN(timestamp) FROM group_members
-                                  WHERE group_id = ${group_id}`
+        if (user_id == results[0].user_id) {
+          const nextHostQuery = `SELECT user_id FROM group_members
+                                  WHERE group_id = ${group_id}
+                                  ORDER BY timestamp ASC
+                                  LIMIT 1`
 
           connection.query(nextHostQuery, (err, results) => {
             if (err) {
@@ -413,7 +415,7 @@ module.exports = function(app) {
             // delete group if no other members
             if (results.length === 0) {
               const deleteGroupQuery = `DELETE from groups
-                                        WHERE group_id = ${group_id}`;
+                                        WHERE id = ${group_id}`;
 
               sendQuery('delete', deleteGroupQuery, res);    
 
@@ -423,11 +425,13 @@ module.exports = function(app) {
 
               const replaceHostQuery = `UPDATE groups 
                                         SET user_id = ${nextHostId}
-                                        WHERE group_id = ${group_id}`;
+                                        WHERE id = ${group_id}`;
               
               sendQuery('put', replaceHostQuery, res);                        
             }
           });
+        } else {
+          res.send({ success: true});
         } 
       });
     });
