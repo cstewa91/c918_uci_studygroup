@@ -63,6 +63,14 @@ class SearchGroups extends Component{
         this.props.getAllGroups();
     }
     
+    joinedGrpMarker(){
+        const allGroups = this.props.all;
+        for(i = 0; i < allGroups.length; i++){
+            if(allGroups[i].joined === "True"){
+                
+            }
+        }
+    }
 
     componentDidUpdate() {
 
@@ -117,6 +125,7 @@ class SearchGroups extends Component{
     }
 
     render() {
+        console.log(this.props.all);
 
         let backdrop;
 
