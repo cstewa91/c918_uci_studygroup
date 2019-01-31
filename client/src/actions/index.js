@@ -29,7 +29,6 @@ export function filterResults(value){
 export function getCreatedGroups() {
    return async function (dispatch) {
    const resp = await axios.get(API_GROUPS_CREATED);
-   console.log(resp)
    if(resp.data.length > 0) {
       dispatch({
       type: types.GET_CREATED_GROUPS,
