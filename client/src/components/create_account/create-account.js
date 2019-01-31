@@ -54,12 +54,12 @@ class CreateNewAccount extends Component {
                   </div>
                   <div className="create-account-input-padding col-8">
                      <Field name="username" label="Username" maxLength='25' component={Input} inputClassName="create-account-user-input" errorClassName="create-account-error" />
+                     <p className="create-account-error">{invalidUsername}</p>
                   </div>
-                  <p className="create-account-error">{invalidUsername}</p>
                   <div className="create-account-input-padding col-8">
                      <Field name="email" label="E-mail" maxLength='40' component={Input} inputClassName="create-account-user-input" errorClassName="create-account-error" />
+                     <p className="create-account-error">{invalidEmail}</p>
                   </div>
-                  <p className="create-account-error">{invalidEmail}</p>
                   <div className="create-account-input-padding col-8">
                      <Field name="password" label="Password" maxLength='30' component={Input} type="password" inputClassName="create-account-user-input" errorClassName="create-account-error" />
                   </div>
