@@ -13,17 +13,53 @@ connection.connect(err => {
 
 module.exports = function(app) {
   app.use(sanitizeBody);
-  app.use(validateToken);
+  app.use(authorizeRoute);
 
   // search groups 
   app.get('/api/groups', (req, res) => {
-    const query = `SELECT g.*, COUNT(gm.group_id) AS current_group_size 
+    const query = `  SELECT g.*,
+                      COUNT(gm.group_id) AS current_group_size,
+                      CASE
+                        WHEN j.group_id IS NULL THEN 'False'
+                        ELSE 'True' end AS joined
+                      FROM groups AS g
+                      LEFT JOIN group_members AS gm
+                      ON g.id = gm.group_id
+                      LEFT JOIN (
+                        SELECT group_id
+                        FROM group_members 
+                        WHERE user_id = ${req.body.user_id}
+                      ) AS j
+                      ON g.id = j.group_id
+                      WHERE ADDTIME(date, end_time) > NOW()
+                      GROUP BY g.id
+                      ORDER by end_time ASC`;
+
+    sendQuery('get', query, res);
+  });
+
+  // filter groups
+  app.get('/api/groups/filter/:phrase', sanitizeParams, (req, res) => {
+    const phrase = req.params['`phrase`'];
+    const query = `SELECT g.*,
+                    COUNT(gm.group_id) AS current_group_size,
+                    CASE
+                      WHEN j.group_id IS NULL THEN 'False'
+                      ELSE 'True' end AS joined
                     FROM groups AS g
-                    LEFT JOIN group_members AS gm 
+                    LEFT JOIN group_members AS gm
                     ON g.id = gm.group_id
-                    WHERE ADDTIME(date, end_time) > NOW()
+                    LEFT JOIN (
+                      SELECT group_id
+                      FROM group_members 
+                      WHERE user_id = ${req.body.user_id}
+                    ) AS j
+                    ON g.id = j.group_id
+                    WHERE(subject = ${ phrase}
+                    OR name LIKE "${phrase.replace(/'/g, '%')}")
+                    AND ADDTIME(date, end_time) > NOW()
                     GROUP BY g.id
-                    ORDER by end_time ASC`;
+                    ORDER BY date ASC`;
 
     sendQuery('get', query, res);
   });
@@ -48,22 +84,6 @@ module.exports = function(app) {
 
       return res.send(results[0]);
     });
-  });
-
-  // filter groups
-  app.get('/api/groups/filter/:phrase', sanitizeParams, (req, res) => {
-    const phrase = req.params['`phrase`'];
-    const query = `SELECT g.*, COUNT(gm.group_id) AS current_group_size 
-                    FROM groups AS g
-                    LEFT JOIN group_members AS gm 
-                    ON g.id = gm.group_id
-                    WHERE (subject = ${phrase}
-                    OR name LIKE "${phrase.replace(/'/g, '%')}")
-                    AND ADDTIME(date, end_time) > NOW()
-                    GROUP BY g.id
-                    ORDER BY date ASC`;
-
-    sendQuery('get', query, res);
   });
 
   // joined groups  
@@ -354,11 +374,67 @@ module.exports = function(app) {
 
   // leave group  
   app.delete('/api/groups/leave', (req, res) => {
-    const query = `DELETE FROM group_members
-                    WHERE user_id = ${req.body.user_id}
-                    AND group_id = ${req.body['`group_id`']}`;
+    const user_id = req.body['`user_id`'].replace(/'/g, '');
+    const group_id = req.body['`group_id`'];
 
-    sendQuery('delete', query, res);
+    // remove user from group
+    const leaveQuery = `DELETE FROM group_members
+                        WHERE user_id = ${user_id}
+                        AND group_id = ${group_id}`;
+
+    connection.query(leaveQuery, (err, results) => {
+      if (err) {
+        console.log(err);
+        return res.send('Database query error');
+      }
+
+      // find host_id by group_id
+      const hostQuery = `SELECT user_id 
+                          FROM groups
+                          WHERE id = ${group_id}`;
+
+      connection.query(hostQuery, (err, results) => {
+        if (err) {
+          console.log(err);
+          return res.send('Database query error');
+        }
+
+        // if host_id = user_id, get earliest timestamp member
+        if (user_id == results[0].user_id) {
+          const nextHostQuery = `SELECT user_id FROM group_members
+                                  WHERE group_id = ${group_id}
+                                  ORDER BY timestamp ASC
+                                  LIMIT 1`
+
+          connection.query(nextHostQuery, (err, results) => {
+            if (err) {
+              console.log(err);
+              return res.send('Database query error');
+            }
+
+            // delete group if no other members
+            if (results.length === 0) {
+              const deleteGroupQuery = `DELETE from groups
+                                        WHERE id = ${group_id}`;
+
+              sendQuery('delete', deleteGroupQuery, res);    
+
+            // else, replace host_id with earliest member
+            } else {
+              const nextHostId = results[0].user_id;
+
+              const replaceHostQuery = `UPDATE groups 
+                                        SET user_id = ${nextHostId}
+                                        WHERE id = ${group_id}`;
+              
+              sendQuery('put', replaceHostQuery, res);                        
+            }
+          });
+        } else {
+          res.send({ success: true});
+        } 
+      });
+    });
   });
 
   // kick from group  
@@ -537,21 +613,44 @@ function sanitizeBody(req, res, next) {
 }
 
 /**
- * Middleware - Validates user token and if validated, adds authenticated_user_id to body for requests
+ * Middleware - adds user_id to body if cookie contains valid token
  * @param {object} req 
  * @param {object} res 
  * @param {function} next 
  */
 function validateToken(req, res, next) {
+  const token = req.cookies.token;
+  const query = `SELECT user_id FROM sessions WHERE token = '${token}'`;
+
+  if (token) {
+    console.log(token);
+    connection.query(query, (err, results) => {
+      console.log(results);
+      if (!err && results[0].user_id) {
+        req.body.user_id = results[0].user_id;
+      } 
+
+      return next();
+    });
+  } 
+} 
+
+/**
+ * REPLACED WITH validateToken: Middleware - Authorizes users for certain API routes only if logged in
+ * @param {object} req
+ * @param {object} res
+ * @param {function} next
+ */
+function authorizeRoute(req, res, next) {
   const route = req.url;
   const excludedRoutes = [
     { route: /\/api\/users\/.+/, method: 'GET' },                   // api/users/username/:username, api/users/email/:email 
     { route: /\/api\/groups\/name\/.+/, method: 'GET' },            // api/groups/name/:name
     { route: /\/api\/login/, method: 'POST' },                      // api/login
     { route: /\/api\/users$/, method: 'POST' },                     // api/users
-    { route: /\/api\/groups$/, method: 'GET' },                     // api/groups
+    // { route: /\/api\/groups$/, method: 'GET' },                     // api/groups
     { route: /\/api\/groups\/details\/.+/, method: 'GET' },         // api/groups/details/:group_id_name
-    { route: /\/api\/groups\/filter\/.+/, method: 'GET' },          // api/groups/filter/:phrase
+    // { route: /\/api\/groups\/filter\/.+/, method: 'GET' },          // api/groups/filter/:phrase
   ]
   const isExcludedRoute = excludedRoutes.some(excludedRoute => {
     return excludedRoute.route.test(route) && excludedRoute.method === req.method;

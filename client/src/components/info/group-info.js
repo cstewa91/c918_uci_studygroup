@@ -83,6 +83,7 @@ class GroupInfo extends Component{
     adjustTime = (time) => {
         const splicedTime = time.slice(0,5);
         const splitTime = splicedTime.split(':');
+        console.log('splitTime', splitTime);
         if(splitTime[0] > 12){
             const hour = splitTime[0] - 12;
             splitTime[0] = hour;
@@ -93,6 +94,11 @@ class GroupInfo extends Component{
             const joinedTime = splitTime.join(':');
             const noonTime = joinedTime + ' PM';
             return noonTime;
+        } else if(splitTime[0] === '00'){
+            splitTime[0] = 12;
+            const joinedTime = splitTime.join(':');
+            const midnightTime = joinedTime + ' AM';
+            return midnightTime;
         } else {
             const hour = splitTime[0];
             splitTime[0] = hour;

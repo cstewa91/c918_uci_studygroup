@@ -1,7 +1,7 @@
 import types from './types';
 import axios from 'axios';
 
-const API_GROUPS_JOINED = '/api/groups/joined/';
+const API_GROUPS_JOINED = '/api/groups/joined';
 const API_GROUPS_CREATED = '/api/groups/created/';
 const API_GROUPS = '/api/groups';
 const API_LOGIN = '/api/login';
@@ -48,7 +48,7 @@ export function getJoinedGroups() {
       const userInfo = await axios.get(API_USER);
       for(let index = 0; index < resp.data.length; index++){
          if (userInfo.data.id === resp.data[index].user_id) {
-            resp.data.splice(index)
+            resp.data.splice(index, 1)
          }
       }
       if(resp.data.length > 0) {

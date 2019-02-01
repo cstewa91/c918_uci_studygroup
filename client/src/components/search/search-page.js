@@ -20,6 +20,7 @@ class SearchGroups extends Component{
     state = {
         hamburgerOpen: false,
         searched: false,
+        searchValue: ''
     }
 
     toggleHamburger = () => {
@@ -51,30 +52,26 @@ class SearchGroups extends Component{
         if(!values.filter){
             this.setState({searched: false})
         }
+        this.setState({
+            searchValue: values
+        });
+        console.log(this.state);
         this.props.filterResults(values.filter);
     }
 
     componentDidMount() {
         this.props.getAllGroups();
     }
-    
-
-    componentDidUpdate() {
-
-
-    }
 
     renderResults = () => {
         
         if(!this.props.results.length && this.state.searched){
-            return <p>No results match your search.</p>;
+            return (
+                <div className="no-results">No results match the search term "{this.state.searchValue.filter}."</div>
+            );
         }
         
         const resultType = (this.props.results && this.props.results.length) ? "results" : "all";
-
-
-        //working filter
-        //const resultType = (this.props.results && this.props.results.length) ? "results" : "all";
         
         let results = this.props[resultType].map(item => {
             const newDate = new Date(item.date);
@@ -86,27 +83,73 @@ class SearchGroups extends Component{
             const endingTime = endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
             const startDate = newDate.toLocaleDateString([], { month: '2-digit', day: '2-digit' });
 
-            return (
-                <GroupModal key={item.id} history={this.props.history} id={item.id} description={item.description}>
-                    <Fragment key={item.id}>
-                        <div className="search-results-body-cell search-results-body-cell-left">
-                            {item.subject}{item.course}
-                        </div>
-                        <div className="search-results-body-cell search-results-body-cell-center search-results-subject-data">
-                            {item.name}
-                        </div>
-                        <div className="search-results-body-cell search-results-body-cell-center">
-                            {startDate}
-                        </div>
-                        <div className="search-results-body-cell search-results-body-cell-center">
-                            {startingTime}
-                        </div>
-                        <div className="search-results-body-cell search-results-body-cell-right">
-                            {<sup>{item.current_group_size}</sup>}&frasl;{<sub>{item.max_group_size}</sub>}
-                        </div>
-                    </Fragment>
-                </GroupModal>
-            )
+            if(item.joined === "True"){
+                return (
+                    <GroupModal key={item.id} history={this.props.history} id={item.id} description={item.description}>
+                        <Fragment key={item.id}>
+                            <div className="search-results-body-cell search-results-body-cell-left">
+                                {item.subject}{item.course}
+                            </div>
+                            <div className="search-results-body-cell search-results-body-cell-center search-results-subject-data">
+                                {item.name}
+                            </div>
+                            <div className="search-results-body-cell search-results-body-cell-center">
+                                {startDate}
+                            </div>
+                            <div className="search-results-body-cell search-results-body-cell-center">
+                                {startingTime}
+                            </div>
+                            <div className="search-results-body-cell search-results-body-cell-right">
+                                {<sup>{item.current_group_size}</sup>}&frasl;{<sub>{item.max_group_size}</sub>}<span>&#9733;</span>
+                            </div>
+                        </Fragment>
+                    </GroupModal>
+                )
+            } else {
+                return (
+                    <GroupModal key={item.id} history={this.props.history} id={item.id} description={item.description}>
+                        <Fragment key={item.id}>
+                            <div className="search-results-body-cell search-results-body-cell-left">
+                                {item.subject}{item.course}
+                            </div>
+                            <div className="search-results-body-cell search-results-body-cell-center search-results-subject-data">
+                                {item.name}
+                            </div>
+                            <div className="search-results-body-cell search-results-body-cell-center">
+                                {startDate}
+                            </div>
+                            <div className="search-results-body-cell search-results-body-cell-center">
+                                {startingTime}
+                            </div>
+                            <div className="search-results-body-cell search-results-body-cell-right">
+                                {<sup>{item.current_group_size}</sup>}&frasl;{<sub>{item.max_group_size}</sub>}
+                            </div>
+                        </Fragment>
+                    </GroupModal>
+                )
+            }
+
+            // return (
+            //     <GroupModal key={item.id} history={this.props.history} id={item.id} description={item.description}>
+            //         <Fragment key={item.id}>
+            //             <div className="search-results-body-cell search-results-body-cell-left">
+            //                 {item.subject}{item.course}{this.ownedGroupFlag()}
+            //             </div>
+            //             <div className="search-results-body-cell search-results-body-cell-center search-results-subject-data">
+            //                 {item.name}
+            //             </div>
+            //             <div className="search-results-body-cell search-results-body-cell-center">
+            //                 {startDate}
+            //             </div>
+            //             <div className="search-results-body-cell search-results-body-cell-center">
+            //                 {startingTime}
+            //             </div>
+            //             <div className="search-results-body-cell search-results-body-cell-right">
+            //                 {<sup>{item.current_group_size}</sup>}&frasl;{<sub>{item.max_group_size}</sub>}
+            //             </div>
+            //         </Fragment>
+            //     </GroupModal>
+            // )
         });
     
     return results;
@@ -114,6 +157,7 @@ class SearchGroups extends Component{
     }
 
     render() {
+        console.log(this.props.all);
 
         let backdrop;
 
@@ -132,6 +176,7 @@ class SearchGroups extends Component{
                     <div className="search-filter-container">
                         <form onSubmit={handleSubmit(this.handleFilterSubmit)}>
                             <Field {...this.props} resetFilter = {this.resetFilter} className="search-field" name="filter" label="Enter group name or subject" type="text" size="30" component={SearchInput}/>
+                            <span>&#9733;</span> You are in this group
                         </form>
                     </div>
                     <div className="search-results">
