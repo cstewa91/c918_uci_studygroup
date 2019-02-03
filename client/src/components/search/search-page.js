@@ -6,9 +6,10 @@ import Backdrop from '../general/backdrop';
 import { Field, reduxForm } from 'redux-form';
 import GroupModal from '../general/group-modal';
 import SearchInput from './search-input';
-import {getAllGroups} from '../../actions';
-import {filterResults} from '../../actions';
+import { getAllGroups } from '../../actions';
+import { filterResults } from '../../actions';
 import { connect } from 'react-redux';
+import { getUserInfo } from '../../actions';
 import home from '../../assets/images/home.png';
 
 
@@ -74,6 +75,7 @@ class SearchGroups extends Component{
         const resultType = (this.props.results && this.props.results.length) ? "results" : "all";
         
         let results = this.props[resultType].map(item => {
+            console.log('item.user_id', item.user_id);
             const newDate = new Date(item.date);
             const sliceStartDate = item.date.slice(0, 11) + item.start_time
             const sliceEndDate = item.date.slice(0, 11) + item.end_time
@@ -107,7 +109,7 @@ class SearchGroups extends Component{
                 )
             } else {
                 return (
-                    <GroupModal key={item.id} history={this.props.history} id={item.id} description={item.description}>
+                    <GroupModal key={item.id} creator={item.user_id} history={this.props.history} id={item.id} description={item.description}>
                         <Fragment key={item.id}>
                             <div className="search-results-body-cell search-results-body-cell-left">
                                 {item.subject}{item.course}
@@ -128,28 +130,6 @@ class SearchGroups extends Component{
                     </GroupModal>
                 )
             }
-
-            // return (
-            //     <GroupModal key={item.id} history={this.props.history} id={item.id} description={item.description}>
-            //         <Fragment key={item.id}>
-            //             <div className="search-results-body-cell search-results-body-cell-left">
-            //                 {item.subject}{item.course}{this.ownedGroupFlag()}
-            //             </div>
-            //             <div className="search-results-body-cell search-results-body-cell-center search-results-subject-data">
-            //                 {item.name}
-            //             </div>
-            //             <div className="search-results-body-cell search-results-body-cell-center">
-            //                 {startDate}
-            //             </div>
-            //             <div className="search-results-body-cell search-results-body-cell-center">
-            //                 {startingTime}
-            //             </div>
-            //             <div className="search-results-body-cell search-results-body-cell-right">
-            //                 {<sup>{item.current_group_size}</sup>}&frasl;{<sub>{item.max_group_size}</sub>}
-            //             </div>
-            //         </Fragment>
-            //     </GroupModal>
-            // )
         });
     
     return results;
@@ -157,7 +137,10 @@ class SearchGroups extends Component{
     }
 
     render() {
-        console.log(this.props.all);
+        console.log('all', this.props.all);
+        console.log('user', this.props.user);
+        console.log('singleGroup', this.props.singleGroup);
+        console.log('userID', this.props.user.id);
 
         let backdrop;
 
@@ -208,7 +191,8 @@ class SearchGroups extends Component{
 function mapStateToProps(state) {
     return {
         all: state.search.all,
-        results: state.filter.results
+        results: state.filter.results,
+        user: state.profile.user
     }
 }
 
@@ -218,5 +202,6 @@ SearchGroups = reduxForm({
 
 export default connect(mapStateToProps, {
     getAllGroups: getAllGroups,
-    filterResults: filterResults
+    filterResults: filterResults,
+    getUserInfo
 })(SearchGroups);
