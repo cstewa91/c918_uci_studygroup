@@ -95,6 +95,19 @@
     border: 1px solid #006DAA
 }
 
+.join-group-deactivated {
+    font-family: 'Gochi Hand';
+    background: rgb(57, 67, 75);
+    font-size: 1.5em;
+    width: 100%;
+    border: 1px solid #006DAA;
+    cursor: not-allowed;
+}
+
+.join-group-denied {
+    color: red;
+}
+
 .join-group a {
     color: #FFFFFF;
 }
