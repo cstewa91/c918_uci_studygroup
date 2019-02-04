@@ -104,8 +104,6 @@ class GroupModal extends Component{
 
 
     render(){
-        console.log('modal props!', this.props);
-
         const { children, group, id} = this.props;
         const startDateTime = new Date(group.date);
         const groupDate = startDateTime.toLocaleDateString([], {month: '2-digit', day: '2-digit'});
