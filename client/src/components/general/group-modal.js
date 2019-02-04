@@ -40,14 +40,14 @@ class GroupModal extends Component{
         if(this.props.joined === 'True'){
             return (
                 <Fragment>
-                    <div className="btn btn-lg join-group-deactivated">Join</div>
+                    <div className="btn btn-lg join-group-deactivated not-allowed">Join</div>
                     <p className="join-group-denied text-center">You are already in this group</p>
                 </Fragment>
             )
         } else if(this.props.group.current_group_size === this.props.group.max_group_size){
             return (
                 <Fragment>
-                    <div className="btn btn-lg join-group-deactivated">Join</div>
+                    <div className="btn btn-lg join-group-deactivated not-allowed">Join</div>
                     <p className="join-group-denied text-center">This group is full</p>
                 </Fragment>
             )
