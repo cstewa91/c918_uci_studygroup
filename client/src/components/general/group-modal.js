@@ -23,8 +23,6 @@ class GroupModal extends Component{
 
     componentDidMount(){
         document.addEventListener("keydown", this.escKeyClose, false);
-        console.log('creator', this.props.creator);
-        console.log('user ID of login', this.props.user.id);
     }
 
     componentWillUnmount(){
@@ -39,11 +37,18 @@ class GroupModal extends Component{
     }
 
     renderJoinButton = () => {
-        if(this.props.creator === undefined){
+        if(this.props.joined === 'True'){
             return (
                 <Fragment>
                     <div className="btn btn-lg join-group-deactivated">Join</div>
                     <p className="join-group-denied text-center">You are already in this group</p>
+                </Fragment>
+            )
+        } else if(this.props.group.current_group_size === this.props.group.max_group_size){
+            return (
+                <Fragment>
+                    <div className="btn btn-lg join-group-deactivated">Join</div>
+                    <p className="join-group-denied text-center">This group is full</p>
                 </Fragment>
             )
         } else {
@@ -99,6 +104,8 @@ class GroupModal extends Component{
 
 
     render(){
+        console.log('modal props!', this.props);
+
         const { children, group, id} = this.props;
         const startDateTime = new Date(group.date);
         const groupDate = startDateTime.toLocaleDateString([], {month: '2-digit', day: '2-digit'});

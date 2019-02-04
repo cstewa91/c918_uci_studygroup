@@ -84,7 +84,7 @@ class SearchGroups extends Component{
 
             if(item.joined === "True"){
                 return (
-                    <GroupModal key={item.id} history={this.props.history} id={item.id} description={item.description}>
+                    <GroupModal key={item.id} history={this.props.history} id={item.id} description={item.description} joined={item.joined}>
                         <Fragment key={item.id}>
                             <div className="search-results-body-cell search-results-body-cell-left">
                                 {item.subject}{item.course}
@@ -106,7 +106,7 @@ class SearchGroups extends Component{
                 )
             } else {
                 return (
-                    <GroupModal key={item.id} creator={item.user_id} history={this.props.history} id={item.id} description={item.description}>
+                    <GroupModal key={item.id} creator={item.user_id} history={this.props.history} id={item.id} description={item.description} joined={item.joined}>
                         <Fragment key={item.id}>
                             <div className="search-results-body-cell search-results-body-cell-left">
                                 {item.subject}{item.course}
