@@ -374,8 +374,8 @@ module.exports = function(app) {
 
   // leave group  
   app.delete('/api/groups/leave', (req, res) => {
-    const user_id = req.body['`user_id`'].replace(/'/g, '');
-    const group_id = req.body['`group_id`'];
+    const user_id = req.body['user_id'];
+    const group_id = req.body['`group_id`'].replace(/'/g, '');
 
     // remove user from group
     const leaveQuery = `DELETE FROM group_members

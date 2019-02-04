@@ -193,10 +193,11 @@ export function userSignOut(){
    }
 }
 
-export function leaveGroup(groupId){
+export function leaveGroup(groupId, userId){
    const config = {
       data: {
-         group_id: groupId
+         group_id: groupId,
+         user_id: userId
       }
    };
    const resp = axios.delete(API_LEAVE_GROUP, config)
