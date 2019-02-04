@@ -113,8 +113,6 @@ class GroupInfo extends Component{
     }
 
     render(){
-        console.log('group ID:', this.props.singleGroup.id);
-        console.log('user ID', this.props.user.id);
         let backdrop;
 
         if(this.state.hamburgerOpen){
