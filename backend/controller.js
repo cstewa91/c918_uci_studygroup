@@ -33,7 +33,7 @@ module.exports = function(app) {
                       ON g.id = j.group_id
                       WHERE ADDTIME(date, end_time) > NOW()
                       GROUP BY g.id
-                      ORDER by end_time ASC`;
+                      ORDER by date ASC, start_time ASC`;
 
     sendQuery('get', query, res);
   });
