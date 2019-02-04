@@ -37,7 +37,6 @@ class SearchGroups extends Component{
     }
 
     resetFilter = (values) => {
-        console.log(this.props);
         values = '';
         this.handleFilterSubmit(values);
     }
@@ -56,7 +55,6 @@ class SearchGroups extends Component{
         this.setState({
             searchValue: values
         });
-        console.log(this.state);
         this.props.filterResults(values.filter);
     }
 
@@ -75,7 +73,6 @@ class SearchGroups extends Component{
         const resultType = (this.props.results && this.props.results.length) ? "results" : "all";
         
         let results = this.props[resultType].map(item => {
-            console.log('item.user_id', item.user_id);
             const newDate = new Date(item.date);
             const sliceStartDate = item.date.slice(0, 11) + item.start_time
             const sliceEndDate = item.date.slice(0, 11) + item.end_time
@@ -137,8 +134,6 @@ class SearchGroups extends Component{
     }
 
     render() {
-        console.log('all', this.props.all);
-
         let backdrop;
 
         if(this.state.hamburgerOpen){
