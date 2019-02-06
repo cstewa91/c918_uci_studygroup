@@ -33,7 +33,7 @@ module.exports = function(app) {
                       ON g.id = j.group_id
                       WHERE ADDTIME(date, end_time) > NOW()
                       GROUP BY g.id
-                      ORDER by end_time ASC`;
+                      ORDER by date ASC, start_time ASC`;
 
     sendQuery('get', query, res);
   });
@@ -374,8 +374,8 @@ module.exports = function(app) {
 
   // leave group  
   app.delete('/api/groups/leave', (req, res) => {
-    const user_id = req.body['`user_id`'].replace(/'/g, '');
-    const group_id = req.body['`group_id`'];
+    const user_id = req.body['user_id'];
+    const group_id = req.body['`group_id`'].replace(/'/g, '');
 
     // remove user from group
     const leaveQuery = `DELETE FROM group_members

@@ -7,6 +7,7 @@ import map from '../../assets/images/map_icon.png';
 import { showJoinedGroups } from '../../actions';
 import { getJoinedGroups } from '../../actions';
 import './group-modal.css';
+import { getUserInfo } from '../../actions';
 import {connect} from 'react-redux';
 
 class GroupModal extends Component{
@@ -35,6 +36,28 @@ class GroupModal extends Component{
         this.props.history.push('/home');
     }
 
+    renderJoinButton = () => {
+        if(this.props.joined === 'True'){
+            return (
+                <Fragment>
+                    <div className="btn btn-lg join-group-deactivated not-allowed">Join</div>
+                    <p className="join-group-denied text-center">You are already in this group</p>
+                </Fragment>
+            )
+        } else if(this.props.group.current_group_size === this.props.group.max_group_size){
+            return (
+                <Fragment>
+                    <div className="btn btn-lg join-group-deactivated not-allowed">Join</div>
+                    <p className="join-group-denied text-center">This group is full</p>
+                </Fragment>
+            )
+        } else {
+            return (
+                <div onClick={this.joinStudyGroup} className="btn btn-lg join-group">Join</div>
+            )
+        }
+    }
+
     open = () => {
         this.props.getGroupDetails(this.props.id);
 
@@ -51,7 +74,6 @@ class GroupModal extends Component{
         const joinedDate = splitDate.join('');
         return joinedDate;
     }
-
     
     adjustTime = (time) => {
         const splicedTime = time.slice(0,5);
@@ -82,7 +104,6 @@ class GroupModal extends Component{
 
 
     render(){
-
         const { children, group, id} = this.props;
         const startDateTime = new Date(group.date);
         const groupDate = startDateTime.toLocaleDateString([], {month: '2-digit', day: '2-digit'});
@@ -132,7 +153,7 @@ class GroupModal extends Component{
                             {group.description}
                         </p>
                     </div>
-                        <div onClick={this.joinStudyGroup} className="btn btn-lg join-group">Join</div>
+                        {this.renderJoinButton()}
                 </div>
             )
 
@@ -164,7 +185,8 @@ class GroupModal extends Component{
 
 function mapStateToProps(state) {
     return {
-        group: state.search.selected
+        group: state.search.selected,
+        user: state.profile.user
     }
 }
 
@@ -172,5 +194,6 @@ export default connect(mapStateToProps,{
     getGroupDetails: getGroupDetails,
     joinGroup: joinGroup,
     showJoinedGroups: showJoinedGroups,
-    getJoinedGroups: getJoinedGroups
+    getJoinedGroups: getJoinedGroups,
+    getUserInfo,
 })(GroupModal);

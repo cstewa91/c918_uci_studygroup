@@ -35,7 +35,7 @@ class GroupInfo extends Component{
     }
 
     leaveCurrentGroup = async () => {
-        await this.props.leaveGroup(this.props.match.params.group_id);
+        await this.props.leaveGroup(this.props.match.params.group_id, this.props.user.id);
         this.props.history.push('/home');
     }
 
@@ -83,7 +83,6 @@ class GroupInfo extends Component{
     adjustTime = (time) => {
         const splicedTime = time.slice(0,5);
         const splitTime = splicedTime.split(':');
-        console.log('splitTime', splitTime);
         if(splitTime[0] > 12){
             const hour = splitTime[0] - 12;
             splitTime[0] = hour;
